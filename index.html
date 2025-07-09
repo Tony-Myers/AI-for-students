@@ -39,7 +39,7 @@
             transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
         }
         .accordion-content.open {
-            max-height: 1000px; /* Adjust as needed */
+            max-height: 1500px; /* Increased for table */
             transition: max-height 1s ease-in-out;
         }
         .gemini-feature-card {
@@ -341,7 +341,7 @@
             "Assessment": {
                 icon: "📝",
                 title: "Assessment & Feedback",
-                description: "Automate the creation and grading of formative assessments to provide instant feedback. This also prompts a redesign of assignments to focus on 'AI-resistant' skills like critical thinking and creativity.",
+                description: "Automate the creation and grading of formative assessments to provide instant feedback. This also prompts a redesign of assignments to focus on 'AI-resistant' skills like critical thinking and creativity. Please note: while feedback can be structured using AI, automated marking is not encouraged at present.",
                 tools: ["General LLMs", "In-class activities"]
             },
             "Content Creation": {
@@ -367,6 +367,28 @@
         ];
 
         const ethicsChecklistData = [
+            {
+                principle: "Example Institutional Framework for AI Use",
+                question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?",
+                htmlContent: `
+                    <table class="w-full text-left border-collapse mt-4">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-2 border font-semibold">Level</th>
+                                <th class="p-2 border font-semibold">AI Use</th>
+                                <th class="p-2 border font-semibold">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
+                            <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
+                            <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
+                            <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
+                            <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
+                            <tr class="bg-slate-50"><td class="p-2 border align-top">6</td>td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
+                        </tbody>
+                    </table>`
+            },
             { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
             { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
             { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups (e.g., non-native speakers, specific demographics)?", redFlags: "The tool consistently produces stereotypical content; it struggles with diverse names, cultures, or linguistic styles.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions." },
@@ -391,6 +413,7 @@
                            ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
                            ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
                            ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
+                           ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
                         </div>
                     </div>
                 </div>
@@ -576,14 +599,8 @@
                 if (result.candidates && result.candidates.length > 0 &&
                     result.candidates[0].content && result.candidates[0].content.parts &&
                     result.candidates[0].content.parts.length > 0) {
-                    let text = result.candidates[0].content.parts[0].text;
-                    text = text.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
-                    text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
-                    text = text.replace(/### (.*?)\n/g, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>');
-                    text = text.replace(/## (.*?)\n/g, '<h2 class="text-xl font-bold mt-4 mb-2">$1</h2>');
-                    text = text.replace(/# (.*?)\n/g, '<h1 class="text-2xl font-bold mt-4 mb-2">$1</h1>');
-                    text = text.replace(/^- (.*?)$/gm, '<li class="ml-5 list-disc">$1</li>');
-                    outputElement.innerHTML = text.replace(/\n/g, '<br>');
+                    const text = result.candidates[0].content.parts[0].text;
+                    outputElement.innerHTML = text;
                 } else {
                     outputElement.innerHTML = '<p class="text-red-500">Sorry, I could not generate a response. The model may be unavailable. Please try again later.</p>';
                     console.error("Unexpected API response structure:", result);
@@ -620,11 +637,11 @@
             **Learning Objectives:**
             ${objectives}
             
-            Please structure the output with the following sections, using Markdown for formatting:
-            - **Introduction/Hook:** A brief, engaging way to start the lesson.
-            - **Key Activities:** 2-3 core activities for the lesson.
-            - **Discussion Questions:** 3-4 thought-provoking questions.
-            - **Formative Assessment:** One simple idea to check for understanding.`;
+            Please structure the output as clean HTML, not Markdown. Use the following structure:
+            - A <h4> element with a bolded title for "Introduction/Hook" followed by a <p> tag.
+            - A <h4> element with a bolded title for "Key Activities" followed by an <ul> with 2-3 <li> items.
+            - A <h4> element with a bolded title for "Discussion Questions" followed by an <ul> with 3-4 <li> items.
+            - A <h4> element with a bolded title for "Formative Assessment" followed by a <p> tag.`;
 
             callGemini(prompt, generateLessonBtn, lessonOutput);
         });
@@ -646,10 +663,10 @@
             
             **Task:** "${task}"
             
-            Structure your response using Markdown with the following three headings:
-            1.  **Role-Based Prompt:** A prompt that assigns a specific persona to the AI.
-            2.  **Chain-of-Thought Prompt:** A prompt that breaks the task into clear, sequential steps.
-            3.  **Few-Shot Prompt:** A prompt that provides a clear example of the desired input and output format.`;
+            Structure your response using clean HTML, not Markdown. Use the following structure:
+            - An <h3> element for "Role-Based Prompt" followed by a <p> with the prompt.
+            - An <h3> element for "Chain-of-Thought Prompt" followed by a <p> with the prompt.
+            - An <h3> element for "Few-Shot Prompt" followed by a <p> with the prompt.`;
 
             callGemini(prompt, generatePromptsBtn, promptOutput);
         });
@@ -682,7 +699,7 @@ Your Role
 You are an expert academic feedback assistant. Your purpose is to convert a final mark and raw marking notes into high-quality, structured, and supportive feedback. Your primary goal is to provide actionable feedforward that helps students understand their mark and improve in future assessments.
 
 Core Tasks
-Generate a comprehensive feedback report based on the provided inputs. The tone, content, and structure of the report are determined by the final mark and the marking notes you are given. Do not add any additional information not directly provided.
+Generate a comprehensive feedback report based on the provided inputs. The tone, content, and structure of the report are determined by the final mark and the marking notes you are given. Do not add any additional information not directly provided. The entire output must be in clean, well-structured HTML, not Markdown.
 
 Phase 1: Initial Analysis
 Before writing the response, complete the following steps.
@@ -705,33 +722,42 @@ Select the appropriate tone based on the provided final grade.
 0–39% (Fail): Maintain a dignified and constructive tone. Clearly identify significant gaps in understanding and focus on essential academic skills.
 
 Phase 2: Feedback Generation
-Construct the feedback using this exact structure and the corresponding headings in Markdown.
+Construct the feedback using this exact structure and the corresponding HTML headings.
 
-### Overall Comment
-Start with a concise paragraph that summarises the overall impression of the work, directly referencing the final mark. Your tone should be professional, supportive, and aligned with the grade band. Where appropriate, include a sentence prompting the student to reflect on how they have used feedback from previous assignments.
+<h3>Overall Comment</h3>
+<p>Start with a concise paragraph that summarises the overall impression of the work, directly referencing the final mark. Your tone should be professional, supportive, and aligned with the grade band. Where appropriate, include a sentence prompting the student to reflect on how they have used feedback from previous assignments.</p>
 
-### Strengths
-Provide 2–3 bullet points detailing specific achievements that justify the positive aspects of the mark. Base each point on the marking notes or rubric, not on generic praise. Each point must have a clear, bolded heading on its own line.
+<h3>Strengths</h3>
+<ul>
+    <li><strong>Heading for Strength 1:</strong> Detail...</li>
+    <li><strong>Heading for Strength 2:</strong> Detail...</li>
+</ul>
 
-### Areas for Development
-Provide 2–3 bullet points explaining what needs improvement. Each point must have a clear, bolded heading on its own line. For each point, you must:
-- Reference the evidence from the marking notes.
-- Explain the issue in clear, student-friendly language.
-- Offer at least one specific and actionable suggestion for improvement. Crucially, this suggestion should explain what the student needs to do to move into the next grade classification, directly addressing how a higher mark could be achieved.
+<h3>Areas for Development</h3>
+<ul>
+    <li><strong>Heading for Area 1:</strong> Detail...</li>
+    <li><strong>Heading for Area 2:</strong> Detail...</li>
+</ul>
 
-### Actionable Next Steps (Feedforward)
-Provide 2–3 concrete actions for the student to take in future assignments. These must be directly linked to the "Areas for Development" section and empower the student to improve their future work.
+<h3>Actionable Next Steps (Feedforward)</h3>
+<ul>
+    <li>Action 1...</li>
+    <li>Action 2...</li>
+</ul>
 
-### Recommended Resources
-Suggest 2–3 resources that directly address the areas for development. Use institutional links where relevant and provide details of what the link is.
+<h3>Recommended Resources</h3>
+<ul>
+    <li>Resource 1...</li>
+    <li>Resource 2...</li>
+</ul>
 
 Phase 3: Rubric Integration (If Provided)
 ${rubric ? `If a full marking rubric is supplied, you must perform these steps.
-- Reproduce the Rubric: Present the entire rubric as a Markdown table.
-- Highlight Achievement: In the table, clearly mark the student's achieved performance band for each criterion. Use bold text or a ✔ marker.
-- Add a Summary: Below the table, write a brief sentence connecting the highlighted bands to the main feedback, explaining how it relates to the final mark.` : ''}
+- Reproduce the Rubric: Present the entire rubric as an HTML <table> with appropriate classes for styling (e.g., border, p-2 on cells).
+- Highlight Achievement: In the table, clearly mark the student's achieved performance band for each criterion. Use <strong> text or a ✔ marker in the relevant <td>.
+- Add a Summary: Below the table, write a brief <p> connecting the highlighted bands to the main feedback, explaining how it relates to the final mark.` : ''}
 
-You must add the following to the end of the feedback: "If you would like to discuss this feedback further, please email me at ${email} to arrange a meeting, or drop by my office in ${office}."
+You must add the following to the end of the feedback: "<p>If you would like to discuss this feedback further, please email me at ${email} to arrange a meeting, or drop by my office in ${office}.</p>"
 `;
             callGemini(feedbackPrompt, generateFeedbackBtn, feedbackOutput);
         });
@@ -740,3 +766,4 @@ You must add the following to the end of the feedback: "If you would like to dis
     </script>
 </body>
 </html>
+
