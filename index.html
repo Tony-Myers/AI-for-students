@@ -42,33 +42,6 @@
             max-height: 1500px; /* Increased for table */
             transition: max-height 1s ease-in-out;
         }
-        .gemini-feature-card {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-        .gemini-button {
-            background-color: #0284c7; /* sky-600 */
-            color: white;
-            transition: background-color 0.3s;
-        }
-        .gemini-button:hover:not(:disabled) {
-            background-color: #0369a1; /* sky-700 */
-        }
-        .gemini-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-        .loader {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #0284c7; /* Sky 600 */
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -151,23 +124,6 @@
                     <div id="advanced-prompting-container" class="space-y-4"></div>
                 </div>
             </div>
-            
-            <div class="mt-8 gemini-feature-card rounded-xl shadow-lg p-8 md:p-12">
-                <h3 class="text-2xl font-bold text-sky-800 mb-4 text-center">✨ Prompt Idea Generator</h3>
-                <p class="text-slate-600 max-w-2xl mx-auto mb-6 text-center">Stuck on how to ask the AI for what you need? Describe your task below, and get a few expertly crafted prompt ideas.</p>
-                <div class="max-w-xl mx-auto">
-                    <div class="mb-4">
-                        <label for="task-input" class="block text-sm font-medium text-slate-700 mb-1">Your Task:</label>
-                        <input type="text" id="task-input" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., 'Create a multiple-choice quiz on photosynthesis'">
-                    </div>
-                    <button id="generate-prompts-btn" class="gemini-button w-full font-bold py-2 px-4 rounded-md flex items-center justify-center">
-                        Generate Prompt Ideas
-                    </button>
-                    <div id="prompt-output" class="mt-6 bg-white/50 p-4 rounded-lg min-h-[100px] text-slate-700">
-                        <p class="text-slate-500">Your generated prompt ideas will appear here...</p>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section id="research" class="scroll-mt-20 mt-16">
@@ -190,68 +146,7 @@
                 <div id="teaching-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center"></div>
                 <div id="teaching-workflow-content" class="mt-8 p-6 bg-slate-50 rounded-lg min-h-[150px]"></div>
             </div>
-            
-            <div class="mt-8 gemini-feature-card rounded-xl shadow-lg p-8 md:p-12">
-                <h3 class="text-2xl font-bold text-sky-800 mb-4 text-center">✨ AI Lesson Plan Assistant</h3>
-                <p class="text-slate-600 max-w-2xl mx-auto mb-6 text-center">Get a head start on your course prep. Provide a topic and learning objectives to generate a draft lesson plan.</p>
-                <div class="max-w-xl mx-auto">
-                    <div class="mb-4">
-                        <label for="lesson-topic" class="block text-sm font-medium text-slate-700 mb-1">Lesson Topic:</label>
-                        <input type="text" id="lesson-topic" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., 'The Causes of the French Revolution'">
-                    </div>
-                    <div class="mb-4">
-                        <label for="lesson-objectives" class="block text-sm font-medium text-slate-700 mb-1">Learning Objectives:</label>
-                        <textarea id="lesson-objectives" rows="3" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., 'Students will be able to identify three main causes...&#10;Students will be able to analyse a primary source from the period...'"></textarea>
-                    </div>
-                    <button id="generate-lesson-btn" class="gemini-button w-full font-bold py-2 px-4 rounded-md flex items-center justify-center">
-                        Generate Lesson Plan
-                    </button>
-                    <div id="lesson-output" class="mt-6 bg-white/50 p-4 rounded-lg min-h-[100px] text-slate-700">
-                         <p class="text-slate-500">Your generated lesson plan will appear here...</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-8 gemini-feature-card rounded-xl shadow-lg p-8 md:p-12">
-                <h3 class="text-2xl font-bold text-sky-800 mb-4 text-center">✨ AI Feedback Structuring Assistant</h3>
-                <p class="text-slate-600 max-w-3xl mx-auto mb-6 text-center">Convert your raw marking notes into high-quality, structured feedback for students. This tool helps you provide actionable feedforward to support student improvement.</p>
-                <div class="max-w-3xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label for="feedback-mark" class="block text-sm font-medium text-slate-700 mb-1">Final Mark (%):</label>
-                            <input type="number" id="feedback-mark" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., 65">
-                        </div>
-                        <div>
-                            <label for="feedback-assignment-type" class="block text-sm font-medium text-slate-700 mb-1">Assignment Type:</label>
-                            <input type="text" id="feedback-assignment-type" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., Essay, Report">
-                        </div>
-                        <div>
-                            <label for="feedback-email" class="block text-sm font-medium text-slate-700 mb-1">Your Email:</label>
-                            <input type="email" id="feedback-email" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., your.name@university.ac.uk">
-                        </div>
-                        <div>
-                            <label for="feedback-office" class="block text-sm font-medium text-slate-700 mb-1">Your Office:</label>
-                            <input type="text" id="feedback-office" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="e.g., Building Name, Room 101">
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <label for="feedback-notes" class="block text-sm font-medium text-slate-700 mb-1">Marking Notes:</label>
-                        <textarea id="feedback-notes" rows="5" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="Enter your specific, unstructured marking notes here..."></textarea>
-                    </div>
-                    <div class="mb-4">
-                        <label for="feedback-rubric" class="block text-sm font-medium text-slate-700 mb-1">Marking Rubric (Optional):</label>
-                        <textarea id="feedback-rubric" rows="5" class="w-full p-2 border border-slate-300 rounded-md shadow-sm" placeholder="Paste the marking rubric here if you want it included in the feedback..."></textarea>
-                    </div>
-                    <button id="generate-feedback-btn" class="gemini-button w-full font-bold py-2 px-4 rounded-md flex items-center justify-center">
-                        Generate Structured Feedback
-                    </button>
-                    <div id="feedback-output" class="mt-6 bg-white/50 p-4 rounded-lg min-h-[100px] text-slate-700">
-                         <p class="text-slate-500">Your generated student feedback will appear here...</p>
-                    </div>
-                </div>
-            </div>
         </section>
-
 
         <section id="toolkit" class="scroll-mt-20 mt-16">
             <div class="text-center mb-12">
@@ -333,7 +228,7 @@
 
         const teachingWorkflowData = {
             "Personalisation": {
-                icon: "�",
+                icon: "🎯",
                 title: "Personalised & Differentiated Instruction",
                 description: "Leverage AI to create tailored learning paths. AI can generate varied problem sets, summarise texts at different reading levels, and provide supplementary materials based on individual student needs.",
                 tools: ["General LLMs"]
@@ -345,7 +240,7 @@
                 tools: ["General LLMs", "In-class activities"]
             },
             "Content Creation": {
-                icon: "🎨",
+                icon: "�",
                 title: "Engaging Course Materials",
                 description: "Quickly generate dynamic and interactive course materials like presentations, websites, and custom case studies. Use AI to create scenarios and simulations that enhance knowledge retention.",
                 tools: ["Gamma", "Rosebud AI"]
@@ -363,4 +258,218 @@
             { name: "ATLAS.ti / NVivo", fn: "Qualitative Data Analysis", features: "AI-powered coding, thematic analysis, and transcription for unstructured data (interviews, text).", cost: "Paid", link: "https://atlasti.com", area: "Research" },
             { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app", area: "Research"},
             { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org", area: "Research"},
-            { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "P�
+            { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Paid", link: "https://scite.ai", area: "Research"},
+        ];
+
+        const ethicsChecklistData = [
+            {
+                principle: "Example Institutional Framework for AI Use",
+                question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?",
+                htmlContent: `
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse mt-4">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="p-2 border font-semibold">Level</th>
+                                    <th class="p-2 border font-semibold">AI Use</th>
+                                    <th class="p-2 border font-semibold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
+                                <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
+                                <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">6</td><td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>`
+            },
+            { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
+            { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
+            { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups (e.g., non-native speakers, specific demographics)?", redFlags: "The tool consistently produces stereotypical content; it struggles with diverse names, cultures, or linguistic styles.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions." },
+            { principle: "Transparency & Verifiability", question: "Can I verify the information this tool provides? Does it cite its sources?", redFlags: "The tool makes factual claims without providing sources; it generates plausible but fake references ('hallucinations').", bestPractice: "Always cross-check factual claims with reliable sources. Prefer 'grounded' AI tools like NotebookLM that provide verifiable citations." },
+            { principle: "Access & Equity", question: "Does using this tool require expensive software or high-speed internet that some of my students may not have?", redFlags: "The tool is only available in a premium version; it performs poorly on low-bandwidth connections.", bestPractice: "Prioritise free, web-based tools that are accessible on a variety of devices. Ensure equitable alternatives are available." }
+        ];
+
+
+        function setupAccordions(containerSelector, data) {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+            container.innerHTML = data.map(item => `
+                <div class="border border-slate-200 rounded-lg">
+                    <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-medium text-slate-700 hover:bg-slate-50">
+                        <span>${item.principle || item.title}</span>
+                        <span class="transform transition-transform duration-300">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="p-4 border-t border-slate-200 text-slate-600 space-y-2">
+                           ${item.content ? `<p>${item.content}</p>` : ''}
+                           ${item.example ? `<p class="text-sm italic text-slate-500">${item.example}</p>` : ''}
+                           ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
+                           ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
+                           ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
+                           ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        setupAccordions('#advanced-prompting-container', advancedPromptsData);
+        setupAccordions('#ethics-checklist-container', ethicsChecklistData);
+
+        document.querySelectorAll('.accordion-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('span:last-child');
+                content.classList.toggle('open');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        function setupWorkflow(containerSelector, contentSelector, data) {
+            const container = document.querySelector(containerSelector);
+            const contentEl = document.querySelector(contentSelector);
+            if (!container || !contentEl) return;
+            
+            Object.entries(data).forEach(([key, value], index) => {
+                const isLast = index === Object.keys(data).length - 1;
+                container.innerHTML += `
+                    <button data-workflow-key="${key}" class="workflow-node group flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 transition-colors duration-200">
+                        <div class="text-4xl">${value.icon}</div>
+                        <h4 class="font-semibold text-slate-700 group-hover:text-sky-600">${value.title}</h4>
+                    </button>
+                    ${!isLast ? `<div class="text-sky-400 font-bold text-2xl hidden md:block">&rarr;</div><div class="text-sky-400 font-bold text-2xl block md:hidden">&darr;</div>` : ''}
+                `;
+            });
+            
+            container.querySelectorAll('.workflow-node').forEach(node => {
+                node.addEventListener('click', (e) => {
+                    const key = e.currentTarget.dataset.workflowKey;
+                    const item = data[key];
+                    contentEl.innerHTML = `
+                        <h4 class="text-xl font-bold text-sky-700 mb-2">${item.title}</h4>
+                        <p class="text-slate-600 mb-4">${item.description}</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="font-semibold">Key Tools:</span>
+                            ${item.tools.map(tool => `<span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
+                        </div>
+                    `;
+                    container.querySelectorAll('.workflow-node').forEach(n => n.classList.remove('bg-sky-100'));
+                    e.currentTarget.classList.add('bg-sky-100');
+                });
+            });
+
+            container.querySelector('.workflow-node').click();
+        }
+
+        setupWorkflow('#research-workflow', '#research-workflow-content', researchWorkflowData);
+        setupWorkflow('#teaching-workflow', '#teaching-workflow-content', teachingWorkflowData);
+        
+        const toolkitGrid = document.getElementById('toolkit-grid');
+        const filterFunction = document.getElementById('filter-function');
+        const filterCost = document.getElementById('filter-cost');
+
+        const functions = [...new Set(toolkitData.map(tool => tool.fn))];
+        const costs = [...new Set(toolkitData.map(tool => tool.cost))];
+
+        functions.forEach(fn => {
+            filterFunction.innerHTML += `<option value="${fn}">${fn}</option>`;
+        });
+        costs.forEach(cost => {
+            filterCost.innerHTML += `<option value="${cost}">${cost}</option>`;
+        });
+        
+        function renderToolkit(filteredData) {
+            toolkitGrid.innerHTML = '';
+            if (filteredData.length === 0) {
+                toolkitGrid.innerHTML = `<p class="col-span-full text-center text-slate-500">No tools match your filters.</p>`;
+                return;
+            }
+            filteredData.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
+                card.innerHTML = `
+                    <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
+                    <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
+                    <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
+                    <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
+                        <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
+                        <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit Site &rarr;</a>
+                    </div>
+                `;
+                toolkitGrid.appendChild(card);
+            });
+        }
+        
+        function filterToolkit() {
+            const selectedFunction = filterFunction.value;
+            const selectedCost = filterCost.value;
+
+            const filteredData = toolkitData.filter(tool => {
+                const functionMatch = selectedFunction === 'all' || tool.fn === selectedFunction;
+                const costMatch = selectedCost === 'all' || tool.cost === selectedCost;
+                return functionMatch && costMatch;
+            });
+            renderToolkit(filteredData);
+        }
+
+        filterFunction.addEventListener('change', filterToolkit);
+        filterCost.addEventListener('change', filterToolkit);
+
+        renderToolkit(toolkitData);
+        
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        const navLinks = document.querySelectorAll('a[href^="#"]');
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.4
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === entry.target.id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('hidden') === false) {
+                    mobileMenu.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                }
+            });
+        });
+
+    });
+    </script>
+</body>
+</html>
+�
