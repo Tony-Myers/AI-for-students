@@ -312,7 +312,7 @@
 
         const researchWorkflowData = {
             "Literature Discovery": {
-                icon: "�",
+                icon: "📚",
                 title: "Literature Discovery & Synthesis",
                 description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
                 tools: ["Research Rabbit", "Elicit", "Connected Papers", "Semantic Scholar"]
@@ -631,19 +631,20 @@
                 return;
             }
 
-            const prompt = `You are an expert instructional designer creating resources for a university-level course.
-            Generate a brief, engaging lesson plan based on the following details:
-            
+            const prompt = `As an expert instructional designer, create a brief lesson plan for a university course, formatted in clean HTML.
+
             **Topic:** ${topic}
             
             **Learning Objectives:**
             ${objectives}
             
-            Please structure the output as clean HTML, not Markdown. Use the following structure:
-            - A <h4> element with a bolded title for "Introduction/Hook" followed by a <p> tag.
-            - A <h4> element with a bolded title for "Key Activities" followed by an <ul> with 2-3 <li> items.
-            - A <h4> element with a bolded title for "Discussion Questions" followed by an <ul> with 3-4 <li> items.
-            - A <h4> element with a bolded title for "Formative Assessment" followed by a <p> tag.`;
+            **Required Sections:**
+            - **Introduction/Hook:** (as a paragraph)
+            - **Key Activities:** (as a bulleted list)
+            - **Discussion Questions:** (as a bulleted list)
+            - **Formative Assessment:** (as a paragraph)
+            
+            Use appropriate HTML tags like \`<h4>\`, \`<p>\`, \`<ul>\`, and \`<li>\`.`;
 
             callGemini(prompt, generateLessonBtn, lessonOutput);
         });
@@ -660,15 +661,9 @@
                 return;
             }
 
-            const prompt = `You are a prompt engineering expert advising an academic.
-            For the task below, generate three distinct and effective prompt ideas.
-            
-            **Task:** "${task}"
-            
-            Structure your response using clean HTML, not Markdown. Use the following structure:
-            - An <h3> element for "Role-Based Prompt" followed by a <p> with the prompt.
-            - An <h3> element for "Chain-of-Thought Prompt" followed by a <p> with the prompt.
-            - An <h3> element for "Few-Shot Prompt" followed by a <p> with the prompt.`;
+            const prompt = `As a prompt engineering expert, generate three distinct prompt ideas for the following academic task: "${task}".
+
+            Format the output in clean HTML. For each idea, use an \`<h3>\` for the prompt type ('Role-Based Prompt', 'Chain-of-Thought Prompt', 'Few-Shot Prompt') and a \`<p>\` for the prompt text itself. Do not use Markdown.`;
 
             callGemini(prompt, generatePromptsBtn, promptOutput);
         });
@@ -697,69 +692,32 @@
             }
 
             const feedbackPrompt = `
-Your Role
-You are an expert academic feedback assistant. Your purpose is to convert a final mark and raw marking notes into high-quality, structured, and supportive feedback. Your primary goal is to provide actionable feedforward that helps students understand their mark and improve in future assessments.
+You are an expert academic feedback assistant. Your task is to convert the following marking details into a high-quality, structured, and supportive feedback report for a student. The entire output must be in clean, well-structured HTML. Do not use Markdown.
 
-Core Tasks
-Generate a comprehensive feedback report based on the provided inputs. The tone, content, and structure of the report are determined by the final mark and the marking notes you are given. Do not add any additional information not directly provided. The entire output must be in clean, well-structured HTML, not Markdown.
+**1. Input Details:**
+- **Final Grade/Mark:** ${mark}%
+- **Assignment Type:** ${assignmentType}
+- **Marking Notes:** ${notes}
+- **Marking Rubric:** ${rubric ? rubric : 'Not provided.'}
 
-Phase 1: Initial Analysis
-Before writing the response, complete the following steps.
+**2. Tone Calibration (Use this to guide your writing style):**
+- **80–100%:** Celebratory and encouraging.
+- **70–79%:** Acknowledge excellence, offer challenges.
+- **60–69%:** Recognise solid achievement, provide clear guidance.
+- **50–59%:** Supportive but direct, focus on fundamentals.
+- **40–49%:** Emphasise foundational skills, simple steps.
+- **0–39%:** Dignified and constructive, identify significant gaps.
 
-1. Acknowledge Inputs
-You will receive the following information. You must only use the information provided for the specific task.
+**3. Required Output Structure (Use these exact HTML headings):**
+- **\`<h3>Overall Comment</h3>\`**: A concise paragraph summarising the work, referencing the mark and aligning with the calibrated tone.
+- **\`<h3>Strengths</h3>\`**: A \`<ul>\` list with 2-3 \`<li>\` items. Each item must start with a \`<strong>\` heading and detail a specific achievement from the marking notes.
+- **\`<h3>Areas for Development</h3>\`**: A \`<ul>\` list with 2-3 \`<li>\` items. Each item must start with a \`<strong>\` heading, reference the marking notes, explain the issue clearly, and offer a specific, actionable suggestion for how to improve and reach the next grade band.
+- **\`<h3>Actionable Next Steps (Feedforward)</h3>\`**: A \`<ul>\` list with 2-3 concrete actions linked to the "Areas for Development".
+- **\`<h3>Recommended Resources</h3>\`**: A \`<ul>\` list with 2-3 resources that address the areas for development.
+${rubric ? `- **Rubric Integration**: Reproduce the provided rubric as an HTML \`<table>\`. In the table, mark the student's achieved performance band for each criterion using a \`<strong>\` tag or a ✔ marker. Below the table, add a brief \`<p>\` connecting the rubric to the final mark.` : ''}
 
-Final Grade/Mark: ${mark}%
-Assignment Type: ${assignmentType}
-Marking Notes: ${notes}
-Marking Rubric: ${rubric ? rubric : 'Not provided.'}
-
-2. Calibrate the Tone
-Select the appropriate tone based on the provided final grade.
-80–100% (First Class/Distinction): Celebratory and encouraging. Focus on subtle refinements and advanced extensions.
-70–79% (First Class): Acknowledge excellence. Offer constructive challenges for deeper critical thinking.
-60–69% (Upper Second / 2:1): Recognise solid achievement. Provide clear, supportive guidance for development.
-50–59% (Lower Second / 2:2): Supportive but direct. Focus on fundamental concepts and offer clear, actionable steps.
-40–49% (Third Class): Emphasise foundational skills. Provide simple, step-by-step improvement suggestions.
-0–39% (Fail): Maintain a dignified and constructive tone. Clearly identify significant gaps in understanding and focus on essential academic skills.
-
-Phase 2: Feedback Generation
-Construct the feedback using this exact structure and the corresponding HTML headings.
-
-<h3>Overall Comment</h3>
-<p>Start with a concise paragraph that summarises the overall impression of the work, directly referencing the final mark. Your tone should be professional, supportive, and aligned with the grade band. Where appropriate, include a sentence prompting the student to reflect on how they have used feedback from previous assignments.</p>
-
-<h3>Strengths</h3>
-<ul>
-    <li><strong>Heading for Strength 1:</strong> Detail...</li>
-    <li><strong>Heading for Strength 2:</strong> Detail...</li>
-</ul>
-
-<h3>Areas for Development</h3>
-<ul>
-    <li><strong>Heading for Area 1:</strong> Detail...</li>
-    <li><strong>Heading for Area 2:</strong> Detail...</li>
-</ul>
-
-<h3>Actionable Next Steps (Feedforward)</h3>
-<ul>
-    <li>Action 1...</li>
-    <li>Action 2...</li>
-</ul>
-
-<h3>Recommended Resources</h3>
-<ul>
-    <li>Resource 1...</li>
-    <li>Resource 2...</li>
-</ul>
-
-Phase 3: Rubric Integration (If Provided)
-${rubric ? `If a full marking rubric is supplied, you must perform these steps.
-- Reproduce the Rubric: Present the entire rubric as an HTML <table> with appropriate classes for styling (e.g., border, p-2 on cells).
-- Highlight Achievement: In the table, clearly mark the student's achieved performance band for each criterion. Use <strong> text or a ✔ marker in the relevant <td>.
-- Add a Summary: Below the table, write a brief <p> connecting the highlighted bands to the main feedback, explaining how it relates to the final mark.` : ''}
-
-You must add the following to the end of the feedback: "<p>If you would like to discuss this feedback further, please email me at ${email} to arrange a meeting, or drop by my office in ${office}.</p>"
+**4. Final Instruction:**
+- Conclude the entire response with this exact HTML paragraph: \`<p>If you would like to discuss this feedback further, please email me at ${email} to arrange a meeting, or drop by my office in ${office}.</p>\`
 `;
             callGemini(feedbackPrompt, generateFeedbackBtn, feedbackOutput);
         });
@@ -768,4 +726,3 @@ You must add the following to the end of the feedback: "<p>If you would like to 
     </script>
 </body>
 </html>
-�
