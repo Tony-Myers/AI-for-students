@@ -312,7 +312,7 @@
 
         const researchWorkflowData = {
             "Literature Discovery": {
-                icon: "📚",
+                icon: "�",
                 title: "Literature Discovery & Synthesis",
                 description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
                 tools: ["Research Rabbit", "Elicit", "Connected Papers", "Semantic Scholar"]
@@ -371,23 +371,25 @@
                 principle: "Example Institutional Framework for AI Use",
                 question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?",
                 htmlContent: `
-                    <table class="w-full text-left border-collapse mt-4">
-                        <thead class="bg-slate-100">
-                            <tr>
-                                <th class="p-2 border font-semibold">Level</th>
-                                <th class="p-2 border font-semibold">AI Use</th>
-                                <th class="p-2 border font-semibold">Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
-                            <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
-                            <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
-                            <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
-                            <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
-                            <tr class="bg-slate-50"><td class="p-2 border align-top">6</td>td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
-                        </tbody>
-                    </table>`
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse mt-4">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="p-2 border font-semibold">Level</th>
+                                    <th class="p-2 border font-semibold">AI Use</th>
+                                    <th class="p-2 border font-semibold">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
+                                <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
+                                <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
+                                <tr class="bg-slate-50"><td class="p-2 border align-top">6</td><td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>`
             },
             { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
             { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
@@ -403,7 +405,7 @@
             container.innerHTML = data.map(item => `
                 <div class="border border-slate-200 rounded-lg">
                     <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-medium text-slate-700 hover:bg-slate-50">
-                        ${item.principle || item.title}
+                        <span>${item.principle || item.title}</span>
                         <span class="transform transition-transform duration-300">▼</span>
                     </button>
                     <div class="accordion-content">
@@ -426,7 +428,7 @@
         document.querySelectorAll('.accordion-toggle').forEach(button => {
             button.addEventListener('click', () => {
                 const content = button.nextElementSibling;
-                const icon = button.querySelector('span');
+                const icon = button.querySelector('span:last-child');
                 content.classList.toggle('open');
                 icon.classList.toggle('rotate-180');
             });
@@ -766,4 +768,4 @@ You must add the following to the end of the feedback: "<p>If you would like to 
     </script>
 </body>
 </html>
-
+�
