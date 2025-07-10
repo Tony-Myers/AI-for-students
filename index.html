@@ -106,8 +106,8 @@
             </div>
             
             <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                <!-- Key Principles Overview -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <!-- Core Principles as Cards -->
                     <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded-lg border border-sky-200">
                         <h3 class="text-lg font-bold text-sky-700 mb-3">🎯 Clarity & Specificity</h3>
                         <p class="text-slate-600 text-sm mb-3">Tell the AI exactly what you want, leaving no room for interpretation. Vague prompts lead to inconsistent outputs.</p>
@@ -142,15 +142,108 @@
                     </div>
                 </div>
 
+                <!-- Complete Guide Accordion -->
                 <div class="space-y-6">
                     <div class="border border-slate-200 rounded-lg">
                         <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left text-lg font-semibold text-slate-700 hover:bg-slate-50">
-                            Complete Prompt Engineering Guide (10 Principles)
+                            Complete Prompt Engineering Guide (10 Evidence-Based Principles)
                             <span class="transform transition-transform duration-300">▼</span>
                         </button>
                         <div class="accordion-content">
-                            <div class="p-6 border-t border-slate-200" id="complete-prompting-guide">
-                                <!-- This will be populated by JavaScript -->
+                            <div class="p-6 border-t border-slate-200">
+                                <!-- Principle 1 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-sky-500">
+                                    <h4 class="text-lg font-bold text-sky-700 mb-2">1. Clarity and Specificity</h4>
+                                    <p class="text-slate-600 mb-3">Tell the LLM exactly what you want it to do, leaving no room for interpretation or guesswork. LLMs are extraordinarily creative, so vague prompts can lead to varied, inconsistent, or nonsensical outputs. Being specific helps constrain outputs closer to the desired results.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Instead of:</strong> "Produce a report based on this data"<br>
+                                        <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each"
+                                    </div>
+                                </div>
+
+                                <!-- Principle 2 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-emerald-500">
+                                    <h4 class="text-lg font-bold text-emerald-700 mb-2">2. Context Provision</h4>
+                                    <p class="text-slate-600 mb-3">Furnish all necessary background information relevant to the task. Context helps the LLM narrow its vast knowledge to your specific needs, allowing it to tailor responses and avoid generic outputs. You can provide context through text, analytics, files, or even images.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Example:</strong> When asking for gift ideas, add context like: "Your friend is turning 29, and her favourite anime are Shangri-La Frontier, Solo Leveling, and Naruto." For work: "I am a college senior with a 3.5 GPA and I need an essay outline on the French Revolution's impact."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 3 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-purple-500">
+                                    <h4 class="text-lg font-bold text-purple-700 mb-2">3. Role/Persona Assignment</h4>
+                                    <p class="text-slate-600 mb-3">Assigning a specific role or persona to the LLM (e.g., 'intelligent admin,' 'expert copywriter,' 'marketing pro') directly influences its tone, style, and the domain expertise it draws upon. This makes responses more focused, relevant, professional, and significantly less generic.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Instead of:</strong> "Explain the legal process for patenting an invention"<br>
+                                        <strong>Use:</strong> "You are a patent lawyer. Explain the legal process for patenting an invention in simple terms for a non-legal audience."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 4 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-amber-500">
+                                    <h4 class="text-lg font-bold text-amber-700 mb-2">4. Output Format Definition</h4>
+                                    <p class="text-slate-600 mb-3">Clearly specify the desired structure for the LLM's output. This is crucial for machine-readable outputs like JSON, XML, or CSV, or for human-readable formats such as bulleted lists, tables, or specific essay structures. Explicit formatting helps ensure the output is usable and reduces post-processing.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Examples:</strong> "Return your results in JSON using this format: {'key': 'value'}" or "Provide a concise summary in a bulleted list format" or "Generate a CSV with month, revenue, and profit headings"
+                                    </div>
+                                </div>
+
+                                <!-- Principle 5 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-rose-500">
+                                    <h4 class="text-lg font-bold text-rose-700 mb-2">5. Examples (Few-Shot Prompting)</h4>
+                                    <p class="text-slate-600 mb-3">Including one or more examples, known as few-shot prompting, is a best practice that can lead to massive improvement in accuracy and model performance. Even a single example can significantly guide the model to the desired output structure, pattern, style, or tone. It is generally recommended to use three to five diverse and high-quality examples.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Example:</strong> When asking for product descriptions, provide an example: "Here's an example of a one-paragraph description for another product..." For creative style: "Write a chord progression in the style of the Beach Boys. Here's an example: [example chord progression]"
+                                    </div>
+                                </div>
+
+                                <!-- Principle 6 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-indigo-500">
+                                    <h4 class="text-lg font-bold text-indigo-700 mb-2">6. Iterative Refinement</h4>
+                                    <p class="text-slate-600 mb-3">Prompt engineering is rarely a 'one-and-done' process; expecting perfect results from a single prompt is a common mistake. Continuously refining your prompts based on the LLM's responses is essential for improving quality, accuracy, and depth. This 'Always Be Iterating' approach is fundamental to success.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Example:</strong> Start with: "Outline a basic marketing strategy for launching a new eco-friendly water bottle." Then refine with: "Based on the outline provided, expand on the target audience section. Develop three detailed customer personas..."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 7 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-cyan-500">
+                                    <h4 class="text-lg font-bold text-cyan-700 mb-2">7. Conciseness / Information Density</h4>
+                                    <p class="text-slate-600 mb-3">LLM performance can decrease with prompt length. A quick hack to boost output quality is to make your prompt shorter by improving its 'information density,' effectively shrinking the same information into fewer words. This approach can lead to significant accuracy gains. Avoid unnecessary verbosity or redundant phrases.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Instead of:</strong> "The overarching aim of this content generation request is to produce an exceptionally well-structured, highly informative, deeply engaging, and action-oriented piece of content..."<br>
+                                        <strong>Use:</strong> "Produce high quality authoritative content that is readable, clear, and avoids excessive fluff."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 8 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-teal-500">
+                                    <h4 class="text-lg font-bold text-teal-700 mb-2">8. Chain of Thought (CoT) Prompting</h4>
+                                    <p class="text-slate-600 mb-3">For complex problems, Chain of Thought prompting significantly enhances the LLM's reasoning capabilities by encouraging it to break down its thought process into intermediate, step-by-step reasoning steps. This technique leads to more accurate and well-reasoned outputs and provides transparency into the model's logic. Add phrases like 'Let's think step-by-step.'</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Example:</strong> "When I was 3 years old, my partner was 3 times my age. Now, I am 20 years old. How old is my partner? Let's think step-by-step and explain each step."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 9 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-lime-500">
+                                    <h4 class="text-lg font-bold text-lime-700 mb-2">9. Instructions over Constraints (Positive Framing)</h4>
+                                    <p class="text-slate-600 mb-3">It is generally more effective to instruct the model what to do ('positive instructions') rather than what not to do ('constraints'). This approach aligns with how humans prefer positive guidance and helps ensure consistency and literal adherence from the LLM. Implement 'hard on/off rules' for clear, unambiguous boundaries.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Instead of:</strong> "Do not list video game names"<br>
+                                        <strong>Use:</strong> "Only discuss the console, the company who made it, the year, and total sales." For behavioural rules: "Never start with flattery" or "No emojis unless requested."
+                                    </div>
+                                </div>
+
+                                <!-- Principle 10 -->
+                                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-orange-500">
+                                    <h4 class="text-lg font-bold text-orange-700 mb-2">10. Testing and Data-Driven Approach</h4>
+                                    <p class="text-slate-600 mb-3">To ensure prompts reliably and consistently produce desired outputs, it's crucial to test them empirically rather than relying on single responses. This often involves a 'Monte Carlo approach,' generating multiple outputs and evaluating their quality using a 'good enough' metric. This data-driven approach helps identify prompts with higher accuracy scores and statistical reliability.</p>
+                                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
+                                        <strong>Example:</strong> Maintain a spreadsheet with columns for 'Prompt,' 'Output,' and 'Good Enough.' Generate multiple responses for a given prompt and mark whether each output meets your standards. This allows you to track success rates (e.g., 18 out of 20 outputs are good enough = 90% reliability) and refine accordingly.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -231,60 +324,6 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         
-        // Complete prompting guide data
-        const completePromptingGuide = [
-            {
-                title: "1. Clarity and Specificity",
-                content: "Tell the LLM exactly what you want it to do, leaving no room for interpretation or guesswork. LLMs are extraordinarily creative, so vague prompts can lead to varied, inconsistent, or nonsensical outputs. Being specific helps constrain outputs closer to the desired results.",
-                example: `<strong>Instead of:</strong> "Produce a report based on this data"<br><strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each"`
-            },
-            {
-                title: "2. Context Provision",
-                content: "Furnish all necessary background information relevant to the task. Context helps the LLM narrow its vast knowledge to your specific needs, allowing it to tailor responses and avoid generic outputs. You can provide context through text, analytics, files, or even images.",
-                example: `<strong>Example:</strong> When asking for gift ideas, add context like: "Your friend is turning 29, and her favourite anime are Shangri-La Frontier, Solo Leveling, and Naruto." For work: "I am a college senior with a 3.5 GPA and I need an essay outline on the French Revolution's impact."`
-            },
-            {
-                title: "3. Role/Persona Assignment",
-                content: "Assigning a specific role or persona to the LLM (e.g., 'intelligent admin,' 'expert copywriter,' 'marketing pro') directly influences its tone, style, and the domain expertise it draws upon. This makes responses more focused, relevant, professional, and significantly less generic.",
-                example: `<strong>Instead of:</strong> "Explain the legal process for patenting an invention"<br><strong>Use:</strong> "You are a patent lawyer. Explain the legal process for patenting an invention in simple terms for a non-legal audience."`
-            },
-            {
-                title: "4. Output Format Definition",
-                content: "Clearly specify the desired structure for the LLM's output. This is crucial for machine-readable outputs like JSON, XML, or CSV, or for human-readable formats such as bulleted lists, tables, or specific essay structures. Explicit formatting helps ensure the output is usable and reduces post-processing.",
-                example: `<strong>Examples:</strong> "Return your results in JSON using this format: {'key': 'value'}" or "Provide a concise summary in a bulleted list format" or "Generate a CSV with month, revenue, and profit headings"`
-            },
-            {
-                title: "5. Examples (Few-Shot Prompting)",
-                content: "Including one or more examples, known as few-shot prompting, is a best practice that can lead to massive improvement in accuracy and model performance. Even a single example can significantly guide the model to the desired output structure, pattern, style, or tone. It is generally recommended to use three to five diverse and high-quality examples.",
-                example: `<strong>Example:</strong> When asking for product descriptions, provide an example: "Here's an example of a one-paragraph description for another product..." For creative style: "Write a chord progression in the style of the Beach Boys. Here's an example: [example chord progression]"`
-            },
-            {
-                title: "6. Iterative Refinement",
-                content: "Prompt engineering is rarely a 'one-and-done' process; expecting perfect results from a single prompt is a common mistake. Continuously refining your prompts based on the LLM's responses is essential for improving quality, accuracy, and depth. This 'Always Be Iterating' approach is fundamental to success.",
-                example: `<strong>Example:</strong> Start with: "Outline a basic marketing strategy for launching a new eco-friendly water bottle." Then refine with: "Based on the outline provided, expand on the target audience section. Develop three detailed customer personas..."`
-            },
-            {
-                title: "7. Conciseness / Information Density",
-                content: "LLM performance can decrease with prompt length. A quick hack to boost output quality is to make your prompt shorter by improving its 'information density,' effectively shrinking the same information into fewer words. This approach can lead to significant accuracy gains. Avoid unnecessary verbosity or redundant phrases.",
-                example: `<strong>Instead of:</strong> "The overarching aim of this content generation request is to produce an exceptionally well-structured, highly informative, deeply engaging, and action-oriented piece of content..."<br><strong>Use:</strong> "Produce high quality authoritative content that is readable, clear, and avoids excessive fluff."`
-            },
-            {
-                title: "8. Chain of Thought (CoT) Prompting",
-                content: "For complex problems, Chain of Thought prompting significantly enhances the LLM's reasoning capabilities by encouraging it to break down its thought process into intermediate, step-by-step reasoning steps. This technique leads to more accurate and well-reasoned outputs and provides transparency into the model's logic. Add phrases like 'Let's think step-by-step.'",
-                example: `<strong>Example:</strong> "When I was 3 years old, my partner was 3 times my age. Now, I am 20 years old. How old is my partner? Let's think step-by-step and explain each step."`
-            },
-            {
-                title: "9. Instructions over Constraints (Positive Framing)",
-                content: "It is generally more effective to instruct the model what to do ('positive instructions') rather than what not to do ('constraints'). This approach aligns with how humans prefer positive guidance and helps ensure consistency and literal adherence from the LLM. Implement 'hard on/off rules' for clear, unambiguous boundaries.",
-                example: `<strong>Instead of:</strong> "Do not list video game names"<br><strong>Use:</strong> "Only discuss the console, the company who made it, the year, and total sales." For behavioural rules: "Never start with flattery" or "No emojis unless requested."`
-            },
-            {
-                title: "10. Testing and Data-Driven Approach",
-                content: "To ensure prompts reliably and consistently produce desired outputs, it's crucial to test them empirically rather than relying on single responses. This often involves a 'Monte Carlo approach,' generating multiple outputs and evaluating their quality using a 'good enough' metric. This data-driven approach helps identify prompts with higher accuracy scores and statistical reliability.",
-                example: `<strong>Example:</strong> Maintain a spreadsheet with columns for 'Prompt,' 'Output,' and 'Good Enough.' Generate multiple responses for a given prompt and mark whether each output meets your standards. This allows you to track success rates (e.g., 18 out of 20 outputs are good enough = 90% reliability) and refine accordingly.`
-            }
-        ];
-
         const advancedPromptsData = [
             { title: 'Zero-Shot Prompting', content: 'A direct instruction without examples. Best for simple, straightforward tasks where the AI can infer the required response directly.', example: `<strong>Example:</strong> "Translate the following German abstract into academic English."` },
             { title: 'Few-Shot Prompting', content: 'Providing one or more examples to guide the AI on format, tone, and style. Highly effective for nuanced tasks.', example: `<strong>Example:</strong> "Rewrite the following sentence in a more formal, academic tone. Example: 'Lots of people think...' → 'A prevailing view suggests...'. Now rewrite: 'It is a big problem that...'" `},
@@ -335,7 +374,7 @@
             }
         };
 
-        // Updated toolkit data - removed paid-only tools and added Julius AI
+        // Updated toolkit data - removed ATLAS.ti/NVivo, added Julius AI with proper link
         const toolkitData = [
             { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources; provides inline citations; generates summaries and audio overviews.", cost: "Free", link: "https://notebooklm.google.com", area: "Research" },
             { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models; API access; model tuning and deployment capabilities.", cost: "Freemium", link: "https://aistudio.google.com", area: "Research" },
@@ -347,7 +386,7 @@
             { name: "Julius AI", fn: "Data Analysis & Computation", features: "AI-powered data analysis tool for statistical computing, visualisation, and interpretation of complex datasets.", cost: "Freemium", link: "https://julius.ai", area: "Research" },
             { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app", area: "Research"},
             { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org", area: "Research"},
-            { name: "scite", fn: "Citation Context Analysis", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Freemium", link: "https://scite.ai", area: "Research"},
+            { name: "scite", fn: "Citation Context Analysis", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Freemium", link: "https://scite.ai", area: "Research"}
         ];
 
         const ethicsChecklistData = [
@@ -382,20 +421,6 @@
             { principle: "Access & Equity", question: "Does using this tool require expensive software or high-speed internet that some of my students may not have?", redFlags: "The tool is only available in a premium version; it performs poorly on low-bandwidth connections.", bestPractice: "Prioritise free, web-based tools that are accessible on a variety of devices. Ensure equitable alternatives are available." }
         ];
 
-        // Populate complete prompting guide
-        function populateCompleteGuide() {
-            const container = document.getElementById('complete-prompting-guide');
-            container.innerHTML = completePromptingGuide.map(principle => `
-                <div class="mb-6 p-4 bg-slate-50 rounded-lg border-l-4 border-sky-500">
-                    <h4 class="text-lg font-bold text-sky-700 mb-2">${principle.title}</h4>
-                    <p class="text-slate-600 mb-3">${principle.content}</p>
-                    <div class="text-sm text-slate-500 bg-white p-3 rounded border">
-                        ${principle.example}
-                    </div>
-                </div>
-            `).join('');
-        }
-
         function setupAccordions(containerSelector, data) {
             const container = document.querySelector(containerSelector);
             if (!container) return;
@@ -419,7 +444,6 @@
             `).join('');
         }
 
-        populateCompleteGuide();
         setupAccordions('#advanced-prompting-container', advancedPromptsData);
         setupAccordions('#ethics-checklist-container', ethicsChecklistData);
 
