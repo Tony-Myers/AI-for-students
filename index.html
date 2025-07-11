@@ -1,410 +1,420 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The AI-Powered Academic: Interactive Guide</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Neutrals -->
-    <!-- Application Structure Plan: A single-page application with a fixed top navigation bar and scrollable content sections. This task-oriented structure allows academics to quickly find relevant information for their immediate needs (Foundations, Research, Teaching, Tools, Ethics), making the guide more practical than a linear document. Key interactions include interactive workflow diagrams, collapsible content cards for easy reading, and a filterable 'Toolkit Explorer' that transforms a static table into a dynamic decision-support tool, enhancing usability. -->
-    <!-- Visualization & Content Choices: Report information is organised into interactive components. Prompting techniques are in clickable accordion cards (HTML/JS) to make dense text engaging. Research/teaching workflows are visualised as interactive diagrams (HTML/Tailwind/JS) to clarify processes. The extensive tool table is converted into a dynamic, filterable grid of cards (JS), allowing users to find tools by function or cost. The ethics checklist is an interactive accordion, turning principles into an actionable self-assessment. This structure prioritises user interaction and clarity. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-            color: #1e293b; /* slate-800 */
-        }
-        .nav-link {
-            transition: color 0.3s, border-color 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-        .nav-link.active, .nav-link:hover {
-            color: #0284c7; /* sky-600 */
-            border-bottom-color: #0284c7; /* sky-600 */
-        }
-        .tool-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
-        }
-        .accordion-content.open {
-            max-height: 1500px; /* Increased for table */
-            transition: max-height 1s ease-in-out;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: Interactive Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s; border-bottom:2px solid transparent; cursor:pointer }
+    .nav-link.active,.nav-link:hover { color:#0284c7; border-bottom-color:#0284c7 }
+    .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
+    .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .accordion-content { max-height:0; overflow:hidden; transition:max-height .5s ease-in-out }
+    .accordion-content.open { max-height:2000px }
+    .workflow-icon { width:100px;height:100px;object-fit:contain }
+    .welcome-icon { width:400px;height:400px;object-fit:contain }
+    .page { display:none }
+    .page.active { display:block }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-sky-600">The AI-Powered Academic</h1>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#welcome" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Home</a>
-                        <a href="#prompting" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Prompting</a>
-                        <a href="#research" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Research</a>
-                        <a href="#teaching" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Teaching</a>
-                        <a href="#generative-ai" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">AI Platforms</a>
-                        <a href="#toolkit" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Toolkit</a>
-                        <a href="#ethics" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600">Ethics</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-sky-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#welcome" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Home</a>
-                    <a href="#prompting" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Prompting</a>
-                    <a href="#research" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Research</a>
-                    <a href="#teaching" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Teaching</a>
-                    <a href="#generative-ai" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">AI Platforms</a>
-                    <a href="#toolkit" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Toolkit</a>
-                    <a href="#ethics" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600">Ethics</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <h1 class="text-xl font-bold text-sky-600 cursor-pointer" onclick="showPage('home')">The AI-Powered Academic</h1>
+    <div class="hidden md:flex space-x-4">
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('home')">Home</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('prompting')">Prompting</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('research')">Research</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('teaching')">Teaching</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('ai-platforms')">AI Platforms</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('toolkit')">Toolkit</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('ethics')">Ethics</span>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-600">
+      <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <span class="nav-link block px-3 py-2" onclick="showPage('home')">Home</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('prompting')">Prompting</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('research')">Research</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('teaching')">Teaching</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('ai-platforms')">AI Platforms</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('toolkit')">Toolkit</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('ethics')">Ethics</span>
+  </div>
+</header>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <section id="welcome" class="scroll-mt-20">
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Welcome to the Future of Academia</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-6">Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching, and scholarly work. This guide is designed as an interactive hub to help you navigate this new landscape, moving from the question of *if* you should engage with AI to *how* you can leverage it effectively and responsibly.</p>
-                <p class="text-md text-slate-500 max-w-3xl mx-auto">Use the navigation above or scroll to explore the key domains of AI in academia. Each section contains practical advice, interactive elements, and curated tools to help you become an AI-powered academic.</p>
-            </div>
-        </section>
+  <!-- HOME -->
+  <section id="page-home" class="page active">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
+      <h2 class="text-4xl font-bold">Welcome to the Future of Academia</h2>
+      <img src="images/1 AI web.png" alt="AI Academic" class="welcome-icon mx-auto">
+      <p class="text-lg">Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching and scholarly work. Move from <em>if</em> to <em>how</em> with this interactive guide.</p>
+      <p>Use the navigation to explore practical advice, demos and curated tools for academics.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div onclick="showPage('prompting')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">Prompt Engineering</h3>
+      </div>
+      <div onclick="showPage('research')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">AI for Research</h3>
+      </div>
+      <div onclick="showPage('teaching')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">AI for Teaching</h3>
+      </div>
+      <div onclick="showPage('ai-platforms')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">AI Platforms</h3>
+      </div>
+      <div onclick="showPage('toolkit')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">AI Toolkit</h3>
+      </div>
+      <div onclick="showPage('ethics')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">Ethical Framework</h3>
+      </div>
+    </div>
+  </section>
 
-        <section id="prompting" class="scroll-mt-20 mt-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Foundations: Mastering Prompt Engineering</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Effective prompting is the key to unlocking AI's potential. It is the art and science of designing inputs to guide AI toward accurate, relevant, and useful outputs. This section breaks down the foundational principles and advanced techniques. Click on any card to learn more.</p>
-            </div>
-            
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div class="space-y-6">
-                     <div class="border border-slate-200 rounded-lg">
-                        <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left text-lg font-semibold text-slate-700 hover:bg-slate-50">
-                            The 5 Foundational Rules of Prompting
-                            <span class="transform transition-transform duration-300">▼</span>
-                        </button>
-                        <div class="accordion-content">
-                            <div class="p-4 border-t border-slate-200 text-slate-600 space-y-4">
-                                <p><strong>1. Clarity and Conciseness:</strong> Be direct and unambiguous. Vague prompts lead to irrelevant results.</p>
-                                <p><strong>2. Context and Constraints:</strong> Provide necessary background and set guardrails (e.g., tone, length, format).</p>
-                                <p><strong>3. Iterative Refinement:</strong> Treat prompting as a conversation. Experiment and refine your prompts based on the AI's output.</p>
-                                <p><strong>4. The Power of Examples (Few-Shot Prompting):</strong> Show, do not just tell. Providing an example of the desired output is highly effective.</p>
-                                <p><strong>5. Step-by-Step Instructions (Chain-of-Thought):</strong> Break down complex tasks into a logical sequence to improve reasoning and transparency.</p>
-                            </div>
-                        </div>
-                    </div>
+  <!-- PROMPTING -->
+  <section id="page-prompting" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">Foundations: Mastering Prompt Engineering</h2>
+      <p class="max-w-3xl mx-auto">Prompt engineering is the art and science of designing inputs to guide AI toward accurate, relevant, and useful outputs. These ten principles are evidence-based.</p>
+    </div>
+    <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
+      <h3 class="text-xl font-bold text-sky-700 mb-4">Download Prompt Templates</h3>
+      <div class="flex flex-wrap gap-4">
+        <button onclick="downloadTemplate('feedback','md')" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700">📝 Feedback (.md)</button>
+        <button onclick="downloadTemplate('feedback','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">📄 Feedback (.txt)</button>
+        <button onclick="downloadTemplate('research','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🔬 Research (.md)</button>
+        <button onclick="downloadTemplate('teaching','md')" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">🎓 Teaching (.md)</button>
+      </div>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
 
-                    <div id="advanced-prompting-container" class="space-y-4"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="research" class="scroll-mt-20 mt-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">AI for Your Research</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">AI is transforming the entire research lifecycle, from discovery to dissemination. This section explores how you can integrate AI to enhance your workflow. Click on a stage in the interactive workflow below to see relevant techniques and tools.</p>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div id="research-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center"></div>
-                <div id="research-workflow-content" class="mt-8 p-6 bg-slate-50 rounded-lg min-h-[150px]"></div>
-            </div>
-        </section>
-        
-        <section id="teaching" class="scroll-mt-20 mt-16">
-             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">AI for Your Teaching</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">In the classroom, AI can help create more personalised, engaging, and effective learning environments. It augments your capabilities, automating tasks so you can focus on high-impact, human-centric teaching. Explore the pedagogical cycle below.</p>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div id="teaching-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center"></div>
-                <div id="teaching-workflow-content" class="mt-8 p-6 bg-slate-50 rounded-lg min-h-[150px]"></div>
-            </div>
-        </section>
-
-        <section id="generative-ai" class="scroll-mt-20 mt-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">Core Generative AI Platforms</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">These are the leading generative AI platforms that form the foundation of most academic AI workflows. Each offers unique strengths, from research assistance to creative content generation. Explore the platforms below to find the right fit for your specific academic needs.</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                </div>
-                
-                <div class="mt-12 p-6 bg-slate-50 rounded-lg">
-                    <h3 class="text-xl font-bold text-slate-700 mb-4">Download Resources</h3>
-                    <p class="text-slate-600 mb-4">Access our structured feedback prompt template to help create consistent, high-quality feedback for your students using AI assistance.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button id="download-md" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                            📄 Download Feedback Prompt (.md)
-                        </button>
-                        <button id="download-txt" class="bg-slate-600 hover:bg-slate-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                            📝 Download Feedback Prompt (.txt)
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="toolkit" class="scroll-mt-20 mt-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">The Academic's AI Toolkit Explorer</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">Navigating the ecosystem of AI tools can be daunting. Use the filters below to explore a curated list of platforms relevant to academic work. Find the right tool for your specific needs, whether for research, teaching, or productivity.</p>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div class="flex flex-wrap gap-4 mb-8 justify-center">
-                    <div class="flex items-center space-x-2">
-                         <label for="filter-function" class="font-semibold text-slate-600">Filter by Function:</label>
-                         <select id="filter-function" class="p-2 border rounded-md shadow-sm">
-                             <option value="all">All Functions</option>
-                         </select>
-                    </div>
-                     <div class="flex items-center space-x-2">
-                         <label for="filter-cost" class="font-semibold text-slate-600">Filter by Cost:</label>
-                         <select id="filter-cost" class="p-2 border rounded-md shadow-sm">
-                             <option value="all">All Models</option>
-                         </select>
-                    </div>
-                </div>
-
-                <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                </div>
-            </div>
-        </section>
-
-        <section id="ethics" class="scroll-mt-20 mt-16">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-2">An Ethical Framework for AI in Academia</h2>
-                <p class="text-lg text-slate-600 max-w-3xl mx-auto">With great power comes great responsibility. A proactive and critical approach is essential to harness AI's benefits while mitigating its risks. Use this interactive checklist to evaluate tools and practices for your work.</p>
-            </div>
-            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                <div id="ethics-checklist-container" class="space-y-4"></div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-slate-800 text-white mt-16">
-        <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
-            <p>The AI-Powered Academic Interactive Guide. Content adapted from "The AI-Powered Academic: A Comprehensive Guide to Artificial Intelligence in Research and Pedagogy."</p>
-            <p>&copy; 2025. This is a conceptual application for demonstration purposes.</p>
+      <!-- 10 Core Principles -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Principle 1 -->
+        <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+          <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
+          <p class="text-slate-600 mb-2">Tell the AI exactly what you want. Vague prompts yield inconsistent outputs.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each."
+          </div>
         </div>
-    </footer>
+        <!-- Principle 2 -->
+        <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+          <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Context Provision</h3>
+          <p class="text-slate-600 mb-2">Provide all relevant background so the AI tailors its response to your needs.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "I am a college senior with a 3.5 GPA and need an essay outline on the French Revolution's impact."
+          </div>
+        </div>
+        <!-- Principle 3 -->
+        <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+          <h3 class="text-lg font-bold text-purple-700 mb-2">3. Role/Persona Assignment</h3>
+          <p class="text-slate-600 mb-2">Assign a persona to influence tone, style and domain expertise.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "You are a patent lawyer. Explain the patenting process in simple terms."
+          </div>
+        </div>
+        <!-- Principle 4 -->
+        <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+          <h3 class="text-lg font-bold text-amber-700 mb-2">4. Output Format Definition</h3>
+          <p class="text-slate-600 mb-2">Specify the desired structure—JSON, CSV, bulleted list—to reduce post-processing.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Return your results in JSON: {'key':'value'}."
+          </div>
+        </div>
+        <!-- Principle 5 -->
+        <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
+          <h3 class="text-lg font-bold text-rose-700 mb-2">5. Examples & Demonstrations</h3>
+          <p class="text-slate-600 mb-2">Show don't tell. Provide examples of desired outputs to guide the AI's response style.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Write like this: 'Research shows...' not 'Studies say...'"
+          </div>
+        </div>
+        <!-- Principle 6 -->
+        <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
+          <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Step-by-Step Instructions</h3>
+          <p class="text-slate-600 mb-2">Break complex tasks into clear, sequential steps for better reasoning.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "First analyse, then synthesise, finally recommend."
+          </div>
+        </div>
+        <!-- Principle 7 -->
+        <div class="principle-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded border border-teal-200">
+          <h3 class="text-lg font-bold text-teal-700 mb-2">7. Constraint Setting</h3>
+          <p class="text-slate-600 mb-2">Define boundaries: word limits, tone, target audience, and scope.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Write 200 words maximum, professional tone, for university administrators."
+          </div>
+        </div>
+        <!-- Principle 8 -->
+        <div class="principle-card bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded border border-orange-200">
+          <h3 class="text-lg font-bold text-orange-700 mb-2">8. Iterative Refinement</h3>
+          <p class="text-slate-600 mb-2">Treat prompting as a conversation. Refine based on outputs received.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Make it more formal" or "Add statistical evidence."
+          </div>
+        </div>
+        <!-- Principle 9 -->
+        <div class="principle-card bg-gradient-to-br from-lime-50 to-green-50 p-6 rounded border border-lime-200">
+          <h3 class="text-lg font-bold text-lime-700 mb-2">9. Source Integration</h3>
+          <p class="text-slate-600 mb-2">Reference specific documents or data to ground responses in reliable information.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Based on the attached research paper, explain the methodology."
+          </div>
+        </div>
+        <!-- Principle 10 -->
+        <div class="principle-card bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded border border-violet-200">
+          <h3 class="text-lg font-bold text-violet-700 mb-2">10. Quality Assurance</h3>
+          <p class="text-slate-600 mb-2">Request citations, ask for verification, and specify accuracy requirements.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
+            <strong>Example:</strong> "Provide citations for all claims" or "Double-check all statistics."
+          </div>
+        </div>
+      </div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        const advancedPromptsData = [
-            { title: 'Zero-Shot Prompting', content: 'A direct instruction without examples. Best for simple, straightforward tasks where the AI can infer the required response directly.', example: `<strong>Example:</strong> "Translate the following German abstract into academic English."` },
-            { title: 'Few-Shot Prompting', content: 'Providing one or more examples to guide the AI on format, tone, and style. Highly effective for nuanced tasks.', example: `<strong>Example:</strong> "Rewrite the following sentence in a more formal, academic tone. Example: 'Lots of people think...' → 'A prevailing view suggests...'. Now rewrite: 'It is a big problem that...'" `},
-            { title: 'Chain-of-Thought (CoT) Prompting', content: 'Breaking down a complex task into logical steps to guide the AI\'s reasoning process. Essential for analytical tasks and problem-solving.', example: `<strong>Example:</strong> "Critique the methodology of the attached study. First, summarise the research design. Second, identify potential sources of bias. Third, suggest specific improvements to enhance internal validity."` },
-            { title: 'Role-Based Prompting', content: 'Assigning a persona or role to the AI to control its tone, perspective, and level of expertise. Useful for simulating academic scenarios.', example: `<strong>Example:</strong> "You are a grant proposal writer. Review my research abstract and suggest three ways to frame its significance to appeal to the National Science Foundation."` },
-            { title: 'Context-Rich Prompting', content: 'Providing source documents to ground the AI\'s response in specific information. The core principle behind tools like NotebookLM.', example: `<strong>Example:</strong> "Using the uploaded course syllabus and university academic integrity policy, draft an announcement to students explaining the rules for using AI on the final paper."` }
-        ];
+      <!-- Advanced Prompting Accordions -->
+      <div id="advanced-prompting-container" class="space-y-4"></div>
 
-        const researchWorkflowData = {
-            "Literature Discovery": {
-                icon: "📚",
-                title: "Literature Discovery & Synthesis",
-                description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
-                tools: ["Research Rabbit", "Elicit", "Connected Papers", "Semantic Scholar"]
-            },
-            "Data Analysis": {
-                icon: "📊",
-                title: "Qualitative & Quantitative Analysis",
-                description: "Augment data analysis by using AI to perform preliminary coding on qualitative data (transcripts, field notes) or to help write and debug code for quantitative statistical analysis.",
-                tools: ["ATLAS.ti", "NVivo", "Julius AI"]
-            },
-            "Writing & Productivity": {
-                icon: "✍️",
-                title: "Writing & Productivity",
-                description: "Ethically use AI as a writing assistant for brainstorming, outlining, and proofreading. Specialised tools can also help check your argument structure and suggest citations.",
-                tools: ["Thesify", "General LLMs (for brainstorming)"]
-            }
-        };
+    </div>
 
-        const teachingWorkflowData = {
-            "Personalisation": {
-                icon: "👤",
-                title: "Personalised & Differentiated Instruction",
-                description: "Leverage AI to create tailored learning paths. AI can generate varied problem sets, summarise texts at different reading levels, and provide supplementary materials based on individual student needs.",
-                tools: ["General LLMs"]
-            },
-            "Assessment": {
-                icon: "📝",
-                title: "Assessment & Feedback",
-                description: "Automate the creation and grading of formative assessments to provide instant feedback. This also prompts a redesign of assignments to focus on 'AI-resistant' skills like critical thinking and creativity. Please note: while feedback can be structured using AI, automated marking is not encouraged at present.",
-                tools: ["General LLMs", "In-class activities"]
-            },
-            "Content Creation": {
-                icon: "🎨",
-                title: "Engaging Course Materials",
-                description: "Quickly generate dynamic and interactive course materials like presentations, websites, and custom case studies. Use AI to create scenarios and simulations that enhance knowledge retention.",
-                tools: ["Gamma", "Rosebud AI"]
-            }
-        };
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
 
-        const toolkitData = [
-            { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources; provides inline citations; generates summaries and audio overviews.", cost: "Freemium", link: "https://notebooklm.google.com", area: "Research" },
-            { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models; API access; model tuning and deployment capabilities.", cost: "Freemium", link: "https://aistudio.google.com", area: "Research" },
-            { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents from prompts; automates design; supports collaboration.", cost: "Freemium", link: "https://gamma.app", area: "Teaching" },
-            { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks; helps find seminal papers and related work; collaborative collections and alerts.", cost: "Free", link: "https://researchrabbitapp.com", area: "Research" },
-            { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables; automates parts of systematic reviews; answers research questions.", cost: "Freemium", link: "https://elicit.com", area: "Research" },
-            { name: "Connected Papers", fn: "Literature Discovery", features: "Creates visual graphs to explore connections between academic papers; identifies prior and derivative works.", cost: "Freemium", link: "https://connectedpapers.com", area: "Research" },
-            { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure; suggests relevant citations; helps find journals; does not write for the user.", cost: "Freemium", link: "https://www.thesify.ai", area: "Research" },
-            { name: "ATLAS.ti / NVivo", fn: "Qualitative Data Analysis", features: "AI-powered coding, thematic analysis, and transcription for unstructured data (interviews, text).", cost: "Paid", link: "https://atlasti.com", area: "Research" },
-            { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app", area: "Research"},
-            { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org", area: "Research"},
-            { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Paid", link: "https://scite.ai", area: "Research"},
-        ];
+  <!-- RESEARCH -->
+  <section id="page-research" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">AI for Your Research</h2>
+      <p class="max-w-3xl mx-auto">AI is transforming the entire research lifecycle, from discovery to dissemination. Click on a stage to explore techniques and tools.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="research-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center mb-8"></div>
+      <div id="research-workflow-content" class="p-6 bg-slate-50 rounded-lg min-h-[150px]"></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
 
-        const ethicsChecklistData = [
-            {
-                principle: "Example Institutional Framework for AI Use",
-                question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?",
-                htmlContent: `
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse mt-4">
-                            <thead class="bg-slate-100">
-                                <tr>
-                                    <th class="p-2 border font-semibold">Level</th>
-                                    <th class="p-2 border font-semibold">AI Use</th>
-                                    <th class="p-2 border font-semibold">Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
-                                <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
-                                <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
-                                <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
-                                <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a 'co-pilot' in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
-                                <tr class="bg-slate-50"><td class="p-2 border align-top">6</td><td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
-                            </tbody>
-                        </table>
-                    </div>`
-            },
-            { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
-            { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
-            { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups (e.g., non-native speakers, specific demographics)?", redFlags: "The tool consistently produces stereotypical content; it struggles with diverse names, cultures, or linguistic styles.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions." },
-            { principle: "Transparency & Verifiability", question: "Can I verify the information this tool provides? Does it cite its sources?", redFlags: "The tool makes factual claims without providing sources; it generates plausible but fake references ('hallucinations').", bestPractice: "Always cross-check factual claims with reliable sources. Prefer 'grounded' AI tools like NotebookLM that provide verifiable citations." },
-            { principle: "Access & Equity", question: "Does using this tool require expensive software or high-speed internet that some of my students may not have?", redFlags: "The tool is only available in a premium version; it performs poorly on low-bandwidth connections.", bestPractice: "Prioritise free, web-based tools that are accessible on a variety of devices. Ensure equitable alternatives are available." }
-        ];
+  <!-- TEACHING -->
+  <section id="page-teaching" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">AI for Your Teaching</h2>
+      <p class="max-w-3xl mx-auto">In the classroom, AI creates more personalised, engaging, and effective learning environments. Explore the pedagogical cycle.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="teaching-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center mb-8"></div>
+      <div id="teaching-workflow-content" class="p-6 bg-slate-50 rounded-lg min-h-[150px]"></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
 
-        const generativeAiPlatforms = [
-            { 
-                name: "Claude", 
-                provider: "Anthropic", 
-                strengths: "Long-context conversations, document analysis, ethical reasoning", 
-                bestFor: "Research synthesis, academic writing, complex reasoning tasks", 
-                pricing: "Freemium", 
-                link: "https://claude.ai",
-                features: "200k+ token context window, document uploads, artifact creation"
-            },
-            { 
-                name: "ChatGPT", 
-                provider: "OpenAI", 
-                strengths: "Versatile conversational AI, plugin ecosystem, code generation", 
-                bestFor: "General academic assistance, brainstorming, problem-solving", 
-                pricing: "Freemium", 
-                link: "https://chatgpt.com",
-                features: "Web browsing, image generation, file uploads, custom GPTs"
-            },
-            { 
-                name: "Gemini", 
-                provider: "Google", 
-                strengths: "Integration with Google Workspace, multimodal capabilities", 
-                bestFor: "Research integration, Google ecosystem workflows", 
-                pricing: "Freemium", 
-                link: "https://gemini.google.com",
-                features: "Google Search integration, multimodal input, workspace connectivity"
-            },
-            { 
-                name: "Copilot", 
-                provider: "Microsoft", 
-                strengths: "Microsoft 365 integration, enterprise features", 
-                bestFor: "Academic institutions using Microsoft tools", 
-                pricing: "Freemium", 
-                link: "https://copilot.microsoft.com",
-                features: "Office integration, enterprise security, team collaboration"
-            },
-            { 
-                name: "Perplexity", 
-                provider: "Perplexity AI", 
-                strengths: "Real-time web search, source citations, research focus", 
-                bestFor: "Fact-checking, current research, literature discovery", 
-                pricing: "Freemium", 
-                link: "https://www.perplexity.ai",
-                features: "Live web search, citation tracking, academic search mode"
-            },
-            { 
-                name: "Mistral", 
-                provider: "Mistral AI", 
-                strengths: "European AI, privacy-focused, multilingual", 
-                bestFor: "Privacy-conscious research, European compliance", 
-                pricing: "Freemium", 
-                link: "https://mistral.ai",
-                features: "GDPR compliance, multilingual support, open-source models"
-            },
-            { 
-                name: "DeepSeek", 
-                provider: "DeepSeek", 
-                strengths: "Advanced reasoning, mathematical capabilities, coding", 
-                bestFor: "Technical research, mathematical problems, programming", 
-                pricing: "Freemium", 
-                link: "https://deepseek.com",
-                features: "Advanced reasoning models, technical problem-solving, coding assistance"
-            },
-            { 
-                name: "Qwen", 
-                provider: "Alibaba", 
-                strengths: "Multilingual capabilities, Asian language support", 
-                bestFor: "Cross-cultural research, multilingual projects", 
-                pricing: "Free", 
-                link: "https://chat.qwen.ai",
-                features: "Strong multilingual support, cultural understanding, free access"
-            },
-            { 
-                name: "Meta AI", 
-                provider: "Meta", 
-                strengths: "Image generation, creative tasks, social integration", 
-                bestFor: "Creative projects, visual content, social research", 
-                pricing: "Free", 
-                link: "https://www.meta.ai",
-                features: "Image generation, creative writing, social platform integration"
-            }
-        ];
+  <!-- AI PLATFORMS -->
+  <section id="page-ai-platforms" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">Core Generative AI Platforms</h2>
+      <p class="max-w-3xl mx-auto">Leading generative AI platforms that form the foundation of academic AI workflows. Each offers unique strengths for research, teaching, and scholarly work.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
 
-        const feedbackPromptContent = `**Your Role**
+  <!-- TOOLKIT -->
+  <section id="page-toolkit" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">The Academic's AI Toolkit Explorer</h2>
+      <p class="max-w-3xl mx-auto">Navigate the ecosystem of AI tools with our interactive filters. Find the right tool for research, teaching, or productivity.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div class="flex flex-wrap gap-4 mb-8 justify-center">
+        <div class="flex items-center space-x-2">
+          <label for="filter-function" class="font-semibold text-slate-600">Function:</label>
+          <select id="filter-function" class="p-2 border rounded-md shadow-sm">
+            <option value="all">All Functions</option>
+          </select>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="filter-cost" class="font-semibold text-slate-600">Cost:</label>
+          <select id="filter-cost" class="p-2 border rounded-md shadow-sm">
+            <option value="all">All Models</option>
+          </select>
+        </div>
+      </div>
+      <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
+
+  <!-- ETHICS -->
+  <section id="page-ethics" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">An Ethical Framework for AI in Academia</h2>
+      <p class="max-w-3xl mx-auto">A proactive approach is essential to harness AI's benefits while mitigating risks. Use this interactive checklist to evaluate tools and practices.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="ethics-checklist-container" class="space-y-4"></div>
+    </div>
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Adapted from "The AI-Powered Academic: A Comprehensive Guide to AI in Research and Pedagogy." © 2025.
+</footer>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(`page-${id}`).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    window.scrollTo(0,0);
+  }
+
+  document.getElementById('mobile-menu-button').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+    document.getElementById('menu-icon-open').classList.toggle('hidden');
+    document.getElementById('menu-icon-close').classList.toggle('hidden');
+  });
+
+  // Data structures
+  const advancedPromptsData = [
+    { title: 'Zero-Shot Prompting', content: 'A direct instruction without examples. Best for simple, straightforward tasks where the AI can infer the required response directly.', example: `<strong>Example:</strong> "Translate the following German abstract into academic English."` },
+    { title: 'Few-Shot Prompting', content: 'Providing one or more examples to guide the AI on format, tone, and style. Highly effective for nuanced tasks.', example: `<strong>Example:</strong> "Rewrite the following sentence in a more formal, academic tone. Example: 'Lots of people think...' → 'A prevailing view suggests...'. Now rewrite: 'It is a big problem that...'" ` },
+    { title: 'Chain-of-Thought (CoT) Prompting', content: 'Breaking down a complex task into logical steps to guide the AI\'s reasoning process. Essential for analytical tasks and problem-solving.', example: `<strong>Example:</strong> "Critique the methodology of the attached study. First, summarise the research design. Second, identify potential sources of bias. Third, suggest specific improvements to enhance internal validity."` },
+    { title: 'Role-Based Prompting', content: 'Assigning a persona or role to the AI to control its tone, perspective, and level of expertise. Useful for simulating academic scenarios.', example: `<strong>Example:</strong> "You are a grant proposal writer. Review my research abstract and suggest three ways to frame its significance to appeal to the National Science Foundation."` },
+    { title: 'Context-Rich Prompting', content: 'Providing source documents to ground the AI\'s response in specific information. The core principle behind tools like NotebookLM.', example: `<strong>Example:</strong> "Using the uploaded course syllabus and university academic integrity policy, draft an announcement to students explaining the rules for using AI on the final paper."` }
+  ];
+
+  const researchWorkflowData = {
+    "Literature Discovery": {
+      icon: "📚",
+      title: "Literature Discovery & Synthesis",
+      description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
+      tools: ["Research Rabbit", "Elicit", "Connected Papers", "Semantic Scholar"]
+    },
+    "Data Analysis": {
+      icon: "📊",
+      title: "Qualitative & Quantitative Analysis",
+      description: "Augment data analysis by using AI to perform preliminary coding on qualitative data (transcripts, field notes) or to help write and debug code for quantitative statistical analysis.",
+      tools: ["ATLAS.ti", "NVivo", "Julius AI"]
+    },
+    "Writing & Productivity": {
+      icon: "✍️",
+      title: "Writing & Productivity",
+      description: "Ethically use AI as a writing assistant for brainstorming, outlining, and proofreading. Specialised tools can also help check your argument structure and suggest citations.",
+      tools: ["Thesify", "General LLMs (for brainstorming)"]
+    }
+  };
+
+  const teachingWorkflowData = {
+    "Personalisation": {
+      icon: "👤",
+      title: "Personalised & Differentiated Instruction",
+      description: "Leverage AI to create tailored learning paths. AI can generate varied problem sets, summarise texts at different reading levels, and provide supplementary materials based on individual student needs.",
+      tools: ["General LLMs"]
+    },
+    "Assessment": {
+      icon: "📝",
+      title: "Assessment & Feedback",
+      description: "Automate the creation and grading of formative assessments to provide instant feedback. This also prompts a redesign of assignments to focus on 'AI-resistant' skills like critical thinking and creativity.",
+      tools: ["General LLMs", "In-class activities"]
+    },
+    "Content Creation": {
+      icon: "🎨",
+      title: "Engaging Course Materials",
+      description: "Quickly generate dynamic and interactive course materials like presentations, websites, and custom case studies. Use AI to create scenarios and simulations that enhance knowledge retention.",
+      tools: ["Gamma", "Rosebud AI"]
+    }
+  };
+
+  const generativeAiPlatforms = [
+    { name: "Claude", provider: "Anthropic", strengths: "Long-context conversations, document analysis, ethical reasoning", bestFor: "Research synthesis, academic writing, complex reasoning tasks", pricing: "Freemium", link: "https://claude.ai", features: "200k+ token context window, document uploads, artifact creation" },
+    { name: "ChatGPT", provider: "OpenAI", strengths: "Versatile conversational AI, plugin ecosystem, code generation", bestFor: "General academic assistance, brainstorming, problem-solving", pricing: "Freemium", link: "https://chatgpt.com", features: "Web browsing, image generation, file uploads, custom GPTs" },
+    { name: "Gemini", provider: "Google", strengths: "Integration with Google Workspace, multimodal capabilities", bestFor: "Research integration, Google ecosystem workflows", pricing: "Freemium", link: "https://gemini.google.com", features: "Google Search integration, multimodal input, workspace connectivity" },
+    { name: "Copilot", provider: "Microsoft", strengths: "Microsoft 365 integration, enterprise features", bestFor: "Academic institutions using Microsoft tools", pricing: "Freemium", link: "https://copilot.microsoft.com", features: "Office integration, enterprise security, team collaboration" },
+    { name: "Perplexity", provider: "Perplexity AI", strengths: "Real-time web search, source citations, research focus", bestFor: "Fact-checking, current research, literature discovery", pricing: "Freemium", link: "https://www.perplexity.ai", features: "Live web search, citation tracking, academic search mode" },
+    { name: "Mistral", provider: "Mistral AI", strengths: "European AI, privacy-focused, multilingual", bestFor: "Privacy-conscious research, European compliance", pricing: "Freemium", link: "https://mistral.ai", features: "GDPR compliance, multilingual support, open-source models" },
+    { name: "DeepSeek", provider: "DeepSeek", strengths: "Advanced reasoning, mathematical capabilities, coding", bestFor: "Technical research, mathematical problems, programming", pricing: "Freemium", link: "https://deepseek.com", features: "Advanced reasoning models, technical problem-solving, coding assistance" },
+    { name: "Qwen", provider: "Alibaba", strengths: "Multilingual capabilities, Asian language support", bestFor: "Cross-cultural research, multilingual projects", pricing: "Free", link: "https://chat.qwen.ai", features: "Strong multilingual support, cultural understanding, free access" },
+    { name: "Meta AI", provider: "Meta", strengths: "Image generation, creative tasks, social integration", bestFor: "Creative projects, visual content, social research", pricing: "Free", link: "https://www.meta.ai", features: "Image generation, creative writing, social platform integration" }
+  ];
+
+  const toolkitData = [
+    { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources; provides inline citations; generates summaries and audio overviews.", cost: "Freemium", link: "https://notebooklm.google.com" },
+    { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models; API access; model tuning and deployment capabilities.", cost: "Freemium", link: "https://aistudio.google.com" },
+    { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents from prompts; automates design; supports collaboration.", cost: "Freemium", link: "https://gamma.app" },
+    { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks; helps find seminal papers and related work; collaborative collections and alerts.", cost: "Free", link: "https://researchrabbitapp.com" },
+    { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables; automates parts of systematic reviews; answers research questions.", cost: "Freemium", link: "https://elicit.com" },
+    { name: "Connected Papers", fn: "Literature Discovery", features: "Creates visual graphs to explore connections between academic papers; identifies prior and derivative works.", cost: "Freemium", link: "https://connectedpapers.com" },
+    { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure; suggests relevant citations; helps find journals; does not write for the user.", cost: "Freemium", link: "https://www.thesify.ai" },
+    { name: "ATLAS.ti / NVivo", fn: "Qualitative Data Analysis", features: "AI-powered coding, thematic analysis, and transcription for unstructured data (interviews, text).", cost: "Paid", link: "https://atlasti.com" },
+    { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app" },
+    { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org" },
+    { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Paid", link: "https://scite.ai" }
+  ];
+
+  const ethicsChecklistData = [
+    {
+      principle: "Example Institutional Framework for AI Use",
+      question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?",
+      htmlContent: `
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse mt-4">
+            <thead class="bg-slate-100">
+              <tr>
+                <th class="p-2 border font-semibold">Level</th>
+                <th class="p-2 border font-semibold">AI Use</th>
+                <th class="p-2 border font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their knowledge, understanding, and skills. AI must not be used at any point during the assessment.</td></tr>
+              <tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation and structuring</td><td class="p-2 border align-top">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work. No AI content is allowed in the final submission.</td></tr>
+              <tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI. AI can be used, but your original work with no AI content must be provided in an appendix.</td></tr>
+              <tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output. You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</td></tr>
+              <tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a 'co-pilot' in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity. You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</td></tr>
+              <tr class="bg-slate-50"><td class="p-2 border align-top">6</td><td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory, aiming to build confidence and proficiency with AI tools. Students must document and demonstrate their use and refinement of AI outputs throughout the assessment. You must use AI throughout this assessment and demonstrate how you used and refined outputs.</td></tr>
+            </tbody>
+          </table>
+        </div>`
+    },
+    { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
+    { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
+    { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups (e.g., non-native speakers, specific demographics)?", redFlags: "The tool consistently produces stereotypical content; it struggles with diverse names, cultures, or linguistic styles.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions." },
+    { principle: "Transparency & Verifiability", question: "Can I verify the information this tool provides? Does it cite its sources?", redFlags: "The tool makes factual claims without providing sources; it generates plausible but fake references ('hallucinations').", bestPractice: "Always cross-check factual claims with reliable sources. Prefer 'grounded' AI tools like NotebookLM that provide verifiable citations." },
+    { principle: "Access & Equity", question: "Does using this tool require expensive software or high-speed internet that some of my students may not have?", redFlags: "The tool is only available in a premium version; it performs poorly on low-bandwidth connections.", bestPractice: "Prioritise free, web-based tools that are accessible on a variety of devices. Ensure equitable alternatives are available." }
+  ];
+
+  const feedbackPromptContent = `**Your Role**
 
 You are an expert academic feedback assistant. Your purpose is to convert a final mark, raw marking notes, and optional marking rubrics into high-quality, structured, and supportive feedback for university students. Your primary goal is to provide actionable feedforward that helps students understand their mark and improve in future assessments. You must adhere strictly to the process and formatting rules below.
 
@@ -472,242 +482,187 @@ You must add the following statements to the end of all feedback generated:
 
 Please refer to the full marking rubric within the assignment brief for a more detailed breakdown of how your work aligns with the module learning outcomes for the mark awarded. Should similarities in areas for improvement occur across multiple assignments, you may wish to meet with your personal tutor to discuss a strategy for developing this area."`;
 
-        function setupAccordions(containerSelector, data) {
-            const container = document.querySelector(containerSelector);
-            if (!container) return;
-            container.innerHTML = data.map(item => `
-                <div class="border border-slate-200 rounded-lg">
-                    <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-medium text-slate-700 hover:bg-slate-50">
-                        <span>${item.principle || item.title}</span>
-                        <span class="transform transition-transform duration-300">▼</span>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="p-4 border-t border-slate-200 text-slate-600 space-y-2">
-                           ${item.content ? `<p>${item.content}</p>` : ''}
-                           ${item.example ? `<p class="text-sm italic text-slate-500">${item.example}</p>` : ''}
-                           ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
-                           ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
-                           ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
-                           ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        setupAccordions('#advanced-prompting-container', advancedPromptsData);
-        setupAccordions('#ethics-checklist-container', ethicsChecklistData);
-
-        document.querySelectorAll('.accordion-toggle').forEach(button => {
-            button.addEventListener('click', () => {
-                const content = button.nextElementSibling;
-                const icon = button.querySelector('span:last-child');
-                content.classList.toggle('open');
-                icon.classList.toggle('rotate-180');
-            });
-        });
-
-        function setupWorkflow(containerSelector, contentSelector, data) {
-            const container = document.querySelector(containerSelector);
-            const contentEl = document.querySelector(contentSelector);
-            if (!container || !contentEl) return;
-            
-            Object.entries(data).forEach(([key, value], index) => {
-                const isLast = index === Object.keys(data).length - 1;
-                container.innerHTML += `
-                    <button data-workflow-key="${key}" class="workflow-node group flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 transition-colors duration-200">
-                        <div class="text-4xl">${value.icon}</div>
-                        <h4 class="font-semibold text-slate-700 group-hover:text-sky-600">${value.title}</h4>
-                    </button>
-                    ${!isLast ? `<div class="text-sky-400 font-bold text-2xl hidden md:block">&rarr;</div><div class="text-sky-400 font-bold text-2xl block md:hidden">&darr;</div>` : ''}
-                `;
-            });
-            
-            container.querySelectorAll('.workflow-node').forEach(node => {
-                node.addEventListener('click', (e) => {
-                    const key = e.currentTarget.dataset.workflowKey;
-                    const item = data[key];
-                    contentEl.innerHTML = `
-                        <h4 class="text-xl font-bold text-sky-700 mb-2">${item.title}</h4>
-                        <p class="text-slate-600 mb-4">${item.description}</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="font-semibold">Key Tools:</span>
-                            ${item.tools.map(tool => `<span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
-                        </div>
-                    `;
-                    container.querySelectorAll('.workflow-node').forEach(n => n.classList.remove('bg-sky-100'));
-                    e.currentTarget.classList.add('bg-sky-100');
-                });
-            });
-
-            container.querySelector('.workflow-node').click();
-        }
-
-        setupWorkflow('#research-workflow', '#research-workflow-content', researchWorkflowData);
-        setupWorkflow('#teaching-workflow', '#teaching-workflow-content', teachingWorkflowData);
-        
-        const toolkitGrid = document.getElementById('toolkit-grid');
-        const filterFunction = document.getElementById('filter-function');
-        const filterCost = document.getElementById('filter-cost');
-
-        const functions = [...new Set(toolkitData.map(tool => tool.fn))];
-        const costs = [...new Set(toolkitData.map(tool => tool.cost))];
-
-        functions.forEach(fn => {
-            filterFunction.innerHTML += `<option value="${fn}">${fn}</option>`;
-        });
-        costs.forEach(cost => {
-            filterCost.innerHTML += `<option value="${cost}">${cost}</option>`;
-        });
-        
-        function renderToolkit(filteredData) {
-            toolkitGrid.innerHTML = '';
-            if (filteredData.length === 0) {
-                toolkitGrid.innerHTML = `<p class="col-span-full text-center text-slate-500">No tools match your filters.</p>`;
-                return;
-            }
-            filteredData.forEach(tool => {
-                const card = document.createElement('div');
-                card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
-                card.innerHTML = `
-                    <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
-                    <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
-                    <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
-                    <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
-                        <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
-                        <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit Site &rarr;</a>
-                    </div>
-                `;
-                toolkitGrid.appendChild(card);
-            });
-        }
-        
-        function filterToolkit() {
-            const selectedFunction = filterFunction.value;
-            const selectedCost = filterCost.value;
-
-            const filteredData = toolkitData.filter(tool => {
-                const functionMatch = selectedFunction === 'all' || tool.fn === selectedFunction;
-                const costMatch = selectedCost === 'all' || tool.cost === selectedCost;
-                return functionMatch && costMatch;
-            });
-            renderToolkit(filteredData);
-        }
-
-        filterFunction.addEventListener('change', filterToolkit);
-        filterCost.addEventListener('change', filterToolkit);
-
-        renderToolkit(toolkitData);
-
-        // Generative AI Platforms Section
-        function renderGenerativeAI() {
-            const generativeAiGrid = document.getElementById('generative-ai-grid');
-            generativeAiGrid.innerHTML = '';
-            
-            generativeAiPlatforms.forEach(platform => {
-                const card = document.createElement('div');
-                card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
-                card.innerHTML = `
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
-                        <span class="text-sm font-medium px-3 py-1 rounded-full ${platform.pricing === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${platform.pricing}</span>
-                    </div>
-                    <p class="text-sm font-semibold text-slate-500 mb-2">${platform.provider}</p>
-                    <div class="flex-grow space-y-3">
-                        <div>
-                            <p class="text-sm font-medium text-slate-700 mb-1">Key Strengths:</p>
-                            <p class="text-sm text-slate-600">${platform.strengths}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-slate-700 mb-1">Best for:</p>
-                            <p class="text-sm text-slate-600">${platform.bestFor}</p>
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-slate-700 mb-1">Key Features:</p>
-                            <p class="text-sm text-slate-600">${platform.features}</p>
-                        </div>
-                    </div>
-                    <div class="mt-4 pt-4 border-t border-slate-200">
-                        <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-sky-600 hover:text-sky-800">
-                            Visit ${platform.name} &rarr;
-                        </a>
-                    </div>
-                `;
-                generativeAiGrid.appendChild(card);
-            });
-        }
-
-        // Download functionality
-        function downloadFile(content, filename, mimeType) {
-            const blob = new Blob([content], { type: mimeType });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-        }
-
-        document.getElementById('download-md')?.addEventListener('click', () => {
-            downloadFile(feedbackPromptContent, 'structured-feedback-prompt.md', 'text/markdown');
-        });
-
-        document.getElementById('download-txt')?.addEventListener('click', () => {
-            downloadFile(feedbackPromptContent, 'structured-feedback-prompt.txt', 'text/plain');
-        });
-
-        renderGenerativeAI();
-        
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIconOpen = document.getElementById('menu-icon-open');
-        const menuIconClose = document.getElementById('menu-icon-close');
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            menuIconOpen.classList.toggle('hidden');
-            menuIconClose.classList.toggle('hidden');
-        });
-
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        const sections = document.querySelectorAll('section');
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.4
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').substring(1) === entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (mobileMenu.classList.contains('hidden') === false) {
-                    mobileMenu.classList.add('hidden');
-                    menuIconOpen.classList.remove('hidden');
-                    menuIconClose.classList.add('hidden');
-                }
-            });
-        });
-
+  // Setup functions
+  function setupAccordions(containerSel, data) {
+    const container = document.querySelector(containerSel);
+    if (!container) return;
+    container.innerHTML = data.map(item => `
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left">
+          <span>${item.title || item.principle}</span><span>▼</span>
+        </button>
+        <div class="accordion-content p-4 border-t text-slate-600">
+          ${item.content ? `<p>${item.content}</p>` : ''}
+          ${item.example ? `<p class="italic text-sm text-slate-500 mt-2">${item.example}</p>` : ''}
+          ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
+          ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
+          ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
+          ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
+        </div>
+      </div>
+    `).join('');
+    container.querySelectorAll('.accordion-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.nextElementSibling.classList.toggle('open');
+        btn.querySelector('span:last-child').classList.toggle('rotate-180');
+      });
     });
-    </script>
+  }
+
+  function setupWorkflow(containerSel, contentSel, data) {
+    const container = document.querySelector(containerSel);
+    const contentEl = document.querySelector(contentSel);
+    if (!container || !contentEl) return;
+    
+    Object.entries(data).forEach(([key, value], index) => {
+      const isLast = index === Object.keys(data).length - 1;
+      container.innerHTML += `
+        <button data-workflow-key="${key}" class="workflow-node group flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer">
+          <div class="text-4xl">${value.icon}</div>
+          <h4 class="font-semibold text-slate-700 group-hover:text-sky-600">${value.title}</h4>
+        </button>
+        ${!isLast ? `<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div><div class="text-sky-400 font-bold text-2xl block md:hidden">↓</div>` : ''}
+      `;
+    });
+    
+    container.querySelectorAll('.workflow-node').forEach(node => {
+      node.addEventListener('click', (e) => {
+        const key = e.currentTarget.dataset.workflowKey;
+        const item = data[key];
+        contentEl.innerHTML = `
+          <h4 class="text-xl font-bold text-sky-700 mb-2">${item.title}</h4>
+          <p class="text-slate-600 mb-4">${item.description}</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-semibold">Key Tools:</span>
+            ${item.tools.map(tool => `<span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
+          </div>
+        `;
+        container.querySelectorAll('.workflow-node').forEach(n => n.classList.remove('bg-sky-100'));
+        e.currentTarget.classList.add('bg-sky-100');
+      });
+    });
+    container.querySelector('.workflow-node')?.click();
+  }
+
+  function renderGenerativeAI() {
+    const grid = document.getElementById('generative-ai-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    
+    generativeAiPlatforms.forEach(platform => {
+      const card = document.createElement('div');
+      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
+          <span class="text-sm font-medium px-3 py-1 rounded-full ${platform.pricing === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${platform.pricing}</span>
+        </div>
+        <p class="text-sm font-semibold text-slate-500 mb-2">${platform.provider}</p>
+        <div class="flex-grow space-y-3">
+          <div>
+            <p class="text-sm font-medium text-slate-700 mb-1">Key Strengths:</p>
+            <p class="text-sm text-slate-600">${platform.strengths}</p>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-slate-700 mb-1">Best for:</p>
+            <p class="text-sm text-slate-600">${platform.bestFor}</p>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-slate-700 mb-1">Key Features:</p>
+            <p class="text-sm text-slate-600">${platform.features}</p>
+          </div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-200">
+          <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-sky-600 hover:text-sky-800">
+            Visit ${platform.name} →
+          </a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function renderToolkit(filteredData) {
+    const grid = document.getElementById('toolkit-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    
+    if (filteredData.length === 0) {
+      grid.innerHTML = `<p class="col-span-full text-center text-slate-500">No tools match your filters.</p>`;
+      return;
+    }
+    
+    filteredData.forEach(tool => {
+      const card = document.createElement('div');
+      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
+      card.innerHTML = `
+        <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
+        <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
+        <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
+        <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
+          <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
+          <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit Site →</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function downloadTemplate(type, format) {
+    let content = feedbackPromptContent;
+    let filename = `structured-feedback-prompt.${format}`;
+    let mimeType = format === 'md' ? 'text/markdown' : 'text/plain';
+    
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  // Initialize on DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    setupAccordions('#advanced-prompting-container', advancedPromptsData);
+    setupAccordions('#ethics-checklist-container', ethicsChecklistData);
+    setupWorkflow('#research-workflow', '#research-workflow-content', researchWorkflowData);
+    setupWorkflow('#teaching-workflow', '#teaching-workflow-content', teachingWorkflowData);
+    renderGenerativeAI();
+
+    // Toolkit setup
+    const filterFunction = document.getElementById('filter-function');
+    const filterCost = document.getElementById('filter-cost');
+    
+    if (filterFunction && filterCost) {
+      const functions = [...new Set(toolkitData.map(tool => tool.fn))];
+      const costs = [...new Set(toolkitData.map(tool => tool.cost))];
+
+      functions.forEach(fn => {
+        filterFunction.innerHTML += `<option value="${fn}">${fn}</option>`;
+      });
+      costs.forEach(cost => {
+        filterCost.innerHTML += `<option value="${cost}">${cost}</option>`;
+      });
+
+      function filterToolkit() {
+        const selectedFunction = filterFunction.value;
+        const selectedCost = filterCost.value;
+        const filteredData = toolkitData.filter(tool => {
+          const functionMatch = selectedFunction === 'all' || tool.fn === selectedFunction;
+          const costMatch = selectedCost === 'all' || tool.cost === selectedCost;
+          return functionMatch && costMatch;
+        });
+        renderToolkit(filteredData);
+      }
+
+      filterFunction.addEventListener('change', filterToolkit);
+      filterCost.addEventListener('change', filterToolkit);
+      renderToolkit(toolkitData);
+    }
+  });
+</script>
 </body>
 </html>
