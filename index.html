@@ -155,14 +155,21 @@
       <div class="flex flex-wrap gap-4">
         <button onclick="downloadTemplate('feedback','md')" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700">📝 Feedback (.md)</button>
         <button onclick="downloadTemplate('feedback','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">📄 Feedback (.txt)</button>
-        <button onclick="downloadTemplate('research','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🔬 Research (.md)</button>
+        <button onclick="downloadTemplate('socratic','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🤔 Socratic Tutor (.md)</button>
+        <button onclick="downloadTemplate('research','md')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">🔬 Research (.md)</button>
         <button onclick="downloadTemplate('teaching','md')" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">🎓 Teaching (.md)</button>
       </div>
     </div>
     <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-bold text-slate-800 mb-2">The 10 Evidence-Based Principles of Effective Prompting</h3>
+        <p class="text-slate-600">Master these core techniques to dramatically improve your AI interactions</p>
+      </div>
 
       <!-- 10 Core Principles -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="space-y-2 mb-8">
+        <h4 class="text-xl font-semibold text-slate-700 text-center">Core Principles</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Principle 1 -->
         <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
           <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
@@ -245,6 +252,7 @@
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
             <strong>Example:</strong> Use a spreadsheet to track "Prompt," "Output," and "Good Enough" ratings across 10-20 attempts
           </div>
+        </div>
         </div>
       </div>
 
@@ -376,18 +384,21 @@
   const researchWorkflowData = {
     "Literature Discovery": {
       icon: "📚",
+      image: "images/2 AI web.png",
       title: "Literature Discovery & Synthesis",
       description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
       tools: ["Research Rabbit", "Elicit", "Connected Papers", "Semantic Scholar"]
     },
     "Data Analysis": {
       icon: "📊",
+      image: "images/3 AI web.png",
       title: "Qualitative & Quantitative Analysis",
       description: "Augment data analysis by using AI to perform preliminary coding on qualitative data (transcripts, field notes) or to help write and debug code for quantitative statistical analysis.",
       tools: ["ATLAS.ti", "NVivo", "Julius AI"]
     },
     "Writing & Productivity": {
       icon: "✍️",
+      image: "images/4 AI web.png",
       title: "Writing & Productivity",
       description: "Ethically use AI as a writing assistant for brainstorming, outlining, and proofreading. Specialised tools can also help check your argument structure and suggest citations.",
       tools: ["Thesify", "General LLMs (for brainstorming)"]
@@ -541,6 +552,45 @@ You must add the following statements to the end of all feedback generated:
 
 Please refer to the full marking rubric within the assignment brief for a more detailed breakdown of how your work aligns with the module learning outcomes for the mark awarded. Should similarities in areas for improvement occur across multiple assignments, you may wish to meet with your personal tutor to discuss a strategy for developing this area."`;
 
+  const socraticPromptContent = `### **Instructions for Academic Staff**
+
+To use this template, please replace the text within the square brackets \`[ ]\` with the details relevant to your specific course, assessment, and learning objectives. The aim is to configure the AI to act as a Socratic tutor that guides a student towards completing a specific academic task, rather than providing them with direct answers. This process encourages critical thinking and helps the student to develop their own ideas in a structured manner. 
+
+Once you have added the information, you can then give the prompt to students to paste the prompt into a generative AI model.
+
+### **General Purpose Socratic Tutor Prompt Template**
+
+**Role:** You are to adopt the persona of a highly experienced and approachable academic. You are an expert in **[Your Subject Area/Field, e.g., Eighteenth-Century Literature, Quantum Physics, Corporate Law]**. Your primary role is to be a kind, caring, and patient tutor who is skilled at supporting student learning through inquiry. Your tone should be encouraging and formal, yet accessible.
+
+**Task:** A student will engage with you to learn how to produce a **[Specific Task or Output, e.g., a critical essay plan, a case study analysis, a draft business model, a preliminary lab report]**.
+
+Your fundamental instruction is to guide the student through the process of creating this output for themselves. You must not, under any circumstances, write the **[Specific Task or Output]** for them. Your method is purely Socratic: you will ask a series of carefully constructed questions, wait for the student's reply, and then ask the next logical question based on their response.
+
+**Core Learning Objectives:** During this dialogue, your questions and guidance should be oriented towards helping the student learn and develop the following:
+
+- **[Insert Key Learning Objective 1, e.g., The ability to critically evaluate primary sources]**
+- **[Insert Key Learning Objective 2, e.g., An understanding of the concept of historical contingency]**
+- **[Insert Key Learning Objective 3, e.g., The skill of formulating a clear, arguable thesis statement]**
+- *(Add further objectives as required)*
+
+**Process and Dialogue Flow:**
+
+1. You will begin the conversation with a warm and open-ended opening question that invites the student to describe their initial thoughts or general area of interest related to the task.
+2. Your subsequent questions should be designed to help the student to narrow their focus, consider different perspectives, structure their thoughts, identify necessary components, and refine their ideas.
+3. The dialogue must be iterative. You must wait for the student's response before asking your next question.
+4. If the student's response indicates a misunderstanding or is inappropriate for the task, you should gently guide them back on track. You can achieve this by breaking the problem down into simpler steps or by asking questions that challenge their assumption, helping them to see the issue for themselves.
+5. If the student demonstrates a good understanding, you should ask more challenging questions that push them to deepen their analysis, consider counterarguments, or justify their reasoning more robustly.
+6. The entire interaction should be tailored to the student's current skill level, which is **[Student's Level and Field of Study, e.g., first-year undergraduate in history, master's student in engineering]**.
+7. The final output must be feasible within the given constraints, which are: **[List any specific constraints, e.g., a 2,000-word limit, a two-week deadline, reliance only on pre-approved reading materials, use of a specific theoretical framework]**.
+
+**Response Style Example:**
+
+- **Your opening question:** "Hello. I am here to help you get started with your **[Specific Task or Output]**. It can often feel like a challenge to begin, so let us start by exploring your initial ideas. Please do not worry if they are not yet fully formed; we can shape them together. What general topics or questions in **[Your Subject Area/Field]** are on your mind at the moment?"
+- **(Wait for the student's response)**
+- **Example follow-up question:** "That is a very interesting starting point. To move towards a more focused **[Specific Task or Output]**, let us consider... [e.g., *'which specific aspect of that topic do you find most compelling?'* or *'how might we connect that idea to the key theoretical concept of X?'*]"
+
+The dialogue between you and the student should continue iteratively until the student has produced a solid and feasible plan or draft that they can develop independently for their assessment.`;
+
   // Setup functions
   function setupAccordions(containerSel, data) {
     const container = document.querySelector(containerSel);
@@ -608,11 +658,16 @@ Please refer to the full marking rubric within the assignment brief for a more d
         const key = e.currentTarget.dataset.workflowKey;
         const item = data[key];
         contentEl.innerHTML = `
-          <h4 class="text-xl font-bold text-sky-700 mb-2">${item.title}</h4>
-          <p class="text-slate-600 mb-4">${item.description}</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="font-semibold">Key Tools:</span>
-            ${item.tools.map(tool => `<span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
+          <div class="flex flex-col md:flex-row gap-6 items-start">
+            <div class="flex-1">
+              <h4 class="text-xl font-bold text-sky-700 mb-2">${item.title}</h4>
+              <p class="text-slate-600 mb-4">${item.description}</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-semibold">Key Tools:</span>
+                ${item.tools.map(tool => `<span class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
+              </div>
+            </div>
+            ${item.image ? `<div class="flex-shrink-0"><img src="${item.image}" alt="${item.title}" class="workflow-icon rounded-lg shadow-md"></div>` : ''}
           </div>
         `;
         container.querySelectorAll('.workflow-node').forEach(n => n.classList.remove('bg-sky-100'));
@@ -687,9 +742,31 @@ Please refer to the full marking rubric within the assignment brief for a more d
   }
 
   function downloadTemplate(type, format) {
-    let content = feedbackPromptContent;
-    let filename = `structured-feedback-prompt.${format}`;
+    let content = '';
+    let filename = '';
     let mimeType = format === 'md' ? 'text/markdown' : 'text/plain';
+    
+    switch(type) {
+      case 'feedback':
+        content = feedbackPromptContent;
+        filename = `structured-feedback-prompt.${format}`;
+        break;
+      case 'socratic':
+        content = socraticPromptContent;
+        filename = `socratic-tutor-prompt.${format}`;
+        break;
+      case 'research':
+        content = feedbackPromptContent; // You can replace this with specific research content
+        filename = `research-prompt-template.${format}`;
+        break;
+      case 'teaching':
+        content = feedbackPromptContent; // You can replace this with specific teaching content
+        filename = `teaching-prompt-template.${format}`;
+        break;
+      default:
+        content = feedbackPromptContent;
+        filename = `prompt-template.${format}`;
+    }
     
     const blob = new Blob([content], { type: mimeType });
     const url = URL.createObjectURL(blob);
