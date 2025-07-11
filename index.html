@@ -73,26 +73,33 @@
       <p>Use the navigation to explore practical advice, demos and curated tools for academics.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <div onclick="showPage('integration')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI Integration</h3>
+      <div onclick="showPage('integration')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">AI Integration</h3>
+        <p class="text-slate-300 text-sm mt-2">Strategic implementation in higher education</p>
       </div>
-      <div onclick="showPage('prompting')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">Prompt Engineering</h3>
+      <div onclick="showPage('prompting')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">Prompt Engineering</h3>
+        <p class="text-slate-300 text-sm mt-2">Master the art of AI communication</p>
       </div>
-      <div onclick="showPage('research')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI for Research</h3>
+      <div onclick="showPage('research')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">AI for Research</h3>
+        <p class="text-slate-300 text-sm mt-2">Transform your research workflow</p>
       </div>
-      <div onclick="showPage('teaching')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI for Teaching</h3>
+      <div onclick="showPage('teaching')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">AI for Teaching</h3>
+        <p class="text-slate-300 text-sm mt-2">Enhance learning experiences</p>
       </div>
-      <div onclick="showPage('ai-platforms')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI Platforms</h3>
+      <div onclick="showPage('ai-platforms')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">AI Platforms</h3>
+        <p class="text-slate-300 text-sm mt-2">Explore leading AI tools</p>
       </div>
-      <div onclick="showPage('toolkit')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI Toolkit</h3>
+      <div onclick="showPage('toolkit')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">AI Toolkit</h3>
+        <p class="text-slate-300 text-sm mt-2">Curated academic tools</p>
       </div>
-      <div onclick="showPage('ethics')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">Ethical Framework</h3>
+      <div onclick="showPage('ethics')" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 cursor-pointer transition-colors">
+        <h3 class="text-white font-bold text-lg">Ethical Framework</h3>
+        <p class="text-slate-300 text-sm mt-2">Responsible AI practices</p>
       </div>
     </div>
   </section>
@@ -159,81 +166,84 @@
         <!-- Principle 1 -->
         <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
           <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
-          <p class="text-slate-600 mb-2">Tell the AI exactly what you want. Vague prompts yield inconsistent outputs.</p>
+          <p class="text-slate-600 mb-2">Tell the LLM exactly what you want, leaving no room for interpretation. LLMs are extraordinarily creative, so vague prompts can lead to varied, inconsistent outputs.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each."
+            <strong>Instead of:</strong> "Produce a report based on this data"<br>
+            <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each"
           </div>
         </div>
         <!-- Principle 2 -->
         <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
           <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Context Provision</h3>
-          <p class="text-slate-600 mb-2">Provide all relevant background so the AI tailors its response to your needs.</p>
+          <p class="text-slate-600 mb-2">Furnish all necessary background information. Context helps the LLM narrow its vast knowledge to your specific needs and avoid generic outputs.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "I am a college senior with a 3.5 GPA and need an essay outline on the French Revolution's impact."
+            <strong>Example:</strong> "I am a college senior with a 3.5 GPA and I need an essay outline on the French Revolution's impact"
           </div>
         </div>
         <!-- Principle 3 -->
         <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
           <h3 class="text-lg font-bold text-purple-700 mb-2">3. Role/Persona Assignment</h3>
-          <p class="text-slate-600 mb-2">Assign a persona to influence tone, style and domain expertise.</p>
+          <p class="text-slate-600 mb-2">Assigning a specific role directly influences tone, style, and domain expertise. This makes responses more focused and professional.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "You are a patent lawyer. Explain the patenting process in simple terms."
+            <strong>Example:</strong> "You are a patent lawyer. Explain the legal process for patenting an invention in simple terms"
           </div>
         </div>
         <!-- Principle 4 -->
         <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
           <h3 class="text-lg font-bold text-amber-700 mb-2">4. Output Format Definition</h3>
-          <p class="text-slate-600 mb-2">Specify the desired structure—JSON, CSV, bulleted list—to reduce post-processing.</p>
+          <p class="text-slate-600 mb-2">Clearly specify the desired structure for machine-readable outputs like JSON, XML, or human-readable formats like lists and tables.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Return your results in JSON: {'key':'value'}."
+            <strong>Example:</strong> "Return results in JSON: {'key': 'value'}" or "Provide a concise summary in bulleted list format"
           </div>
         </div>
         <!-- Principle 5 -->
         <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
-          <h3 class="text-lg font-bold text-rose-700 mb-2">5. Examples & Demonstrations</h3>
-          <p class="text-slate-600 mb-2">Show don't tell. Provide examples of desired outputs to guide the AI's response style.</p>
+          <h3 class="text-lg font-bold text-rose-700 mb-2">5. Examples (Few-Shot Prompting)</h3>
+          <p class="text-slate-600 mb-2">Including examples can lead to massive improvements in accuracy. Even a single example can significantly guide the model to desired output structure and style.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Write like this: 'Research shows...' not 'Studies say...'"
+            <strong>Example:</strong> "Here's an example of a one-paragraph description for another product..." then provide your request
           </div>
         </div>
         <!-- Principle 6 -->
         <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
-          <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Step-by-Step Instructions</h3>
-          <p class="text-slate-600 mb-2">Break complex tasks into clear, sequential steps for better reasoning.</p>
+          <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Iterative Refinement</h3>
+          <p class="text-slate-600 mb-2">Prompt engineering is rarely "one-and-done." Continuously refining prompts based on LLM responses is essential for improving quality.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "First analyse, then synthesise, finally recommend."
+            <strong>Example:</strong> Start broad, then refine: "Based on the outline provided, expand on the target audience section..."
           </div>
         </div>
         <!-- Principle 7 -->
         <div class="principle-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded border border-teal-200">
-          <h3 class="text-lg font-bold text-teal-700 mb-2">7. Constraint Setting</h3>
-          <p class="text-slate-600 mb-2">Define boundaries: word limits, tone, target audience, and scope.</p>
+          <h3 class="text-lg font-bold text-teal-700 mb-2">7. Conciseness/Information Density</h3>
+          <p class="text-slate-600 mb-2">LLM performance can decrease with prompt length. Improve "information density" by shrinking information into fewer words.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Write 200 words maximum, professional tone, for university administrators."
+            <strong>Instead of:</strong> "The overarching aim of this exceptionally well-structured..."<br>
+            <strong>Use:</strong> "Produce high quality, readable, clear content"
           </div>
         </div>
         <!-- Principle 8 -->
         <div class="principle-card bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded border border-orange-200">
-          <h3 class="text-lg font-bold text-orange-700 mb-2">8. Iterative Refinement</h3>
-          <p class="text-slate-600 mb-2">Treat prompting as a conversation. Refine based on outputs received.</p>
+          <h3 class="text-lg font-bold text-orange-700 mb-2">8. Chain of Thought (CoT) Prompting</h3>
+          <p class="text-slate-600 mb-2">For complex problems, encourage step-by-step reasoning. This enhances reasoning capabilities and provides transparency into the model's logic.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Make it more formal" or "Add statistical evidence."
+            <strong>Example:</strong> "Let's think step-by-step" or "Explain each step" for mathematical problems
           </div>
         </div>
         <!-- Principle 9 -->
         <div class="principle-card bg-gradient-to-br from-lime-50 to-green-50 p-6 rounded border border-lime-200">
-          <h3 class="text-lg font-bold text-lime-700 mb-2">9. Source Integration</h3>
-          <p class="text-slate-600 mb-2">Reference specific documents or data to ground responses in reliable information.</p>
+          <h3 class="text-lg font-bold text-lime-700 mb-2">9. Instructions over Constraints</h3>
+          <p class="text-slate-600 mb-2">Instruct the model what to do (positive instructions) rather than what not to do (constraints). Use clear binary "hard on/off rules."</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Based on the attached research paper, explain the methodology."
+            <strong>Instead of:</strong> "Do not list video game names"<br>
+            <strong>Use:</strong> "Only discuss the console, company, year, and total sales"
           </div>
         </div>
         <!-- Principle 10 -->
         <div class="principle-card bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded border border-violet-200">
-          <h3 class="text-lg font-bold text-violet-700 mb-2">10. Quality Assurance</h3>
-          <p class="text-slate-600 mb-2">Request citations, ask for verification, and specify accuracy requirements.</p>
+          <h3 class="text-lg font-bold text-violet-700 mb-2">10. Testing & Data-Driven Approach</h3>
+          <p class="text-slate-600 mb-2">Test prompts empirically using a "Monte Carlo approach"—generate multiple outputs and evaluate quality for statistical reliability.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> "Provide citations for all claims" or "Double-check all statistics."
+            <strong>Example:</strong> Use a spreadsheet to track "Prompt," "Output," and "Good Enough" ratings across 10-20 attempts
           </div>
         </div>
       </div>
