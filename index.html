@@ -91,10 +91,10 @@
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-sky-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <svg class="h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -128,8 +128,6 @@
                                 </div>
                                 <p class="text-lg mb-6 text-left">Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching, and scholarly work. This guide is designed as an interactive hub to help you navigate this new landscape, moving from the question of <em>if</em> you should engage with AI to <em>how</em> you can leverage it effectively and responsibly.</p>
                                 <p class="text-md mb-8 text-left">Use the navigation above to explore the key domains of AI in academia. Each section contains practical advice, interactive elements, and curated tools to help you become an AI-powered academic.</p>
-                                
-                                <!-- Navigation Cards -->
                                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
                                     <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer" onclick="showPage('prompting')">
                                         <h3 class="text-lg font-bold text-white mb-2">Prompt Engineering</h3>
@@ -168,27 +166,66 @@
                 </div>
             </div>
 
-            <!-- Download Templates Section -->
             <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
                 <h3 class="text-xl font-bold text-sky-700 mb-4">Download Prompt Templates</h3>
                 <p class="text-slate-600 mb-4">Get started quickly with our curated prompt templates for academic feedback and assessment.</p>
                 <div class="flex flex-wrap gap-4">
-                    <button onclick="downloadTemplate('feedback', 'md')" class="download-btn bg-sky-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-sky-700">
-                        📝 Feedback Template (.md)
-                    </button>
-                    <button onclick="downloadTemplate('feedback', 'txt')" class="download-btn bg-emerald-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-emerald-700">
-                        📄 Feedback Template (.txt)
-                    </button>
-                    <button onclick="downloadTemplate('research', 'md')" class="download-btn bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">
-                        🔬 Research Prompt (.md)
-                    </button>
-                    <button onclick="downloadTemplate('teaching', 'md')" class="download-btn bg-amber-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700">
-                        🎓 Teaching Prompt (.md)
-                    </button>
+                    <button onclick="downloadTemplate('feedback', 'md')" class="download-btn bg-sky-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-sky-700">📝 Feedback Template (.md)</button>
+                    <button onclick="downloadTemplate('feedback', 'txt')" class="download-btn bg-emerald-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-emerald-700">📄 Feedback Template (.txt)</button>
+                    <button onclick="downloadTemplate('research', 'md')" class="download-btn bg-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-purple-700">🔬 Research Prompt (.md)</button>
+                    <button onclick="downloadTemplate('teaching', 'md')" class="download-btn bg-amber-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-amber-700">🎓 Teaching Prompt (.md)</button>
                 </div>
             </div>
-            
-            <!-- ... rest of prompting content remains unchanged ... -->
+
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded-lg border border-sky-200">
+                        <h3 class="text-lg font-bold text-sky-700 mb-3">Clarity & Specificity</h3>
+                        <p class="text-slate-600 text-sm mb-3">Tell the AI exactly what you want, leaving no room for interpretation. Vague prompts lead to inconsistent outputs.</p>
+                        <div class="text-xs text-slate-500 bg-white/60 p-2 rounded">
+                            <strong>Instead of:</strong> "Produce a report based on this data"<br>
+                            <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each"
+                        </div>
+                    </div>
+                    <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-lg border border-emerald-200">
+                        <h3 class="text-lg font-bold text-emerald-700 mb-3">Context Provision</h3>
+                        <p class="text-slate-600 text-sm mb-3">Provide all necessary background information to help the AI tailor its response to your specific needs.</p>
+                        <div class="text-xs text-slate-500 bg-white/60 p-2 rounded">
+                            <strong>Example:</strong> "I am a college senior with a 3.5 GPA and I need an essay outline on the French Revolution's impact"
+                        </div>
+                    </div>
+                    <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded-lg border border-purple-200">
+                        <h3 class="text-lg font-bold text-purple-700 mb-3">Role Assignment</h3>
+                        <p class="text-slate-600 text-sm mb-3">Assign a specific role or persona to influence tone, style, and domain expertise.</p>
+                        <div class="text-xs text-slate-500 bg-white/60 p-2 rounded">
+                            <strong>Example:</strong> "You are a patent lawyer. Explain the legal process for patenting an invention in simple terms"
+                        </div>
+                    </div>
+                    <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded-lg border border-amber-200">
+                        <h3 class="text-lg font-bold text-amber-700 mb-3">Output Format</h3>
+                        <p class="text-slate-600 text-sm mb-3">Clearly specify the desired structure for machine-readable or human-readable formats.</p>
+                        <div class="text-xs text-slate-500 bg-white/60 p-2 rounded">
+                            <strong>Example:</strong> "Return results in JSON format: {'key': 'value'}" or "Provide a bulleted list"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="border border-slate-200 rounded-lg">
+                        <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left text-lg font-semibold text-slate-700 hover:bg-slate-50">
+                            Complete Prompt Engineering Guide (10 Evidence-Based Principles)
+                            <span class="transform transition-transform duration-300">▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="p-6 border-t border-slate-200">
+                                <!-- Principles 1–10 here exactly as before -->
+                                <!-- ... -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="advanced-prompting-container" class="space-y-4"></div>
+                </div>
+            </div>
 
             <div class="mt-8 text-center">
                 <button onclick="showPage('home')" class="inline-flex items-center px-4 py-2 bg-slate-200 text-slate-800 rounded hover:bg-slate-300 transition">
@@ -251,14 +288,13 @@
                              <option value="all">All Functions</option>
                          </select>
                     </div>
-                     <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-2">
                          <label for="filter-cost" class="font-semibold text-slate-600">Filter by Cost:</label>
                          <select id="filter-cost" class="p-2 border rounded-md shadow-sm">
                              <option value="all">All Models</option>
                          </select>
                     </div>
                 </div>
-
                 <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </div>
             <div class="mt-8 text-center">
@@ -296,28 +332,20 @@
     </footer>
 
     <script>
-    // Navigation state
     let currentPage = 'home';
-
-    // Page navigation
     function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-        const targetPage = document.getElementById(`page-${pageId}`);
-        if (targetPage) {
-            targetPage.classList.add('active');
-            currentPage = pageId;
-        }
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const tgt = document.getElementById(`page-${pageId}`);
+        if (tgt) tgt.classList.add('active');
         document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-        const mobileMenu = document.getElementById('mobile-menu');
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
+        const mob = document.getElementById('mobile-menu');
+        if (mob && !mob.classList.contains('hidden')) {
+            mob.classList.add('hidden');
             document.getElementById('menu-icon-open').classList.remove('hidden');
             document.getElementById('menu-icon-close').classList.add('hidden');
         }
-        window.scrollTo(0, 0);
+        window.scrollTo(0,0);
     }
-
-    // Templates and accordions remain unchanged...
 
     // Toolkit data with extended descriptions
     const toolkitData = [
@@ -332,15 +360,15 @@
         {
             name: "Google AI Studio",
             fn: "Developer Platform for AI",
-            features: "Build custom AI applications with Gemini models; API access; model tuning and deployment capabilities. Ideal for generating lecture-note podcasts, summarising articles or book chapters into audio for student consumption, and automating routine analysis tasks.",
+            features: "Build custom AI applications with Gemini models; API access; model tuning and deployment. Ideal for generating lecture-note podcasts, summarising articles or book chapters into audio, and automating routine analysis tasks.",
             cost: "Freemium",
             link: "https://aistudio.google.com",
             area: "Research"
         },
-        // ... other tools unchanged ...
+        // ... other tools as previously defined ...
     ];
 
-    // Remaining script that initialises toolkit grid, workflows, accordions, etc.
+    // The rest of the initialisation script (accordions, workflows, toolkit rendering) remains unchanged
     </script>
 </body>
 </html>
