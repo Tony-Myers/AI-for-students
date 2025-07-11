@@ -14,12 +14,16 @@
     .nav-link.active,.nav-link:hover { color:#0284c7; border-bottom-color:#0284c7 }
     .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
     .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
-    .accordion-content { max-height:0; overflow:hidden; transition:max-height .5s ease-in-out }
-    .accordion-content.open { max-height:2000px }
+    .accordion-content { max-height:0 !important; overflow:hidden; transition:max-height .5s ease-in-out }
+    .accordion-content.open { max-height:2000px !important; transition:max-height 1s ease-in-out }
     .workflow-icon { width:100px;height:100px;object-fit:contain }
     .welcome-icon { width:400px;height:400px;object-fit:contain }
     .page { display:none }
     .page.active { display:block }
+    .platform-link { color:#0284c7 !important; text-decoration:none }
+    .platform-link:hover { color:#0369a1 !important; text-decoration:underline }
+    .tool-link { color:#0284c7 !important; text-decoration:none }
+    .tool-link:hover { color:#0369a1 !important; text-decoration:underline }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -29,6 +33,7 @@
     <h1 class="text-xl font-bold text-sky-600 cursor-pointer" onclick="showPage('home')">The AI-Powered Academic</h1>
     <div class="hidden md:flex space-x-4">
       <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('home')">Home</span>
+      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('integration')">AI Integration</span>
       <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('prompting')">Prompting</span>
       <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('research')">Research</span>
       <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('teaching')">Teaching</span>
@@ -47,6 +52,7 @@
   </nav>
   <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
     <span class="nav-link block px-3 py-2" onclick="showPage('home')">Home</span>
+    <span class="nav-link block px-3 py-2" onclick="showPage('integration')">AI Integration</span>
     <span class="nav-link block px-3 py-2" onclick="showPage('prompting')">Prompting</span>
     <span class="nav-link block px-3 py-2" onclick="showPage('research')">Research</span>
     <span class="nav-link block px-3 py-2" onclick="showPage('teaching')">Teaching</span>
@@ -67,6 +73,9 @@
       <p>Use the navigation to explore practical advice, demos and curated tools for academics.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div onclick="showPage('integration')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
+        <h3 class="text-white font-bold">AI Integration</h3>
+      </div>
       <div onclick="showPage('prompting')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
         <h3 class="text-white font-bold">Prompt Engineering</h3>
       </div>
@@ -85,6 +94,46 @@
       <div onclick="showPage('ethics')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
         <h3 class="text-white font-bold">Ethical Framework</h3>
       </div>
+    </div>
+  </section>
+
+  <!-- AI INTEGRATION -->
+  <section id="page-integration" class="page">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">Integrating Artificial Intelligence in Higher Education</h2>
+      <p class="max-w-3xl mx-auto">Understanding the strategic implementation of AI in academic environments requires careful consideration of pedagogy, efficiency, and ethical frameworks.</p>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
+      <div class="prose max-w-none">
+        <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg border border-sky-200 mb-6">
+          <p class="text-slate-700 leading-relaxed">The emergence of generative artificial intelligence (AI) creates significant opportunities and challenges within higher education. A proactive approach should be taken, centred on developing AI literacy among staff and students to understand the technology's capabilities, limitations, and inherent risks such as bias and misinformation. The objective is to learn to work with AI, not against it.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+          <!-- Evolving Pedagogy -->
+          <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+            <h3 class="text-xl font-bold text-purple-700 mb-4">Evolving Pedagogy and Assessment</h3>
+            <p class="text-slate-700 leading-relaxed">The educator's role is shifting from the primary source of knowledge to a facilitator of learning experiences conducted in collaboration with AI. This requires rethinking pedagogical models and assessment methods to prioritise process-based learning, critical thinking, and problem-solving over simple knowledge recall. For academics, mastering prompt engineering is crucial to guide AI effectively and transform passive learning into active engagement.</p>
+          </div>
+
+          <!-- Enhancing Efficiency -->
+          <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+            <h3 class="text-xl font-bold text-emerald-700 mb-4">Enhancing Efficiency and Accessibility</h3>
+            <p class="text-slate-700 leading-relaxed">AI tools offer substantial benefits for reducing academic workload. They can be used to generate lesson plans, questions, and rubrics, and to automate administrative duties. AI also supports greater accessibility by adapting materials and providing tools such as text-to-speech and translation. It remains important, however, to maintain a human element in feedback and communication to preserve personal relationships with students.</p>
+          </div>
+
+          <!-- Effective Integration -->
+          <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+            <h3 class="text-xl font-bold text-amber-700 mb-4">Effective AI Integration</h3>
+            <p class="text-slate-700 leading-relaxed">Effective AI integration requires developing clear ethical guidelines and policies, ensuring data privacy, and a culture of experimentation and collaboration to prepare students for an AI-powered workforce. Adopting an approach where AI is treated as a co-creator will help to transform education, rather than simply optimise current practices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-8">
+      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
   </section>
 
@@ -489,22 +538,41 @@ Please refer to the full marking rubric within the assignment brief for a more d
     container.innerHTML = data.map(item => `
       <div class="border border-slate-200 rounded-lg">
         <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left">
-          <span>${item.title || item.principle}</span><span>▼</span>
+          <span>${item.title || item.principle}</span><span class="accordion-arrow transition-transform duration-300">▼</span>
         </button>
-        <div class="accordion-content p-4 border-t text-slate-600">
-          ${item.content ? `<p>${item.content}</p>` : ''}
-          ${item.example ? `<p class="italic text-sm text-slate-500 mt-2">${item.example}</p>` : ''}
-          ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
-          ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
-          ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
-          ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
+        <div class="accordion-content">
+          <div class="p-4 border-t text-slate-600">
+            ${item.content ? `<p>${item.content}</p>` : ''}
+            ${item.example ? `<p class="italic text-sm text-slate-500 mt-2">${item.example}</p>` : ''}
+            ${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}
+            ${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}
+            ${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}
+            ${item.htmlContent ? `<div>${item.htmlContent}</div>` : ''}
+          </div>
         </div>
       </div>
     `).join('');
+    
+    // Ensure all accordions start closed
+    container.querySelectorAll('.accordion-content').forEach(content => {
+      content.style.maxHeight = '0px';
+      content.style.overflow = 'hidden';
+    });
+    
     container.querySelectorAll('.accordion-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        btn.nextElementSibling.classList.toggle('open');
-        btn.querySelector('span:last-child').classList.toggle('rotate-180');
+        const content = btn.nextElementSibling;
+        const arrow = btn.querySelector('.accordion-arrow');
+        
+        if (content.classList.contains('open')) {
+          content.classList.remove('open');
+          content.style.maxHeight = '0px';
+          arrow.style.transform = 'rotate(0deg)';
+        } else {
+          content.classList.add('open');
+          content.style.maxHeight = '2000px';
+          arrow.style.transform = 'rotate(180deg)';
+        }
       });
     });
   }
@@ -573,7 +641,7 @@ Please refer to the full marking rubric within the assignment brief for a more d
           </div>
         </div>
         <div class="mt-4 pt-4 border-t border-slate-200">
-          <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm font-semibold text-sky-600 hover:text-sky-800">
+          <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="platform-link inline-flex items-center text-sm font-semibold">
             Visit ${platform.name} →
           </a>
         </div>
@@ -601,7 +669,7 @@ Please refer to the full marking rubric within the assignment brief for a more d
         <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
         <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
           <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
-          <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit Site →</a>
+          <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="tool-link text-sm font-semibold">Visit Site →</a>
         </div>
       `;
       grid.appendChild(card);
