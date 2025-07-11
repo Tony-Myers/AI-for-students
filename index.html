@@ -1,233 +1,112 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI-Powered Academic: Interactive Guide</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
-    .nav-link { transition:color .3s,border-color .3s; border-bottom:2px solid transparent; cursor:pointer }
-    .nav-link.active,.nav-link:hover { color:#0284c7; border-bottom-color:#0284c7 }
-    .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
-    .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
-    .accordion-content { max-height:0; overflow:hidden; transition:max-height .5s ease-in-out }
-    .accordion-content.open { max-height:2000px }
-    .workflow-icon { width:100px;height:100px;object-fit:contain }
-    .welcome-icon { width:400px;height:400px;object-fit:contain }
-    .page { display:none }
-    .page.active { display:block }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI-Powered Academic: Interactive Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .nav-link {
+            transition: color 0.3s, border-color 0.3s;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+        .nav-link.active, .nav-link:hover {
+            color: #0284c7;
+            border-bottom-color: #0284c7;
+        }
+        .tool-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-content.open {
+            max-height: 2000px;
+            transition: max-height 1s ease-in-out;
+        }
+        .principle-card {
+            transition: all 0.3s ease;
+        }
+        .principle-card:hover {
+            box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.1);
+        }
+        .workflow-icon {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+        }
+        .welcome-icon {
+            width: 400px;
+            height: 400px;
+            object-fit: contain;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px -2px rgb(0 0 0 / 0.2);
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-    <h1 class="text-xl font-bold text-sky-600 cursor-pointer" onclick="showPage('home')">The AI-Powered Academic</h1>
-    <div class="hidden md:flex space-x-4">
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('home')">Home</span>
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('prompting')">Prompting</span>
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('research')">Research</span>
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('teaching')">Teaching</span>
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('toolkit')">Toolkit</span>
-      <span class="nav-link text-slate-600 px-3 py-2 rounded-md" onclick="showPage('ethics')">Ethics</span>
-    </div>
-    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-600">
-      <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-  </nav>
-  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
-    <span class="nav-link block px-3 py-2" onclick="showPage('home')">Home</span>
-    <span class="nav-link block px-3 py-2" onclick="showPage('prompting')">Prompting</span>
-    <span class="nav-link block px-3 py-2" onclick="showPage('research')">Research</span>
-    <span class="nav-link block px-3 py-2" onclick="showPage('teaching')">Teaching</span>
-    <span class="nav-link block px-3 py-2" onclick="showPage('toolkit')">Toolkit</span>
-    <span class="nav-link block px-3 py-2" onclick="showPage('ethics')">Ethics</span>
-  </div>
-</header>
-
-<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-  <!-- HOME -->
-  <section id="page-home" class="page active">
-    <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
-      <h2 class="text-4xl font-bold">Welcome to the Future of Academia</h2>
-      <img src="images/1 AI web.png" alt="AI Academic" class="welcome-icon mx-auto">
-      <p class="text-lg">Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching and scholarly work. Move from <em>if</em> to <em>how</em> with this interactive guide.</p>
-      <p>Use the navigation to explore practical advice, demos and curated tools for academics.</p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <div onclick="showPage('prompting')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">Prompt Engineering</h3>
-      </div>
-      <div onclick="showPage('research')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI for Research</h3>
-      </div>
-      <div onclick="showPage('teaching')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI for Teaching</h3>
-      </div>
-      <div onclick="showPage('toolkit')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">AI Toolkit</h3>
-      </div>
-      <div onclick="showPage('ethics')" class="bg-white/10 backdrop-blur-sm p-6 rounded border border-white/20 hover:bg-white/20 cursor-pointer">
-        <h3 class="text-white font-bold">Ethical Framework</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROMPTING -->
-  <section id="page-prompting" class="page">
-    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-      <h2 class="text-3xl font-bold">Foundations: Mastering Prompt Engineering</h2>
-      <p class="max-w-3xl mx-auto">Prompt engineering is the art and science of designing inputs to guide AI toward accurate, relevant, and useful outputs. These ten principles are evidence-based.</p>
-    </div>
-    <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
-      <h3 class="text-xl font-bold text-sky-700 mb-4">Download Prompt Templates</h3>
-      <div class="flex flex-wrap gap-4">
-        <button onclick="downloadTemplate('feedback','md')" class="bg-sky-600 text-white px-4 py-2 rounded hover:bg-sky-700">📝 Feedback (.md)</button>
-        <button onclick="downloadTemplate('feedback','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">📄 Feedback (.txt)</button>
-        <button onclick="downloadTemplate('research','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🔬 Research (.md)</button>
-        <button onclick="downloadTemplate('teaching','md')" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">🎓 Teaching (.md)</button>
-      </div>
-    </div>
-    <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
-
-      <!-- 1-4 Principles -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Principle 1 -->
-        <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-          <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
-          <p class="text-slate-600 mb-2">Tell the AI exactly what you want. Vague prompts yield inconsistent outputs.</p>
-          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Use:</strong> “List our five most popular products and write a one-paragraph description of each.”
-          </div>
-        </div>
-        <!-- Principle 2 -->
-        <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
-          <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Context Provision</h3>
-          <p class="text-slate-600 mb-2">Provide all relevant background so the AI tailors its response to your needs.</p>
-          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> “I am a college senior with a 3.5 GPA and need an essay outline on the French Revolution’s impact.”
-          </div>
-        </div>
-        <!-- Principle 3 -->
-        <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
-          <h3 class="text-lg font-bold text-purple-700 mb-2">3. Role/Persona Assignment</h3>
-          <p class="text-slate-600 mb-2">Assign a persona to influence tone, style and domain expertise.</p>
-          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> “You are a patent lawyer. Explain the patenting process in simple terms.”
-          </div>
-        </div>
-        <!-- Principle 4 -->
-        <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
-          <h3 class="text-lg font-bold text-amber-700 mb-2">4. Output Format Definition</h3>
-          <p class="text-slate-600 mb-2">Specify the desired structure—JSON, CSV, bulleted list—to reduce post-processing.</p>
-          <div class="bg-white/60 p-2 rounded text-xs text-slate-500">
-            <strong>Example:</strong> “Return your results in JSON: {'key':'value'}.”
-          </div>
-        </div>
-      </div>
-
-      <!-- Advanced Prompting Accordions -->
-      <div id="advanced-prompting-container" class="space-y-4"></div>
-
-    </div>
-
-    <div class="text-center mt-8">
-      <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
-    </div>
-  </section>
-
-  <!-- RESEARCH -->
-  <!-- (unchanged) -->
-  <!-- TEACHING -->
-  <!-- (unchanged) -->
-  <!-- TOOLKIT -->
-  <!-- (unchanged) -->
-  <!-- ETHICS -->
-  <!-- (unchanged) -->
-
-</main>
-
-<footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Adapted from “The AI-Powered Academic: A Comprehensive Guide to AI in Research and Pedagogy.” © 2025.
-</footer>
-
-<script>
-  function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(`page-${id}`).classList.add('active');
-    window.scrollTo(0,0);
-  }
-  document.getElementById('mobile-menu-button').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-    document.getElementById('menu-icon-open').classList.toggle('hidden');
-    document.getElementById('menu-icon-close').classList.toggle('hidden');
-  });
-
-  // Advanced prompting data
-  const advancedPromptsData = [
-    {
-      title: 'Zero-Shot Prompting',
-      content: 'A direct instruction without examples. Best for simple, straightforward tasks where the AI can infer the required response directly.',
-      example: `<strong>Example:</strong> "Translate the following German abstract into academic English."`
-    },
-    {
-      title: 'Few-Shot Prompting',
-      content: 'Providing one or more examples to guide the AI on format, tone, and style. Highly effective for nuanced tasks.',
-      example: `<strong>Example:</strong> "Rewrite the following sentence in a more formal, academic tone. Example: 'Lots of people think...' → 'A prevailing view suggests...'. Now rewrite: 'It is a big problem that...'" `
-    },
-    {
-      title: 'Chain-of-Thought (CoT) Prompting',
-      content: 'Breaking down a complex task into logical steps to guide the AI\'s reasoning process. Essential for analytical tasks and problem-solving.',
-      example: `<strong>Example:</strong> "Critique the methodology of the attached study. First, summarise the research design. Second, identify potential sources of bias. Third, suggest specific improvements to enhance internal validity."`
-    },
-    {
-      title: 'Role-Based Prompting',
-      content: 'Assigning a persona or role to the AI to control its tone, perspective, and level of expertise. Useful for simulating academic scenarios.',
-      example: `<strong>Example:</strong> "You are a grant proposal writer. Review my research abstract and suggest three ways to frame its significance to appeal to the National Science Foundation."`
-    },
-    {
-      title: 'Context-Rich Prompting',
-      content: 'Providing source documents to ground the AI\'s response in specific information. The core principle behind tools like NotebookLM.',
-      example: `<strong>Example:</strong> "Using the uploaded course syllabus and university academic integrity policy, draft an announcement to students explaining the rules for using AI on the final paper."`
-    }
-  ];
-
-  function setupAccordions(containerSel, data) {
-    const container = document.querySelector(containerSel);
-    container.innerHTML = data.map(item => `
-      <div class="border border-slate-200 rounded-lg">
-        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold">
-          <span>${item.title}</span><span>▼</span>
-        </button>
-        <div class="accordion-content p-4 border-t text-slate-600">
-          <p>${item.content}</p>
-          <p class="italic text-sm text-slate-500 mt-2">${item.example}</p>
-        </div>
-      </div>
-    `).join('');
-    container.querySelectorAll('.accordion-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.nextElementSibling.classList.toggle('open');
-      });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    setupAccordions('#advanced-prompting-container', advancedPromptsData);
-    // ... initialize research, teaching, toolkit, ethics as before ...
-  });
-
-  // downloadTemplate function omitted for brevity
-</script>
-</body>
-</html>
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl font-bold text-sky-600 cursor-pointer" onclick="showPage('home')">The AI-Powered Academic</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('home')">Home</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('prompting')">Prompting</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('research')">Research</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('teaching')">Teaching</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('toolkit')">Toolkit</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('ethics')">Ethics</span>
+                        <span class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-600" onclick="showPage('glossary')">Glossary</span>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-sky-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('home')">Home</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('prompting')">Prompting</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('research')">Research</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('teaching')">Teaching</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('toolkit')">Toolkit</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-600" onclick="showPage('ethics')">Ethics</span>
+                    <span class="nav-link block px-3 py-2 rounded-md text-base font-medium text-
