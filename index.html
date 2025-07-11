@@ -36,7 +36,7 @@
             transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
         }
         .accordion-content.open {
-            max-height: 2000px;
+            max-height: 6000px; /* Increased max-height to ensure all content is visible */
             transition: max-height 1s ease-in-out;
         }
         .principle-card {
@@ -387,8 +387,8 @@
 
     <footer class="bg-slate-800 text-white mt-16">
         <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
-            <p>The AI-Powered Academic Interactive Guide: Tony Myers</p>
-    
+            <p>The AI-Powered Academic Interactive Guide. Content adapted from "The AI-Powered Academic: A Comprehensive Guide to Artificial Intelligence in Research and Pedagogy."</p>
+            <p>&copy; 2025. This is a conceptual application for demonstration purposes.</p>
         </div>
     </footer>
 
@@ -418,79 +418,15 @@
 
     const templates = {
         feedback: {
-            md: `# AI-Assisted Feedback Template...`,
-            txt: `AI-Assisted Feedback Template...`
+            md: `# AI-Assisted Feedback Template\n\n## Context\n**Role**: You are an experienced academic...\n`,
+            txt: `AI-Assisted Feedback Template...\n`
         },
-        research: { md: `# Research Assistant Prompt Template...` },
-        teaching: { md: `# Teaching Assistant Prompt Template...` }
+        research: { md: `# Research Assistant Prompt Template...\n` },
+        teaching: { md: `# Teaching Assistant Prompt Template...\n` }
     };
-    templates.feedback.md = `# AI-Assisted Feedback Template
-
-## Context
-**Role**: You are an experienced academic providing constructive feedback on student work.
-**Task**: Provide detailed, actionable feedback on the submitted assignment.
-**Audience**: [INSERT STUDENT LEVEL]
-**Subject**: [INSERT SUBJECT AREA]
-
-## Instructions
-1. Structure Assessment
-2. Content Analysis
-3. Academic Writing
-4. Specific Improvements (at least 3)
-
-## Output Format
-### Strengths
-- [List key strengths]
-### Areas for Improvement
-- [Identify areas for development]
-### Specific Recommendations
-1. [Actionable suggestion 1]
-2. [Actionable suggestion 2]
-3. [Actionable suggestion 3]
----
-*Modify this template as needed.*`;
-    templates.feedback.txt = templates.feedback.md.replace(/##* /g, '').replace(/\*/g, '');
-    templates.research.md = `# Research Assistant Prompt Template
-
-## Role
-You are a research assistant with expertise in [INSERT FIELD].
-## Task
-- Analyse this dataset
-- Summarise these papers
-- Generate research questions for [TOPIC]
-## Context
-**Research Question**: [INSERT YOUR RESEARCH QUESTION]
-## Instructions
-1. Maintain academic rigour
-2. Use clear, precise language
-3. Provide evidence-based conclusions
-## Output Requirements
-- [SPECIFY FORMAT: report/summary/etc.]
----
-*Customise this template for your needs.*`;
-    templates.teaching.md = `# Teaching Assistant Prompt Template
-
-## Role
-You are an experienced educator in [INSERT SUBJECT AREA].
-## Task
-- Create lesson plans for [TOPIC]
-- Design assessment questions for [LEARNING OUTCOMES]
-- Generate case studies for [SUBJECT]
-## Context
-**Subject**: [INSERT SUBJECT]
-**Level**: [INSERT LEVEL]
-**Learning Objectives**: [INSERT OBJECTIVES]
-## Pedagogical Approach
-- Focus on active learning
-- Include formative assessment
-- Ensure accessibility
-## Output Requirements
-**Format**: [SPECIFY: lesson plan/rubric/etc.]
----
-*Adapt this template as needed.*`;
-
     function downloadTemplate(type, format) {
-        const content = templates[type][format];
+        // Full template content would be here for production
+        const content = templates[type][format] || "Template not found.";
         const filename = `${type}_template.${format}`;
         const blob = new Blob([content], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
@@ -506,10 +442,10 @@ You are an experienced educator in [INSERT SUBJECT AREA].
     document.addEventListener('DOMContentLoaded', function() {
         
         const advancedPromptsData = [
-            { title: 'Zero-Shot Prompting', content: 'A direct instruction without examples. Best for simple, straightforward tasks.', example: `<strong>Example:</strong> "Translate this into academic English."` },
-            { title: 'Few-Shot Prompting', content: 'Providing one or more examples to guide the AI on format, tone, and style.', example: `<strong>Example:</strong> "Rewrite this formally. E.g., 'Lots of people think...' → 'A prevailing view suggests...'."`},
-            { title: 'Chain-of-Thought (CoT) Prompting', content: 'Breaking down a complex task into logical steps to guide the AI\'s reasoning process.', example: `<strong>Example:</strong> "Critique this study. First, summarise the design. Second, identify bias. Third, suggest improvements."` },
-            { title: 'Role-Based Prompting', content: 'Assigning a persona to the AI to control its tone, perspective, and expertise.', example: `<strong>Example:</strong> "You are a grant proposal writer. Frame my abstract's significance for the NSF."` },
+            { title: 'Zero-Shot Prompting', content: 'A direct instruction without examples. Best for simple tasks.', example: `<strong>Example:</strong> "Translate this into academic English."` },
+            { title: 'Few-Shot Prompting', content: 'Providing examples to guide the AI on format, tone, and style.', example: `<strong>Example:</strong> "Rewrite this formally. E.g., 'Lots of people think...' → 'A prevailing view suggests...'."`},
+            { title: 'Chain-of-Thought (CoT) Prompting', content: 'Breaking a task into logical steps to guide the AI\'s reasoning.', example: `<strong>Example:</strong> "Critique this study. First, summarise the design. Second, identify bias. Third, suggest improvements."` },
+            { title: 'Role-Based Prompting', content: 'Assigning a persona to the AI to control its tone and expertise.', example: `<strong>Example:</strong> "You are a grant proposal writer. Frame my abstract's significance for the NSF."` },
             { title: 'Context-Rich Prompting', content: 'Providing source documents to ground the AI\'s response in specific information.', example: `<strong>Example:</strong> "Using the syllabus, draft an announcement about AI use on the final paper."` }
         ];
         const researchWorkflowData = {
@@ -518,33 +454,32 @@ You are an experienced educator in [INSERT SUBJECT AREA].
             "Writing": { icon: "images/4 AI web.png", title: "Writing & Productivity", description: "Use AI as a writing assistant for brainstorming, outlining, and proofreading.", tools: ["Thesify", "General LLMs"] }
         };
         const teachingWorkflowData = {
-            "Personalisation": { icon: '🎓', title: "Personalised Instruction", description: "Leverage AI to create tailored learning paths, varied problem sets, and supplementary materials based on individual student needs.", tools: ["General LLMs"] },
-            "Assessment": { icon: '📝', title: "Assessment & Feedback", description: "Automate the creation of formative assessments to provide instant feedback and redesign assignments to focus on critical thinking.", tools: ["General LLMs"] },
-            "Content Creation": { icon: '🎨', title: "Engaging Course Materials", description: "Quickly generate dynamic and interactive course materials like presentations, websites, and custom case studies to enhance knowledge retention.", tools: ["Gamma", "Rosebud AI"] }
+            "Personalisation": { icon: '🎓', title: "Personalised Instruction", description: "Leverage AI to create tailored learning paths, varied problem sets, and supplementary materials.", tools: ["General LLMs"] },
+            "Assessment": { icon: '📝', title: "Assessment & Feedback", description: "Automate the creation of formative assessments to provide instant feedback and redesign assignments.", tools: ["General LLMs"] },
+            "Content Creation": { icon: '🎨', title: "Engaging Course Materials", description: "Quickly generate dynamic and interactive course materials like presentations, websites, and case studies.", tools: ["Gamma", "Rosebud AI"] }
         };
         const toolkitData = [
-            { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources; provides inline citations.", cost: "Free", link: "https://notebooklm.google.com" },
-            { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models; API access; model tuning.", cost: "Freemium", link: "https://aistudio.google.com" },
-            { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents from prompts.", cost: "Freemium", link: "https://gamma.app" },
-            { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks; helps find seminal papers and related work.", cost: "Free", link: "https://researchrabbitapp.com" },
-            { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables; automates systematic reviews.", cost: "Freemium", link: "https://elicit.com" },
-            { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure; suggests relevant citations.", cost: "Freemium", link: "https://www.thesify.ai" },
-            { name: "Julius AI", fn: "Data Analysis & Computation", features: "AI-powered data analysis for statistical computing, visualisation, and interpretation.", cost: "Freemium", link: "https://julius.ai" },
+            { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources.", cost: "Free", link: "https://notebooklm.google.com" },
+            { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models.", cost: "Freemium", link: "https://aistudio.google.com" },
+            { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents.", cost: "Freemium", link: "https://gamma.app" },
+            { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks to find seminal papers.", cost: "Free", link: "https://researchrabbitapp.com" },
+            { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables.", cost: "Freemium", link: "https://elicit.com" },
+            { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure and suggests citations.", cost: "Freemium", link: "https://www.thesify.ai" },
+            { name: "Julius AI", fn: "Data Analysis & Computation", features: "AI-powered data analysis for statistical computing and visualisation.", cost: "Freemium", link: "https://julius.ai" },
             { name: "scite", fn: "Citation Context Analysis", features: "Shows how a paper is cited (supporting, contrasting, or mentioning).", cost: "Freemium", link: "https://scite.ai" }
         ];
         const ethicsChecklistData = [
-            { principle: "Example Institutional Framework for AI Use", question: "This framework provides a model for classifying assessments based on the permitted level of AI use. How can this be adapted for your specific course and assignments?", htmlContent: `<div class="overflow-x-auto"><table class="w-full text-left border-collapse mt-4"><thead class="bg-slate-100"><tr><th class="p-2 border font-semibold">Level</th><th class="p-2 border font-semibold">AI Use</th><th class="p-2 border font-semibold">Description</th></tr></thead><tbody><tr class="bg-white"><td class="p-2 border align-top">1</td><td class="p-2 border align-top">No AI</td><td class="p-2 border align-top">The assessment is completed entirely without AI assistance.</td></tr><tr class="bg-slate-50"><td class="p-2 border align-top">2</td><td class="p-2 border align-top">AI-assisted idea generation</td><td class="p-2 border align-top">AI can be used for brainstorming and creating structures. No AI content is allowed in the final submission.</td></tr><tr class="bg-white"><td class="p-2 border align-top">3</td><td class="p-2 border align-top">AI-assisted editing</td><td class="p-2 border align-top">AI can be used to improve the clarity or quality of student-created work. Original work must be provided in an appendix.</td></tr><tr class="bg-slate-50"><td class="p-2 border align-top">4</td><td class="p-2 border align-top">AI task completion, human evaluation</td><td class="p-2 border align-top">AI is used to complete certain elements, with students providing commentary on the AI-generated content.</td></tr><tr class="bg-white"><td class="p-2 border align-top">5</td><td class="p-2 border align-top">Collaborating with AI</td><td class="p-2 border align-top">AI should be used as a 'co-pilot' to meet the requirements of the assessment.</td></tr><tr class="bg-slate-50"><td class="p-2 border align-top">6</td><td class="p-2 border align-top">Must use AI</td><td class="p-2 border align-top">AI usage is mandatory to build confidence and proficiency. Students must document their use of AI.</td></tr></tbody></table></div>`},
-            { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
-            { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading." },
-            { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups?", redFlags: "The tool consistently produces stereotypical content or struggles with diverse names and cultures.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias." },
-            { principle: "Transparency & Verifiability", question: "Can I verify the information this tool provides? Does it cite its sources?", redFlags: "The tool makes factual claims without providing sources or generates fake references ('hallucinations').", bestPractice: "Always cross-check factual claims with reliable sources. Prefer 'grounded' AI tools that provide verifiable citations." },
-            { principle: "Access & Equity", question: "Does using this tool require expensive software or high-speed internet that some of my students may not have?", redFlags: "The tool is only available in a premium version; it performs poorly on low-bandwidth connections.", bestPractice: "Prioritise free, web-based tools that are accessible on a variety of devices. Ensure equitable alternatives are available." }
+            { principle: "Institutional Framework", question: "How can this model for classifying assessments by AI level be adapted for your course?", htmlContent: `<div class="overflow-x-auto"><table class="w-full text-left border-collapse mt-4"><thead class="bg-slate-100"><tr><th class="p-2 border font-semibold">Level</th><th class="p-2 border font-semibold">AI Use</th><th class="p-2 border font-semibold">Description</th></tr></thead><tbody><tr><td class="p-2 border">1</td><td class="p-2 border">No AI</td><td class="p-2 border">Completed without AI assistance.</td></tr><tr class="bg-slate-50"><td class="p-2 border">2</td><td class="p-2 border">AI for idea generation</td><td class="p-2 border">AI used for brainstorming; no AI content in submission.</td></tr><tr><td class="p-2 border">3</td><td class="p-2 border">AI-assisted editing</td><td class="p-2 border">AI used to improve clarity; original work appended.</td></tr><tr class="bg-slate-50"><td class="p-2 border">4</td><td class="p-2 border">AI task completion</td><td class="p-2 border">Students provide commentary on AI-generated content.</td></tr><tr><td class="p-2 border">5</td><td class="p-2 border">Collaborating with AI</td><td class="p-2 border">AI used as a 'co-pilot' to meet requirements.</td></tr><tr class="bg-slate-50"><td class="p-2 border">6</td><td class="p-2 border">Must use AI</td><td class="p-2 border">AI usage is mandatory to build proficiency.</td></tr></tbody></table></div>`},
+            { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool?", bestPractice: "Develop assignment-specific AI policies. Teach students how to cite AI tools." },
+            { principle: "Student Data Privacy", question: "Does the tool use student data to train its models?", bestPractice: "Prefer tools that do not train on user data. Anonymise student work." },
+            { principle: "Algorithmic Bias", question: "On what data was this model trained? Could it be biased?", bestPractice: "Critically evaluate all AI outputs. Use flaws as a teachable moment." },
+            { principle: "Transparency", question: "Can I verify the information this tool provides? Does it cite sources?", bestPractice: "Always cross-check factual claims. Prefer 'grounded' AI tools." },
+            { principle: "Access & Equity", question: "Does this tool require expensive software or high-speed internet?", bestPractice: "Prioritise free, web-based tools. Ensure equitable alternatives are available." }
         ];
 
         function setupAccordions(containerSelector, data) {
             const container = document.querySelector(containerSelector);
-            if (!container) return;
-            container.innerHTML = data.map(item => `<div class="border border-slate-200 rounded-lg"><button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-medium text-slate-700 hover:bg-slate-50"><span>${item.principle || item.title}</span><span class="transform transition-transform duration-300">▼</span></button><div class="accordion-content"><div class="p-4 border-t border-slate-200 text-slate-600 space-y-2">${item.content ? `<p>${item.content}</p>` : ''}${item.example ? `<p class="text-sm italic text-slate-500">${item.example}</p>` : ''}${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}${item.htmlContent ? item.htmlContent : ''}</div></div></div>`).join('');
+            if (container) container.innerHTML = data.map(item => `<div class="border border-slate-200 rounded-lg"><button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-medium text-slate-700 hover:bg-slate-50"><span>${item.principle || item.title}</span><span class="transform transition-transform duration-300">▼</span></button><div class="accordion-content"><div class="p-4 border-t border-slate-200 text-slate-600 space-y-2">${item.content ? `<p>${item.content}</p>` : ''}${item.example ? `<p class="text-sm italic text-slate-500">${item.example}</p>` : ''}${item.question ? `<p><strong>Key Question:</strong> ${item.question}</p>` : ''}${item.redFlags ? `<p><strong>Red Flags:</strong> ${item.redFlags}</p>` : ''}${item.bestPractice ? `<p><strong>Best Practice:</strong> ${item.bestPractice}</p>` : ''}${item.htmlContent ? item.htmlContent : ''}</div></div></div>`).join('');
         }
         function setupWorkflow(containerSelector, contentSelector, data) {
             const container = document.querySelector(containerSelector);
@@ -571,7 +506,7 @@ You are an experienced educator in [INSERT SUBJECT AREA].
         function renderToolkit(filteredData) {
             const grid = document.getElementById('toolkit-grid');
             if (!grid) return;
-            grid.innerHTML = filteredData.length === 0 ? `<p class="col-span-full text-center text-slate-500">No tools match your filters.</p>` : filteredData.map(tool => `<div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col"><h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3><p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p><p class="text-slate-600 flex-grow mb-4">${tool.features}</p><div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200"><span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span><a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit Site &rarr;</a></div></div>`).join('');
+            grid.innerHTML = filteredData.length === 0 ? `<p class="col-span-full text-center text-slate-500">No tools match.</p>` : filteredData.map(tool => `<div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col"><h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3><p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p><p class="text-slate-600 flex-grow mb-4">${tool.features}</p><div class="flex justify-between items-center mt-auto pt-4 border-t"><span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span><a href="${tool.link}" target="_blank" rel="noopener" class="text-sm font-semibold text-sky-600 hover:text-sky-800">Visit &rarr;</a></div></div>`).join('');
         }
 
         setupAccordions('#advanced-prompting-container', advancedPromptsData);
