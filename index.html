@@ -71,8 +71,12 @@
     .welcome-icon { width:400px;height:400px;object-fit:contain }
     
     /* 9. Page display logic */
-    .page { display:none }
-    .page.active { display:block }
+    .page { 
+      display: none; 
+    }
+    .page.active { 
+      display: block !important; 
+    }
     
     /* 10. Skip link for keyboard navigation */
     .skip-link {
@@ -626,9 +630,22 @@
 <script>
   // Enhanced accessibility and functionality
   function showPage(id) {
+    console.log('Showing page:', id); // Debug log
+    
     // Update page display
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(`page-${id}`).classList.add('active');
+    document.querySelectorAll('.page').forEach(p => {
+      p.classList.remove('active');
+      p.style.display = 'none';
+    });
+    
+    const targetPage = document.getElementById(`page-${id}`);
+    if (targetPage) {
+      targetPage.classList.add('active');
+      targetPage.style.display = 'block';
+    } else {
+      console.error('Page not found:', `page-${id}`);
+      return;
+    }
     
     // Update navigation state
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
@@ -636,7 +653,7 @@
     // Close mobile menu if open
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    if (!mobileMenu.classList.contains('hidden')) {
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
       mobileMenu.classList.add('hidden');
       mobileMenuButton.setAttribute('aria-expanded', 'false');
       document.getElementById('menu-icon-open').classList.remove('hidden');
@@ -645,7 +662,9 @@
     
     // Focus management and announcements
     const mainContent = document.getElementById('main-content');
-    mainContent.focus();
+    if (mainContent) {
+      mainContent.focus();
+    }
     announcePageChange(id);
     
     window.scrollTo(0,0);
