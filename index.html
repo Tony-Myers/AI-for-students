@@ -628,8 +628,8 @@
 </footer>
 
 <script>
-  // Make showPage function global
-  window.showPage = function(id) {
+  // Define functions in global scope first
+  function showPage(id) {
     console.log('Showing page:', id);
     
     // Hide all pages
@@ -675,7 +675,62 @@
     
     // Scroll to top
     window.scrollTo(0, 0);
-  };
+  }
+
+  function downloadTemplate(type, format) {
+    let content = '';
+    let filename = '';
+    let mimeType = format === 'md' ? 'text/markdown' : 'text/plain';
+    
+    switch(type) {
+      case 'feedback':
+        content = feedbackPromptContent;
+        filename = `structured-feedback-prompt.${format}`;
+        break;
+      case 'socratic':
+        content = socraticPromptContent;
+        filename = `socratic-tutor-prompt.${format}`;
+        break;
+      case 'research':
+        content = feedbackPromptContent; // You can replace this with specific research content
+        filename = `research-prompt-template.${format}`;
+        break;
+      case 'teaching':
+        content = feedbackPromptContent; // You can replace this with specific teaching content
+        filename = `teaching-prompt-template.${format}`;
+        break;
+      default:
+        content = feedbackPromptContent;
+        filename = `prompt-template.${format}`;
+    }
+    
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.setAttribute('aria-label', `Download ${filename}`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  // Announce page changes to screen readers
+  function announcePageChange(pageName) {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = `Now viewing ${pageName.replace('-', ' ')} section`;
+    document.body.appendChild(announcement);
+    
+    setTimeout(() => {
+      if (document.body.contains(announcement)) {
+        document.body.removeChild(announcement);
+      }
+    }, 1000);
+  }
 
   // Enhanced mobile menu functionality
   function initializeMobileMenu() {
