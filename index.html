@@ -44,6 +44,11 @@
         if (closeIcon) closeIcon.classList.add('hidden');
       }
       
+      // Announce page change if function is available
+      if (window.announcePageChange) {
+        window.announcePageChange(id);
+      }
+      
       // Scroll to top
       window.scrollTo(0, 0);
     }
@@ -679,56 +684,86 @@
 </footer>
 
 <script>
-  // Define functions in global scope first
-  function showPage(id) {
-    console.log('Showing page:', id);
-    
-    // Hide all pages
-    document.querySelectorAll('.page').forEach(page => {
-      page.classList.remove('active');
-      page.style.display = 'none';
-    });
-    
-    // Show target page
-    const targetPage = document.getElementById(`page-${id}`);
-    if (targetPage) {
-      targetPage.classList.add('active');
-      targetPage.style.display = 'block';
-      console.log('Successfully showed page:', id);
-    } else {
-      console.error('Page not found:', `page-${id}`);
-      return;
-    }
-    
-    // Update navigation state
-    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
+  // Enhanced mobile menu functionality
+  function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-      mobileMenu.classList.add('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-      const openIcon = document.getElementById('menu-icon-open');
-      const closeIcon = document.getElementById('menu-icon-close');
-      if (openIcon) openIcon.classList.remove('hidden');
-      if (closeIcon) closeIcon.classList.add('hidden');
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const isHidden = mobileMenu.classList.contains('hidden');
+        
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+        
+        const openIcon = document.getElementById('menu-icon-open');
+        const closeIcon = document.getElementById('menu-icon-close');
+        if (openIcon && closeIcon) {
+          openIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        }
+        
+        // Focus management
+        if (!isHidden) {
+          mobileMenuButton.focus();
+        } else {
+          const firstMenuItem = mobileMenu.querySelector('button');
+          if (firstMenuItem) {
+            setTimeout(() => firstMenuItem.focus(), 100);
+          }
+        }
+      });
     }
-    
-    // Focus management
-    const mainContent = document.getElementById('main-content');
-    if (mainContent) {
-      mainContent.focus();
-    }
-    
-    // Announce page change
-    announcePageChange(id);
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
   }
 
-  function downloadTemplate(type, format) {
+  // Enhanced keyboard navigation
+  function initializeKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+      // Handle Enter and Space keys for custom interactive elements
+      if ((e.key === 'Enter' || e.key === ' ') && 
+          (e.target.classList.contains('nav-link') || 
+           e.target.classList.contains('workflow-node') ||
+           e.target.hasAttribute('onclick'))) {
+        e.preventDefault();
+        e.target.click();
+      }
+      
+      // Escape key to close mobile menu
+      if (e.key === 'Escape') {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenu && mobileMenuButton && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          const openIcon = document.getElementById('menu-icon-open');
+          const closeIcon = document.getElementById('menu-icon-close');
+          if (openIcon && closeIcon) {
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          mobileMenuButton.focus();
+        }
+      }
+    });
+  }
+
+  // Announce page changes to screen readers
+  function announcePageChange(pageName) {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.className = 'sr-only';
+    announcement.textContent = `Now viewing ${pageName.replace('-', ' ')} section`;
+    document.body.appendChild(announcement);
+    
+    setTimeout(() => {
+      if (document.body.contains(announcement)) {
+        document.body.removeChild(announcement);
+      }
+    }, 1000);
+  }
+
+  // Implement the actual download template function
+  window.downloadTemplateImpl = function(type, format) {
     let content = '';
     let filename = '';
     let mimeType = format === 'md' ? 'text/markdown' : 'text/plain';
@@ -765,23 +800,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-  }
-
-  // Announce page changes to screen readers
-  function announcePageChange(pageName) {
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.className = 'sr-only';
-    announcement.textContent = `Now viewing ${pageName.replace('-', ' ')} section`;
-    document.body.appendChild(announcement);
-    
-    setTimeout(() => {
-      if (document.body.contains(announcement)) {
-        document.body.removeChild(announcement);
-      }
-    }, 1000);
-  }
+  };
 
   // Enhanced mobile menu functionality
   function initializeMobileMenu() {
