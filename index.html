@@ -8,6 +8,57 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Define critical functions immediately -->
+  <script>
+    // Define showPage function immediately so onclick handlers work
+    function showPage(id) {
+      console.log('Showing page:', id);
+      
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+        page.style.display = 'none';
+      });
+      
+      // Show target page
+      const targetPage = document.getElementById(`page-${id}`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        targetPage.style.display = 'block';
+        console.log('Successfully showed page:', id);
+      } else {
+        console.error('Page not found:', `page-${id}`);
+        return;
+      }
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        const openIcon = document.getElementById('menu-icon-open');
+        const closeIcon = document.getElementById('menu-icon-close');
+        if (openIcon) openIcon.classList.remove('hidden');
+        if (closeIcon) closeIcon.classList.add('hidden');
+      }
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // Define downloadTemplate function immediately
+    function downloadTemplate(type, format) {
+      // This will be populated later when the data is available
+      if (window.downloadTemplateImpl) {
+        window.downloadTemplateImpl(type, format);
+      } else {
+        console.log('Download function not yet ready');
+      }
+    }
+  </script>
+  
   <style>
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     
