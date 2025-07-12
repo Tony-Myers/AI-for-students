@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
   <style>
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { 
@@ -121,7 +120,6 @@
 </header>
 
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
   <!-- HOME -->
   <section id="page-home" class="page active">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
@@ -240,12 +238,12 @@
             </div>
           </div>
         </div>
-
         <div class="space-y-6">
-          <h3 class="text-2xl font-bold text-slate-800">Practical Applications</h3>
-          
+          <h3 class="text-2xl font-bold text-slate-800">Practical Applications</h3>   
           <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
             <h4 class="text-lg font-bold text-amber-700 mb-3">AI-Human Collaboration</h4>
+            <p class="text-slate-700 leading-relaxed mb-
+
             <p class="text-slate-700 leading-relaxed mb-3">Viewing AI as a tool for inspiration and starting points, not as a replacement for expertise or critical thinking. Learning to work <em>with</em> AI rather than being replaced <em>by</em> it.</p>
             <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
               <strong>Approach:</strong> Use AI for brainstorming and initial drafts, then apply your academic expertise to refine, critique, and enhance the output.
@@ -297,7 +295,6 @@
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
   </section>
-
   <!-- PROMPTING -->
   <section id="page-prompting" class="page">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
@@ -320,7 +317,6 @@
         <h3 class="text-2xl font-bold text-slate-800 mb-4">The 10 Evidence-Based Principles of Effective Prompting</h3>
         <p class="text-slate-600 max-w-3xl mx-auto">Master these core techniques to dramatically improve your AI interactions. Each principle is backed by research and practical testing.</p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
           <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
@@ -406,7 +402,7 @@
         </div>
       </div>
     </div>
-
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -424,6 +420,7 @@
         <p class="text-center text-slate-600">Click on a research stage above to explore AI tools and techniques for that area.</p>
       </div>
     </div>
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -441,6 +438,7 @@
         <p class="text-center text-slate-600">Click on a teaching stage above to explore AI applications for that area.</p>
       </div>
     </div>
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -457,6 +455,7 @@
         <p class="col-span-full text-center text-slate-600">Loading AI platforms...</p>
       </div>
     </div>
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -487,6 +486,7 @@
         <p class="col-span-full text-center text-slate-600">Loading toolkit...</p>
       </div>
     </div>
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -503,6 +503,7 @@
         <p class="text-center text-slate-600">Loading ethical framework...</p>
       </div>
     </div>
+    
     <div class="text-center mt-8">
       <button onclick="showPage('home')" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</button>
     </div>
@@ -673,387 +674,6 @@ document.addEventListener('DOMContentLoaded', function() {
       bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions."
     }
   ];
-
-  // Setup research workflow
-  function setupResearchWorkflow() {
-    console.log('Setting up research workflow...');
-    const container = document.getElementById('research-workflow');
-    const contentEl = document.getElementById('research-workflow-content');
-    
-    if (!container || !contentEl) return;
-
-    container.innerHTML = '';
-    Object.entries(researchWorkflowData).forEach(([key, value], index) => {
-      const isLast = index === Object.keys(researchWorkflowData).length - 1;
-      const icons = ['📚', '📊', '✍️'];
-      container.innerHTML += `
-        <button onclick="showResearchStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer">
-          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🔬'}</div>
-          <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
-        </button>
-        ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
-      `;
-    });
-
-    // Create global function for showing research stages
-    window.showResearchStage = function(key) {
-      const item = researchWorkflowData[key];
-      contentEl.innerHTML = `
-        <div class="space-y-4">
-          <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
-          <p class="text-slate-600">${item.description}</p>
-          <div class="flex flex-wrap gap-2 items-center">
-            <span class="font-semibold">Recommended Tools:</span>
-            ${item.tools.map(tool => 
-              `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`
-            ).join('')}
-          </div>
-        </div>
-      `;
-    };
-
-    // Show first stage by default
-    window.showResearchStage(Object.keys(researchWorkflowData)[0]);
-  }
-
-  // Setup teaching workflow
-  function setupTeachingWorkflow() {
-    console.log('Setting up teaching workflow...');
-    const container = document.getElementById('teaching-workflow');
-    const contentEl = document.getElementById('teaching-workflow-content');
-    
-    if (!container || !contentEl) return;
-
-    container.innerHTML = '';
-    Object.entries(teachingWorkflowData).forEach(([key, value], index) => {
-      const isLast = index === Object.keys(teachingWorkflowData).length - 1;
-      const icons = ['👤', '📝', '🎨'];
-      container.innerHTML += `
-        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer">
-          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🎓'}</div>
-          <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
-        </button>
-        ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
-      `;
-    });
-
-    // Create global function for showing teaching stages
-    window.showTeachingStage = function(key) {
-      const item = teachingWorkflowData[key];
-      let contentHTML = `
-        <div class="space-y-4">
-          <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
-          <p class="text-slate-600">${item.description}</p>
-      `;
-
-      if (item.practicalApplications) {
-        contentHTML += `
-          <div class="practical-tools p-4 rounded-lg">
-            <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
-            <ul class="text-sm text-slate-700 space-y-1 mb-4">
-              ${item.practicalApplications.map(app => `<li>• ${app}</li>`).join('')}
-            </ul>
-            <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
-            <div class="space-y-2 mb-4">
-              ${item.aiPromptExamples.map(example => `
-                <div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700">
-                  <strong>Example:</strong> "${example}"
-                </div>
-              `).join('')}
-            </div>
-          </div>
-        `;
-      }
-
-      contentHTML += `
-          <div class="flex flex-wrap gap-2 items-center">
-            <span class="font-semibold">Recommended Tools:</span>
-            ${item.tools.map(tool => 
-              `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`
-            ).join('')}
-          </div>
-        </div>
-      `;
-      
-      contentEl.innerHTML = contentHTML;
-    };
-
-    // Show first stage by default
-    window.showTeachingStage(Object.keys(teachingWorkflowData)[0]);
-  }
-
-  // Render AI platforms
-  function renderAIPlatforms() {
-    console.log('Rendering AI platforms...');
-    const grid = document.getElementById('generative-ai-grid');
-    if (!grid) return;
-
-    grid.innerHTML = '';
-    generativeAiPlatforms.forEach((platform, index) => {
-      const card = document.createElement('div');
-      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
-      card.innerHTML = `
-        <div class="flex justify-between items-start mb-3">
-          <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
-          <span class="text-sm font-medium px-3 py-1 rounded-full ${platform.pricing === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${platform.pricing}</span>
-        </div>
-        <p class="text-sm font-semibold text-slate-600 mb-2">${platform.provider}</p>
-        <div class="flex-grow space-y-3">
-          <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Key Strengths:</p>
-            <p class="text-sm text-slate-600">${platform.strengths}</p>
-          </div>
-          <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Best for:</p>
-            <p class="text-sm text-slate-600">${platform.bestFor}</p>
-          </div>
-          <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Key Features:</p>
-            <p class="text-sm text-slate-600">${platform.features}</p>
-          </div>
-        </div>
-        <div class="mt-4 pt-4 border-t border-slate-200">
-          <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="platform-link inline-flex items-center text-sm font-semibold">
-            Visit ${platform.name} →
-          </a>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-  }
-
-  // Render toolkit
-  function renderToolkit(data = toolkitData) {
-    console.log('Rendering toolkit...');
-    const grid = document.getElementById('toolkit-grid');
-    if (!grid) return;
-
-    grid.innerHTML = '';
-    data.forEach((tool, index) => {
-      const card = document.createElement('div');
-      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
-      card.innerHTML = `
-        <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
-        <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
-        <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
-        <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
-          <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
-          <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="tool-link text-sm font-semibold">Visit Site →</a>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-  }
-
-  // Setup toolkit filters
-  function setupToolkitFilters() {
-    console.log('Setting up toolkit filters...');
-    const filterFunction = document.getElementById('filter-function');
-    const filterCost = document.getElementById('filter-cost');
-    
-    if (!filterFunction || !filterCost) return;
-
-    const functions = [...new Set(toolkitData.map(tool => tool.fn))];
-    const costs = [...new Set(toolkitData.map(tool => tool.cost))];
-
-    functions.forEach(fn => {
-      filterFunction.innerHTML += `<option value="${fn}">${fn}</option>`;
-    });
-    costs.forEach(cost => {
-      filterCost.innerHTML += `<option value="${cost}">${cost}</option>`;
-    });
-
-    function filterToolkit() {
-      const selectedFunction = filterFunction.value;
-      const selectedCost = filterCost.value;
-      const filteredData = toolkitData.filter(tool => {
-        const functionMatch = selectedFunction === 'all' || tool.fn === selectedFunction;
-        const costMatch = selectedCost === 'all' || tool.cost === selectedCost;
-        return functionMatch && costMatch;
-      });
-      renderToolkit(filteredData);
-    }
-
-    filterFunction.addEventListener('change', filterToolkit);
-    filterCost.addEventListener('change', filterToolkit);
-  }
-
-  // Render ethics checklist
-  function renderEthicsChecklist() {
-    console.log('Rendering ethics checklist...');
-    const container = document.getElementById('ethics-checklist-container');
-    if (!container) return;
-
-    container.innerHTML = ethicsChecklistData.map((item, index) => `
-      <div class="border border-slate-200 rounded-lg">
-        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(${index})">
-          <span>${item.principle}</span>
-          <span id="arrow-${index}" class="transition-transform duration-300">▼</span>
-        </button>
-        <div id="accordion-${index}" class="accordion-content">
-          <div class="p-4 border-t text-slate-600">
-            <p><strong>Key Question:</strong> ${item.question}</p>
-            <p><strong>Red Flags:</strong> ${item.redFlags}</p>
-            <p><strong>Best Practice:</strong> ${item.bestPractice}</p>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    // Create global accordion toggle function
-    window.toggleAccordion = function(index) {
-      const content = document.getElementById(`accordion-${index}`);
-      const arrow = document.getElementById(`arrow-${index}`);
-      
-      if (content.classList.contains('open')) {
-        content.classList.remove('open');
-        content.style.maxHeight = '0px';
-        arrow.style.transform = 'rotate(0deg)';
-      } else {
-        content.classList.add('open');
-        content.style.maxHeight = '2000px';
-        arrow.style.transform = 'rotate(180deg)';
-      }
-    };
-  }
-
-  // Setup download functionality
-  const feedbackPrompt = `**Your Role**
-
-You are an expert academic feedback assistant. Your purpose is to convert a final mark, raw marking notes, and optional marking rubrics into high-quality, structured, and supportive feedback for university students. Your primary goal is to provide actionable feedforward that helps students understand their mark and improve in future assessments. You must adhere strictly to the process and formatting rules below.
-
-**Phase 1: Initial Analysis & Tone Calibration**
-
-Before writing the response, complete the following preparatory steps.
-
-1. **Acknowledge Inputs:** You will be provided with the following information. You must only use the information given for the specific task.
-   - **Final Grade/Mark:** An overall percentage for the assignment.
-   - **Assignment Type:** For example, Essay, Report, or Presentation.
-   - **Marking Notes:** The marker's unstructured comments and observations. These notes must be specific enough to form the basis of the feedback.
-   - **Marking Rubric:** (Optional) A table of criteria and performance standards.
-2. **Ask for Clarification:** If the input is ambiguous (e.g., vague notes, or a grade that appears to conflict with the comments), you must ask for more information before proceeding. Ask specific questions, such as, "Could you clarify which part of the analysis was weakest?" or "The grade seems high for the provided comments. Could you please confirm the final mark?"
-3. **Calibrate the Tone:** Select the appropriate tone based on the final grade.
-   - **80–100% (First Class/Distinction):** Celebratory and encouraging. Focus on subtle refinements and advanced extensions for continued excellence.
-   - **70–79% (First Class):** Acknowledge excellence. Offer constructive challenges for developing deeper critical thinking.
-   - **60–69% (Upper Second / 2:1):** Recognise solid achievement. Provide clear, supportive guidance for development into a higher classification.
-   - **50–59% (Lower Second / 2:2):** Supportive but direct. Focus on fundamental concepts and offer clear, actionable steps for improvement.
-   - **40–49% (Third Class):** Emphasise foundational skills. Provide simple, step-by-step improvement suggestions.
-   - **0–39% (Fail):** Maintain a dignified and constructive tone. Clearly identify significant gaps in understanding and focus on essential academic skills.
-
-**Phase 2: Feedback Generation**
-
-Construct the feedback using this exact structure and the corresponding headings. The language must be clear, accessible, and use British English spelling.
-
-**Overall Comment** Start with a concise paragraph that summarises the overall impression of the work, directly referencing the final mark. Your tone should be professional, supportive, and aligned with the grade band. Where appropriate, include a sentence prompting the student to reflect on how they may have used feedback from previous assignments.
-
-**Strengths** Provide 2–3 bullet points detailing specific achievements that justify the positive aspects of the mark. Base each point on the marking notes or rubric, not on generic praise. Each bullet point must begin with a clear, bolded heading that forms part of the sentence.
-
-- **Example:** **Insightful literature review:** You effectively synthesised recent studies to frame your research question.
-
-**Areas for Development** Provide a maximum of three bullet points explaining what needs improvement. Each point must begin with a clear, bolded heading that forms part of the sentence. For each point, you must:
-
-1. Reference the evidence from the marking notes.
-2. Explain the issue in clear, student-friendly language.
-3. Offer at least one specific and actionable suggestion for improvement. This suggestion should explain what the student needs to do to move into the next grade classification.
-
-- **Example:** **Critical analysis requires deepening:** The marking notes indicate that your discussion was more descriptive than analytical. To improve, move beyond summarising sources and start explicitly comparing and contrasting their findings. For instance, try grouping sources by theme and stating how they support or challenge one another to achieve a mark in the first-class band.
-
-**Actionable Next Steps (Feedforward)** Provide 2–3 concrete actions for the student to take in future assignments. These must be directly linked to the "Areas for Development" section and empower the student to improve their future work.
-
-- **Example:** For your next essay, practise writing a paragraph that compares three journal articles on a shared theme, explicitly contrasting their methodologies.
-
-**Recommended Resources** Suggest 1–3 resources that directly address the areas for development. Only include links relevant to the specific feedback provided.
-
-- Referencing: https://libguides.newman.ac.uk/referencing/
-- Academic Writing and Style: https://moodle3.newman.ac.uk/24-25/course/view.php?id=2553
-- Study Skills Guides: https://libguides.newman.ac.uk/subject_guides/study-skills-resources
-- Using the Library: https://libguides.newman.ac.uk/home/using
-
-**Phase 3: Rubric Integration (If Provided)**
-
-If a full marking rubric is supplied, you must perform these steps after the main feedback.
-
-1. **Reproduce the Rubric:** Present the entire rubric as a Markdown table.
-2. **Highlight Achievement:** In the table, clearly mark the student's achieved performance band for each criterion. Use **bold text** for the entire cell's content. Retain all other performance bands for comparison.
-3. **Add a Summary:** Below the table, write a brief sentence connecting the highlighted bands to the main feedback.
-   - **Example Summary:** As you can see in the highlighted rubric, your work shows strong performance in 'Structure' (a key strength), while the feedback on 'Critical Analysis' explains how to move into the next performance band for that criterion.
-
-**Concluding Statement**
-
-You must add the following statements to the end of all feedback generated:
-
-"If you would like to discuss this feedback further, please email me at [Lecturer's Email] to arrange a meeting, or visit me during my office hours.
-
-Please refer to the full marking rubric within the assignment brief for a more detailed breakdown of how your work aligns with the module learning outcomes for the mark awarded. Should similarities in areas for improvement occur across multiple assignments, you may wish to meet with your personal tutor to discuss a strategy for developing this area."`;
-
-  const socraticPrompt = `### **Instructions for Academic Staff**
-
-To use this template, please replace the text within the square brackets \`[ ]\` with the details relevant to your specific course, assessment, and learning objectives. The aim is to configure the AI to act as a Socratic tutor that guides a student towards completing a specific academic task, rather than providing them with direct answers. This process encourages critical thinking and helps the student to develop their own ideas in a structured manner. 
-
-Once you have added the information, you can then give the prompt to students to paste the prompt into a generative AI model.
-
-### **General Purpose Socratic Tutor Prompt Template**
-
-**Role:** You are to adopt the persona of a highly experienced and approachable academic. You are an expert in **[Your Subject Area/Field, e.g., Eighteenth-Century Literature, Quantum Physics, Corporate Law]**. Your primary role is to be a kind, caring, and patient tutor who is skilled at supporting student learning through inquiry. Your tone should be encouraging and formal, yet accessible.
-
-**Task:** A student will engage with you to learn how to produce a **[Specific Task or Output, e.g., a critical essay plan, a case study analysis, a draft business model, a preliminary lab report]**.
-
-Your fundamental instruction is to guide the student through the process of creating this output for themselves. You must not, under any circumstances, write the **[Specific Task or Output]** for them. Your method is purely Socratic: you will ask a series of carefully constructed questions, wait for the student's reply, and then ask the next logical question based on their response.
-
-**Core Learning Objectives:** During this dialogue, your questions and guidance should be oriented towards helping the student learn and develop the following:
-
-- **[Insert Key Learning Objective 1, e.g., The ability to critically evaluate primary sources]**
-- **[Insert Key Learning Objective 2, e.g., An understanding of the concept of historical contingency]**
-- **[Insert Key Learning Objective 3, e.g., The skill of formulating a clear, arguable thesis statement]**
-- *(Add further objectives as required)*
-
-**Process and Dialogue Flow:**
-
-1. You will begin the conversation with a warm and open-ended opening question that invites the student to describe their initial thoughts or general area of interest related to the task.
-2. Your subsequent questions should be designed to help the student to narrow their focus, consider different perspectives, structure their thoughts, identify necessary components, and refine their ideas.
-3. The dialogue must be iterative. You must wait for the student's response before asking your next question.
-4. If the student's response indicates a misunderstanding or is inappropriate for the task, you should gently guide them back on track. You can achieve this by breaking the problem down into simpler steps or by asking questions that challenge their assumption, helping them to see the issue for themselves.
-5. If the student demonstrates a good understanding, you should ask more challenging questions that push them to deepen their analysis, consider counterarguments, or justify their reasoning more robustly.
-6. The entire interaction should be tailored to the student's current skill level, which is **[Student's Level and Field of Study, e.g., first-year undergraduate in history, master's student in engineering]**.
-7. The final output must be feasible within the given constraints, which are: **[List any specific constraints, e.g., a 2,000-word limit, a two-week deadline, reliance only on pre-approved reading materials, use of a specific theoretical framework]**.
-
-**Response Style Example:**
-
-- **Your opening question:** "Hello. I am here to help you get started with your **[Specific Task or Output]**. It can often feel like a challenge to begin, so let us start by exploring your initial ideas. Please do not worry if they are not yet fully formed; we can shape them together. What general topics or questions in **[Your Subject Area/Field]** are on your mind at the moment?"
-- **(Wait for the student's response)**
-- **Example follow-up question:** "That is a very interesting starting point. To move towards a more focused **[Specific Task or Output]**, let us consider... [e.g., *'which specific aspect of that topic do you find most compelling?'* or *'how might we connect that idea to the key theoretical concept of X?'*]"
-
-The dialogue between you and the student should continue iteratively until the student has produced a solid and feasible plan or draft that they can develop independently for their assessment.`;
-
-  window.downloadReady = function(type, format) {
-    let content = '';
-    let filename = '';
-    
-    switch(type) {
-      case 'feedback':
-        content = feedbackPrompt;
-        filename = `structured-feedback-prompt.${format}`;
-        break;
-      case 'socratic':
-        content = socraticPrompt;
-        filename = `socratic-tutor-prompt.${format}`;
-        break;
-      default:
-        content = feedbackPrompt;
-        filename = `prompt-template.${format}`;
-    }
-    
-    const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-    console.log('Downloaded:', filename);
-  };
 
   // Initialize all sections
   try {
