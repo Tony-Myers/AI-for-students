@@ -770,23 +770,23 @@
     
     switch(type) {
       case 'feedback':
-        content = feedbackPromptContent;
+        content = window.feedbackPromptContent;
         filename = `structured-feedback-prompt.${format}`;
         break;
       case 'socratic':
-        content = socraticPromptContent;
+        content = window.socraticPromptContent;
         filename = `socratic-tutor-prompt.${format}`;
         break;
       case 'research':
-        content = feedbackPromptContent; // You can replace this with specific research content
+        content = window.feedbackPromptContent; // You can replace this with specific research content
         filename = `research-prompt-template.${format}`;
         break;
       case 'teaching':
-        content = feedbackPromptContent; // You can replace this with specific teaching content
+        content = window.feedbackPromptContent; // You can replace this with specific teaching content
         filename = `teaching-prompt-template.${format}`;
         break;
       default:
-        content = feedbackPromptContent;
+        content = window.feedbackPromptContent;
         filename = `prompt-template.${format}`;
     }
     
