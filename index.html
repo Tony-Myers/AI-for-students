@@ -628,20 +628,22 @@
 </footer>
 
 <script>
-  // Enhanced accessibility and functionality
-  function showPage(id) {
-    console.log('Showing page:', id); // Debug log
+  // Make showPage function global
+  window.showPage = function(id) {
+    console.log('Showing page:', id);
     
-    // Update page display
-    document.querySelectorAll('.page').forEach(p => {
-      p.classList.remove('active');
-      p.style.display = 'none';
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(page => {
+      page.classList.remove('active');
+      page.style.display = 'none';
     });
     
+    // Show target page
     const targetPage = document.getElementById(`page-${id}`);
     if (targetPage) {
       targetPage.classList.add('active');
       targetPage.style.display = 'block';
+      console.log('Successfully showed page:', id);
     } else {
       console.error('Page not found:', `page-${id}`);
       return;
@@ -656,68 +658,86 @@
     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
       mobileMenu.classList.add('hidden');
       mobileMenuButton.setAttribute('aria-expanded', 'false');
-      document.getElementById('menu-icon-open').classList.remove('hidden');
-      document.getElementById('menu-icon-close').classList.add('hidden');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+      if (openIcon) openIcon.classList.remove('hidden');
+      if (closeIcon) closeIcon.classList.add('hidden');
     }
     
-    // Focus management and announcements
+    // Focus management
     const mainContent = document.getElementById('main-content');
     if (mainContent) {
       mainContent.focus();
     }
+    
+    // Announce page change
     announcePageChange(id);
     
-    window.scrollTo(0,0);
-  }
+    // Scroll to top
+    window.scrollTo(0, 0);
+  };
 
   // Enhanced mobile menu functionality
-  document.getElementById('mobile-menu-button').addEventListener('click', () => {
-    const mobileMenu = document.getElementById('mobile-menu');
+  function initializeMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const isHidden = mobileMenu.classList.contains('hidden');
-    
-    mobileMenu.classList.toggle('hidden');
-    mobileMenuButton.setAttribute('aria-expanded', !isHidden);
-    document.getElementById('menu-icon-open').classList.toggle('hidden');
-    document.getElementById('menu-icon-close').classList.toggle('hidden');
-    
-    // Focus management
-    if (!isHidden) {
-      // Menu was open, now closing - return focus to button
-      mobileMenuButton.focus();
-    } else {
-      // Menu was closed, now opening - focus first menu item
-      const firstMenuItem = mobileMenu.querySelector('button');
-      if (firstMenuItem) {
-        setTimeout(() => firstMenuItem.focus(), 100);
-      }
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const isHidden = mobileMenu.classList.contains('hidden');
+        
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', !isHidden);
+        
+        const openIcon = document.getElementById('menu-icon-open');
+        const closeIcon = document.getElementById('menu-icon-close');
+        if (openIcon && closeIcon) {
+          openIcon.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        }
+        
+        // Focus management
+        if (!isHidden) {
+          mobileMenuButton.focus();
+        } else {
+          const firstMenuItem = mobileMenu.querySelector('button');
+          if (firstMenuItem) {
+            setTimeout(() => firstMenuItem.focus(), 100);
+          }
+        }
+      });
     }
-  });
+  }
 
   // Enhanced keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    // Handle Enter and Space keys for custom interactive elements
-    if ((e.key === 'Enter' || e.key === ' ') && 
-        (e.target.classList.contains('nav-link') || 
-         e.target.classList.contains('workflow-node') ||
-         e.target.hasAttribute('onclick'))) {
-      e.preventDefault();
-      e.target.click();
-    }
-    
-    // Escape key to close mobile menu
-    if (e.key === 'Escape') {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        document.getElementById('menu-icon-open').classList.remove('hidden');
-        document.getElementById('menu-icon-close').classList.add('hidden');
-        mobileMenuButton.focus();
+  function initializeKeyboardNavigation() {
+    document.addEventListener('keydown', function(e) {
+      // Handle Enter and Space keys for custom interactive elements
+      if ((e.key === 'Enter' || e.key === ' ') && 
+          (e.target.classList.contains('nav-link') || 
+           e.target.classList.contains('workflow-node') ||
+           e.target.hasAttribute('onclick'))) {
+        e.preventDefault();
+        e.target.click();
       }
-    }
-  });
+      
+      // Escape key to close mobile menu
+      if (e.key === 'Escape') {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        if (mobileMenu && mobileMenuButton && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+          const openIcon = document.getElementById('menu-icon-open');
+          const closeIcon = document.getElementById('menu-icon-close');
+          if (openIcon && closeIcon) {
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          mobileMenuButton.focus();
+        }
+      }
+    });
+  }
 
   // Announce page changes to screen readers
   function announcePageChange(pageName) {
