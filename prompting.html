@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: Prompting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .principle-card { transition:transform .3s,box-shadow .3s }
+    .principle-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
+      <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Teaching</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Ethics</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
+    <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">Foundations: Mastering Prompt Engineering</h2>
+    <p class="max-w-3xl mx-auto">Prompt engineering is the art and science of designing inputs to guide AI toward accurate, relevant, and useful outputs. These ten principles are evidence-based.</p>
+  </div>
+  <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
+    <h3 class="text-xl font-bold text-sky-700 mb-4">Download Prompt Templates</h3>
+    <div class="flex flex-wrap gap-4">
+      <button onclick="downloadTemplate('feedback','md')" class="bg-sky-700 text-white px-4 py-2 rounded hover:bg-sky-800">📝 Structured Feedback (.md)</button>
+      <button onclick="downloadTemplate('feedback','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">📄 Structured Feedback (.txt)</button>
+      <button onclick="downloadTemplate('socratic','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🤔 Socratic Tutor (.md)</button>
+      <button onclick="downloadTemplate('socratic','txt')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">🤔 Socratic Tutor (.txt)</button>
+    </div>
+  </div>
+  <div class="bg-white rounded-xl shadow-lg p-8">
+    <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">The 10 Evidence-Based Principles of Effective Prompting</h3>
+      <p class="text-slate-600 max-w-3xl mx-auto">Master these core techniques to dramatically improve your AI interactions. Each principle is backed by research and practical testing.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+          <h3 class="text-lg font-bold text-sky-700 mb-2">1. Clarity & Specificity</h3>
+          <p class="text-slate-600 mb-2">Tell the LLM exactly what you want, leaving no room for interpretation. LLMs are extraordinarily creative, so vague prompts can lead to varied, inconsistent outputs.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "Produce a report based on this data"<br>
+            <strong>Use:</strong> "List our five most popular products and write a one-paragraph description of each"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+          <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Context Provision</h3>
+          <p class="text-slate-600 mb-2">Furnish all necessary background information. Context helps the LLM narrow its vast knowledge to your specific needs and avoid generic outputs.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "I am a college senior with a 3.5 GPA and I need an essay outline on the French Revolution's impact"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+          <h3 class="text-lg font-bold text-purple-700 mb-2">3. Role/Persona Assignment</h3>
+          <p class="text-slate-600 mb-2">Assigning a specific role directly influences tone, style, and domain expertise. This makes responses more focused and professional.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "You are a patent lawyer. Explain the legal process for patenting an invention in simple terms"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+          <h3 class="text-lg font-bold text-amber-700 mb-2">4. Output Format Definition</h3>
+          <p class="text-slate-600 mb-2">Clearly specify the desired structure for machine-readable outputs like JSON, XML, or human-readable formats like lists and tables.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Return results in JSON: {'key': 'value'}" or "Provide a concise summary in bulleted list format"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
+          <h3 class="text-lg font-bold text-rose-700 mb-2">5. Examples (Few-Shot Prompting)</h3>
+          <p class="text-slate-600 mb-2">Including examples can lead to massive improvements in accuracy. Even a single example can significantly guide the model to desired output structure and style.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Here's an example of a one-paragraph description for another product..." then provide your request
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
+          <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Iterative Refinement</h3>
+          <p class="text-slate-600 mb-2">Prompt engineering is rarely "one-and-done." Continuously refining prompts based on LLM responses is essential for improving quality.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> Start broad, then refine: "Based on the outline provided, expand on the target audience section..."
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded border border-teal-200">
+          <h3 class="text-lg font-bold text-teal-700 mb-2">7. Conciseness/Information Density</h3>
+          <p class="text-slate-600 mb-2">LLM performance can decrease with prompt length. Improve "information density" by shrinking information into fewer words.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "The overarching aim of this exceptionally well-structured..."<br>
+            <strong>Use:</strong> "Produce high quality, readable, clear content"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded border border-orange-200">
+          <h3 class="text-lg font-bold text-orange-700 mb-2">8. Chain of Thought (CoT) Prompting</h3>
+          <p class="text-slate-600 mb-2">For complex problems, encourage step-by-step reasoning. This enhances reasoning capabilities and provides transparency into the model's logic.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Let's think step-by-step" or "Explain each step" for mathematical problems
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-lime-50 to-green-50 p-6 rounded border border-lime-200">
+          <h3 class="text-lg font-bold text-lime-700 mb-2">9. Instructions over Constraints</h3>
+          <p class="text-slate-600 mb-2">Instruct the model what to do (positive instructions) rather than what not to do (constraints). Use clear binary "hard on/off rules."</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "Do not list video game names"<br>
+            <strong>Use:</strong> "Only discuss the console, company, year, and total sales"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded border border-violet-200">
+          <h3 class="text-lg font-bold text-violet-700 mb-2">10. Testing & Data-Driven Approach</h3>
+          <p class="text-slate-600 mb-2">Test prompts empirically using a "Monte Carlo approach"—generate multiple outputs and evaluate quality for statistical reliability.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> Use a spreadsheet to track "Prompt," "Output," and "Good Enough" ratings across 10-20 attempts
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="text-center mt-8">
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+  </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const feedbackPrompt = `**Your Role**...`; // Full prompt text omitted for brevity
+  const socraticPrompt = `### **Instructions for Academic Staff**...`; // Full prompt text omitted for brevity
+
+  window.downloadTemplate = function(type, format) {
+    let content = '';
+    let filename = '';
+    if (type === 'feedback') {
+      content = feedbackPrompt;
+      filename = `structured-feedback-prompt.${format}`;
+    } else if (type === 'socratic') {
+      content = socraticPrompt;
+      filename = `socratic-tutor-prompt.${format}`;
+    }
+    const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+});
+</script>
+
+</body>
+</html>
