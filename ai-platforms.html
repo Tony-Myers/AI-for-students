@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: AI Platforms</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .platform-link { color:#0369a1 !important; text-decoration:none; }
+    .platform-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
+    .tool-card { transition:transform .3s,box-shadow .3s }
+    .tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
+        <div class="hidden md:flex space-x-4">
+            <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+            <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
+            <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+            <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+            <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
+            <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Teaching</a>
+            <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">AI Platforms</a>
+            <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+            <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Ethics</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+        <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+        <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
+        <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+        <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+        <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
+        <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
+        <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+        <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+        <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">Core Generative AI Platforms</h2>
+      <p class="max-w-3xl mx-auto">Leading generative AI platforms that form the foundation of academic AI workflows. Each offers unique strengths for research, teaching, and scholarly work.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="col-span-full text-center text-slate-600">Loading AI platforms...</p>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const generativeAiPlatforms = [
+    { name: "Claude", provider: "Anthropic", strengths: "Long-context conversations, document analysis, ethical reasoning", bestFor: "Research synthesis, academic writing, complex reasoning tasks", pricing: "Freemium", link: "https://claude.ai", features: "200k+ token context window, document uploads, artifact creation" },
+    { name: "ChatGPT", provider: "OpenAI", strengths: "Versatile conversational AI, plugin ecosystem, code generation", bestFor: "General academic assistance, brainstorming, problem-solving", pricing: "Freemium", link: "https://chatgpt.com", features: "Web Browse, image generation, file uploads, custom GPTs" },
+    { name: "Gemini", provider: "Google", strengths: "Integration with Google Workspace, multimodal capabilities", bestFor: "Research integration, Google ecosystem workflows", pricing: "Freemium", link: "https://gemini.google.com", features: "Google Search integration, multimodal input, workspace connectivity" },
+    { name: "Copilot", provider: "Microsoft", strengths: "Microsoft 365 integration, enterprise features", bestFor: "Academic institutions using Microsoft tools", pricing: "Freemium", link: "https://copilot.microsoft.com", features: "Office integration, enterprise security, team collaboration" },
+    { name: "Perplexity", provider: "Perplexity AI", strengths: "Real-time web search, source citations, research focus", bestFor: "Fact-checking, current research, literature discovery", pricing: "Freemium", link: "https://www.perplexity.ai", features: "Live web search, citation tracking, academic search mode" },
+    { name: "Mistral", provider: "Mistral AI", strengths: "European AI, privacy-focused, multilingual", bestFor: "Privacy-conscious research, European compliance", pricing: "Freemium", link: "https://mistral.ai", features: "GDPR compliance, multilingual support, open-source models" },
+    { name: "DeepSeek", provider: "DeepSeek", strengths: "Advanced reasoning, mathematical capabilities, coding", bestFor: "Technical research, mathematical problems, programming", pricing: "Freemium", link: "https://deepseek.com", features: "Advanced reasoning models, technical problem-solving, coding assistance" },
+    { name: "Qwen", provider: "Alibaba", strengths: "Multilingual capabilities, Asian language support", bestFor: "Cross-cultural research, multilingual projects", pricing: "Free", link: "https://chat.qwen.ai", features: "Strong multilingual support, cultural understanding, free access" },
+    { name: "Meta AI", provider: "Meta", strengths: "Image generation, creative tasks, social integration", bestFor: "Creative projects, visual content, social research", pricing: "Free", link: "https://www.meta.ai", features: "Image generation, creative writing, social platform integration" }
+  ];
+
+  function renderAIPlatforms() {
+    const grid = document.getElementById('generative-ai-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    generativeAiPlatforms.forEach((platform) => {
+      const card = document.createElement('div');
+      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
+          <span class="text-sm font-medium px-3 py-1 rounded-full ${platform.pricing === 'Free' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${platform.pricing}</span>
+        </div>
+        <p class="text-sm font-semibold text-slate-600 mb-2">${platform.provider}</p>
+        <div class="flex-grow space-y-3">
+          <div><p class="text-sm font-medium text-slate-700 mb-1">Key Strengths:</p><p class="text-sm text-slate-600">${platform.strengths}</p></div>
+          <div><p class="text-sm font-medium text-slate-700 mb-1">Best for:</p><p class="text-sm text-slate-600">${platform.bestFor}</p></div>
+          <div><p class="text-sm font-medium text-slate-700 mb-1">Key Features:</p><p class="text-sm text-slate-600">${platform.features}</p></div>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-200">
+          <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="platform-link inline-flex items-center text-sm font-semibold">Visit ${platform.name} →</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+  renderAIPlatforms();
+});
+</script>
+
+</body>
+</html>
