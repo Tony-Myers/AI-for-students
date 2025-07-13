@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: Toolkit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .tool-link { color:#0369a1 !important; text-decoration:none; }
+    .tool-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
+    .tool-card { transition:transform .3s,box-shadow .3s }
+    .tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
+        <div class="hidden md:flex space-x-4">
+            <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+            <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
+            <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+            <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+            <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
+            <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Teaching</a>
+            <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+            <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Toolkit</a>
+            <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Ethics</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+        <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+        <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
+        <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+        <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+        <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
+        <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
+        <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+        <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+        <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">The Academic's AI Toolkit Explorer</h2>
+      <p class="max-w-3xl mx-auto">Navigate the ecosystem of AI tools with our interactive filters. Find the right tool for research, teaching, or productivity.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div class="flex flex-wrap gap-4 mb-8 justify-center">
+        <div class="flex items-center space-x-2">
+          <label for="filter-function" class="font-semibold text-slate-600">Function:</label>
+          <select id="filter-function" class="p-2 border rounded-md shadow-sm">
+            <option value="all">All Functions</option>
+          </select>
+        </div>
+        <div class="flex items-center space-x-2">
+          <label for="filter-cost" class="font-semibold text-slate-600">Cost:</label>
+          <select id="filter-cost" class="p-2 border rounded-md shadow-sm">
+            <option value="all">All Models</option>
+          </select>
+        </div>
+      </div>
+      <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <p class="col-span-full text-center text-slate-600">Loading toolkit...</p>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const toolkitData = [
+    { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "Answers questions based only on user-uploaded sources; provides inline citations; generates summaries and audio overviews.", cost: "Freemium", link: "https://notebooklm.google.com" },
+    { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Build custom AI applications with Gemini models; API access; model tuning and deployment capabilities.", cost: "Freemium", link: "https://aistudio.google.com" },
+    { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents from prompts; automates design; supports collaboration.", cost: "Freemium", link: "https://gamma.app" },
+    { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks; helps find seminal papers and related work; collaborative collections and alerts.", cost: "Free", link: "https://researchrabbitapp.com" },
+    { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables; automates parts of systematic reviews; answers research questions.", cost: "Freemium", link: "https://elicit.com" },
+    { name: "Connected Papers", fn: "Literature Discovery", features: "Creates visual graphs to explore connections between academic papers; identifies prior and derivative works.", cost: "Freemium", link: "https://connectedpapers.com" },
+    { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure; suggests relevant citations; helps find journals; does not write for the user.", cost: "Freemium", link: "https://www.thesify.ai" },
+    { name: "ATLAS.ti / NVivo", fn: "Qualitative Data Analysis", features: "AI-powered coding, thematic analysis, and transcription for unstructured data (interviews, text).", cost: "Paid", link: "https://atlasti.com" },
+    { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app" },
+    { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org" },
+    { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Paid", link: "https://scite.ai" }
+  ];
+
+  function renderToolkit(data = toolkitData) {
+    const grid = document.getElementById('toolkit-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    data.forEach((tool) => {
+      const card = document.createElement('div');
+      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
+      card.innerHTML = `
+        <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
+        <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
+        <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
+        <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
+          <span class="text-sm font-medium px-3 py-1 rounded-full ${tool.cost === 'Free' ? 'bg-green-100 text-green-800' : tool.cost === 'Paid' ? 'bg-red-100 text-red-800' : 'bg-blue-100 text-blue-800'}">${tool.cost}</span>
+          <a href="${tool.link}" target="_blank" rel="noopener noreferrer" class="tool-link text-sm font-semibold">Visit Site →</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function setupToolkitFilters() {
+    const filterFunction = document.getElementById('filter-function');
+    const filterCost = document.getElementById('filter-cost');
+    if (!filterFunction || !filterCost) return;
+    const functions = [...new Set(toolkitData.map(tool => tool.fn))];
+    const costs = [...new Set(toolkitData.map(tool => tool.cost))];
+    functions.forEach(fn => { filterFunction.innerHTML += `<option value="${fn}">${fn}</option>`; });
+    costs.forEach(cost => { filterCost.innerHTML += `<option value="${cost}">${cost}</option>`; });
+    function filterToolkit() {
+      const selectedFunction = filterFunction.value;
+      const selectedCost = filterCost.value;
+      const filteredData = toolkitData.filter(tool => {
+        const functionMatch = selectedFunction === 'all' || tool.fn === selectedFunction;
+        const costMatch = selectedCost === 'all' || tool.cost === selectedCost;
+        return functionMatch && costMatch;
+      });
+      renderToolkit(filteredData);
+    }
+    filterFunction.addEventListener('change', filterToolkit);
+    filterCost.addEventListener('change', filterToolkit);
+  }
+
+  renderToolkit();
+  setupToolkitFilters();
+});
+</script>
+
+</body>
+</html>
