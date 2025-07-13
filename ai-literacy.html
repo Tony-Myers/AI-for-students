@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: AI Literacy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .principle-card { transition:transform .3s,box-shadow .3s }
+    .principle-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
+      <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Teaching</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Ethics</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
+    <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">Developing AI Literacy for Academics</h2>
+    <p class="max-w-3xl mx-auto">Essential skills and knowledge for navigating the AI-powered academic landscape responsibly and effectively.</p>
+  </div>
+  <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
+    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-200 mb-6">
+      <h3 class="text-xl font-bold text-indigo-700 mb-4">What is AI Literacy?</h3>
+      <p class="text-slate-700 leading-relaxed">AI literacy encompasses the knowledge, skills, and critical thinking abilities needed to understand, evaluate, and effectively use AI technologies. For academics, this includes understanding how AI models work, their capabilities and limitations, and how to integrate them ethically and effectively into scholarly work.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-slate-800">Core AI Literacy Skills</h3>
+        <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+          <h4 class="text-lg font-bold text-sky-700 mb-3">Effective Prompt Engineering</h4>
+          <p class="text-slate-700 leading-relaxed mb-3">Writing clear, specific instructions and breaking down complex requests to yield better AI outputs. This involves understanding how to structure prompts, provide context, and iterate on instructions.</p>
+          <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+            <strong>Example:</strong> Instead of "Help with my essay," try "Act as an academic writing tutor. Review my thesis statement about climate change impacts on agriculture and suggest three ways to make it more specific and arguable."
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+          <h4 class="text-lg font-bold text-emerald-700 mb-3">Critical Evaluation of AI Outputs</h4>
+          <p class="text-slate-700 leading-relaxed mb-3">Developing the ability to identify biases, limitations, and factual errors in AI-generated content. This includes fact-checking information and comparing AI outputs with trusted sources.</p>
+          <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+            <strong>Practice:</strong> Always verify academic sources suggested by AI models. Check if the source exists and genuinely supports the claims the AI is making.
+          </div>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-slate-800">Practical Applications</h3>
+        <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+          <h4 class="text-lg font-bold text-amber-700 mb-3">AI-Human Collaboration</h4>
+          <p class="text-slate-700 leading-relaxed mb-3">Viewing AI as a tool for inspiration and starting points, not as a replacement for expertise or critical thinking. Learning to work <em>with</em> AI rather than being replaced <em>by</em> it.</p>
+          <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+            <strong>Approach:</strong> Use AI for brainstorming and initial drafts, then apply your academic expertise to refine, critique, and enhance the output.
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
+          <h4 class="text-lg font-bold text-rose-700 mb-3">Data Privacy and Ethics</h4>
+          <p class="text-slate-700 leading-relaxed mb-3">Understanding the importance of data protection when using AI tools, especially with confidential or sensitive academic materials. Knowing when and how to use local models or privacy-focused alternatives.</p>
+          <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+            <strong>Warning:</strong> Never upload client, patient, or confidential institutional data to public AI models without proper safeguards.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-slate-200 pt-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-6">Learning vs Production Framework</h3>
+      <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg border border-sky-200">
+        <p class="text-slate-700 leading-relaxed mb-4">It is important to be explicit with students about the permissible and prohibited uses of AI for any given assessment. A key aspect is exploring how they can use AI for the purpose of <strong>learning</strong>, rather than solely for <strong>production</strong>.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-white p-4 rounded border border-green-200">
+            <h4 class="font-bold text-green-700 mb-2">AI for Learning</h4>
+            <ul class="text-sm text-slate-600 space-y-1">
+              <li>• Explaining complex concepts</li>
+              <li>• Generating practice questions</li>
+              <li>• Providing feedback on drafts</li>
+              <li>• Brainstorming ideas</li>
+              <li>• Checking understanding</li>
+            </ul>
+          </div>
+          <div class="bg-white p-4 rounded border border-amber-200">
+            <h4 class="font-bold text-amber-700 mb-2">AI for Production (with caution)</h4>
+            <ul class="text-sm text-slate-600 space-y-1">
+              <li>• Generating initial drafts (must cite)</li>
+              <li>• Formatting and structure</li>
+              <li>• Language translation</li>
+              <li>• Data analysis assistance</li>
+              <li>• Citation formatting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-8">
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+  </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});
+</script>
+
+</body>
+</html>
