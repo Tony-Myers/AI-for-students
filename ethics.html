@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered Academic: Ethics</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .accordion-content { max-height:0 !important; overflow:hidden; transition:max-height .5s ease-in-out }
+    .accordion-content.open { max-height:2000px !important; transition:max-height 1s ease-in-out }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+        <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
+        <div class="hidden md:flex space-x-4">
+            <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+            <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
+            <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+            <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+            <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
+            <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Teaching</a>
+            <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+            <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+            <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Ethics</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+        <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+        <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
+        <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+        <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+        <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
+        <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
+        <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+        <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+        <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+      <h2 class="text-3xl font-bold">An Ethical Framework for AI in Academia</h2>
+      <p class="max-w-3xl mx-auto">A proactive approach is essential to harness AI's benefits while mitigating risks. Use this interactive checklist to evaluate tools and practices.</p>
+    </div>
+    <div class="bg-white rounded-xl shadow-lg p-8">
+      <div id="ethics-checklist-container" class="space-y-4">
+        <p class="text-center text-slate-600">Loading ethical framework...</p>
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const ethicsChecklistData = [
+    { principle: "Academic Integrity", question: "Does my syllabus clearly state my policy on using this tool for graded assignments?", redFlags: "A one-size-fits-all policy; lack of clarity on what constitutes cheating.", bestPractice: "Develop assignment-specific AI policies. When use is permitted, teach students how to cite the AI tool properly." },
+    { principle: "Student Data Privacy", question: "Does the tool's privacy policy state whether it uses my students' data to train its models?", redFlags: "Vague privacy policies; no option to opt out of data collection for training; requiring excessive personal information.", bestPractice: "Prefer tools that do not train on user data. Anonymise all student work before uploading by removing all Personally Identifiable Information (PII)." },
+    { principle: "Algorithmic Fairness & Bias", question: "On what kind of data was this model likely trained? Could it be biased against certain student groups?", redFlags: "The tool consistently produces stereotypical content; it struggles with diverse names, cultures, or linguistic styles.", bestPractice: "Critically evaluate all AI outputs. Use the tool's flaws as a teachable moment about bias. Involve diverse human judgment in all high-stakes decisions." }
+  ];
+
+  function renderEthicsChecklist() {
+    const container = document.getElementById('ethics-checklist-container');
+    if (!container) return;
+    container.innerHTML = ethicsChecklistData.map((item, index) => `
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(${index})">
+          <span>${item.principle}</span>
+          <span id="arrow-${index}" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-${index}" class="accordion-content">
+          <div class="p-4 border-t text-slate-600">
+            <p><strong>Key Question:</strong> ${item.question}</p>
+            <p><strong>Red Flags:</strong> ${item.redFlags}</p>
+            <p><strong>Best Practice:</strong> ${item.bestPractice}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+    window.toggleAccordion = function(index) {
+      const content = document.getElementById(`accordion-${index}`);
+      const arrow = document.getElementById(`arrow-${index}`);
+      if (content.classList.contains('open')) {
+        content.classList.remove('open');
+        content.style.maxHeight = '0px';
+        arrow.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.add('open');
+        content.style.maxHeight = '2000px';
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    };
+  }
+  renderEthicsChecklist();
+});
+</script>
+
+</body>
+</html>
