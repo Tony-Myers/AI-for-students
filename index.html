@@ -17,7 +17,8 @@
     .platform-link:hover, .tool-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
     .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
     .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
-    .hero-img { width: 300px; height: 300px; object-fit: contain; }
+    /* Adjusted image size based on previous request */
+    .hero-img { width: 400px; height: 400px; object-fit: contain; } 
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -56,10 +57,10 @@
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
     <h2 id="home-title" class="text-4xl font-bold"></h2>
-    <div class="w-80 h-80 mx-auto bg-sky-900/30 rounded-full flex items-center justify-center border-4 border-sky-400/50">
+    <div class="w-auto h-auto mx-auto bg-sky-900/30 rounded-full flex items-center justify-center border-4 border-sky-400/50" style="width: 420px; height: 420px;">
       <img id="home-hero-img" src="" alt="AI in Academia" class="hero-img">
     </div>
-    <p id="home-subtitle" class="text-lg"></p>
+    <div id="home-subtitle" class="text-left max-w-3xl mx-auto"></div>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
     <a href="integration.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
@@ -115,8 +116,17 @@ document.addEventListener('DOMContentLoaded', function() {
   // --- START: EDITABLE PAGE CONTENT ---
   const pageContent = {
       home: {
-          title: "Welcome to the Future of Academia",
-          subtitle: "Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching and scholarly work. Move from <em>if</em> to <em>how</em> with this interactive guide. <p> To navigate the landscape of AI in HE successfully, students need to develop strong AI literacies alongside general and digital literacies. Your role is to help them achieve this and to do this, you need to have the knowledge and skills in what is a rapidly developing area. I have put together this website with links to curated AI tools I and my students have found useful and provide prompt scripts to help you. I hope you find this useful.",
+          title: "The AI-Powered Academic",
+          // CHANGE 2: The subtitle text has been updated to the new, rewritten version.
+          // Using backticks (`) allows for multiple lines.
+          subtitle: `
+            <p class="mb-4">
+              Generative AI is no longer a niche curiosity but a core utility fundamentally reshaping academia. This guide is designed to help you and other educators move from asking <em>if</em> they should use AI to understanding <em>how</em> to do so effectively and ethically.
+            </p>
+            <p>
+              To navigate this landscape, students need strong AI literacy, and it is our role to facilitate that development. This begins with enhancing our own skills. Within this site, you will find curated tools, practical academic workflows, and prompt templates to support your research, teaching, and productivity.
+            </p>
+          `,
           heroImageUrl: "/AI-for-education/images/hero-image.gif",
           buttons: {
               integration: { title: "AI Integration", description: "Strategic implementation in higher education" },
