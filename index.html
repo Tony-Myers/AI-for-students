@@ -56,6 +56,16 @@
       white-space: nowrap;
       border: 0;
     }
+    .workflow-img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+    .hero-img {
+      width: 280px;
+      height: 280px;
+      object-fit: contain;
+    }
   </style>
 
   <script>
@@ -127,7 +137,7 @@
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
       <h2 class="text-4xl font-bold">Welcome to the Future of Academia</h2>
       <div class="w-80 h-80 mx-auto bg-sky-900/30 rounded-full flex items-center justify-center border-4 border-sky-400/50">
-        <div class="text-6xl">🤖</div>
+        <img src="Landing page 1 AI. web.png" alt="AI in Academia" class="hero-img">
       </div>
       <p class="text-lg">Generative AI is no longer a niche curiosity but a core utility reshaping research, teaching and scholarly work. Move from <em>if</em> to <em>how</em> with this interactive guide.</p>
     </div>
@@ -539,7 +549,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {name: "Elicit", url: "https://elicit.com"}, 
         {name: "Connected Papers", url: "https://connectedpapers.com"}, 
         {name: "Semantic Scholar", url: "https://www.semanticscholar.org"}
-      ]
+      ],
+      image: "2 AI web.png"
     },
     "Data Analysis": {
       title: "Qualitative & Quantitative Analysis",
@@ -550,7 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {name: "Julius AI", url: "https://julius.ai"},
         {name: "Claude", url: "https://claude.ai"},
         {name: "ChatGPT", url: "https://chatgpt.com"}
-      ]
+      ],
+      image: "AI web.png"
     },
     "Writing & Productivity": {
       title: "Writing & Productivity",
@@ -561,7 +573,8 @@ document.addEventListener('DOMContentLoaded', function() {
         {name: "Grammarly", url: "https://www.grammarly.com"},
         {name: "Claude", url: "https://claude.ai"},
         {name: "ChatGPT", url: "https://chatgpt.com"}
-      ]
+      ],
+      image: "4 AI web.png"
     }
   };
 
@@ -685,10 +698,11 @@ document.addEventListener('DOMContentLoaded', function() {
     container.innerHTML = '';
     Object.entries(researchWorkflowData).forEach(([key, value], index) => {
       const isLast = index === Object.keys(researchWorkflowData).length - 1;
-      const icons = ['📚', '📊', '✍️'];
       container.innerHTML += `
         <button onclick="showResearchStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer">
-          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🔬'}</div>
+          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center">
+            <img src="${value.image}" alt="${value.title}" class="workflow-img">
+          </div>
           <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
         </button>
         ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
