@@ -114,13 +114,32 @@ document.addEventListener('DOMContentLoaded', function() {
       practicalApplications: [
         "Design interactive presentations with embedded activities",
         "Create realistic case studies and scenarios for problem-based learning",
-        "Develop educational games and simulations"
+        "Repurpose lecture transcripts or notes into podcast scripts",
+        "Generate debate topics or role-playing scenarios for seminars",
+        "Produce explainer video scripts for complex topics"
       ],
       aiPromptExamples: [
         "Create a business case study about sustainable supply chain management for undergraduate students",
-        "Design an interactive presentation on the water cycle with 3 embedded activities for Year 7 students"
+        "Take the following lecture notes on cellular mitosis and turn them into a script for a 10-minute educational podcast episode. The tone should be conversational.",
+        "Generate a role-playing scenario for two students to debate the economic pros and cons of Brexit."
       ],
-      tools: [{name: "Gamma", url: "https://gamma.app"}, {name: "Beautiful.AI", url: "https://www.beautiful.ai"}, {name: "Canva Magic Design", url: "https://www.canva.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "ChatGPT", url: "https://chatgpt.com"}]
+      tools: [{name: "Gamma", url: "https://gamma.app"}, {name: "Canva Magic Design", url: "https://www.canva.com"}, {name: "ElevenLabs", url: "https://elevenlabs.io"}, {name: "Pictory", url: "https://pictory.ai"}, {name: "Claude", url: "https://claude.ai"}, {name: "ChatGPT", url: "https://chatgpt.com"}]
+    },
+    "Automation": {
+      title: "Workflow Automation & Support",
+      description: "Streamline administrative tasks, manage communications, and provide scalable student support to free up valuable time for teaching and research.",
+      practicalApplications: [
+        "Draft emails to students about course announcements or deadlines",
+        "Generate lesson plans and align them with learning objectives",
+        "Summarise academic papers or long documents to quickly grasp key points",
+        "Create FAQs and knowledge bases from course materials for student self-service"
+      ],
+      aiPromptExamples: [
+        "Draft a friendly but formal email to my undergraduate students reminding them that their final essay is due next Friday at 5 PM.",
+        "Create a lesson plan for a 90-minute seminar on the topic of 'The Causes of the First World War', including learning outcomes, key activities, and assessment questions.",
+        "Summarise the key arguments and methodology of the attached research paper into five bullet points."
+      ],
+      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "Gemini", url: "https://gemini.google.com"}, {name: "Perplexity", url: "https://perplexity.ai"}]
     }
   };
 
@@ -131,9 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
     container.innerHTML = '';
     Object.entries(teachingWorkflowData).forEach(([key, value], index) => {
       const isLast = index === Object.keys(teachingWorkflowData).length - 1;
-      const icons = ['👤', '📝', '🎨'];
+      const icons = ['👤', '📝', '🎨', '⚙️'];
       container.innerHTML += `
-        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer">
+        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-36">
           <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🎓'}</div>
           <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
         </button>
@@ -151,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
         contentHTML += `
           <div class="practical-tools p-4 rounded-lg">
             <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
-            <ul class="text-sm text-slate-700 space-y-1 mb-4">
-              ${item.practicalApplications.map(app => `<li>• ${app}</li>`).join('')}
+            <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
+              ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
             </ul>
             <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
             <div class="space-y-2 mb-4">
@@ -170,7 +189,10 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       contentEl.innerHTML = contentHTML;
     };
-    window.showTeachingStage(Object.keys(teachingWorkflowData)[0]);
+    // Default to showing the first stage
+    if (Object.keys(teachingWorkflowData).length > 0) {
+        window.showTeachingStage(Object.keys(teachingWorkflowData)[0]);
+    }
   }
   setupTeachingWorkflow();
 });
