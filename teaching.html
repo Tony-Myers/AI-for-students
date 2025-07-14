@@ -84,46 +84,44 @@ document.addEventListener('DOMContentLoaded', function() {
       title: "Personalised & Differentiated Instruction",
       description: "AI enables truly personalised learning by adapting to individual student needs, learning styles, and pace. Create customised materials, varied assessment approaches, and targeted support.",
       practicalApplications: [
-        "Generate multiple versions of assignments at different difficulty levels",
-        "Create reading materials adapted to various reading levels and learning styles",
-        "Develop personalised study guides based on individual student performance"
+        "Adapt learning materials for advanced, intermediate, and basic knowledge levels",
+        "Transform dense academic materials into summaries or study guides",
+        "Develop personalised study plans based on individual student performance"
       ],
       aiPromptExamples: [
-        "Create three versions of this chemistry problem: beginner (with step-by-step guidance), intermediate (with hints), and advanced (independent solving)",
-        "Rewrite this historical text excerpt for three reading levels: Grade 8, Grade 10, and University level"
+        "Rewrite this historical text excerpt for three reading levels: Grade 8, Grade 10, and University level",
+        "Take the attached PDF of lecture notes and generate a concise study guide highlighting the key themes and concepts"
       ],
-      tools: [{name: "Claude", url: "https://claude.ai"}, {name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Gemini", url: "https://gemini.google.com"}, {name: "Perplexity", url: "https://perplexity.ai"}, {name: "Magic School AI", url: "https://www.magicschool.ai"}]
+      tools: [{name: "Notebook LM", url: "https://notebooklm.google.com"},{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}, {name: "AI Studio", url: "#"},{name: "Magic School AI", url: "https://www.magicschool.ai"}]
     },
     "Assessment": {
       title: "Assessment & Feedback",
       description: "Transform assessment through AI-powered creation of formative assessments, rubrics, and detailed feedback. This enables more frequent, meaningful evaluation while promoting AI-resistant skills.",
       practicalApplications: [
         "Generate comprehensive rubrics aligned with learning objectives",
-        "Create formative quizzes and exit tickets for immediate feedback",
-        "Design peer assessment criteria and self-reflection prompts"
+        "Create formative and summative assessment questions based on course context",
+        "Design quizzes with multiple formats, such as short answer or multiple choice, aligned to standards"
       ],
       aiPromptExamples: [
-        "Create a detailed rubric for evaluating student presentations on climate change",
-        "Generate 5 quick formative assessment questions to check understanding of quadratic equations"
+        "Create a detailed rubric for evaluating student presentations on climate change, with criteria for content, delivery, and visual aids",
+        "Generate 5 multiple-choice questions for a Year 10 biology class to check understanding of photosynthesis"
       ],
-      tools: [{name: "Claude", url: "https://claude.ai"}, {name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Gradescope", url: "https://www.gradescope.com"}, {name: "Kahoot!", url: "https://kahoot.com"}]
+      tools: [{name: "Formative", url: "https://formative.com"}, {name: "Blackboard AI Assistant", url: "https://www.anthology.com/products/teaching-and-learning/learning-management-systems/blackboard-learn/ai-design-assistant"}, {name: "Gradescope", url: "https://www.gradescope.com"}, {name: "Kahoot!", url: "https://kahoot.com"}]
     },
     "Content Creation": {
       title: "Engaging Course Materials",
       description: "Rapidly create dynamic, interactive course materials including presentations, case studies, simulations, and multimedia content that enhances knowledge retention and engagement.",
       practicalApplications: [
-        "Design interactive presentations with embedded activities",
-        "Create realistic case studies and scenarios for problem-based learning",
-        "Repurpose lecture transcripts or notes into podcast scripts",
-        "Generate debate topics or role-playing scenarios for seminars",
-        "Produce explainer video scripts for complex topics"
+        "Generate professional-quality educational videos with customisable AI avatars and text-to-speech",
+        "Develop interactive scenario-based learning activities that adapt to student responses",
+        "Repurpose lecture notes into podcast-style audio discussions",
+        "Produce structured lesson plans and interactive activities tailored to specific learners"
       ],
       aiPromptExamples: [
-        "Create a business case study about sustainable supply chain management for undergraduate students",
-        "Take the following lecture notes on cellular mitosis and turn them into a script for a 10-minute educational podcast episode. The tone should be conversational.",
-        "Generate a role-playing scenario for two students to debate the economic pros and cons of Brexit."
+        "Generate a role-playing scenario for two students to debate the ethical implications of using AI in hiring",
+        "Take the following lecture notes and turn them into a script for a 10-minute educational podcast episode, with a conversational tone"
       ],
-      tools: [{name: "Gamma", url: "https://gamma.app"}, {name: "Canva Magic Design", url: "https://www.canva.com"}, {name: "ElevenLabs", url: "https://elevenlabs.io"}, {name: "Pictory", url: "https://pictory.ai"}, {name: "Claude", url: "https://claude.ai"}, {name: "ChatGPT", url: "https://chatgpt.com"}]
+      tools: [{name: "AI Studio", url: "#"}, {name: "ThingLink", url: "https://www.thinglink.com"}, {name: "Teachfloor", url: "https://www.teachfloor.com"}, {name: "ElevenLabs", url: "https://elevenlabs.io"}, {name: "Pictory", url: "https://pictory.ai"}]
     },
     "Automation": {
       title: "Workflow Automation & Support",
@@ -136,10 +134,38 @@ document.addEventListener('DOMContentLoaded', function() {
       ],
       aiPromptExamples: [
         "Draft a friendly but formal email to my undergraduate students reminding them that their final essay is due next Friday at 5 PM.",
-        "Create a lesson plan for a 90-minute seminar on the topic of 'The Causes of the First World War', including learning outcomes, key activities, and assessment questions.",
         "Summarise the key arguments and methodology of the attached research paper into five bullet points."
       ],
-      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "Gemini", url: "https://gemini.google.com"}, {name: "Perplexity", url: "https://perplexity.ai"}]
+      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "Gemini", url: "https://gemini.google.com"}]
+    },
+    "Data Analysis": {
+        title: "Data Analysis & Visualisation",
+        description: "Democratise data analysis by enabling students and staff to interact with datasets using natural language, making quantitative analysis more accessible, particularly for those intimidated by traditional methods.",
+        practicalApplications: [
+            "Create meaningful charts and graphs from datasets (e.g., Excel, CSV) using conversational prompts",
+            "Perform statistical analysis without requiring coding knowledge",
+            "Build forecasting models from your data"
+        ],
+        aiPromptExamples: [
+            "What were my best-selling products last quarter? Show me as a bar chart",
+            "Analyse this CSV file and identify any significant correlations between variables"
+        ],
+        tools: [{name: "Julius AI", url: "https://julius.ai"}]
+    },
+    "Accessibility": {
+        title: "Accessibility & Inclusivity",
+        description: "Leverage AI to create inclusive learning materials that cater to diverse student needs, abilities, and learning preferences.",
+        practicalApplications: [
+            "Automatically generate descriptive alt text for images in presentations and documents",
+            "Provide real-time transcription and language translation for lectures and meetings",
+            "Convert visual data or colour-based information into accessible formats for students with visual impairments",
+            "Create multilingual versions of teaching resources to support international students"
+        ],
+        aiPromptExamples: [
+            "Generate appropriate alt text for this image of the water cycle for an educational website",
+            "Transcribe the audio from the uploaded lecture file and provide a summary of the key points"
+        ],
+        tools: [{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}]
     }
   };
 
@@ -148,11 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentEl = document.getElementById('teaching-workflow-content');
     if (!container || !contentEl) return;
     container.innerHTML = '';
+    const icons = ['👤', '📝', '🎨', '⚙️', '📊', '♿'];
     Object.entries(teachingWorkflowData).forEach(([key, value], index) => {
       const isLast = index === Object.keys(teachingWorkflowData).length - 1;
-      const icons = ['👤', '📝', '🎨', '⚙️'];
       container.innerHTML += `
-        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-36">
+        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
           <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🎓'}</div>
           <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
         </button>
