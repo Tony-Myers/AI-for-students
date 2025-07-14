@@ -57,11 +57,19 @@
   </div>
   <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
     <h3 class="text-xl font-bold text-sky-700 mb-4">Download Prompt Templates</h3>
+    <p class="text-slate-600 mb-2">These templates are designed to be copied and pasted directly into a large language model. They provide a structure for common academic tasks.</p>
+    <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
+        <li>The <strong>Structured Feedback</strong> template helps staff to transform unstructured notes into student-friendly, formative feedback.</li>
+        <li>The <strong>Socratic Tutor</strong> template provides a prompt for students, encouraging them to learn a topic through cooperative dialogue with the AI rather than focusing on pure output generation.</li>
+        <li>The <strong>Academic Reviewer</strong> template offers a detailed structure for generating a peer-review-style critique of a written document.</li>
+    </ul>
     <div class="flex flex-wrap gap-4">
       <button onclick="downloadTemplate('feedback','md')" class="bg-sky-700 text-white px-4 py-2 rounded hover:bg-sky-800">📝 Structured Feedback (.md)</button>
       <button onclick="downloadTemplate('feedback','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">📄 Structured Feedback (.txt)</button>
       <button onclick="downloadTemplate('socratic','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">🤔 Socratic Tutor (.md)</button>
       <button onclick="downloadTemplate('socratic','txt')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">🤔 Socratic Tutor (.txt)</button>
+      <button onclick="downloadTemplate('review','md')" class="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700">🧐 Academic Reviewer (.md)</button>
+      <button onclick="downloadTemplate('review','txt')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800">🧐 Academic Reviewer (.txt)</button>
     </div>
   </div>
   <div class="bg-white rounded-xl shadow-lg p-8">
@@ -166,6 +174,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const feedbackPrompt = `**Your Role**...`; // Full prompt text omitted for brevity
   const socraticPrompt = `### **Instructions for Academic Staff**...`; // Full prompt text omitted for brevity
+  const academicReviewPrompt = `I would like you to act as an experienced academic reviewer in [your discipline, e.g. “political economy” or “environmental engineering”] at a UK university. I am submitting a [article / book chapter / essay / technical report] entitled “[Title of your work]” which I have drafted for [module name, journal or course, and level—e.g. “an MSc assignment” or “submission to Journal X”].
+
+Please provide a structured critique organised under the following headings. Under each heading, first offer a brief summary of strengths (what works well), then identify any weaknesses or potential gaps, and finally propose two or three concrete suggestions for improvement.
+
+1.  **Aims, Scope and Context**
+    – Clarify whether the research questions or objectives are clearly stated and appropriately focused.
+    – Discuss whether the scope is well defined for the intended audience.
+
+2.  **Argument and Theoretical Framing**
+    – Evaluate the clarity and logical coherence of the central argument or hypothesis.
+    – Assess the integration and critical engagement with relevant theories or literatures.
+
+3.  **Methodology and Evidence**
+    – Comment on the appropriateness and transparency of the methods used.
+    – Examine the quality and sufficiency of data or textual evidence presented.
+
+4.  **Structure and Organisation**
+    – Review the overall structure (introduction, main sections, conclusion) for logical flow.
+    – Suggest ways to improve transitions, signposting and section headings.
+
+5.  **Style, Clarity and Academic Register**
+    – Evaluate sentence and paragraph clarity, technical terminology and readability.
+    – Note any inconsistent referencing style or formatting issues.
+
+6.  **Originality, Contribution and Impact**
+    – Reflect on the novelty and potential scholarly or practical impact of the work.
+    – Recommend how to sharpen the contribution (for example, by refining the research question or deepening the discussion).
+
+7.  **Further Reflections and Next Steps**
+    – Identify any ethical, theoretical or practical limitations that should be acknowledged.
+    – Propose specific revisions or additional reading that could strengthen the work.
+
+In your response, please structure your feedback in numbered sections as above, avoid jargon where possible, and include examples or short quotations from the text to illustrate each point. Thank you.`;
 
   window.downloadTemplate = function(type, format) {
     let content = '';
@@ -176,6 +217,9 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if (type === 'socratic') {
       content = socraticPrompt;
       filename = `socratic-tutor-prompt.${format}`;
+    } else if (type === 'review') {
+      content = academicReviewPrompt;
+      filename = `academic-reviewer-prompt.${format}`;
     }
     const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
     const url = URL.createObjectURL(blob);
