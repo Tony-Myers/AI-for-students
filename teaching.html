@@ -54,6 +54,16 @@
       <h2 class="text-3xl font-bold">AI for Your Teaching</h2>
       <p class="max-w-3xl mx-auto">In the classroom, AI creates more personalised, engaging, and effective learning environments. Explore the pedagogical cycle.</p>
     </div>
+
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+        <h3 class="text-2xl font-bold text-slate-800 mb-4">Integrating AI into Higher Education Pedagogy</h3>
+        <div class="space-y-4 text-slate-700 leading-relaxed">
+            <p>The integration of artificial intelligence into higher education offers transformative potential for pedagogy, extending far beyond simple automation. When used thoughtfully, AI can serve as a powerful partner to enhance the core activities of teaching and learning, creating more dynamic, accessible, and personalised educational experiences for students.</p>
+            <p>Key applications include the personalisation of learning pathways to cater for diverse student needs and the rapid creation of engaging content, such as interactive simulations or multimedia resources. Furthermore, AI offers powerful tools for streamlining assessment and feedback, enabling academics to provide more timely and detailed evaluations. It also facilitates more accessible and sophisticated data analysis, making quantitative methods available to a wider range of students without requiring deep coding knowledge.</p>
+            <p>Effective integration, however, necessitates a structured approach. This involves not only exploring the practical tools but also establishing clear institutional guidelines. Frameworks for assessment and ethics are crucial to ensure that AI is used responsibly and enhances, rather than undermines, academic integrity and student learning. The resources on this page are designed to help you navigate these opportunities and challenges.</p>
+        </div>
+    </div>
+
     <div class="bg-white rounded-xl shadow-lg p-8">
       <div id="teaching-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center mb-8"></div>
       <div id="teaching-workflow-content" class="p-6 bg-slate-50 rounded-lg min-h-[150px]">
@@ -94,4 +104,198 @@
             </div>
 
             <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 4: AI task completion,
+                <h4 class="font-bold text-lg text-sky-700">Level 4: AI task completion, human evaluation</h4>
+                <p class="text-slate-700 mt-2">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output.</p>
+                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
+                    <p class="font-semibold">Requirement:</p>
+                    <p class="text-slate-600">You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</p>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
+                <h4 class="font-bold text-lg text-sky-700">Level 5: Collaborating with AI</h4>
+                <p class="text-slate-700 mt-2">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity.</p>
+                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
+                    <p class="font-semibold">Requirement:</p>
+                    <p class="text-slate-600">You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</p>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
+                <h4 class="font-bold text-lg text-sky-700">Level 6: Must use AI</h4>
+                <p class="text-slate-700 mt-2">AI usage is mandatory, aiming to build confidence and proficiency with AI tools.</p>
+                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
+                    <p class="font-semibold">Requirement:</p>
+                    <p class="text-slate-600">You must use AI throughout this assessment and demonstrate how you used and refined outputs.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  const teachingWorkflowData = {
+    "Personalisation": {
+      title: "Personalised & Differentiated Instruction",
+      description: "AI enables truly personalised learning by adapting to individual student needs, learning styles, and pace. Create customised materials, varied assessment approaches, and targeted support.",
+      practicalApplications: [
+        "Adapt learning materials for advanced, intermediate, and basic knowledge levels",
+        "Transform dense academic materials into summaries or study guides",
+        "Develop personalised study plans based on individual student performance"
+      ],
+      aiPromptExamples: [
+        "Rewrite this historical text excerpt for three reading levels: Grade 8, Grade 10, and University level",
+        "Take the attached PDF of lecture notes and generate a concise study guide highlighting the key themes and concepts"
+      ],
+      tools: [{name: "Notebook LM", url: "https://notebooklm.google.com"},{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}, {name: "AI Studio", url: "#"},{name: "Magic School AI", url: "https://www.magicschool.ai"}]
+    },
+    "Assessment": {
+      title: "Assessment & Feedback",
+      description: "Transform assessment through AI-powered creation of formative assessments, rubrics, and detailed feedback. This enables more frequent, meaningful evaluation while promoting AI-resistant skills.",
+      practicalApplications: [
+        "Generate comprehensive rubrics aligned with learning objectives",
+        "Create formative and summative assessment questions based on course context",
+        "Design quizzes with multiple formats, such as short answer or multiple choice, aligned to standards"
+      ],
+      aiPromptExamples: [
+        "Create a detailed rubric for evaluating student presentations on climate change, with criteria for content, delivery, and visual aids",
+        "Generate 5 multiple-choice questions for a Year 10 biology class to check understanding of photosynthesis"
+      ],
+      tools: [{name: "Formative", url: "https://formative.com"}, {name: "Blackboard AI Assistant", url: "https://www.anthology.com/products/teaching-and-learning/learning-management-systems/blackboard-learn/ai-design-assistant"}, {name: "Gradescope", url: "https://www.gradescope.com"}, {name: "Kahoot!", url: "https://kahoot.com"}]
+    },
+    "Content Creation": {
+      title: "Engaging Course Materials",
+      description: "Rapidly create dynamic, interactive course materials including presentations, case studies, simulations, and multimedia content that enhances knowledge retention and engagement.",
+      practicalApplications: [
+        "Generate professional-quality educational videos with customisable AI avatars and text-to-speech",
+        "Develop interactive scenario-based learning activities that adapt to student responses",
+        "Repurpose lecture notes into podcast-style audio discussions",
+        "Produce structured lesson plans and interactive activities tailored to specific learners"
+      ],
+      aiPromptExamples: [
+        "Generate a role-playing scenario for two students to debate the ethical implications of using AI in hiring",
+        "Take the following lecture notes and turn them into a script for a 10-minute educational podcast episode, with a conversational tone"
+      ],
+      tools: [{name: "AI Studio", url: "#"}, {name: "ThingLink", url: "https://www.thinglink.com"}, {name: "Teachfloor", url: "https://www.teachfloor.com"}, {name: "ElevenLabs", url: "https://elevenlabs.io"}, {name: "Pictory", url: "https://pictory.ai"}]
+    },
+    "Automation": {
+      title: "Workflow Automation & Support",
+      description: "Streamline administrative tasks, manage communications, and provide scalable student support to free up valuable time for teaching and research.",
+      practicalApplications: [
+        "Draft emails to students about course announcements or deadlines",
+        "Generate lesson plans and align them with learning objectives",
+        "Summarise academic papers or long documents to quickly grasp key points",
+        "Create FAQs and knowledge bases from course materials for student self-service"
+      ],
+      aiPromptExamples: [
+        "Draft a friendly but formal email to my undergraduate students reminding them that their final essay is due next Friday at 5 PM.",
+        "Summarise the key arguments and methodology of the attached research paper into five bullet points."
+      ],
+      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "Gemini", url: "https://gemini.google.com"}]
+    },
+    "Data Analysis": {
+        title: "Data Analysis & Visualisation",
+        description: "Democratise data analysis by enabling students and staff to interact with datasets using natural language, making quantitative analysis more accessible, particularly for those intimidated by traditional methods.",
+        practicalApplications: [
+            "Create meaningful charts and graphs from datasets (e.g., Excel, CSV) using conversational prompts",
+            "Perform statistical analysis without requiring coding knowledge",
+            "Build forecasting models from your data"
+        ],
+        aiPromptExamples: [
+            "What were my best-selling products last quarter? Show me as a bar chart",
+            "Analyse this CSV file and identify any significant correlations between variables"
+        ],
+        tools: [{name: "Julius AI", url: "https://julius.ai"}]
+    },
+    "Accessibility": {
+        title: "Accessibility & Inclusivity",
+        description: "Leverage AI to create inclusive learning materials that cater to diverse student needs, abilities, and learning preferences.",
+        practicalApplications: [
+            "Automatically generate descriptive alt text for images in presentations and documents",
+            "Provide real-time transcription and language translation for lectures and meetings",
+            "Convert visual data or colour-based information into accessible formats for students with visual impairments",
+            "Create multilingual versions of teaching resources to support international students"
+        ],
+        aiPromptExamples: [
+            "Generate appropriate alt text for this image of the water cycle for an educational website",
+            "Transcribe the audio from the uploaded lecture file and provide a summary of the key points"
+        ],
+        tools: [{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}]
+    }
+  };
+
+  function setupTeachingWorkflow() {
+    const container = document.getElementById('teaching-workflow');
+    const contentEl = document.getElementById('teaching-workflow-content');
+    if (!container || !contentEl) return;
+    container.innerHTML = '';
+    const icons = ['👤', '📝', '🎨', '⚙️', '📊', '♿'];
+    Object.entries(teachingWorkflowData).forEach(([key, value], index) => {
+      const isLast = index === Object.keys(teachingWorkflowData).length - 1;
+      container.innerHTML += `
+        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
+          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🎓'}</div>
+          <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
+        </button>
+        ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
+      `;
+    });
+    window.showTeachingStage = function(key) {
+      const item = teachingWorkflowData[key];
+      let contentHTML = `
+        <div class="space-y-4">
+          <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
+          <p class="text-slate-600">${item.description}</p>
+      `;
+      if (item.practicalApplications) {
+        contentHTML += `
+          <div class="practical-tools p-4 rounded-lg">
+            <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
+            <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
+              ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
+            </ul>
+            <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
+            <div class="space-y-2 mb-4">
+              ${item.aiPromptExamples.map(example => `<div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700"><strong>Example:</strong> "${example}"</div>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+      contentHTML += `
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="font-semibold">Recommended Tools:</span>
+            ${item.tools.map(tool => `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`).join('')}
+          </div>
+        </div>
+      `;
+      contentEl.innerHTML = contentHTML;
+    };
+    // Default to showing the first stage
+    if (Object.keys(teachingWorkflowData).length > 0) {
+        window.showTeachingStage(Object.keys(teachingWorkflowData)[0]);
+    }
+  }
+  setupTeachingWorkflow();
+});
+</script>
+
+</body>
+</html>
