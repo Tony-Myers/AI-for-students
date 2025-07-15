@@ -13,7 +13,6 @@
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
     .nav-link:focus, button:focus, a:focus, iframe:focus { outline: 3px solid #0369a1; outline-offset: 2px; border-radius: 4px; }
-    .workflow-img { width: 80px; height: 80px; object-fit: contain; }
     .practical-tools { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0369a1; }
   </style>
 </head>
@@ -59,7 +58,7 @@
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
       <h3 class="text-2xl font-bold text-slate-800 mb-4">AI in Research: An Introduction</h3>
         <div class="bg-sky-50 border border-sky-200 p-4 rounded-lg text-center mb-6">
-            <a href="https://youtu.be/bJFsGBrZkLE?si=qst0a-WknmnxucWE" class="font-semibold text-sky-700 hover:underline" target="_blank" rel="noopener noreferrer">Watch: Tony Myers on AI in research</a>
+            <a href="https://youtu.be/bJFsGBrZkLE?si=qst0a-WknmnxucWE" class="font-semibold text-sky-700 hover:underline" target="_blank" rel="noopener noreferrer">▶️ Watch: Tony Myers on AI in research</a>
         </div>
       <div class="space-y-4 text-slate-700 leading-relaxed mt-6">
           <p>Artificial intelligence is rapidly becoming an indispensable tool in academic research, serving not as a replacement for human intellect, but as a powerful accelerator for discovery and analysis. By augmenting the researcher's capabilities, AI streamlines workflows, uncovers novel connections in data, and facilitates new modes of inquiry across all disciplines.</p>
@@ -97,147 +96,32 @@ document.addEventListener('DOMContentLoaded', function() {
     "Literature Discovery": {
       title: "Literature Discovery & Synthesis",
       description: "Use AI to move beyond keyword searches into a conceptual exploration of knowledge. Tools can map citation networks to find seminal works or synthesise findings from hundreds of papers.",
-      practicalApplications: [
-        "Synthesise key themes and arguments from a large collection of research papers.",
-        "Build visual citation maps to discover seminal and derivative works.",
-        "Automate the extraction of data for systematic literature reviews into structured tables.",
-        "Generate summaries of articles to quickly assess their relevance."
-      ],
-      aiPromptExamples: [
-        "Analyse the attached 50 papers on 'urban heat islands' and identify the top 5 recurring research themes, providing key quotes for each.",
-        "I am writing a literature review on the impact of social media on adolescent mental health. Suggest five seminal papers I should include and explain their importance."
-      ],
-      tools: [{name: "Research Rabbit", url: "https://researchrabbitapp.com"}, {name: "Elicit", url: "https://elicit.com"}, {name: "Connected Papers", url: "https://connectedpapers.com"}, {name: "Semantic Scholar", url: "https://www.semanticscholar.org"}],
-      image: "https://storage.googleapis.com/aipoweredacademicsite/AI-for-education/images/2%20AI%20web.png"
+      practicalApplications: ["Synthesise key themes and arguments from a large collection of research papers.", "Build visual citation maps to discover seminal and derivative works.", "Automate the extraction of data for systematic literature reviews into structured tables.", "Generate summaries of articles to quickly assess their relevance."],
+      aiPromptExamples: ["Analyse the attached 50 papers on 'urban heat islands' and identify the top 5 recurring research themes, providing key quotes for each.", "I am writing a literature review on the impact of social media on adolescent mental health. Suggest five seminal papers I should include and explain their importance."],
+      tools: [{name: "Research Rabbit", url: "https://researchrabbitapp.com"}, {name: "Elicit", url: "https://elicit.com"}, {name: "Connected Papers", url: "https://connectedpapers.com"}, {name: "Semantic Scholar", url: "https://www.semanticscholar.org"}]
     },
     "Data Analysis": {
       title: "Qualitative & Quantitative Analysis",
       description: "Augment data analysis by using AI to perform preliminary coding on qualitative data (transcripts, field notes) or to help write and debug code for quantitative statistical analysis.",
-      practicalApplications: [
-        "Generate Python or R code for complex statistical tests and data visualisations.",
-        "Perform preliminary thematic coding of interview transcripts to identify initial patterns.",
-        "Clean and pre-process datasets by identifying anomalies or missing values.",
-        "Interact with spreadsheets using natural language to perform quick calculations and create charts."
-      ],
-      aiPromptExamples: [
-        "Write an R script to perform a two-way ANOVA on the attached dataset, including checks for assumptions and appropriate visualisations.",
-        "Analyse these interview transcripts about remote work and suggest five potential thematic codes based on recurring concepts, providing examples for each."
-      ],
-      tools: [{name: "ATLAS.ti", url: "https://atlasti.com"}, {name: "NVivo", url: "https://www.qsrinternational.com/nvivo-qualitative-data-analysis-software"}, {name: "Julius AI", url: "https://julius.ai"}, {name: "Claude", url: "https://claude.ai"}],
-      image: "https://storage.googleapis.com/aipoweredacademicsite/AI-for-education/images/3%20AI%20web.png"
+      practicalApplications: ["Generate Python or R code for complex statistical tests and data visualisations.", "Perform preliminary thematic coding of interview transcripts to identify initial patterns.", "Clean and pre-process datasets by identifying anomalies or missing values.", "Interact with spreadsheets using natural language to perform quick calculations and create charts."],
+      aiPromptExamples: ["Write an R script to perform a two-way ANOVA on the attached dataset, including checks for assumptions and appropriate visualisations.", "Analyse these interview transcripts about remote work and suggest five potential thematic codes based on recurring concepts, providing examples for each."],
+      tools: [{name: "ATLAS.ti", url: "https://atlasti.com"}, {name: "NVivo", url: "https://www.qsrinternational.com/nvivo-qualitative-data-analysis-software"}, {name: "Julius AI", url: "https://julius.ai"}, {name: "Claude", url: "https://claude.ai"}]
     },
-     "Grant Proposals": {
+    "Grant Proposals": {
       title: "Grant Proposal & Funding",
       description: "Leverage AI to streamline the grant writing process. Use it to identify suitable funding bodies, structure proposals, and articulate the impact of your research.",
-      practicalApplications: [
-          "Summarise the key requirements and priorities from a funding call document.",
-          "Draft specific sections of a grant proposal, such as the background, literature review, or impact statement.",
-          "Reframe your research summary to align with the strategic objectives of different funders.",
-          "Get feedback on the clarity and persuasiveness of your proposal narrative."
-      ],
-      aiPromptExamples: [
-          "Analyse the attached UKRI funding call and my project summary. Identify areas of strong alignment and suggest how to frame my proposal's objectives accordingly.",
-          "Act as a grant panel reviewer. Read my attached 'Case for Support' and provide critical feedback on its strengths and weaknesses."
-      ],
-      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "NotebookLM", url: "https://notebooklm.google.com"}, {name: "Elicit", url: "https://elicit.com"}],
-      image: "https://storage.googleapis.com/aipoweredacademicsite/AI-for-education/images/5%20AI%20web.png"
+      practicalApplications: ["Summarise the key requirements and priorities from a funding call document.", "Draft specific sections of a grant proposal, such as the background, literature review, or impact statement.", "Reframe your research summary to align with the strategic objectives of different funders.", "Get feedback on the clarity and persuasiveness of your proposal narrative."],
+      aiPromptExamples: ["Analyse the attached UKRI funding call and my project summary. Identify areas of strong alignment and suggest how to frame my proposal's objectives accordingly.", "Act as a grant panel reviewer. Read my attached 'Case for Support' and provide critical feedback on its strengths and weaknesses."],
+      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "NotebookLM", url: "https://notebooklm.google.com"}, {name: "Elicit", url: "https://elicit.com"}]
     },
     "Writing & Productivity": {
       title: "Writing & Productivity",
       description: "Ethically use AI as a writing assistant for brainstorming, outlining, and proofreading. Specialised tools can also help check your argument structure and suggest citations.",
-      practicalApplications: [
-        "Improve the clarity, flow, and conciseness of manuscript drafts.",
-        "Receive feedback on the logical structure and coherence of an argument.",
-        "Summarise your article for different purposes (e.g., abstract, lay summary, blog post).",
-        "Format citations and bibliographies according to specific style guides."
-      ],
-      aiPromptExamples: [
-        "Act as a peer reviewer for a leading journal in quantitative methods. Read the attached methods section and critique its clarity, rigour, and replicability.",
-        "Summarise my 5,000-word article into a 250-word abstract suitable for a journal submission."
-      ],
-      tools: [{name: "Thesify", url: "https://www.thesify.ai"}, {name: "NotebookLM", url: "https://notebooklm.google.com"}, {name: "Grammarly", url: "https://www.grammarly.com"}, {name: "ChatGPT", url: "https://chatgpt.com"}],
-      image: "https://storage.googleapis.com/aipoweredacademicsite/AI-for-education/images/4%20AI%20web.png"
+      practicalApplications: ["Improve the clarity, flow, and conciseness of manuscript drafts.", "Receive feedback on the logical structure and coherence of an argument.", "Summarise your article for different purposes (e.g., abstract, lay summary, blog post).", "Format citations and bibliographies according to specific style guides."],
+      aiPromptExamples: ["Act as a peer reviewer for a leading journal in quantitative methods. Read the attached methods section and critique its clarity, rigour, and replicability.", "Summarise my 5,000-word article into a 250-word abstract suitable for a journal submission."],
+      tools: [{name: "Thesify", url: "https://www.thesify.ai"}, {name: "NotebookLM", url: "https://notebooklm.google.com"}, {name: "Grammarly", url: "https://www.grammarly.com"}, {name: "ChatGPT", url: "https://chatgpt.com"}]
     },
-     "Dissemination": {
+    "Dissemination": {
       title: "Dissemination & Engagement",
       description: "Amplify the reach of your research by using AI to translate complex findings into accessible formats for diverse audiences.",
-      practicalApplications: [
-        "Create a slide deck outline for an academic conference presentation.",
-        "Write plain-language summaries of your research for policy briefs or press releases.",
-        "Generate social media posts (e.g., for X, LinkedIn) to share key findings with a wider audience.",
-        "Create scripts for short educational videos or podcasts explaining your work."
-      ],
-      aiPromptExamples: [
-        "Create a 12-slide presentation outline for a 20-minute conference talk based on my attached paper, including speaker notes for each slide.",
-        "Rewrite the following technical paragraph about my findings into a clear, jargon-free summary suitable for a press release."
-      ],
-      tools: [{name: "Gamma", url: "https://gamma.app"}, {name: "Canva Magic Design", url: "https://www.canva.com"}, {name: "ChatGPT", url: "https://chatgpt.com"}],
-      image: "https://storage.googleapis.com/aipoweredacademicsite/AI-for-education/images/1%20AI%20web.png"
-    }
-  };
-
-  function setupResearchWorkflow() {
-    const container = document.getElementById('research-workflow');
-    const contentEl = document.getElementById('research-workflow-content');
-    if (!container || !contentEl) return;
-    container.innerHTML = '';
-    const keys = Object.keys(researchWorkflowData);
-    keys.forEach((key, index) => {
-      const value = researchWorkflowData[key];
-      const isLast = index === keys.length - 1;
-      container.innerHTML += `
-        <div class="flex items-center">
-            <button onclick="showResearchStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
-              <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center">
-                <img src="${value.image}" alt="${value.title}" class="workflow-img p-2">
-              </div>
-              <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
-            </button>
-            ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block mx-2">→</div>' : ''}
-        </div>
-      `;
-    });
-  }
-
-  window.showResearchStage = function(key) {
-    const item = researchWorkflowData[key];
-    const contentEl = document.getElementById('research-workflow-content');
-    let contentHTML = `
-      <div class="space-y-4">
-        <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
-        <p class="text-slate-600">${item.description}</p>
-    `;
-    if (item.practicalApplications) {
-      contentHTML += `
-        <div class="practical-tools p-4 rounded-lg">
-          <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
-          <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
-            ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
-          </ul>
-          <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
-          <div class="space-y-2 mb-4">
-            ${item.aiPromptExamples.map(example => `<div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700"><strong>Example:</strong> "${example}"</div>`).join('')}
-          </div>
-        </div>
-      `;
-    }
-    contentHTML += `
-        <div class="flex flex-wrap gap-2 items-center">
-          <span class="font-semibold">Recommended Tools:</span>
-          ${item.tools.map(tool => `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`).join('')}
-        </div>
-      </div>
-    `;
-    contentEl.innerHTML = contentHTML;
-  };
-
-  setupResearchWorkflow();
-  // Default to showing the first stage
-  if (Object.keys(researchWorkflowData).length > 0) {
-      window.showResearchStage(Object.keys(researchWorkflowData)[0]);
-  }
-});
-</script>
-
-</body>
-</html>
+      practicalApplications: ["Create a slide deck outline for an academic conference presentation.", "Write plain-language summaries of your research for policy briefs or press releases.", "Generate social media posts (e.g., for X, LinkedIn) to share key findings with a wider audience.", "Create scripts for
