@@ -124,4 +124,75 @@ document.addEventListener('DOMContentLoaded', function() {
     "Dissemination": {
       title: "Dissemination & Engagement",
       description: "Amplify the reach of your research by using AI to translate complex findings into accessible formats for diverse audiences.",
-      practicalApplications: ["Create a slide deck outline for an academic conference presentation.", "Write plain-language summaries of your research for policy briefs or press releases.", "Generate social media posts (e.g., for X, LinkedIn) to share key findings with a wider audience.", "Create scripts for
+      practicalApplications: ["Create a slide deck outline for an academic conference presentation.", "Write plain-language summaries of your research for policy briefs or press releases.", "Generate social media posts (e.g., for X, LinkedIn) to share key findings with a wider audience.", "Create scripts for short educational videos or podcasts explaining your work."],
+      aiPromptExamples: ["Create a 12-slide presentation outline for a 20-minute conference talk based on my attached paper, including speaker notes for each slide.", "Rewrite the following technical paragraph about my findings into a clear, jargon-free summary suitable for a press release."],
+      tools: [{name: "Gamma", url: "https://gamma.app"}, {name: "Canva Magic Design", url: "https://www.canva.com"}, {name: "ChatGPT", url: "https://chatgpt.com"}]
+    }
+  };
+
+  function setupResearchWorkflow() {
+    const container = document.getElementById('research-workflow');
+    const contentEl = document.getElementById('research-workflow-content');
+    if (!container || !contentEl) return;
+    container.innerHTML = '';
+    const keys = Object.keys(researchWorkflowData);
+    const icons = ['🔎', '📊', '✍️', '📝', '📢']; 
+
+    keys.forEach((key, index) => {
+      const value = researchWorkflowData[key];
+      const isLast = index === keys.length - 1;
+      container.innerHTML += `
+        <div class="flex items-center">
+            <button onclick="showResearchStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
+              <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-4xl">
+                ${icons[index] || '🔬'}
+              </div>
+              <h4 class="font-semibold text-slate-700 text-center text-sm mt-2">${value.title}</h4>
+            </button>
+            ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block mx-2">→</div>' : ''}
+        </div>
+      `;
+    });
+  }
+
+  window.showResearchStage = function(key) {
+    const item = researchWorkflowData[key];
+    const contentEl = document.getElementById('research-workflow-content');
+    let contentHTML = `
+      <div class="space-y-4">
+        <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
+        <p class="text-slate-600">${item.description}</p>
+    `;
+    if (item.practicalApplications) {
+      contentHTML += `
+        <div class="practical-tools p-4 rounded-lg">
+          <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
+          <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
+            ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
+          </ul>
+          <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
+          <div class="space-y-2 mb-4">
+            ${item.aiPromptExamples.map(example => `<div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700"><strong>Example:</strong> "${example}"</div>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+    contentHTML += `
+        <div class="flex flex-wrap gap-2 items-center">
+          <span class="font-semibold">Recommended Tools:</span>
+          ${item.tools.map(tool => `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`).join('')}
+        </div>
+      </div>
+    `;
+    contentEl.innerHTML = contentHTML;
+  };
+
+  setupResearchWorkflow();
+  if (Object.keys(researchWorkflowData).length > 0) {
+      window.showResearchStage(Object.keys(researchWorkflowData)[0]);
+  }
+});
+</script>
+
+</body>
+</html>
