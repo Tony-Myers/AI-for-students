@@ -1,301 +1,224 @@
-<!DOCTYPE html>
-<html lang="en-GB" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI-Powered Academic: Teaching</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
-    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
-    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .practical-tools { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0369a1; }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
+# Teaching Page → Study Strategies - Complete Transformation
 
-<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">The AI-Powered Academic</a>
-    <div class="hidden md:flex space-x-4">
-      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
-      <a href="integration.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Integration</a>
-      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
-      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
-      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research</a>
-      <a href="teaching.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Teaching</a>
-      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
-      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
-      <a href="ethics.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Ethics</a>
-    </div>
-    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
-      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-  </nav>
-  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
-    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
-    <a href="integration.html" class="nav-link block px-3 py-2 w-full text-left">AI Integration</a>
-    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
-    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
-    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research</a>
-    <a href="teaching.html" class="nav-link block px-3 py-2 w-full text-left">Teaching</a>
-    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
-    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
-    <a href="ethics.html" class="nav-link block px-3 py-2 w-full text-left">Ethics</a>
+## Page Title and Navigation Update
+```html
+<!-- Update page title -->
+<title>AI for Students: Study Strategies</title>
+
+<!-- Update navigation reference -->
+<a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+```
+
+## Hero Section Complete Rewrite
+```html
+<div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+  <h2 class="text-3xl font-bold">AI-Powered Study Strategies</h2>
+  <p class="max-w-3xl mx-auto">
+    Transform your learning with AI tools that adapt to your needs. Discover strategies for 
+    more effective studying, better retention, and academic success.
+  </p>
+</div>
+```
+
+## Introduction Section Rewrite
+```html
+<div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+  <h3 class="text-2xl font-bold text-slate-800 mb-4">Revolutionising How You Study</h3>
+  <div class="space-y-4 text-slate-700 leading-relaxed">
+    <p>
+      AI tools offer unprecedented opportunities to personalise your learning experience. 
+      From creating custom study materials and practice tests to getting instant explanations 
+      of difficult concepts, AI can adapt to your unique learning style and pace.
+    </p>
+    <p>
+      The key is knowing how to integrate these tools effectively into your study routine. 
+      This means using AI to enhance your understanding and retention, not to replace the 
+      critical thinking and deep learning that leads to academic success.
+    </p>
+    <p>
+      Below you'll find practical strategies organised around different aspects of the learning 
+      process. Each section includes specific techniques you can implement immediately to 
+      improve your study effectiveness.
+    </p>
   </div>
-</header>
+</div>
+```
 
-<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-      <h2 class="text-3xl font-bold">AI for Your Teaching</h2>
-      <p class="max-w-3xl mx-auto">In the classroom, AI creates more personalised, engaging, and effective learning environments. Explore the pedagogical cycle.</p>
-    </div>
+## Study Strategies Workflow Data
+Replace the teaching workflow with student study strategies:
 
-    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-        <h3 class="text-2xl font-bold text-slate-800 mb-4">Integrating AI into Higher Education Pedagogy</h3>
-        <div class="space-y-4 text-slate-700 leading-relaxed">
-            <p>The integration of artificial intelligence into higher education offers transformative potential for pedagogy, extending far beyond simple automation. When used thoughtfully, AI can serve as a powerful partner to enhance the core activities of teaching and learning, creating more dynamic, accessible, and personalised educational experiences for students.</p>
-            <p>Key applications include the personalisation of learning pathways to cater for diverse student needs and the rapid creation of engaging content, such as interactive simulations or multimedia resources. Furthermore, AI offers powerful tools for streamlining assessment and feedback, enabling academics to provide more timely and detailed evaluations. It also facilitates more accessible and sophisticated data analysis, making quantitative methods available to a wider range of students without requiring deep coding knowledge.</p>
-            <p>Effective integration, however, necessitates a structured approach. This involves not only exploring the practical tools but also establishing clear institutional guidelines. Frameworks for assessment and ethics are crucial to ensure that AI is used responsibly and enhances, rather than undermines, academic integrity and student learning. The resources on this page are designed to help you navigate these opportunities and challenges.</p>
-        </div>
-    </div>
+```javascript
+const studyStrategiesData = {
+  "Active Learning": {
+    title: "Active Learning & Comprehension",
+    description: "Use AI to transform passive reading into active engagement. Create interactive learning experiences that help you truly understand and remember complex material.",
+    practicalApplications: [
+      "Turn textbook chapters into interactive Q&A sessions",
+      "Generate practice questions from your lecture notes",
+      "Create analogies and examples to understand abstract concepts",
+      "Build concept maps showing relationships between ideas"
+    ],
+    aiPromptExamples: [
+      "I've just read this chapter on photosynthesis. Quiz me with 5 questions that test my understanding, then explain any answers I get wrong.",
+      "Help me understand quantum mechanics by creating an analogy using everyday objects and situations."
+    ],
+    tools: [
+      {name: "ChatGPT", url: "https://chatgpt.com"}, 
+      {name: "Claude", url: "https://claude.ai"}, 
+      {name: "NotebookLM", url: "https://notebooklm.google.com"}
+    ]
+  },
+  "Personalised Learning": {
+    title: "Personalised Study Materials",
+    description: "Create custom study resources tailored to your learning style, pace, and specific needs. AI can adapt content complexity and format to match how you learn best.",
+    practicalApplications: [
+      "Generate study guides in your preferred format (visual, audio, text)",
+      "Create flashcards from lecture slides or textbook chapters",
+      "Adapt complex materials to your current knowledge level",
+      "Build progressive learning paths from basic to advanced concepts"
+    ],
+    aiPromptExamples: [
+      "Create flashcards from these biology notes, focusing on key terms and their definitions. Make them challenging but appropriate for first-year level.",
+      "I'm a visual learner studying the French Revolution. Create a timeline with key events and explain how they connect to each other."
+    ],
+    tools: [
+      {name: "NotebookLM", url: "https://notebooklm.google.com"}, 
+      {name: "Anki", url: "https://apps.ankiweb.net"}, 
+      {name: "Quizlet", url: "https://quizlet.com"}
+    ]
+  },
+  "Exam Preparation": {
+    title: "Exam Preparation & Practice",
+    description: "Use AI to simulate exam conditions, identify knowledge gaps, and build confidence through targeted practice and feedback.",
+    practicalApplications: [
+      "Generate practice exams in the style of your actual tests",
+      "Identify areas where you need more study time",
+      "Practice explaining concepts out loud to check understanding",
+      "Create revision schedules based on exam dates and topic difficulty"
+    ],
+    aiPromptExamples: [
+      "Create a 45-minute practice exam for my microeconomics course covering supply and demand, elasticity, and market structures. Include a mix of multiple choice and short answer questions.",
+      "I have exams in three subjects over two weeks. Help me create a revision timetable that balances all subjects and includes regular review sessions."
+    ],
+    tools: [
+      {name: "ChatGPT", url: "https://chatgpt.com"}, 
+      {name: "Claude", url: "https://claude.ai"}
+    ]
+  },
+  "Research Skills": {
+    title: "Research & Information Literacy",
+    description: "Develop strong research skills using AI to find, evaluate, and synthesise information from multiple sources effectively.",
+    practicalApplications: [
+      "Learn to evaluate source credibility and bias",
+      "Synthesise information from multiple academic sources",
+      "Understand different research methodologies",
+      "Practice proper citation and referencing"
+    ],
+    aiPromptExamples: [
+      "Explain the difference between primary and secondary sources in history research, and give me examples of each for studying World War II.",
+      "Help me understand how to evaluate whether a website is credible for my psychology assignment on depression treatments."
+    ],
+    tools: [
+      {name: "Perplexity", url: "https://perplexity.ai"}, 
+      {name: "Research Rabbit", url: "https://researchrabbitapp.com"}, 
+      {name: "Google Scholar", url: "https://scholar.google.com"}
+    ]
+  },
+  "Study Organisation": {
+    title: "Study Organisation & Time Management",
+    description: "Use AI to optimise your study schedule, track progress, and maintain motivation throughout your academic journey.",
+    practicalApplications: [
+      "Create realistic study schedules based on your commitments",
+      "Track your progress and adjust study plans accordingly",
+      "Set up reminder systems for important deadlines",
+      "Develop strategies for maintaining motivation and focus"
+    ],
+    aiPromptExamples: [
+      "I have 4 assignments due in the next month plus regular classes. Help me create a weekly schedule that balances study time, assignment work, and breaks.",
+      "I keep procrastinating on my statistics homework. Suggest specific strategies to help me stay motivated and make progress consistently."
+    ],
+    tools: [
+      {name: "ChatGPT", url: "https://chatgpt.com"}, 
+      {name: "Notion", url: "https://notion.so"}, 
+      {name: "Todoist", url: "https://todoist.com"}
+    ]
+  },
+  "Accessibility Support": {
+    title: "Learning Support & Accessibility",
+    description: "Use AI to make learning more accessible, whether you need additional support with language, learning differences, or other challenges.",
+    practicalApplications: [
+      "Get content explained in different ways to match your learning style",
+      "Convert text to audio for listening while commuting or exercising",
+      "Simplify complex language in academic papers",
+      "Get help with organisation and planning strategies"
+    ],
+    aiPromptExamples: [
+      "I have dyslexia and struggle with long texts. Can you summarise this journal article in bullet points and highlight the main arguments?",
+      "English isn't my first language. Can you explain this economics concept using simpler vocabulary while keeping the meaning accurate?"
+    ],
+    tools: [
+      {name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}, 
+      {name: "Read&Write", url: "https://www.texthelp.com/en-gb/products/read-write/"}, 
+      {name: "Natural Reader", url: "https://www.naturalreaders.com"}
+    ]
+  }
+};
+```
 
-    <div class="bg-white rounded-xl shadow-lg p-8">
-      <div id="teaching-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center mb-8"></div>
-      <div id="teaching-workflow-content" class="p-6 bg-slate-50 rounded-lg min-h-[150px]">
-        <p class="text-center text-slate-600">Click on a teaching stage above to explore AI applications for that area.</p>
+## Remove Assessment Framework
+Replace the academic assessment framework with study effectiveness tips:
+
+```html
+<div class="bg-white rounded-xl shadow-lg p-8 mt-8">
+  <h3 class="text-2xl font-bold text-slate-800 mb-2">Maximising Study Effectiveness with AI</h3>
+  <p class="text-slate-600 mb-6 max-w-4xl">
+    Use this framework to ensure you're getting the most educational value from AI tools whilst 
+    developing genuine understanding and critical thinking skills.
+  </p>
+  <div class="space-y-4">
+    
+    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
+      <h4 class="font-bold text-lg text-green-700">🎯 High-Impact AI Use</h4>
+      <p class="text-slate-700 mt-2">
+        Use AI to enhance your learning process and develop deeper understanding of concepts.
+      </p>
+      <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
+        <p class="font-semibold">Examples:</p>
+        <p class="text-slate-600">
+          Explaining difficult concepts, creating practice questions, getting feedback on your 
+          understanding, generating study materials, planning your learning schedule.
+        </p>
       </div>
     </div>
-    
-    <div class="bg-white rounded-xl shadow-lg p-8 mt-8">
-        <h3 class="text-2xl font-bold text-slate-800 mb-2">Framework for Incorporating AI in Assessment</h3>
-        <p class="text-slate-600 mb-6 max-w-4xl">This framework provides clear institutional guidelines on the permitted use of AI across different assessment types. Use this modified AI assessment rating scale to ensure students understand the expectations for each assignment.</p>
-        <div class="space-y-4">
-            
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 1: No AI</h4>
-                <p class="text-slate-700 mt-2">The assessment is completed entirely without AI assistance. This level ensures that students rely solely on their own knowledge, understanding, and skills.</p>
-                <div class="mt-3 bg-white border-l-4 border-red-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">AI must not be used at any point during the assessment.</p>
-                </div>
-            </div>
 
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 2: AI-assisted idea generation and structuring</h4>
-                <p class="text-slate-700 mt-2">AI can be used in the assessment for brainstorming, creating structures, and generating ideas for improving work.</p>
-                <div class="mt-3 bg-white border-l-4 border-amber-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">No AI content is allowed in the final submission.</p>
-                </div>
-            </div>
-
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 3: AI-assisted editing</h4>
-                <p class="text-slate-700 mt-2">AI can be used to make improvements to the clarity or quality of student created work to improve the final output, but no new content can be created using AI.</p>
-                <div class="mt-3 bg-white border-l-4 border-amber-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">Your original work with no AI content must be provided in an appendix.</p>
-                </div>
-            </div>
-
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 4: AI task completion, human evaluation</h4>
-                <p class="text-slate-700 mt-2">AI is used to complete certain elements of the task, with students providing discussion or commentary on the AI-generated content. This level requires critical engagement with AI generated content and evaluating its output.</p>
-                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">You will use AI to complete specified tasks in your assessment. Any AI created content must be cited.</p>
-                </div>
-            </div>
-
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 5: Collaborating with AI</h4>
-                <p class="text-slate-700 mt-2">AI should be used as a ‘co-pilot’ in order to meet the requirements of the assessment, allowing for a collaborative approach with AI and enhancing creativity.</p>
-                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">You may use AI throughout your assessment to support your own work and do not have to specify which content is AI generated.</p>
-                </div>
-            </div>
-
-            <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
-                <h4 class="font-bold text-lg text-sky-700">Level 6: Must use AI</h4>
-                <p class="text-slate-700 mt-2">AI usage is mandatory, aiming to build confidence and proficiency with AI tools.</p>
-                <div class="mt-3 bg-white border-l-4 border-green-500 p-3 text-sm">
-                    <p class="font-semibold">Requirement:</p>
-                    <p class="text-slate-600">You must use AI throughout this assessment and demonstrate how you used and refined outputs.</p>
-                </div>
-            </div>
-
-        </div>
+    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
+      <h4 class="font-bold text-lg text-amber-700">⚡ Efficient AI Use</h4>
+      <p class="text-slate-700 mt-2">
+        Use AI to save time on routine tasks so you can focus on higher-level thinking and learning.
+      </p>
+      <div class="mt-3 bg-white border-l-4 border-amber-500 p-3 text-sm">
+        <p class="font-semibold">Examples:</p>
+        <p class="text-slate-600">
+          Formatting citations, creating study schedules, summarising readings for review, 
+          proofreading your work, organising research notes.
+        </p>
+      </div>
     </div>
 
-    <div class="text-center mt-8">
-      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
+      <h4 class="font-bold text-lg text-red-700">⚠️ Use with Caution</h4>
+      <p class="text-slate-700 mt-2">
+        Be careful when using AI for tasks that should demonstrate your own learning and thinking.
+      </p>
+      <div class="mt-3 bg-white border-l-4 border-red-500 p-3 text-sm">
+        <p class="font-semibold">Check your university's policy first:</p>
+        <p class="text-slate-600">
+          Writing essay content, solving homework problems, generating code, creating presentations, 
+          doing calculations, translating assignments.
+        </p>
+      </div>
     </div>
-</main>
 
-<footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Tony Myers © 2025
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  const teachingWorkflowData = {
-    "Personalisation": {
-      title: "Personalised & Differentiated Instruction",
-      description: "AI enables truly personalised learning by adapting to individual student needs, learning styles, and pace. Create customised materials, varied assessment approaches, and targeted support.",
-      practicalApplications: [
-        "Adapt learning materials for advanced, intermediate, and basic knowledge levels",
-        "Transform dense academic materials into summaries or study guides",
-        "Develop personalised study plans based on individual student performance"
-      ],
-      aiPromptExamples: [
-        "Rewrite this historical text excerpt for three reading levels: Grade 8, Grade 10, and University level",
-        "Take the attached PDF of lecture notes and generate a concise study guide highlighting the key themes and concepts"
-      ],
-      tools: [{name: "Notebook LM", url: "https://notebooklm.google.com"},{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}, {name: "AI Studio", url: "#"},{name: "Magic School AI", url: "https://www.magicschool.ai"}]
-    },
-    "Assessment": {
-      title: "Assessment & Feedback",
-      description: "Transform assessment through AI-powered creation of formative assessments, rubrics, and detailed feedback. This enables more frequent, meaningful evaluation while promoting AI-resistant skills.",
-      practicalApplications: [
-        "Generate comprehensive rubrics aligned with learning objectives",
-        "Create formative and summative assessment questions based on course context",
-        "Design quizzes with multiple formats, such as short answer or multiple choice, aligned to standards"
-      ],
-      aiPromptExamples: [
-        "Create a detailed rubric for evaluating student presentations on climate change, with criteria for content, delivery, and visual aids",
-        "Generate 5 multiple-choice questions for a Year 10 biology class to check understanding of photosynthesis"
-      ],
-      tools: [{name: "Formative", url: "https://formative.com"}, {name: "Blackboard AI Assistant", url: "https://www.anthology.com/products/teaching-and-learning/learning-management-systems/blackboard-learn/ai-design-assistant"}, {name: "Gradescope", url: "https://www.gradescope.com"}, {name: "Kahoot!", url: "https://kahoot.com"}]
-    },
-    "Content Creation": {
-      title: "Engaging Course Materials",
-      description: "Rapidly create dynamic, interactive course materials including presentations, case studies, simulations, and multimedia content that enhances knowledge retention and engagement.",
-      practicalApplications: [
-        "Generate professional-quality educational videos with customisable AI avatars and text-to-speech",
-        "Develop interactive scenario-based learning activities that adapt to student responses",
-        "Repurpose lecture notes into podcast-style audio discussions",
-        "Produce structured lesson plans and interactive activities tailored to specific learners"
-      ],
-      aiPromptExamples: [
-        "Generate a role-playing scenario for two students to debate the ethical implications of using AI in hiring",
-        "Take the following lecture notes and turn them into a script for a 10-minute educational podcast episode, with a conversational tone"
-      ],
-      tools: [{name: "AI Studio", url: "#"}, {name: "ThingLink", url: "https://www.thinglink.com"}, {name: "Teachfloor", url: "https://www.teachfloor.com"}, {name: "ElevenLabs", url: "https://elevenlabs.io"}, {name: "Pictory", url: "https://pictory.ai"}]
-    },
-    "Automation": {
-      title: "Workflow Automation & Support",
-      description: "Streamline administrative tasks, manage communications, and provide scalable student support to free up valuable time for teaching and research.",
-      practicalApplications: [
-        "Draft emails to students about course announcements or deadlines",
-        "Generate lesson plans and align them with learning objectives",
-        "Summarise academic papers or long documents to quickly grasp key points",
-        "Create FAQs and knowledge bases from course materials for student self-service"
-      ],
-      aiPromptExamples: [
-        "Draft a friendly but formal email to my undergraduate students reminding them that their final essay is due next Friday at 5 PM.",
-        "Summarise the key arguments and methodology of the attached research paper into five bullet points."
-      ],
-      tools: [{name: "ChatGPT", url: "https://chatgpt.com"}, {name: "Claude", url: "https://claude.ai"}, {name: "Gemini", url: "https://gemini.google.com"}]
-    },
-    "Data Analysis": {
-        title: "Data Analysis & Visualisation",
-        description: "Democratise data analysis by enabling students and staff to interact with datasets using natural language, making quantitative analysis more accessible, particularly for those intimidated by traditional methods.",
-        practicalApplications: [
-            "Create meaningful charts and graphs from datasets (e.g., Excel, CSV) using conversational prompts",
-            "Perform statistical analysis without requiring coding knowledge",
-            "Build forecasting models from your data"
-        ],
-        aiPromptExamples: [
-            "What were my best-selling products last quarter? Show me as a bar chart",
-            "Analyse this CSV file and identify any significant correlations between variables"
-        ],
-        tools: [{name: "Julius AI", url: "https://julius.ai"}]
-    },
-    "Accessibility": {
-        title: "Accessibility & Inclusivity",
-        description: "Leverage AI to create inclusive learning materials that cater to diverse student needs, abilities, and learning preferences.",
-        practicalApplications: [
-            "Automatically generate descriptive alt text for images in presentations and documents",
-            "Provide real-time transcription and language translation for lectures and meetings",
-            "Convert visual data or colour-based information into accessible formats for students with visual impairments",
-            "Create multilingual versions of teaching resources to support international students"
-        ],
-        aiPromptExamples: [
-            "Generate appropriate alt text for this image of the water cycle for an educational website",
-            "Transcribe the audio from the uploaded lecture file and provide a summary of the key points"
-        ],
-        tools: [{name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}]
-    }
-  };
-
-  function setupTeachingWorkflow() {
-    const container = document.getElementById('teaching-workflow');
-    const contentEl = document.getElementById('teaching-workflow-content');
-    if (!container || !contentEl) return;
-    container.innerHTML = '';
-    const icons = ['👤', '📝', '🎨', '⚙️', '📊', '♿'];
-    Object.entries(teachingWorkflowData).forEach(([key, value], index) => {
-      const isLast = index === Object.keys(teachingWorkflowData).length - 1;
-      container.innerHTML += `
-        <button onclick="showTeachingStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
-          <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-3xl">${icons[index] || '🎓'}</div>
-          <h4 class="font-semibold text-slate-700 text-center text-sm">${value.title}</h4>
-        </button>
-        ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
-      `;
-    });
-    window.showTeachingStage = function(key) {
-      const item = teachingWorkflowData[key];
-      let contentHTML = `
-        <div class="space-y-4">
-          <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
-          <p class="text-slate-600">${item.description}</p>
-      `;
-      if (item.practicalApplications) {
-        contentHTML += `
-          <div class="practical-tools p-4 rounded-lg">
-            <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
-            <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
-              ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
-            </ul>
-            <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
-            <div class="space-y-2 mb-4">
-              ${item.aiPromptExamples.map(example => `<div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700"><strong>Example:</strong> "${example}"</div>`).join('')}
-            </div>
-          </div>
-        `;
-      }
-      contentHTML += `
-          <div class="flex flex-wrap gap-2 items-center">
-            <span class="font-semibold">Recommended Tools:</span>
-            ${item.tools.map(tool => `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`).join('')}
-          </div>
-        </div>
-      `;
-      contentEl.innerHTML = contentHTML;
-    };
-    // Default to showing the first stage
-    if (Object.keys(teachingWorkflowData).length > 0) {
-        window.showTeachingStage(Object.keys(teachingWorkflowData)[0]);
-    }
-  }
-  setupTeachingWorkflow();
-});
-</script>
-
-</body>
-</html>
+  </div>
+</div>
+```
