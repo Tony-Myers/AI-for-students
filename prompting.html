@@ -62,6 +62,7 @@
         <li>The <strong>Study Buddy</strong> template helps you understand difficult concepts through interactive dialogue.</li>
         <li>The <strong>Essay Planning</strong> template guides you through brainstorming and structuring academic essays.</li>
         <li>The <strong>Assignment Feedback</strong> template helps you get constructive feedback on your draft work.</li>
+        <li>The <strong>Socratic Tutor</strong> template creates a guided learning experience where AI asks questions to help you think through problems.</li>
     </ul>
     <div class="flex flex-wrap gap-4">
       <button onclick="downloadTemplate('study','md')" class="bg-sky-700 text-white px-4 py-2 rounded hover:bg-sky-800">🧠 Study Buddy (.md)</button>
@@ -70,6 +71,8 @@
       <button onclick="downloadTemplate('essay','txt')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">✍️ Essay Planning (.txt)</button>
       <button onclick="downloadTemplate('feedback','md')" class="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700">📋 Assignment Feedback (.md)</button>
       <button onclick="downloadTemplate('feedback','txt')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800">📋 Assignment Feedback (.txt)</button>
+      <button onclick="downloadTemplate('socratic','md')" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700">🎓 Socratic Tutor (.md)</button>
+      <button onclick="downloadTemplate('socratic','txt')" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">🎓 Socratic Tutor (.txt)</button>
     </div>
   </div>
   <div class="bg-white rounded-xl shadow-lg p-8">
@@ -116,14 +119,14 @@
         </div>
         <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
           <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Ask Follow-Up Questions</h3>
-          <p class="text-slate-600 mb-2">Don't stop at the first response. Ask AI to clarify, expand, or help you practice what you've learned. This deepens your understanding.</p>
+          <p class="text-slate-600 mb-2">Do not stop at the first response. Ask AI to clarify, expand, or help you practice what you have learnt. This deepens your understanding.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
             <strong>Example:</strong> "Thanks for explaining photosynthesis. Now can you quiz me with 5 questions to test if I understood it correctly?"
           </div>
         </div>
         <div class="principle-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded border border-teal-200">
           <h3 class="text-lg font-bold text-teal-700 mb-2">7. Keep Prompts Focused and Clear</h3>
-          <p class="text-slate-600 mb-2">Don't overload your prompts with too much information. Be concise but specific about what you need help with.</p>
+          <p class="text-slate-600 mb-2">Do not overload your prompts with too much information. Be concise but specific about what you need help with.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
             <strong>Instead of:</strong> "Can you help me understand everything about photosynthesis including all the complex chemical reactions and how it relates to cellular respiration and..."<br>
             <strong>Use:</strong> "Explain the main steps of photosynthesis in simple terms for a biology student"
@@ -146,9 +149,9 @@
         </div>
         <div class="principle-card bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded border border-violet-200">
           <h3 class="text-lg font-bold text-violet-700 mb-2">10. Test Different Approaches</h3>
-          <p class="text-slate-600 mb-2">If you're not getting helpful results, try rephrasing your prompt or approaching the topic from a different angle.</p>
+          <p class="text-slate-600 mb-2">If you are not getting helpful results, try rephrasing your prompt or approaching the topic from a different angle.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-            <strong>Example:</strong> If "Explain quantum physics" doesn't work, try "Use analogies to help me understand basic quantum physics concepts as if I'm learning this for the first time"
+            <strong>Example:</strong> If "Explain quantum physics" does not work, try "Use analogies to help me understand basic quantum physics concepts as if I'm learning this for the first time"
           </div>
         </div>
     </div>
@@ -250,6 +253,44 @@ Please review my work and provide feedback on:
 
 Please be specific in your suggestions and help me understand how to improve.`;
 
+  const socraticTutorPrompt = `# Socratic Tutor Template
+
+**Instructions for Students:** Replace the text within the square brackets [ ] with the details relevant to your specific course, assessment, and learning objectives. This template configures the AI to act as a Socratic tutor that guides you towards completing a specific academic task through questioning, rather than providing direct answers.
+
+## Your Role
+You are to adopt the persona of a highly experienced and approachable academic. You are an expert in **[Your Subject Area/Field, e.g., Eighteenth-Century Literature, Quantum Physics, Corporate Law]**. Your primary role is to be a kind, caring, and patient tutor who is skilled at supporting student learning through inquiry. Your tone should be encouraging and formal, yet accessible.
+
+## Your Task
+A student will engage with you to learn how to produce a **[Specific Task or Output, e.g., a critical essay plan, a case study analysis, a draft business model, a preliminary lab report]**.
+
+Your fundamental instruction is to guide the student through the process of creating this output for themselves. You must not, under any circumstances, write the **[Specific Task or Output]** for them. Your method is purely Socratic: you will ask a series of carefully constructed questions, wait for the student's reply, and then ask the next logical question based on their response.
+
+## Core Learning Objectives
+During this dialogue, your questions and guidance should be oriented towards helping the student learn and develop the following:
+
+- **[Insert Key Learning Objective 1, e.g., The ability to critically evaluate primary sources]**
+- **[Insert Key Learning Objective 2, e.g., An understanding of the concept of historical contingency]**
+- **[Insert Key Learning Objective 3, e.g., The skill of formulating a clear, arguable thesis statement]**
+- *(Add further objectives as required)*
+
+## Process and Dialogue Flow
+
+1. You will begin the conversation with a warm and open-ended opening question that invites the student to describe their initial thoughts or general area of interest related to the task.
+2. Your subsequent questions should be designed to help the student to narrow their focus, consider different perspectives, structure their thoughts, identify necessary components, and refine their ideas.
+3. The dialogue must be iterative. You must wait for the student's response before asking your next question.
+4. If the student's response indicates a misunderstanding or is inappropriate for the task, you should gently guide them back on track. You can achieve this by breaking the problem down into simpler steps or by asking questions that challenge their assumption, helping them to see the issue for themselves.
+5. If the student demonstrates a good understanding, you should ask more challenging questions that push them to deepen their analysis, consider counterarguments, or justify their reasoning more robustly.
+6. The entire interaction should be tailored to the student's current skill level, which is **[Your Level and Field of Study, e.g., first-year undergraduate in history, master's student in engineering]**.
+7. The final output must be feasible within the given constraints, which are: **[List any specific constraints, e.g., a 2,000-word limit, a two-week deadline, reliance only on pre-approved reading materials, use of a specific theoretical framework]**.
+
+## Response Style Example
+
+- **Your opening question:** "Hello. I am here to help you get started with your **[Specific Task or Output]**. It can often feel like a challenge to begin, so let us start by exploring your initial ideas. Please do not worry if they are not yet fully formed; we can shape them together. What general topics or questions in **[Your Subject Area/Field]** are on your mind at the moment?"
+- **(Wait for the student's response)**
+- **Example follow-up question:** "That is a very interesting starting point. To move towards a more focused **[Specific Task or Output]**, let us consider... [e.g., 'which specific aspect of that topic do you find most compelling?' or 'how might we connect that idea to the key theoretical concept of X?']"
+
+The dialogue between you and the student should continue iteratively until the student has produced a solid and feasible plan or draft that they can develop independently for their assessment.`;
+
   window.downloadTemplate = function(type, format) {
     let content = '';
     let filename = '';
@@ -263,6 +304,9 @@ Please be specific in your suggestions and help me understand how to improve.`;
     } else if (type === 'feedback') {
       content = assignmentFeedbackPrompt;
       filename = `assignment-feedback-prompt.${format}`;
+    } else if (type === 'socratic') {
+      content = socraticTutorPrompt;
+      filename = `socratic-tutor-prompt.${format}`;
     }
     
     const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
