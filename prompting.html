@@ -1,136 +1,178 @@
-# Prompting Page - Student Version Modifications
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Students: Prompting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .principle-card { transition:transform .3s,box-shadow .3s }
+    .principle-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
 
-## Hero Section Update
-```html
-<div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-  <h2 class="text-3xl font-bold">Master AI Prompting for Academic Success</h2>
-  <p class="max-w-3xl mx-auto">
-    Learn the essential techniques for getting the best results from AI tools. These evidence-based 
-    principles will help you study more effectively and complete assignments with confidence.
-  </p>
-</div>
-```
-
-## Template Downloads Section - Student Focus
-```html
-<div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
-  <h3 class="text-xl font-bold text-sky-700 mb-4">Student Prompt Templates</h3>
-  <p class="text-slate-600 mb-2">
-    These templates are designed for students to copy and paste directly into AI tools. 
-    They provide structure for common academic tasks and help you maintain academic integrity.
-  </p>
-  <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
-    <li>The <strong>Study Buddy</strong> template helps you understand difficult concepts through interactive dialogue.</li>
-    <li>The <strong>Essay Planning</strong> template guides you through brainstorming and structuring academic essays.</li>
-    <li>The <strong>Assignment Feedback</strong> template helps you get constructive feedback on your draft work.</li>
-  </ul>
-  <div class="flex flex-wrap gap-4">
-    <button onclick="downloadStudentTemplate('study','md')" class="bg-sky-700 text-white px-4 py-2 rounded hover:bg-sky-800">
-      🧠 Study Buddy (.md)
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
-    <button onclick="downloadStudentTemplate('study','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">
-      🧠 Study Buddy (.txt)
-    </button>
-    <button onclick="downloadStudentTemplate('essay','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
-      ✍️ Essay Planning (.md)
-    </button>
-    <button onclick="downloadStudentTemplate('essay','txt')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-      ✍️ Essay Planning (.txt)
-    </button>
-    <button onclick="downloadStudentTemplate('feedback','md')" class="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700">
-      📋 Assignment Feedback (.md)
-    </button>
-    <button onclick="downloadStudentTemplate('feedback','txt')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800">
-      📋 Assignment Feedback (.txt)
-    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
   </div>
-</div>
-```
+</header>
 
-## Updated Principle Cards with Student Examples
-Replace principle cards with student-focused examples:
-
-```html
-<div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-  <h3 class="text-lg font-bold text-sky-700 mb-2">1. Be Specific About Your Needs</h3>
-  <p class="text-slate-600 mb-2">
-    Instead of vague requests, tell the AI exactly what you're working on, your academic level, 
-    and what kind of help you need.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Instead of:</strong> "Help me with maths"<br>
-    <strong>Use:</strong> "I'm a Year 12 student struggling with calculus integration by parts. 
-    Can you explain the method step-by-step with a simple example?"
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">Master AI Prompting for Academic Success</h2>
+    <p class="max-w-3xl mx-auto">Learn the essential techniques for getting the best results from AI tools. These evidence-based principles will help you study more effectively and complete assignments with confidence.</p>
   </div>
-</div>
-
-<div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
-  <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Give Context About Your Assignment</h3>
-  <p class="text-slate-600 mb-2">
-    Provide background about your course, assignment requirements, and what you've already learned. 
-    This helps AI give more relevant and appropriate responses.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Example:</strong> "I'm writing a 2000-word psychology essay on memory formation for my 
-    second-year course. We've covered encoding, storage, and retrieval. I need help structuring 
-    my argument about why sleep is important for memory consolidation."
+  <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
+    <h3 class="text-xl font-bold text-sky-700 mb-4">Student Prompt Templates</h3>
+    <p class="text-slate-600 mb-2">These templates are designed for students to copy and paste directly into AI tools. They provide structure for common academic tasks and help you maintain academic integrity.</p>
+    <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
+        <li>The <strong>Study Buddy</strong> template helps you understand difficult concepts through interactive dialogue.</li>
+        <li>The <strong>Essay Planning</strong> template guides you through brainstorming and structuring academic essays.</li>
+        <li>The <strong>Assignment Feedback</strong> template helps you get constructive feedback on your draft work.</li>
+    </ul>
+    <div class="flex flex-wrap gap-4">
+      <button onclick="downloadTemplate('study','md')" class="bg-sky-700 text-white px-4 py-2 rounded hover:bg-sky-800">🧠 Study Buddy (.md)</button>
+      <button onclick="downloadTemplate('study','txt')" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700">🧠 Study Buddy (.txt)</button>
+      <button onclick="downloadTemplate('essay','md')" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">✍️ Essay Planning (.md)</button>
+      <button onclick="downloadTemplate('essay','txt')" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">✍️ Essay Planning (.txt)</button>
+      <button onclick="downloadTemplate('feedback','md')" class="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700">📋 Assignment Feedback (.md)</button>
+      <button onclick="downloadTemplate('feedback','txt')" class="bg-slate-700 text-white px-4 py-2 rounded hover:bg-slate-800">📋 Assignment Feedback (.txt)</button>
+    </div>
   </div>
-</div>
-
-<div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
-  <h3 class="text-lg font-bold text-purple-700 mb-2">3. Ask AI to Take on a Helpful Role</h3>
-  <p class="text-slate-600 mb-2">
-    Tell the AI to act as a tutor, study partner, or subject expert. This makes responses more 
-    focused and educational rather than just giving you answers.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Example:</strong> "Act as a patient chemistry tutor. I'm confused about chemical bonding. 
-    Can you explain ionic vs covalent bonds using everyday examples I can relate to?"
+  <div class="bg-white rounded-xl shadow-lg p-8">
+    <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">The 10 Evidence-Based Principles of Effective Prompting</h3>
+      <p class="text-slate-600 max-w-3xl mx-auto">Master these core techniques to dramatically improve your AI interactions. Each principle is backed by research and practical testing.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+          <h3 class="text-lg font-bold text-sky-700 mb-2">1. Be Specific About Your Needs</h3>
+          <p class="text-slate-600 mb-2">Instead of vague requests, tell the AI exactly what you're working on, your academic level, and what kind of help you need.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "Help me with maths"<br>
+            <strong>Use:</strong> "I'm a Year 12 student struggling with calculus integration by parts. Can you explain the method step-by-step with a simple example?"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+          <h3 class="text-lg font-bold text-emerald-700 mb-2">2. Give Context About Your Assignment</h3>
+          <p class="text-slate-600 mb-2">Provide background about your course, assignment requirements, and what you've already learned. This helps AI give more relevant and appropriate responses.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "I'm writing a 2000-word psychology essay on memory formation for my second-year course. We've covered encoding, storage, and retrieval. I need help structuring my argument about why sleep is important for memory consolidation."
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+          <h3 class="text-lg font-bold text-purple-700 mb-2">3. Ask AI to Take on a Helpful Role</h3>
+          <p class="text-slate-600 mb-2">Tell the AI to act as a tutor, study partner, or subject expert. This makes responses more focused and educational rather than just giving you answers.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Act as a patient chemistry tutor. I'm confused about chemical bonding. Can you explain ionic vs covalent bonds using everyday examples I can relate to?"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+          <h3 class="text-lg font-bold text-amber-700 mb-2">4. Specify Your Preferred Format</h3>
+          <p class="text-slate-600 mb-2">Tell the AI how you want the response structured - as bullet points, step-by-step instructions, a table, or paragraphs. This makes information easier to use and study from.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Explain the causes of World War I in a table format with three columns: Cause, Explanation, and How it led to war"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
+          <h3 class="text-lg font-bold text-rose-700 mb-2">5. Show Examples When Possible</h3>
+          <p class="text-slate-600 mb-2">If you have examples of what good work looks like, share them. This helps AI understand the style and level you're aiming for.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Here's a sample thesis statement from class: [example]. Help me write a similar one for my essay on renewable energy, making sure it's equally specific and arguable."
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
+          <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Ask Follow-Up Questions</h3>
+          <p class="text-slate-600 mb-2">Don't stop at the first response. Ask AI to clarify, expand, or help you practice what you've learned. This deepens your understanding.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Thanks for explaining photosynthesis. Now can you quiz me with 5 questions to test if I understood it correctly?"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-teal-50 to-cyan-50 p-6 rounded border border-teal-200">
+          <h3 class="text-lg font-bold text-teal-700 mb-2">7. Keep Prompts Focused and Clear</h3>
+          <p class="text-slate-600 mb-2">Don't overload your prompts with too much information. Be concise but specific about what you need help with.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "Can you help me understand everything about photosynthesis including all the complex chemical reactions and how it relates to cellular respiration and..."<br>
+            <strong>Use:</strong> "Explain the main steps of photosynthesis in simple terms for a biology student"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded border border-orange-200">
+          <h3 class="text-lg font-bold text-orange-700 mb-2">8. Ask for Step-by-Step Explanations</h3>
+          <p class="text-slate-600 mb-2">For complex problems, ask AI to break down the solution into clear steps. This helps you understand the process, not just the answer.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> "Walk me through solving this quadratic equation step-by-step, explaining why each step is necessary"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-lime-50 to-green-50 p-6 rounded border border-lime-200">
+          <h3 class="text-lg font-bold text-lime-700 mb-2">9. Focus on Learning, Not Just Answers</h3>
+          <p class="text-slate-600 mb-2">Frame your requests to encourage learning rather than just getting quick answers. This helps you develop understanding.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Instead of:</strong> "What's the answer to this problem?"<br>
+            <strong>Use:</strong> "Help me understand how to approach this type of problem so I can solve similar ones myself"
+          </div>
+        </div>
+        <div class="principle-card bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded border border-violet-200">
+          <h3 class="text-lg font-bold text-violet-700 mb-2">10. Test Different Approaches</h3>
+          <p class="text-slate-600 mb-2">If you're not getting helpful results, try rephrasing your prompt or approaching the topic from a different angle.</p>
+          <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
+            <strong>Example:</strong> If "Explain quantum physics" doesn't work, try "Use analogies to help me understand basic quantum physics concepts as if I'm learning this for the first time"
+          </div>
+        </div>
+    </div>
   </div>
-</div>
-
-<div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
-  <h3 class="text-lg font-bold text-amber-700 mb-2">4. Specify Your Preferred Format</h3>
-  <p class="text-slate-600 mb-2">
-    Tell the AI how you want the response structured - as bullet points, step-by-step instructions, 
-    a table, or paragraphs. This makes information easier to use and study from.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Example:</strong> "Explain the causes of World War I in a table format with three columns: 
-    Cause, Explanation, and How it led to war"
+  <div class="text-center mt-8">
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
   </div>
-</div>
+</main>
 
-<div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
-  <h3 class="text-lg font-bold text-rose-700 mb-2">5. Show Examples When Possible</h3>
-  <p class="text-slate-600 mb-2">
-    If you have examples of what good work looks like, share them. This helps AI understand 
-    the style and level you're aiming for.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Example:</strong> "Here's a sample thesis statement from class: [example]. Help me write 
-    a similar one for my essay on renewable energy, making sure it's equally specific and arguable."
-  </div>
-</div>
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
 
-<div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
-  <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Ask Follow-Up Questions</h3>
-  <p class="text-slate-600 mb-2">
-    Don't stop at the first response. Ask AI to clarify, expand, or help you practice what you've learned. 
-    This deepens your understanding.
-  </p>
-  <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-    <strong>Example:</strong> "Thanks for explaining photosynthesis. Now can you quiz me with 5 questions 
-    to test if I understood it correctly?"
-  </div>
-</div>
-```
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
-## JavaScript Template Addition
-Add student-specific prompt templates to the JavaScript:
-
-```javascript
-const studyBuddyPrompt = `# Study Buddy Template
+  const studyBuddyPrompt = `# Study Buddy Template
 
 ## Your Role
 You are a supportive and patient study tutor helping a student understand concepts through conversation rather than just giving answers.
@@ -154,7 +196,7 @@ You are a supportive and patient study tutor helping a student understand concep
 
 Remember: Help me learn and understand, don't just give me answers to copy.`;
 
-const essayPlanningPrompt = `# Essay Planning Assistant
+  const essayPlanningPrompt = `# Essay Planning Assistant
 
 ## Your Role
 You are an academic writing tutor helping me plan and structure my essay. Guide me through the thinking process rather than writing for me.
@@ -180,7 +222,7 @@ You are an academic writing tutor helping me plan and structure my essay. Guide 
 
 Please guide me through each step and ask questions to help me think through the process.`;
 
-const assignmentFeedbackPrompt = `# Assignment Feedback Assistant
+  const assignmentFeedbackPrompt = `# Assignment Feedback Assistant
 
 ## Your Role
 Act as a constructive academic reviewer. Provide detailed feedback on my draft work to help me improve before submission.
@@ -201,37 +243,40 @@ Act as a constructive academic reviewer. Provide detailed feedback on my draft w
 ## Feedback Requested
 Please review my work and provide feedback on:
 1. **Content & Arguments**: Are my points clear and well-supported?
-2. **Structure & Flow**: Does the organization make sense?
+2. **Structure & Flow**: Does the organisation make sense?
 3. **Academic Writing**: Is my style appropriate for the level?
 4. **Evidence & Sources**: Am I using sources effectively?
 5. **Areas for Improvement**: What should I focus on in my next draft?
 
 Please be specific in your suggestions and help me understand how to improve.`;
 
-// Update the download function
-window.downloadStudentTemplate = function(type, format) {
-  let content = '';
-  let filename = '';
-  
-  if (type === 'study') {
-    content = studyBuddyPrompt;
-    filename = `study-buddy-prompt.${format}`;
-  } else if (type === 'essay') {
-    content = essayPlanningPrompt;
-    filename = `essay-planning-prompt.${format}`;
-  } else if (type === 'feedback') {
-    content = assignmentFeedbackPrompt;
-    filename = `assignment-feedback-prompt.${format}`;
-  }
-  
-  const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
-```
+  window.downloadTemplate = function(type, format) {
+    let content = '';
+    let filename = '';
+    
+    if (type === 'study') {
+      content = studyBuddyPrompt;
+      filename = `study-buddy-prompt.${format}`;
+    } else if (type === 'essay') {
+      content = essayPlanningPrompt;
+      filename = `essay-planning-prompt.${format}`;
+    } else if (type === 'feedback') {
+      content = assignmentFeedbackPrompt;
+      filename = `assignment-feedback-prompt.${format}`;
+    }
+    
+    const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+});
+</script>
+
+</body>
+</html>
