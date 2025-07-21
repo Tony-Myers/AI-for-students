@@ -1,178 +1,284 @@
-# Research Page - Student Version Modifications
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Students: Research & Essays</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus, iframe:focus { outline: 3px solid #0369a1; outline-offset: 2px; border-radius: 4px; }
+    .practical-tools { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0369a1; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
 
-## Page Title and Hero Section
-```html
-<!-- Update page title -->
-<title>AI for Students: Research & Essays</title>
-
-<!-- Update hero section -->
-<div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-  <h2 class="text-3xl font-bold">AI for Research & Essay Writing</h2>
-  <p class="max-w-3xl mx-auto">
-    Transform how you approach research projects and essay writing. Learn to use AI ethically 
-    throughout your academic journey from first ideas to final submission.
-  </p>
-</div>
-```
-
-## Introduction Section Rewrite
-```html
-<div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-  <h3 class="text-2xl font-bold text-slate-800 mb-4">Using AI for Student Research</h3>
-  <div class="bg-sky-50 border border-sky-200 p-4 rounded-lg text-center mb-6">
-    <p class="font-semibold text-sky-700">
-      🎯 <strong>Remember:</strong> AI is your research assistant, not your replacement. 
-      Use it to enhance your thinking, not to do your thinking for you.
-    </p>
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
   </div>
-  <div class="space-y-4 text-slate-700 leading-relaxed">
-    <p>
-      AI can revolutionise how you approach research and writing, but it requires the right mindset. 
-      Think of AI as a sophisticated research assistant that can help you find sources, understand 
-      complex topics, organise your thoughts, and improve your writing - whilst you remain the author 
-      and critical thinker.
-    </p>
-    <p>
-      From brainstorming essay topics and finding relevant sources to getting feedback on your drafts 
-      and ensuring proper citations, AI tools can support every stage of your research process. 
-      The key is learning to use these tools ethically and effectively whilst developing your own 
-      academic skills.
-    </p>
-    <p>
-      This guide will show you practical ways to integrate AI into your research workflow whilst 
-      maintaining academic integrity and producing work that is genuinely your own.
-    </p>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">AI for Research & Essay Writing</h2>
+    <p class="max-w-3xl mx-auto">Transform how you approach research projects and essay writing. Learn to use AI ethically throughout your academic journey from first ideas to final submission.</p>
   </div>
-</div>
-```
+  
+  <div class="bg-red-50 border border-red-200 rounded-xl p-6 mb-8">
+    <h3 class="text-xl font-bold text-red-700 mb-4">🚨 Academic Integrity Guidelines</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white p-4 rounded border border-red-300">
+        <h4 class="font-bold text-red-600 mb-2">Always Check Your Institution's AI Policy</h4>
+        <p class="text-slate-700 text-sm">
+          Universities have different rules about AI use. Some allow it for brainstorming, others require 
+          declaration, and some prohibit it entirely for certain assignments. When in doubt, ask your lecturer.
+        </p>
+      </div>
+      <div class="bg-white p-4 rounded border border-amber-300">
+        <h4 class="font-bold text-amber-600 mb-2">How to Use AI Ethically</h4>
+        <ul class="text-slate-700 text-sm space-y-1">
+          <li>• Use AI for learning and understanding, not for writing final submissions</li>
+          <li>• Always verify facts, statistics, and sources that AI provides</li>
+          <li>• Declare AI use when required by your institution</li>
+          <li>• Ensure you can explain and defend every part of your submitted work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">Using AI for Student Research</h3>
+        <div class="bg-sky-50 border border-sky-200 p-4 rounded-lg text-center mb-6">
+            <p class="font-semibold text-sky-700">
+                🎯 <strong>Remember:</strong> AI is your research assistant, not your replacement. 
+                Use it to enhance your thinking, not to do your thinking for you.
+            </p>
+        </div>
+      <div class="space-y-4 text-slate-700 leading-relaxed mt-6">
+          <p>AI can revolutionise how you approach research and writing, but it requires the right mindset. Think of AI as a sophisticated research assistant that can help you find sources, understand complex topics, organise your thoughts, and improve your writing - whilst you remain the author and critical thinker.</p>
+          <p>From brainstorming essay topics and finding relevant sources to getting feedback on your drafts and ensuring proper citations, AI tools can support every stage of your research process. The key is learning to use these tools ethically and effectively whilst developing your own academic skills.</p>
+          <p>This guide will show you practical ways to integrate AI into your research workflow whilst maintaining academic integrity and producing work that is genuinely your own.</p>
+      </div>
+  </div>
 
-## Student Research Workflow Data
-Replace the research workflow with student-focused stages:
+  <div class="bg-white rounded-xl shadow-lg p-8">
+    <div id="research-workflow" class="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4 text-center mb-8"></div>
+    <div id="research-workflow-content" class="p-6 bg-slate-50 rounded-lg min-h-[150px]">
+      <p class="text-center text-slate-600">Click on a research stage above to explore AI tools and techniques for that area.</p>
+    </div>
+  </div>
+  <div class="text-center mt-8">
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+  </div>
+</main>
 
-```javascript
-const studentResearchWorkflowData = {
-  "Topic Exploration": {
-    title: "Topic Exploration & Question Development",
-    description: "Use AI to explore potential research topics, narrow your focus, and develop clear research questions that will guide your investigation.",
-    practicalApplications: [
-      "Brainstorm essay topics related to your course themes",
-      "Narrow broad topics into focused, manageable research questions", 
-      "Explore different angles and perspectives on your chosen topic",
-      "Understand what makes a good research question for your level"
-    ],
-    aiPromptExamples: [
-      "I'm studying environmental science and need to write about climate change. Suggest 5 specific research questions that would be suitable for a 2000-word undergraduate essay.",
-      "My topic is 'social media and mental health.' Help me narrow this down to a focused research question that I can actually answer in my assignment."
-    ],
-    tools: [
-      {name: "ChatGPT", url: "https://chatgpt.com"}, 
-      {name: "Claude", url: "https://claude.ai"}, 
-      {name: "Perplexity", url: "https://perplexity.ai"}
-    ]
-  },
-  "Source Discovery": {
-    title: "Finding & Evaluating Sources",
-    description: "Discover relevant academic sources, learn to evaluate their quality, and understand how to use them effectively in your research.",
-    practicalApplications: [
-      "Find academic papers, books, and credible sources for your topic",
-      "Learn to evaluate source credibility and relevance",
-      "Understand different types of sources and when to use them",
-      "Get help accessing and understanding academic databases"
-    ],
-    aiPromptExamples: [
-      "I'm researching the impact of remote work on productivity. What types of sources should I look for, and what databases would be most relevant?",
-      "Help me evaluate this source for my psychology essay: [paste source details]. Is it credible and relevant for undergraduate work?"
-    ],
-    tools: [
-      {name: "Perplexity", url: "https://perplexity.ai"}, 
-      {name: "Research Rabbit", url: "https://researchrabbitapp.com"}, 
-      {name: "Connected Papers", url: "https://connectedpapers.com"},
-      {name: "Google Scholar", url: "https://scholar.google.com"}
-    ]
-  },
-  "Reading & Analysis": {
-    title: "Reading Comprehension & Analysis",
-    description: "Use AI to help understand complex academic texts, extract key information, and analyse arguments and evidence effectively.",
-    practicalApplications: [
-      "Summarise lengthy academic papers into key points",
-      "Understand complex theories and methodologies", 
-      "Identify main arguments and evidence in sources",
-      "Compare and contrast different viewpoints on your topic"
-    ],
-    aiPromptExamples: [
-      "I've uploaded this research paper about neuroplasticity. Can you explain the main findings in simpler terms and tell me how they relate to learning and memory?",
-      "Compare the arguments in these three sources about renewable energy policy. What are the main points of agreement and disagreement?"
-    ],
-    tools: [
-      {name: "NotebookLM", url: "https://notebooklm.google.com"}, 
-      {name: "Claude", url: "https://claude.ai"}, 
-      {name: "ChatGPT", url: "https://chatgpt.com"}
-    ]
-  },
-  "Planning & Structure": {
-    title: "Essay Planning & Structure",
-    description: "Develop clear thesis statements, create logical essay structures, and plan your arguments before you start writing.",
-    practicalApplications: [
-      "Develop strong, arguable thesis statements",
-      "Create detailed essay outlines with logical flow",
-      "Plan introduction and conclusion strategies",
-      "Organise evidence and arguments effectively"
-    ],
-    aiPromptExamples: [
-      "Help me create a thesis statement for my essay on 'The role of technology in modern education.' My argument is that technology enhances learning when used thoughtfully.",
-      "I have these main points for my history essay: [list points]. Help me organise them into a logical structure with smooth transitions."
-    ],
-    tools: [
-      {name: "ChatGPT", url: "https://chatgpt.com"}, 
-      {name: "Claude", url: "https://claude.ai"}, 
-      {name: "NotebookLM", url: "https://notebooklm.google.com"}
-    ]
-  },
-  "Writing & Revision": {
-    title: "Drafting, Feedback & Revision",
-    description: "Get constructive feedback on your writing, improve clarity and flow, and ensure your work meets academic standards.",
-    practicalApplications: [
-      "Get feedback on draft paragraphs and sections",
-      "Improve sentence clarity and academic writing style",
-      "Check logical flow and argument development",
-      "Ensure proper citation and referencing format"
-    ],
-    aiPromptExamples: [
-      "Review this introduction paragraph for my sociology essay. Is my thesis clear? Does it properly introduce my main arguments?",
-      "Help me improve the flow between these two paragraphs about economic inequality. The transition feels abrupt."
-    ],
-    tools: [
-      {name: "Claude", url: "https://claude.ai"}, 
-      {name: "Grammarly", url: "https://grammarly.com"}, 
-      {name: "ChatGPT", url: "https://chatgpt.com"}
-    ]
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
   }
-};
-```
 
-## Important Academic Integrity Section
-Add this prominent section:
+  const studentResearchWorkflowData = {
+    "Topic Exploration": {
+      title: "Topic Exploration & Question Development",
+      description: "Use AI to explore potential research topics, narrow your focus, and develop clear research questions that will guide your investigation.",
+      practicalApplications: [
+        "Brainstorm essay topics related to your course themes",
+        "Narrow broad topics into focused, manageable research questions", 
+        "Explore different angles and perspectives on your chosen topic",
+        "Understand what makes a good research question for your level"
+      ],
+      aiPromptExamples: [
+        "I'm studying environmental science and need to write about climate change. Suggest 5 specific research questions that would be suitable for a 2000-word undergraduate essay.",
+        "My topic is 'social media and mental health.' Help me narrow this down to a focused research question that I can actually answer in my assignment."
+      ],
+      tools: [
+        {name: "ChatGPT", url: "https://chatgpt.com"}, 
+        {name: "Claude", url: "https://claude.ai"}, 
+        {name: "Perplexity", url: "https://perplexity.ai"}
+      ]
+    },
+    "Source Discovery": {
+      title: "Finding & Evaluating Sources",
+      description: "Discover relevant academic sources, learn to evaluate their quality, and understand how to use them effectively in your research.",
+      practicalApplications: [
+        "Find academic papers, books, and credible sources for your topic",
+        "Learn to evaluate source credibility and relevance",
+        "Understand different types of sources and when to use them",
+        "Get help accessing and understanding academic databases"
+      ],
+      aiPromptExamples: [
+        "I'm researching the impact of remote work on productivity. What types of sources should I look for, and what databases would be most relevant?",
+        "Help me evaluate this source for my psychology essay: [paste source details]. Is it credible and relevant for undergraduate work?"
+      ],
+      tools: [
+        {name: "Perplexity", url: "https://perplexity.ai"}, 
+        {name: "Research Rabbit", url: "https://researchrabbitapp.com"}, 
+        {name: "Connected Papers", url: "https://connectedpapers.com"},
+        {name: "Google Scholar", url: "https://scholar.google.com"}
+      ]
+    },
+    "Reading & Analysis": {
+      title: "Reading Comprehension & Analysis",
+      description: "Use AI to help understand complex academic texts, extract key information, and analyse arguments and evidence effectively.",
+      practicalApplications: [
+        "Summarise lengthy academic papers into key points",
+        "Understand complex theories and methodologies", 
+        "Identify main arguments and evidence in sources",
+        "Compare and contrast different viewpoints on your topic"
+      ],
+      aiPromptExamples: [
+        "I've uploaded this research paper about neuroplasticity. Can you explain the main findings in simpler terms and tell me how they relate to learning and memory?",
+        "Compare the arguments in these three sources about renewable energy policy. What are the main points of agreement and disagreement?"
+      ],
+      tools: [
+        {name: "NotebookLM", url: "https://notebooklm.google.com"}, 
+        {name: "Claude", url: "https://claude.ai"}, 
+        {name: "ChatGPT", url: "https://chatgpt.com"}
+      ]
+    },
+    "Planning & Structure": {
+      title: "Essay Planning & Structure",
+      description: "Develop clear thesis statements, create logical essay structures, and plan your arguments before you start writing.",
+      practicalApplications: [
+        "Develop strong, arguable thesis statements",
+        "Create detailed essay outlines with logical flow",
+        "Plan introduction and conclusion strategies",
+        "Organise evidence and arguments effectively"
+      ],
+      aiPromptExamples: [
+        "Help me create a thesis statement for my essay on 'The role of technology in modern education.' My argument is that technology enhances learning when used thoughtfully.",
+        "I have these main points for my history essay: [list points]. Help me organise them into a logical structure with smooth transitions."
+      ],
+      tools: [
+        {name: "ChatGPT", url: "https://chatgpt.com"}, 
+        {name: "Claude", url: "https://claude.ai"}, 
+        {name: "NotebookLM", url: "https://notebooklm.google.com"}
+      ]
+    },
+    "Writing & Revision": {
+      title: "Drafting, Feedback & Revision",
+      description: "Get constructive feedback on your writing, improve clarity and flow, and ensure your work meets academic standards.",
+      practicalApplications: [
+        "Get feedback on draft paragraphs and sections",
+        "Improve sentence clarity and academic writing style",
+        "Check logical flow and argument development",
+        "Ensure proper citation and referencing format"
+      ],
+      aiPromptExamples: [
+        "Review this introduction paragraph for my sociology essay. Is my thesis clear? Does it properly introduce my main arguments?",
+        "Help me improve the flow between these two paragraphs about economic inequality. The transition feels abrupt."
+      ],
+      tools: [
+        {name: "Claude", url: "https://claude.ai"}, 
+        {name: "Grammarly", url: "https://grammarly.com"}, 
+        {name: "ChatGPT", url: "https://chatgpt.com"}
+      ]
+    }
+  };
 
-```html
-<div class="bg-red-50 border border-red-200 rounded-xl p-6 mt-8">
-  <h3 class="text-xl font-bold text-red-700 mb-4">🚨 Academic Integrity Guidelines</h3>
-  <div class="space-y-4">
-    <div class="bg-white p-4 rounded border border-red-300">
-      <h4 class="font-bold text-red-600 mb-2">Always Check Your Institution's AI Policy</h4>
-      <p class="text-slate-700 text-sm">
-        Universities have different rules about AI use. Some allow it for brainstorming, others require 
-        declaration, and some prohibit it entirely for certain assignments. When in doubt, ask your lecturer.
-      </p>
-    </div>
-    <div class="bg-white p-4 rounded border border-amber-300">
-      <h4 class="font-bold text-amber-600 mb-2">How to Use AI Ethically</h4>
-      <ul class="text-slate-700 text-sm space-y-1">
-        <li>• Use AI for learning and understanding, not for writing final submissions</li>
-        <li>• Always verify facts, statistics, and sources that AI provides</li>
-        <li>• Declare AI use when required by your institution</li>
-        <li>• Ensure you can explain and defend every part of your submitted work</li>
-      </ul>
-    </div>
-  </div>
-</div>
-```
+  function setupResearchWorkflow() {
+    const container = document.getElementById('research-workflow');
+    const contentEl = document.getElementById('research-workflow-content');
+    if (!container || !contentEl) return;
+    container.innerHTML = '';
+    const keys = Object.keys(studentResearchWorkflowData);
+    const icons = ['💡', '🔍', '📖', '🏗️', '✍️']; 
+
+    keys.forEach((key, index) => {
+      const value = studentResearchWorkflowData[key];
+      const isLast = index === keys.length - 1;
+      container.innerHTML += `
+        <div class="flex items-center">
+            <button onclick="showResearchStage('${key}')" class="workflow-btn flex flex-col items-center space-y-2 p-4 rounded-lg hover:bg-sky-50 cursor-pointer w-40">
+              <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-4xl">
+                ${icons[index] || '📚'}
+              </div>
+              <h4 class="font-semibold text-slate-700 text-center text-sm mt-2">${value.title}</h4>
+            </button>
+            ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block mx-2">→</div>' : ''}
+        </div>
+      `;
+    });
+  }
+
+  window.showResearchStage = function(key) {
+    const item = studentResearchWorkflowData[key];
+    const contentEl = document.getElementById('research-workflow-content');
+    let contentHTML = `
+      <div class="space-y-4">
+        <h4 class="text-xl font-bold text-sky-700">${item.title}</h4>
+        <p class="text-slate-600">${item.description}</p>
+    `;
+    if (item.practicalApplications) {
+      contentHTML += `
+        <div class="practical-tools p-4 rounded-lg">
+          <h5 class="font-bold text-slate-800 mb-3">Practical Applications:</h5>
+          <ul class="text-sm text-slate-700 space-y-1 mb-4 pl-4" style="list-style-type: disc;">
+            ${item.practicalApplications.map(app => `<li>${app}</li>`).join('')}
+          </ul>
+          <h5 class="font-bold text-slate-800 mb-3">AI Prompt Examples:</h5>
+          <div class="space-y-2 mb-4">
+            ${item.aiPromptExamples.map(example => `<div class="bg-white p-3 rounded border border-slate-200 text-sm text-slate-700"><strong>Example:</strong> "${example}"</div>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+    contentHTML += `
+        <div class="flex flex-wrap gap-2 items-center">
+          <span class="font-semibold">Recommended Tools:</span>
+          ${item.tools.map(tool => `<a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="bg-sky-100 text-sky-800 text-xs font-medium px-2.5 py-0.5 rounded-full hover:bg-sky-200 transition-colors">${tool.name} ↗</a>`).join('')}
+        </div>
+      </div>
+    `;
+    contentEl.innerHTML = contentHTML;
+  };
+
+  setupResearchWorkflow();
+  if (Object.keys(studentResearchWorkflowData).length > 0) {
+      window.showResearchStage(Object.keys(studentResearchWorkflowData)[0]);
+  }
+});
+</script>
+
+</body>
+</html>
