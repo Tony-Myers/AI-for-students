@@ -1,54 +1,174 @@
-# Homepage Modifications for Student Version
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Students: Your Academic Success Toolkit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .platform-link, .tool-link { color:#0369a1 !important; text-decoration:none; }
+    .platform-link:hover, .tool-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
+    .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
+    .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .hero-img { width: 400px; height: 400px; object-fit: contain; } 
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
 
-## Title & Branding Changes
-```html
-<!-- CHANGE FROM: -->
-<title>The AI-Powered Academic: Home</title>
-<a href="index.html" class="text-xl font-bold text-sky-700">The AI-Powered Academic</a>
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
+  </div>
+</header>
 
-<!-- CHANGE TO: -->
-<title>AI for Students: Your Academic Success Toolkit</title>
-<a href="index.html" class="text-xl font-bold text-sky-700">AI for Students</a>
-```
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
+    <h2 id="home-title" class="text-4xl font-bold"></h2>
+    <div class="w-auto h-auto mx-auto bg-sky-900/30 rounded-full flex items-center justify-center border-4 border-sky-400/50" style="width: 420px; height: 420px;">
+      <img id="home-hero-img" src="" alt="AI for Students" class="hero-img">
+    </div>
+    <div id="home-subtitle" class="text-left max-w-3xl mx-auto"></div>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+    <a href="getting-started.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-getting-started-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-getting-started-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="ai-literacy.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-literacy-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-literacy-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="prompting.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-prompting-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-prompting-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="research.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-research-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-research-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="study-strategies.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-study-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-study-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="ai-platforms.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-platforms-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-platforms-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="toolkit.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-toolkit-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-toolkit-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="academic-integrity.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-integrity-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-integrity-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+  </div>
+</main>
 
-## Hero Section Content Update
-Replace the JavaScript pageContent object with student-focused content:
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
 
-```javascript
-const pageContent = {
-    home: {
-        title: "AI for Students: Your Academic Success Toolkit",
-        subtitle: `
-          <p class="mb-4">
-            AI tools can transform how you learn, research, and complete assignments. This guide helps you harness AI effectively and ethically for academic success, whether you're writing essays, conducting research, or preparing for exams.
-          </p>
-          <p class="mb-4">
-            Master AI tools to enhance your learning, not replace your thinking. Within this site, you'll find practical tutorials, prompt templates, and step-by-step guides to help you excel in your studies whilst maintaining academic integrity.
-          </p>
-          
-          <div style="text-align: center; margin-top: 1.5rem;">
-            <img src="/AI-for-education/images/Sig_ATB.png" 
-                 alt="A handwritten signature reading 'all the best Tony'" 
-                 style="width: 180px; height: auto; display: inline-block;">
-          </div>
-        `,
-        heroImageUrl: "/AI-for-education/images/hero-image.gif",
-        buttons: {
-            integration: { title: "Getting Started with AI", description: "Essential first steps for students" },
-            literacy: { title: "AI Literacy for Students", description: "Core skills you need to succeed" },
-            prompting: { title: "Effective AI Prompting", description: "Get better results from AI tools" },
-            research: { title: "AI for Research & Essays", description: "Transform your research process" },
-            teaching: { title: "AI Study Strategies", description: "Enhance your learning experience" },
-            platforms: { title: "Student AI Tools", description: "Essential platforms for students" },
-            toolkit: { title: "Student Toolkit", description: "Curated study tools" },
-            ethics: { title: "Academic Integrity", description: "Responsible AI use guidelines" }
-        }
-    }
-};
-```
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
-## Navigation Updates
-Update all navigation menu references to be student-appropriate:
-- "AI Integration" → "Getting Started"
-- "Teaching" → "Study Strategies" 
-- "Ethics" → "Academic Integrity"
+  // --- START: EDITABLE PAGE CONTENT ---
+  const pageContent = {
+      home: {
+          title: "AI for Students: Your Academic Success Toolkit",
+subtitle: `
+  <p class="mb-4">
+    AI tools can transform how you learn, research, and complete assignments. This guide helps you harness AI effectively and ethically for academic success, whether you're writing essays, conducting research, or preparing for exams.
+  </p>
+  <p class="mb-4">
+    Master AI tools to enhance your learning, not replace your thinking. Within this site, you'll find practical tutorials, prompt templates, and step-by-step guides to help you excel in your studies whilst maintaining academic integrity.
+  </p>
+  
+  <div style="text-align: center; margin-top: 1.5rem;">
+    <img src="/AI-for-education/images/Sig_ATB.png" 
+         alt="A handwritten signature reading 'all the best Tony'" 
+         style="width: 180px; height: auto; display: inline-block;">
+  </div>
+`,
+          heroImageUrl: "/AI-for-education/images/hero-image.gif",
+          buttons: {
+              gettingStarted: { title: "Getting Started with AI", description: "Essential first steps for students" },
+              literacy: { title: "AI Literacy for Students", description: "Core skills you need to succeed" },
+              prompting: { title: "Effective AI Prompting", description: "Get better results from AI tools" },
+              research: { title: "Research & Essay Writing", description: "Transform your research process" },
+              study: { title: "AI Study Strategies", description: "Enhance your learning experience" },
+              platforms: { title: "Essential AI Platforms", description: "Student-friendly AI tools" },
+              toolkit: { title: "Student Toolkit", description: "Curated study tools" },
+              integrity: { title: "Academic Integrity", description: "Responsible AI use guidelines" }
+          }
+      }
+  };
+
+  function populateContent() {
+      const content = pageContent.home;
+      document.getElementById('home-title').innerHTML = content.title;
+      document.getElementById('home-subtitle').innerHTML = content.subtitle;
+      document.getElementById('home-hero-img').src = content.heroImageUrl;
+      document.getElementById('home-btn-getting-started-title').innerHTML = content.buttons.gettingStarted.title;
+      document.getElementById('home-btn-getting-started-desc').innerHTML = content.buttons.gettingStarted.description;
+      document.getElementById('home-btn-literacy-title').innerHTML = content.buttons.literacy.title;
+      document.getElementById('home-btn-literacy-desc').innerHTML = content.buttons.literacy.description;
+      document.getElementById('home-btn-prompting-title').innerHTML = content.buttons.prompting.title;
+      document.getElementById('home-btn-prompting-desc').innerHTML = content.buttons.prompting.description;
+      document.getElementById('home-btn-research-title').innerHTML = content.buttons.research.title;
+      document.getElementById('home-btn-research-desc').innerHTML = content.buttons.research.description;
+      document.getElementById('home-btn-study-title').innerHTML = content.buttons.study.title;
+      document.getElementById('home-btn-study-desc').innerHTML = content.buttons.study.description;
+      document.getElementById('home-btn-platforms-title').innerHTML = content.buttons.platforms.title;
+      document.getElementById('home-btn-platforms-desc').innerHTML = content.buttons.platforms.description;
+      document.getElementById('home-btn-toolkit-title').innerHTML = content.buttons.toolkit.title;
+      document.getElementById('home-btn-toolkit-desc').innerHTML = content.buttons.toolkit.description;
+      document.getElementById('home-btn-integrity-title').innerHTML = content.buttons.integrity.title;
+      document.getElementById('home-btn-integrity-desc').innerHTML = content.buttons.integrity.description;
+  }
+  populateContent();
+});
+</script>
+
+</body>
+</html>
