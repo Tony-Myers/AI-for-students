@@ -223,7 +223,7 @@
               <li>Be cautious with evolving fields (technology, medicine, current events)</li>
             </ul>
             <div class="bg-purple-50 p-3 rounded border border-purple-200">
-              <p class="text-sm"><strong>Note:</strong> Knowledge cut-off dates vary by model. Always check for your specific tool.</p>
+              <p class="text-sm"><strong>Current Models (2025):</strong> ChatGPT (GPT-5) has October 2024 cut-off, Claude Sonnet 4.5 has April 2024 cut-off, Gemini 2.5 Pro has early 2025 cut-off. Always check the latest information for your specific tool as these dates update regularly.</p>
             </div>
           </div>
         </div>
@@ -301,26 +301,57 @@
     </div>
 
     <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded border border-purple-200">
-      <h4 class="text-lg font-bold text-purple-700 mb-4">Typical Context Windows (2024-2025)</h4>
+      <h4 class="text-lg font-bold text-purple-700 mb-4">Current Context Windows (2025)</h4>
       <div class="grid md:grid-cols-2 gap-4 text-sm">
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">GPT-4 Turbo: 128,000 tokens</p>
+          <p class="font-semibold">ChatGPT (GPT-5): 128,000 tokens</p>
           <p class="text-slate-600">Approximately 96,000 words or 300 pages</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Claude Sonnet: 200,000 tokens</p>
+          <p class="font-semibold">Claude Sonnet 4.5: 200,000 tokens</p>
           <p class="text-slate-600">Approximately 150,000 words or 500 pages</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Gemini Pro: 32,000 tokens</p>
-          <p class="text-slate-600">Approximately 24,000 words or 75 pages</p>
+          <p class="font-semibold">Gemini 2.5 Pro: 1,000,000+ tokens</p>
+          <p class="text-slate-600">Approximately 750,000+ words or 2,000+ pages</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Gemini 1.5 Pro: 1,000,000 tokens</p>
-          <p class="text-slate-600">Approximately 750,000 words or 2,000+ pages</p>
+          <p class="font-semibold">Gemini 2.5 Flash: 1,000,000+ tokens</p>
+          <p class="text-slate-600">Faster responses with same large context</p>
         </div>
       </div>
-      <p class="text-sm text-slate-600 mt-4"><strong>Note:</strong> Actual usable context may be less due to system instructions and other overhead.</p>
+      <p class="text-sm text-slate-600 mt-4"><strong>Note:</strong> Actual usable context may be less due to system instructions and other overhead. Context windows are regularly expanding, so check the latest model documentation.</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Best Practices for Managing Context</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      
+      <div>
+        <h4 class="text-lg font-bold text-slate-700 mb-3">✅ Do These</h4>
+        <ul class="text-slate-700 space-y-2">
+          <li>• Start new conversations for different topics</li>
+          <li>• Summarise key points periodically in long conversations</li>
+          <li>• Upload only relevant sections of long documents</li>
+          <li>• Be concise in your prompts when possible</li>
+          <li>• Use tools with larger context for document analysis</li>
+          <li>• Save important responses outside the conversation</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold text-slate-700 mb-3">❌ Avoid These</h4>
+        <ul class="text-slate-700 space-y-2">
+          <li>• Keeping one conversation going for weeks</li>
+          <li>• Uploading entire textbooks when you need one chapter</li>
+          <li>• Assuming the model remembers everything from the start</li>
+          <li>• Mixing multiple unrelated topics in one conversation</li>
+          <li>• Ignoring context limit warnings</li>
+          <li>• Relying on very old context for current questions</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 
