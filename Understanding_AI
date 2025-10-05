@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Students: Understanding AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .concept-card { transition:transform .3s,box-shadow .3s }
+    .concept-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Understanding AI</a>
+      <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Limitations</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
+    <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">Understanding How AI Works</h2>
+    <p class="max-w-3xl mx-auto">Learn the fundamentals of large language models to use them more effectively and understand their capabilities and limitations.</p>
+  </div>
+
+  <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-8 border border-purple-200">
+    <h3 class="text-xl font-bold text-purple-700 mb-4">Why Understanding AI Matters for Students</h3>
+    <p class="text-slate-700">Understanding how AI tools work helps you use them more effectively, recognise their limitations, and make better decisions about when and how to apply them to your studies. You do not need to be a computer scientist to benefit from this knowledge.</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">What Is a Large Language Model?</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed">
+      <p>Large language models (LLMs) like ChatGPT, Claude, and Gemini are AI systems trained to understand and generate human language. Think of them as sophisticated pattern-recognition systems that have learnt from billions of examples of written text.</p>
+      <p>These models do not "think" or "understand" in the way humans do. Instead, they predict what words are most likely to come next based on patterns they have learnt during training. When you ask a question, the model generates a response by predicting the most appropriate sequence of words, one token at a time.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-8">
+      <div class="concept-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">🧠 What They Are</h4>
+        <ul class="text-slate-700 space-y-2 text-sm">
+          <li>• Pattern-matching systems trained on vast amounts of text</li>
+          <li>• Statistical models that predict likely word sequences</li>
+          <li>• Tools that can process and generate human-like text</li>
+          <li>• Systems that learn relationships between concepts and words</li>
+        </ul>
+      </div>
+      <div class="concept-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">❌ What They Are Not</h4>
+        <ul class="text-slate-700 space-y-2 text-sm">
+          <li>• Not conscious beings with understanding or awareness</li>
+          <li>• Not databases that look up factual information</li>
+          <li>• Not connected to the internet in real-time (unless explicitly enabled)</li>
+          <li>• Not infallible sources of truth</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">How LLMs Are Trained</h3>
+    <div class="space-y-6">
+      <div class="concept-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+        <h4 class="text-lg font-bold text-emerald-700 mb-3">Stage 1: Pre-Training</h4>
+        <p class="text-slate-700 mb-3">The model is trained on massive datasets of text from books, websites, academic papers, and other sources. During this phase, it learns patterns, relationships between words, grammar, facts about the world, and reasoning patterns.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>Key Point:</strong> The model learns from examples in its training data, not from a structured database of facts. This is why it can sometimes "know" information but present it incorrectly.
+        </div>
+      </div>
+
+      <div class="concept-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+        <h4 class="text-lg font-bold text-purple-700 mb-3">Stage 2: Fine-Tuning</h4>
+        <p class="text-slate-700 mb-3">After pre-training, models are further trained to be more helpful, accurate, and safe. This involves reinforcement learning from human feedback (RLHF), where human reviewers rate different responses, teaching the model to prefer certain types of answers.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>Why This Matters:</strong> This is why AI assistants tend to be helpful and detailed rather than giving one-word answers, even though technically both might be "correct".
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Key Concepts Every Student Should Understand</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      
+      <div class="concept-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">📝 Tokens</h4>
+        <p class="text-slate-700 mb-3">AI models break text into small units called tokens. A token might be a word, part of a word, or punctuation. The model processes and generates text one token at a time.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>Student Example:</strong> "Understanding" might be split into "Under", "stand", "ing". Most models process about 750 words per 1,000 tokens.
+        </div>
+      </div>
+
+      <div class="concept-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+        <h4 class="text-lg font-bold text-emerald-700 mb-3">🧵 Context Window</h4>
+        <p class="text-slate-700 mb-3">The context window is the amount of text the model can "remember" at once. Everything you have written in a conversation, plus the model's responses, counts towards this limit.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>Practical Impact:</strong> If you have a very long conversation or upload large documents, the model might "forget" earlier parts. Context windows range from about 8,000 to 200,000+ tokens depending on the model.
+        </div>
+      </div>
+
+      <div class="concept-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+        <h4 class="text-lg font-bold text-purple-700 mb-3">🎲 Temperature</h4>
+        <p class="text-slate-700 mb-3">Temperature controls how "creative" or "random" the model's responses are. Lower temperature (0-0.3) makes responses more focused and deterministic. Higher temperature (0.7-1.0) makes responses more varied and creative.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>When to Care:</strong> For factual questions or academic work, lower temperature is better. For brainstorming or creative writing, higher temperature can be useful.
+        </div>
+      </div>
+
+      <div class="concept-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">🔮 Probabilistic Generation</h4>
+        <p class="text-slate-700 mb-3">The model generates responses by predicting the most probable next word based on the input and its training. This means it might give slightly different answers to the same question asked multiple times.</p>
+        <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
+          <strong>Why This Matters:</strong> Two students asking the same question might get slightly different but equally valid answers. The model is not looking up a fixed answer.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">How AI Generates Responses</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
+      <p>When you send a message to an AI, here is what happens:</p>
+    </div>
+    <div class="space-y-4">
+      <div class="flex items-start space-x-4">
+        <div class="bg-sky-100 text-sky-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">1</div>
+        <div>
+          <h4 class="font-bold text-slate-800">Input Processing</h4>
+          <p class="text-slate-700 text-sm">Your message is broken into tokens and converted into numbers (embeddings) that the model can process.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="bg-sky-100 text-sky-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">2</div>
+        <div>
+          <h4 class="font-bold text-slate-800">Pattern Matching</h4>
+          <p class="text-slate-700 text-sm">The model analyses patterns in your input and relates them to patterns it learnt during training.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="bg-sky-100 text-sky-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">3</div>
+        <div>
+          <h4 class="font-bold text-slate-800">Token Prediction</h4>
+          <p class="text-slate-700 text-sm">The model predicts the most likely next token, considering the entire conversation context and what would be most helpful.</p>
+        </div>
+      </div>
+      <div class="flex items-start space-x-4">
+        <div class="bg-sky-100 text-sky-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">4</div>
+        <div>
+          <h4 class="font-bold text-slate-800">Iterative Generation</h4>
+          <p class="text-slate-700 text-sm">This process repeats, with each new token influencing what comes next, until the model determines the response is complete.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-6 border border-rose-200">
+    <h3 class="text-xl font-bold text-rose-700 mb-4">⚠️ What This Means for Your Studies</h3>
+    <ul class="space-y-3 text-slate-700">
+      <li><strong>Always verify important facts:</strong> The model generates plausible-sounding text, not guaranteed truth.</li>
+      <li><strong>Understand that AI "hallucinates":</strong> Sometimes it confidently states false information because it is predicting likely-sounding text, not retrieving facts.</li>
+      <li><strong>Be specific in your prompts:</strong> Better input leads to better output because it helps the model identify the most relevant patterns.</li>
+      <li><strong>Use AI as a tool, not an authority:</strong> Think critically about responses and use your own judgement.</li>
+      <li><strong>Be aware of the knowledge cut-off:</strong> Models are trained on data up to a certain date and cannot know about events after that unless they have web search capabilities.</li>
+    </ul>
+  </div>
+
+  <div class="text-center mt-8 space-x-4">
+    <a href="limitations.html" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Next: Limitations & Best Practices →</a>
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+  </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});
+</script>
+
+</body>
+</html>
