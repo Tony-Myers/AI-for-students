@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Students: Limitations & Best Practices</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
+    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .limitation-card { transition:transform .3s,box-shadow .3s }
+    .limitation-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .accordion-content { max-height:0 !important; overflow:hidden; transition:max-height .5s ease-in-out }
+    .accordion-content.open { max-height:2000px !important; transition:max-height 1s ease-in-out }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Understanding AI</a>
+      <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Limitations</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
+    <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">AI Limitations & Fact-Checking Strategies</h2>
+    <p class="max-w-3xl mx-auto">Learn to recognise AI limitations, spot hallucinations, and verify information effectively for academic success.</p>
+  </div>
+
+  <div class="bg-red-50 border border-red-200 rounded-xl p-6 mb-8">
+    <h3 class="text-xl font-bold text-red-700 mb-4">🚨 Critical Reality Check</h3>
+    <p class="text-slate-700 mb-4">AI tools are powerful learning assistants, but they are not infallible. They can confidently present false information, fabricate sources, and make mathematical errors. Understanding these limitations is essential for using AI responsibly in your academic work.</p>
+    <p class="text-slate-700 font-semibold">Never submit work containing AI-generated facts, statistics, or citations without verifying them yourself.</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Understanding AI Hallucinations</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
+      <p>A "hallucination" occurs when an AI model generates information that sounds plausible but is actually incorrect or entirely fabricated. This is not a bug or malfunction – it is an inherent characteristic of how large language models work. They predict likely-sounding text rather than retrieving verified facts.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="limitation-card bg-gradient-to-br from-red-50 to-rose-50 p-6 rounded border border-red-200">
+        <h4 class="text-lg font-bold text-red-700 mb-3">🔢 Common Types</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Fabricated academic sources that do not exist</li>
+          <li>• Incorrect statistics or dates</li>
+          <li>• Made-up quotes attributed to real people</li>
+          <li>• False details about historical events</li>
+          <li>• Invented technical specifications</li>
+          <li>• Misattributed authorship or publication details</li>
+        </ul>
+      </div>
+
+      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">⚠️ Why They Happen</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Models predict plausible text, not truth</li>
+          <li>• Training data contains errors and inconsistencies</li>
+          <li>• Models try to please users by providing answers</li>
+          <li>• Complex questions push models beyond their knowledge</li>
+          <li>• No built-in fact-checking mechanism</li>
+          <li>• Statistical patterns can mislead</li>
+        </ul>
+      </div>
+
+      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">🎯 When Most Likely</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Obscure or niche topics with less training data</li>
+          <li>• Recent events after the model's knowledge cut-off</li>
+          <li>• Requests for specific citations or sources</li>
+          <li>• Complex mathematical calculations</li>
+          <li>• Detailed technical specifications</li>
+          <li>• Questions requiring precise factual knowledge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Essential Fact-Checking Strategies for Students</h3>
+    <p class="text-slate-700 mb-6">Develop these habits to verify AI-generated information before using it in your academic work:</p>
+    
+    <div class="space-y-4">
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(0)">
+          <span>1. Verify All Statistics and Dates</span>
+          <span id="arrow-0" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-0" class="accordion-content">
+          <div class="p-4 border-t text-slate-700">
+            <p class="mb-3"><strong>Why:</strong> AI models can generate plausible-sounding but incorrect numbers.</p>
+            <p class="mb-3"><strong>How:</strong></p>
+            <ul class="list-disc list-inside space-y-1 mb-3">
+              <li>Cross-reference with official sources (government statistics, academic databases)</li>
+              <li>Check multiple independent sources</li>
+              <li>Look for the original data source, not secondary reports</li>
+              <li>Be especially careful with comparative statistics</li>
+            </ul>
+            <div class="bg-amber-50 p-3 rounded border border-amber-200">
+              <p class="text-sm"><strong>Example:</strong> If AI says "60% of students use AI for homework," find the actual study, check the sample size, date, and methodology before citing it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(1)">
+          <span>2. Check Every Citation and Reference</span>
+          <span id="arrow-1" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-1" class="accordion-content">
+          <div class="p-4 border-t text-slate-700">
+            <p class="mb-3"><strong>Why:</strong> AI frequently fabricates citations that sound legitimate but do not exist.</p>
+            <p class="mb-3"><strong>How:</strong></p>
+            <ul class="list-disc list-inside space-y-1 mb-3">
+              <li>Search for the exact paper title in Google Scholar</li>
+              <li>Verify author names and publication years</li>
+              <li>Check if the journal or publisher exists</li>
+              <li>Access the actual source to confirm it says what the AI claims</li>
+              <li>Use university library databases for academic sources</li>
+            </ul>
+            <div class="bg-red-50 p-3 rounded border border-red-200">
+              <p class="text-sm"><strong>Warning:</strong> Never include a citation in your work without verifying the source exists and is relevant. Fabricated references are academic misconduct.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(2)">
+          <span>3. Verify Technical and Specialised Information</span>
+          <span id="arrow-2" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-2" class="accordion-content">
+          <div class="p-4 border-t text-slate-700">
+            <p class="mb-3"><strong>Why:</strong> AI can be confidently wrong about technical details, formulas, and specialised knowledge.</p>
+            <p class="mb-3"><strong>How:</strong></p>
+            <ul class="list-disc list-inside space-y-1 mb-3">
+              <li>Check formulas and calculations manually or with specialised software</li>
+              <li>Verify technical specifications against manufacturer documentation</li>
+              <li>Consult authoritative textbooks or academic sources</li>
+              <li>Ask subject matter experts (lecturers, tutors) if uncertain</li>
+            </ul>
+            <div class="bg-sky-50 p-3 rounded border border-sky-200">
+              <p class="text-sm"><strong>Tip:</strong> For mathematical problems, work through the steps yourself. For scientific facts, check recent peer-reviewed papers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(3)">
+          <span>4. Use Multiple AI Tools to Cross-Check</span>
+          <span id="arrow-3" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-3" class="accordion-content">
+          <div class="p-4 border-t text-slate-700">
+            <p class="mb-3"><strong>Why:</strong> Different models have different training data and may catch each other's errors.</p>
+            <p class="mb-3"><strong>How:</strong></p>
+            <ul class="list-disc list-inside space-y-1 mb-3">
+              <li>Ask the same question to ChatGPT, Claude, and Gemini</li>
+              <li>Look for consensus across multiple models</li>
+              <li>Investigate any discrepancies thoroughly</li>
+              <li>Use specialised tools (Perplexity with citations, NotebookLM for your documents)</li>
+            </ul>
+            <div class="bg-emerald-50 p-3 rounded border border-emerald-200">
+              <p class="text-sm"><strong>Strategy:</strong> If models disagree, that is a red flag to do additional research using academic databases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-slate-200 rounded-lg">
+        <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(4)">
+          <span>5. Check Knowledge Cut-off Dates</span>
+          <span id="arrow-4" class="transition-transform duration-300">▼</span>
+        </button>
+        <div id="accordion-4" class="accordion-content">
+          <div class="p-4 border-t text-slate-700">
+            <p class="mb-3"><strong>Why:</strong> Models cannot know about events after their training data cut-off unless they have web access.</p>
+            <p class="mb-3"><strong>How:</strong></p>
+            <ul class="list-disc list-inside space-y-1 mb-3">
+              <li>Know your AI tool's knowledge cut-off date</li>
+              <li>Use tools with web search for recent information</li>
+              <li>Verify any "current" information with news sources or official websites</li>
+              <li>Be cautious with evolving fields (technology, medicine, current events)</li>
+            </ul>
+            <div class="bg-purple-50 p-3 rounded border border-purple-200">
+              <p class="text-sm"><strong>Note:</strong> Knowledge cut-off dates vary by model. Always check for your specific tool.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Recommended Verification Tools</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">Academic Databases</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li><strong>Google Scholar:</strong> Free, comprehensive academic search</li>
+          <li><strong>Web of Science:</strong> Citation tracking and verification</li>
+          <li><strong>PubMed:</strong> Medical and life sciences</li>
+          <li><strong>JSTOR:</strong> Humanities and social sciences</li>
+          <li><strong>IEEE Xplore:</strong> Engineering and technology</li>
+        </ul>
+      </div>
+
+      <div class="limitation-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+        <h4 class="text-lg font-bold text-emerald-700 mb-3">Fact-Checking Tools</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li><strong>Perplexity AI:</strong> Provides citations with responses</li>
+          <li><strong>Consensus:</strong> Academic research search with citations</li>
+          <li><strong>Semantic Scholar:</strong> AI-powered research tool with TLDRs</li>
+          <li><strong>Connected Papers:</strong> Visual paper exploration</li>
+        </ul>
+      </div>
+
+      <div class="limitation-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
+        <h4 class="text-lg font-bold text-purple-700 mb-3">Official Sources</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li><strong>ONS:</strong> UK official statistics</li>
+          <li><strong>WHO:</strong> Health information</li>
+          <li><strong>Gov.uk:</strong> UK government data</li>
+          <li><strong>Eurostat:</strong> European statistics</li>
+          <li><strong>UN Data:</strong> International statistics</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Understanding Context Windows & Token Limits</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
+      <p>The context window (also called context length) is the maximum amount of text an AI model can process at once. This includes your entire conversation history, uploaded documents, and the model's responses.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">What Counts Towards the Limit</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• All previous messages in the conversation</li>
+          <li>• All AI responses you have received</li>
+          <li>• Any uploaded documents or files</li>
+          <li>• System instructions (invisible to you)</li>
+          <li>• The new message you are sending</li>
+        </ul>
+      </div>
+
+      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">What Happens at the Limit</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Oldest messages may be "forgotten"</li>
+          <li>• Context from early conversation is lost</li>
+          <li>• You may need to start a new conversation</li>
+          <li>• Uploaded documents might be truncated</li>
+          <li>• Some tools show warnings before reaching limits</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded border border-purple-200">
+      <h4 class="text-lg font-bold text-purple-700 mb-4">Typical Context Windows (2024-2025)</h4>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white p-3 rounded">
+          <p class="font-semibold">GPT-4 Turbo: 128,000 tokens</p>
+          <p class="text-slate-600">Approximately 96,000 words or 300 pages</p>
+        </div>
+        <div class="bg-white p-3 rounded">
+          <p class="font-semibold">Claude Sonnet: 200,000 tokens</p>
+          <p class="text-slate-600">Approximately 150,000 words or 500 pages</p>
+        </div>
+        <div class="bg-white p-3 rounded">
+          <p class="font-semibold">Gemini Pro: 32,000 tokens</p>
+          <p class="text-slate-600">Approximately 24,000 words or 75 pages</p>
+        </div>
+        <div class="bg-white p-3 rounded">
+          <p class="font-semibold">Gemini 1.5 Pro: 1,000,000 tokens</p>
+          <p class="text-slate-600">Approximately 750,000 words or 2,000+ pages</p>
+        </div>
+      </div>
+      <p class="text-sm text-slate-600 mt-4"><strong>Note:</strong> Actual usable context may be less due to system instructions and other overhead.</p>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-6 border border-rose-200">
+    <h3 class="text-xl font-bold text-rose-700 mb-4">🎯 The Golden Rule of AI Verification</h3>
+    <p class="text-slate-700 text-lg mb-4">If you cannot verify it, do not cite it. If you cannot explain it, you do not understand it.</p>
+    <p class="text-slate-700">Your lecturers expect you to understand and be able to defend every claim in your work. AI should enhance your learning and research process, not replace your critical thinking and verification responsibilities.</p>
+  </div>
+
+  <div class="text-center mt-8 space-x-4">
+    <a href="understanding-ai.html" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">← Previous: Understanding AI</a>
+    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">Back to Home</a>
+  </div>
+</main>
+
+<footer class="bg-slate-800 text-white py-6 text-center text-sm">
+  Tony Myers © 2025
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  window.toggleAccordion = function(index) {
+    const content = document.getElementById(`accordion-${index}`);
+    const arrow = document.getElementById(`arrow-${index}`);
+    if (content.classList.contains('open')) {
+      content.classList.remove('open');
+      content.style.maxHeight = '0px';
+      arrow.style.transform = 'rotate(0deg)';
+    } else {
+      content.classList.add('open');
+      content.style.maxHeight = '2000px';
+      arrow.style.transform = 'rotate(180deg)';
+    }
+  };
+});
+</script>
+
+</body>
+</html>
