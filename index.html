@@ -70,6 +70,29 @@
       }
     })();
   </script>
+  <style>
+    /* Signature masking — turns white-on-black PNG into transparent white signature */
+    .signature-mask {
+      background: #ffffff; /* signature colour */
+      -webkit-mask-image: url('Sig_ATB.png');
+              mask-image: url('Sig_ATB.png');
+      -webkit-mask-repeat: no-repeat;
+              mask-repeat: no-repeat;
+      -webkit-mask-position: left bottom;
+              mask-position: left bottom;
+      -webkit-mask-size: contain;
+              mask-size: contain;
+      /* High‑DPI variants automatically if present */
+      -webkit-mask-image: -webkit-image-set(url('Sig_ATB.png') 1x, url('Sig_ATB@2x.png') 2x, url('Sig_ATB@3x.png') 3x);
+              mask-image: image-set(url('Sig_ATB.png') 1x, url('Sig_ATB@2x.png') 2x, url('Sig_ATB@3x.png') 3x);
+      filter: drop-shadow(0 0 .5px rgba(255,255,255,.9));
+      opacity: .96;
+      display: block;
+    }
+    /* If mask unsupported, show fallback img */
+    .no-mask .signature-mask { display: none; }
+    .no-mask .sig-fallback { display: inline-block; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
   <a href="#main" class="sr-only sr-skip">Skip to content</a>
@@ -132,13 +155,14 @@
         <div class="callout callout-tip mt-6 text-slate-800"><strong>Tip:</strong> Treat AI like a study coach. Ask it to quiz you, explain your own notes back to you, and challenge your thinking — but always verify facts and citations.</div>
         <div class=\"mt-6\">
           <!-- Prefer SVG for crisp, scalable signature; fallback to high-DPI PNGs -->
-          <picture>
-            <source srcset=\"/AI-for-education/images/Sig_ATB.svg\" type=\"image/svg+xml\">
-            <img src=\"/AI-for-education/images/Sig_ATB.png\"
-                 srcset=\"/AI-for-education/images/Sig_ATB@2x.png 2x, /AI-for-education/images/Sig_ATB@3x.png 3x\"
-                 alt=\"All the best, Tony\"
-                 class=\"h-20 md:h-24 w-auto opacity-95 mix-blend-screen [filter:drop-shadow(0_0_.5px_rgba(255,255,255,.9))]\"
-                 loading=\"lazy\">
+          <!-- Signature: mask-based (removes black box), crisp, and blends with hero background -->
+<picture>
+            <source srcset="Sig_ATB_trans.svg" type="image/svg+xml">
+            <img src="Sig_ATB.png"
+                 srcset="Sig_ATB@2x.png 2x, Sig_ATB@3x.png 3x"
+                 alt="All the best, Tony"
+                 class="h-24 md:h-28 w-auto opacity-95"
+                 loading="lazy">
           </picture>
         </div>
       </div>
@@ -394,6 +418,12 @@
     // Footer year + last updated
     const yEl = document.getElementById('year'); if (yEl) yEl.textContent = new Date().getFullYear();
     const luEl = document.getElementById('lastUpdated'); if (luEl) luEl.textContent = new Date(document.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+    // Detect CSS masking support (for the signature). If missing, enable PNG fallback.
+    try {
+      const supportsMask = CSS.supports('(-webkit-mask-image: url("") )') || CSS.supports('(mask-image: url("") )');
+      if (!supportsMask) document.documentElement.classList.add('no-mask');
+    } catch(_) { document.documentElement.classList.add('no-mask'); }
 
     // ---- Analytics helper (GDPR-friendly) ----------------------------------
     // This function sends only aggregated, anonymous usage events.
