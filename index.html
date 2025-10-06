@@ -94,10 +94,16 @@
     .no-mask .sig-fallback { display: inline-block; }
   </style>
   <style id="contrast-fix">
-    /* Targeted dark-mode contrast fixes (no global overrides) */
+    /* --- Dark-mode contrast fixes (targeted) --- */
     /* Ensure any leftover white backgrounds get a dark surface */
     .dark .bg-white { background-color: #0b1220 !important; }
     .dark .border-slate-200 { border-color: #334155 !important; }
+
+    /* Header / top navigation */
+    .dark header { background-color: #0b1220 !important; border-color:#334155 !important; }
+    .dark header .nav-link { color:#e5e7eb !important; }
+    .dark header .nav-link:hover,
+    .dark header .nav-link.active { color:#7dd3fc !important; background-color: rgba(125,211,252,.12) !important; border-bottom-color:#7dd3fc !important; }
 
     /* Pathway cards */
     .pathway-card { transition: background-color .2s ease; }
@@ -105,26 +111,27 @@
     .dark .pathway-card h3 { color: #e6edf3 !important; }
     .dark .pathway-card p, .dark .pathway-card li { color: #cbd5e1 !important; }
 
-    /* Search card */
+    /* Search card + input */
     .dark .search-card { background-color: #0b1220 !important; border-color: #334155 !important; }
     .dark .search-card h2, .dark .search-card p { color: #e6edf3 !important; }
     .dark #siteSearch { background-color: #0b1220 !important; color:#e6edf3 !important; border-color:#334155 !important; }
+    .dark #siteSearch::placeholder { color:#cbd5e1 !important; }
     .dark #searchResults { background-color:#0b1220 !important; border-color:#334155 !important; }
 
-    /* Callouts: readable colours on dark */
+    /* Callouts */
     .dark .callout { color: #e5e7eb !important; }
     .dark .callout-tip    { background:#064e3b !important; border-color:#10b981 !important; }
     .dark .callout-warn   { background:#7c2d12 !important; border-color:#f59e0b !important; }
     .dark .callout-danger { background:#7f1d1d !important; border-color:#fca5a5 !important; }
 
-    /* Quiz labels and legends */
+    /* Quiz */
     .dark #quiz legend, .dark #quiz label { color:#e6edf3 !important; }
 
-    /* Muted text classes (only these) */
+    /* Muted text */
     .dark .text-slate-500, .dark .text-slate-600 { color:#cbd5e1 !important; }
 
-    /* Inputs */
-    .dark ::placeholder { color:#cbd5e1 !important; }
+    /* KBD key styling */
+    .dark .kbd { border-color:#475569 !important; background-color:#0b1220 !important; color:#e6edf3 !important; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
