@@ -93,6 +93,15 @@
     .no-mask .signature-mask { display: none; }
     .no-mask .sig-fallback { display: inline-block; }
   </style>
+  <style id="contrast-patch">
+    /* High-contrast dark mode patch */
+    .dark body { color: #e6edf3 !important; }
+    .dark p, .dark li, .dark legend, .dark label, .dark input, .dark .text-slate-700,
+    .dark .text-slate-600, .dark .text-slate-500, .dark .text-slate-400, .dark .text-slate-300 {
+      color: #e6edf3 !important;
+    }
+    .dark ::placeholder { color: #cbd5e1 !important; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
   <a href="#main" class="sr-only sr-skip">Skip to content</a>
@@ -156,13 +165,11 @@
         <div class=\"mt-6\">
           <!-- Prefer SVG for crisp, scalable signature; fallback to high-DPI PNGs -->
           <!-- Signature: mask-based (removes black box), crisp, and blends with hero background -->
-<picture>
-            <source srcset="images/Sig_ATB_trans.svg" type="image/svg+xml">
-            <img src="images/Sig_ATB.png" srcset="images/Sig_ATB@2x.png 2x, images/Sig_ATB@3x.png 3x"
+<img src="images/Sig_ATB_trans.svg"
+                 onerror="this.onerror=null; this.src='images/Sig_ATB.png'; this.srcset='images/Sig_ATB@2x.png 2x, images/Sig_ATB@3x.png 3x';"
                  alt="All the best, Tony"
                  class="h-24 md:h-28 w-auto opacity-95"
                  loading="lazy">
-          </picture>
         </div>
       </div>
       <div class=\"flex items-center justify-center\">
