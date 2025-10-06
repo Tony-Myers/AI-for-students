@@ -93,14 +93,29 @@
     .no-mask .signature-mask { display: none; }
     .no-mask .sig-fallback { display: inline-block; }
   </style>
-  <style id="contrast-patch">
-    /* High-contrast dark mode patch */
-    .dark body { color: #e6edf3 !important; }
-    .dark p, .dark li, .dark legend, .dark label, .dark input, .dark .text-slate-700,
-    .dark .text-slate-600, .dark .text-slate-500, .dark .text-slate-400, .dark .text-slate-300 {
-      color: #e6edf3 !important;
-    }
-    .dark ::placeholder { color: #cbd5e1 !important; }
+  <style id="contrast-fix">
+    /* Targeted dark-mode contrast fixes (no global overrides) */
+    /* Ensure any leftover white backgrounds get a dark surface */
+    .dark .bg-white { background-color: #0b1220 !important; }
+    .dark .border-slate-200 { border-color: #1f2937 !important; }
+
+    /* Cards and panels */
+    .dark .card { background-color: #0b1220 !important; box-shadow: none; }
+
+    /* Callouts: readable colours on dark */
+    .dark .callout { color: #e5e7eb !important; }
+    .dark .callout-tip    { background:#064e3b !important; border-color:#10b981 !important; }
+    .dark .callout-warn   { background:#7c2d12 !important; border-color:#f59e0b !important; }
+    .dark .callout-danger { background:#7f1d1d !important; border-color:#fca5a5 !important; }
+
+    /* Quiz labels and legends */
+    .dark #quiz legend, .dark #quiz label { color:#e6edf3 !important; }
+
+    /* Muted text classes (only these, not all <p>/<li>) */
+    .dark .text-slate-500, .dark .text-slate-600 { color:#cbd5e1 !important; }
+
+    /* Inputs */
+    .dark ::placeholder { color:#cbd5e1 !important; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
