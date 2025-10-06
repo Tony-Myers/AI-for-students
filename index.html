@@ -34,6 +34,9 @@
       <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
       <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
       <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Understanding AI</a>
+      <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Limitations</a>
+      <a href="notebooklm-tutorial.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">NotebookLM</a>
       <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
     </div>
     <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
@@ -49,6 +52,9 @@
     <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
     <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
     <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
+    <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
+    <a href="notebooklm-tutorial.html" class="nav-link block px-3 py-2 w-full text-left">NotebookLM</a>
     <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
   </div>
 </header>
@@ -89,6 +95,18 @@
     <a href="toolkit.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
       <h3 id="home-btn-toolkit-title" class="text-white font-bold text-lg"></h3>
       <p id="home-btn-toolkit-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="understanding-ai.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-understanding-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-understanding-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="limitations.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-limitations-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-limitations-desc" class="text-slate-300 text-sm mt-2"></p>
+    </a>
+    <a href="notebooklm-tutorial.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
+      <h3 id="home-btn-notebooklm-title" class="text-white font-bold text-lg"></h3>
+      <p id="home-btn-notebooklm-desc" class="text-slate-300 text-sm mt-2"></p>
     </a>
     <a href="academic-integrity.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
       <h3 id="home-btn-integrity-title" class="text-white font-bold text-lg"></h3>
@@ -139,6 +157,9 @@ subtitle: `
               study: { title: "AI Study Strategies", description: "Enhance your learning experience" },
               platforms: { title: "Essential AI Platforms", description: "Student-friendly AI tools" },
               toolkit: { title: "Student Toolkit", description: "Curated study tools" },
+              understanding: { title: "Understanding AI", description: "How large language models work" },
+              limitations: { title: "Limitations & Fact-Checking", description: "Verify outputs and avoid hallucinations" },
+              notebooklm: { title: "NotebookLM Tutorial", description: "Master Google's AI study assistant" },
               integrity: { title: "Academic Integrity", description: "Responsible AI use guidelines" }
           }
       }
@@ -163,6 +184,12 @@ subtitle: `
       document.getElementById('home-btn-platforms-desc').innerHTML = content.buttons.platforms.description;
       document.getElementById('home-btn-toolkit-title').innerHTML = content.buttons.toolkit.title;
       document.getElementById('home-btn-toolkit-desc').innerHTML = content.buttons.toolkit.description;
+      document.getElementById('home-btn-understanding-title').innerHTML = content.buttons.understanding.title;
+      document.getElementById('home-btn-understanding-desc').innerHTML = content.buttons.understanding.description;
+      document.getElementById('home-btn-limitations-title').innerHTML = content.buttons.limitations.title;
+      document.getElementById('home-btn-limitations-desc').innerHTML = content.buttons.limitations.description;
+      document.getElementById('home-btn-notebooklm-title').innerHTML = content.buttons.notebooklm.title;
+      document.getElementById('home-btn-notebooklm-desc').innerHTML = content.buttons.notebooklm.description;
       document.getElementById('home-btn-integrity-title').innerHTML = content.buttons.integrity.title;
       document.getElementById('home-btn-integrity-desc').innerHTML = content.buttons.integrity.description;
   }
