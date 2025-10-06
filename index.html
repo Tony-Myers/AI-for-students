@@ -3,199 +3,393 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for Students: Your Academic Success Toolkit</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>AI for Students · Your Academic Success Toolkit</title>
+  <meta name="description" content="Practical, ethical guidance for using AI in your studies: getting started, prompting, research & essays, study strategies, and academic integrity.">
+  <meta property="og:title" content="AI for Students · Your Academic Success Toolkit">
+  <meta property="og:description" content="Practical, ethical guidance for using AI in your studies.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0ea5e9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
-    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
-    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .platform-link, .tool-link { color:#0369a1 !important; text-decoration:none; }
-    .platform-link:hover, .tool-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
-    .principle-card,.tool-card { transition:transform .3s,box-shadow .3s }
-    .principle-card:hover,.tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
-    .hero-img { width: 400px; height: 400px; object-fit: contain; } 
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
-
-<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
-    <div class="hidden md:flex space-x-4">
-      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Home</a>
-      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Getting Started</a>
-      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
-      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
-      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
-      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
-      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
-      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
-      <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Understanding AI</a>
-      <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Limitations</a>
-      <a href="notebooklm-tutorial.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">NotebookLM</a>
-      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
-    </div>
-    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
-      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-  </nav>
-  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
-    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
-    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
-    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
-    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
-    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
-    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
-    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
-    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
-    <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
-    <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
-    <a href="notebooklm-tutorial.html" class="nav-link block px-3 py-2 w-full text-left">NotebookLM</a>
-    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
-  </div>
-</header>
-
-<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <div class="bg-black text-white rounded-xl p-12 text-center space-y-6">
-    <h2 id="home-title" class="text-4xl font-bold"></h2>
-    <div class="w-auto h-auto mx-auto bg-sky-900/30 rounded-full flex items-center justify-center border-4 border-sky-400/50" style="width: 420px; height: 420px;">
-      <img id="home-hero-img" src="" alt="AI for Students" class="hero-img">
-    </div>
-    <div id="home-subtitle" class="text-left max-w-3xl mx-auto"></div>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-    <a href="getting-started.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-getting-started-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-getting-started-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="ai-literacy.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-literacy-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-literacy-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="prompting.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-prompting-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-prompting-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="research.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-research-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-research-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="study-strategies.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-study-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-study-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="ai-platforms.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-platforms-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-platforms-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="toolkit.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-toolkit-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-toolkit-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="understanding-ai.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-understanding-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-understanding-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="limitations.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-limitations-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-limitations-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="notebooklm-tutorial.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-notebooklm-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-notebooklm-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-    <a href="academic-integrity.html" class="bg-slate-700/90 backdrop-blur-sm p-6 rounded border border-slate-500 hover:bg-slate-600/90 transition-colors block">
-      <h3 id="home-btn-integrity-title" class="text-white font-bold text-lg"></h3>
-      <p id="home-btn-integrity-desc" class="text-slate-300 text-sm mt-2"></p>
-    </a>
-  </div>
-</main>
-
-<footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Tony Myers © 2025
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Mobile menu functionality
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-
-  // --- START: EDITABLE PAGE CONTENT ---
-  const pageContent = {
-      home: {
-          title: "AI for Students: Your Academic Success Toolkit",
-subtitle: `
-  <p class="mb-4">
-    AI tools can transform how you learn, research, and complete assignments. This guide helps you harness AI effectively and ethically for academic success, whether you're writing essays, conducting research, or preparing for exams.
-  </p>
-  <p class="mb-4">
-    Master AI tools to enhance your learning, not replace your thinking. Within this site, you'll find practical tutorials, prompt templates, and step-by-step guides to help you excel in your studies whilst maintaining academic integrity.
-  </p>
+  <script src="https://cdn.tailwindcss.com"></script>
   
-  <div style="text-align: center; margin-top: 1.5rem;">
-    <img src="/AI-for-education/images/Sig_ATB.png" 
-         alt="A handwritten signature reading 'all the best Tony'" 
-         style="width: 180px; height: auto; display: inline-block;">
-  </div>
-`,
-          heroImageUrl: "/AI-for-education/images/hero-image.gif",
-          buttons: {
-              gettingStarted: { title: "Getting Started with AI", description: "Essential first steps for students" },
-              literacy: { title: "AI Literacy for Students", description: "Core skills you need to succeed" },
-              prompting: { title: "Effective AI Prompting", description: "Get better results from AI tools" },
-              research: { title: "Research & Essay Writing", description: "Transform your research process" },
-              study: { title: "AI Study Strategies", description: "Enhance your learning experience" },
-              platforms: { title: "Essential AI Platforms", description: "Student-friendly AI tools" },
-              toolkit: { title: "Student Toolkit", description: "Curated study tools" },
-              understanding: { title: "Understanding AI", description: "How large language models work" },
-              limitations: { title: "Limitations & Fact-Checking", description: "Verify outputs and avoid hallucinations" },
-              notebooklm: { title: "NotebookLM Tutorial", description: "Master Google's AI study assistant" },
-              integrity: { title: "Academic Integrity", description: "Responsible AI use guidelines" }
-          }
+  <!-- Optional, privacy-friendly analytics (no cookies) -->
+  <!-- Replace YOUR_DOMAIN with your site domain (e.g., ai.newman.ac.uk) to enable Plausible.  -->
+  <!-- <script defer data-domain="YOUR_DOMAIN" src="https://plausible.io/js/script.tagged-events.js"></script> -->
+
+  <style>
+    :root { color-scheme: light dark; }
+    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    body { background:#f8fafc; color:#0f172a; }
+    .dark body { background:#0b1220; color:#e2e8f0; }
+
+    /* Navigation */
+    .nav-link { transition: color .2s, background-color .2s, border-color .2s; border-bottom: 2px solid transparent; border-radius: .375rem; }
+    .nav-link:hover, .nav-link.active { color: #0369a1; background-color: rgba(3,105,161,.08); border-bottom-color: #0369a1; }
+    .dark .nav-link:hover, .dark .nav-link.active { color: #7dd3fc; background-color: rgba(125,211,252,.08); border-bottom-color: #7dd3fc; }
+
+    /* Card hover */
+    .card { transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); }
+
+    /* Accessibility: skip link */
+    .sr-skip:focus { position: absolute; left: 0; top: 0; background: #0ea5e9; color: white; padding: .5rem .75rem; border-radius: .375rem; z-index: 50; }
+
+    /* CSS patch (no Tailwind @apply used) */
+    .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:rgba(255,255,255,.7);color:#475569}
+    .callout{border-radius:.5rem;border:1px solid #e2e8f0;padding:1rem}
+    .callout-tip{background:#ecfdf5;border-color:#a7f3d0}
+    .callout-warn{background:#fffbeb;border-color:#fcd34d}
+    .callout-danger{background:#fff1f2;border-color:#fecdd3}
+  </style>
+  <script>
+    // Dark mode persistence
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if ((saved === 'dark') || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
       }
-  };
+    })();
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <a href="#main" class="sr-only sr-skip">Skip to content</a>
 
-  function populateContent() {
-      const content = pageContent.home;
-      document.getElementById('home-title').innerHTML = content.title;
-      document.getElementById('home-subtitle').innerHTML = content.subtitle;
-      document.getElementById('home-hero-img').src = content.heroImageUrl;
-      document.getElementById('home-btn-getting-started-title').innerHTML = content.buttons.gettingStarted.title;
-      document.getElementById('home-btn-getting-started-desc').innerHTML = content.buttons.gettingStarted.description;
-      document.getElementById('home-btn-literacy-title').innerHTML = content.buttons.literacy.title;
-      document.getElementById('home-btn-literacy-desc').innerHTML = content.buttons.literacy.description;
-      document.getElementById('home-btn-prompting-title').innerHTML = content.buttons.prompting.title;
-      document.getElementById('home-btn-prompting-desc').innerHTML = content.buttons.prompting.description;
-      document.getElementById('home-btn-research-title').innerHTML = content.buttons.research.title;
-      document.getElementById('home-btn-research-desc').innerHTML = content.buttons.research.description;
-      document.getElementById('home-btn-study-title').innerHTML = content.buttons.study.title;
-      document.getElementById('home-btn-study-desc').innerHTML = content.buttons.study.description;
-      document.getElementById('home-btn-platforms-title').innerHTML = content.buttons.platforms.title;
-      document.getElementById('home-btn-platforms-desc').innerHTML = content.buttons.platforms.description;
-      document.getElementById('home-btn-toolkit-title').innerHTML = content.buttons.toolkit.title;
-      document.getElementById('home-btn-toolkit-desc').innerHTML = content.buttons.toolkit.description;
-      document.getElementById('home-btn-understanding-title').innerHTML = content.buttons.understanding.title;
-      document.getElementById('home-btn-understanding-desc').innerHTML = content.buttons.understanding.description;
-      document.getElementById('home-btn-limitations-title').innerHTML = content.buttons.limitations.title;
-      document.getElementById('home-btn-limitations-desc').innerHTML = content.buttons.limitations.description;
-      document.getElementById('home-btn-notebooklm-title').innerHTML = content.buttons.notebooklm.title;
-      document.getElementById('home-btn-notebooklm-desc').innerHTML = content.buttons.notebooklm.description;
-      document.getElementById('home-btn-integrity-title').innerHTML = content.buttons.integrity.title;
-      document.getElementById('home-btn-integrity-desc').innerHTML = content.buttons.integrity.description;
-  }
-  populateContent();
-});
-</script>
+  <!-- Header / Navigation -->
+  <header class="bg-white/80 dark:bg-slate-900/70 backdrop-blur-lg border-b border-slate-200/70 dark:border-slate-800 sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
+      <div class="hidden md:flex items-center gap-2">
+        <a href="index.html" class="nav-link px-3 py-2 active">Home</a>
+        <a href="getting-started.html" class="nav-link px-3 py-2">Getting Started</a>
+        <a href="ai-literacy.html" class="nav-link px-3 py-2">AI Literacy</a>
+        <a href="prompting.html" class="nav-link px-3 py-2">Prompting</a>
+        <a href="research.html" class="nav-link px-3 py-2">Research & Essays</a>
+        <a href="study-strategies.html" class="nav-link px-3 py-2">Study Strategies</a>
+        <a href="ai-platforms.html" class="nav-link px-3 py-2">AI Platforms</a>
+        <a href="toolkit.html" class="nav-link px-3 py-2">Toolkit</a>
+        <a href="understanding-ai.html" class="nav-link px-3 py-2">Understanding AI</a>
+        <a href="limitations.html" class="nav-link px-3 py-2">Limitations</a>
+        <a href="academic-integrity.html" class="nav-link px-3 py-2">Academic Integrity</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <svg id="sunIcon" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg id="moonIcon" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-3 space-y-1">
+      <a href="index.html" class="nav-link block px-3 py-2">Home</a>
+      <a href="getting-started.html" class="nav-link block px-3 py-2">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link block px-3 py-2">AI Literacy</a>
+      <a href="prompting.html" class="nav-link block px-3 py-2">Prompting</a>
+      <a href="research.html" class="nav-link block px-3 py-2">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link block px-3 py-2">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link block px-3 py-2">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link block px-3 py-2">Toolkit</a>
+      <a href="understanding-ai.html" class="nav-link block px-3 py-2">Understanding AI</a>
+      <a href="limitations.html" class="nav-link block px-3 py-2">Limitations</a>
+      <a href="academic-integrity.html" class="nav-link block px-3 py-2">Academic Integrity</a>
+    </div>
+  </header>
 
+  <main id="main" class="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Hero -->
+    <section class="bg-slate-900 text-white dark:bg-slate-900 rounded-2xl p-8 sm:p-12 grid md:grid-cols-[1.2fr,1fr] gap-8 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">AI for Students
+          <span class="block text-sky-300">Learn faster. Think deeper. Act ethically.</span>
+        </h1>
+        <p class="mt-4 text-slate-200 max-w-prose">This site helps you harness AI effectively and responsibly across your studies — from first prompts to research and writing, with integrity at the core.</p>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <a href="#pathways" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-4 py-2.5 font-semibold">Start here <span aria-hidden>→</span></a>
+          <a href="prompting.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 hover:bg-slate-600 px-4 py-2.5 font-semibold">Prompting Guide</a>
+          <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
+        </div>
+        <div class="callout callout-tip mt-6 text-slate-800"><strong>Tip:</strong> Treat AI like a study coach. Ask it to quiz you, explain your own notes back to you, and challenge your thinking — but always verify facts and citations.</div>
+        <div class="mt-6">
+          <img src="/AI-for-education/images/Sig_ATB.png" alt="All the best, Tony" class="h-10 w-auto opacity-90">
+        </div>
+      </div>
+      <div class="flex items-center justify-center">
+        <div class="w-[420px] h-[420px] max-w-full rounded-full border-4 border-sky-400/50 bg-sky-900/30 flex items-center justify-center">
+          <picture>
+            <source srcset="/AI-for-education/images/hero-image.gif" type="image/gif">
+            <img src="/AI-for-education/images/hero-image.png" alt="Animated illustration representing AI for students" class="w-80 h-80 object-contain" loading="eager">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pathways -->
+    <section id="pathways" class="mt-10">
+      <h2 class="text-2xl md:text-3xl font-bold">Choose your pathway</h2>
+      <p class="text-slate-600 dark:text-slate-300 mt-1">Start with your goal — we'll guide you to the right resources.</p>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a data-analytics="pathway:learn" href="getting-started.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 grid place-items-center text-xl">🧭</div>
+            <div>
+              <h3 class="font-semibold text-lg">Learn to use AI</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Start here: core concepts, safe setup, first wins.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Quick start checklist</li>
+            <li>What AI can/can't do</li>
+            <li>Model choices & costs</li>
+          </ul>
+        </a>
+        <a data-analytics="pathway:apply" href="research.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 grid place-items-center text-xl">📚</div>
+            <div>
+              <h3 class="font-semibold text-lg">Apply AI to study</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Research & essays, revision, and workflow tools.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Evidence-based prompting</li>
+            <li>Cited research workflows</li>
+            <li>Revision plans & quizzes</li>
+          </ul>
+        </a>
+        <a data-analytics="pathway:responsible" href="academic-integrity.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 grid place-items-center text-xl">🛡️</div>
+            <div>
+              <h3 class="font-semibold text-lg">Use AI responsibly</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Clarity on policy, good practice, and common pitfalls.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Traffic‑light examples</li>
+            <li>Fact‑checking habits</li>
+            <li>Avoiding hallucinations</li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <!-- Quick search (client-side suggestions) -->
+    <section class="mt-12">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
+        <div class="flex items-center justify-between flex-wrap gap-3">
+          <h2 class="text-xl font-semibold">Find a page fast</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Press <span class="kbd">/</span> to focus</p>
+        </div>
+        <div class="mt-4 relative">
+          <input id="siteSearch" type="search" placeholder="Search topics, e.g. ‘citations’, ‘NotebookLM’, ‘prompting’…" class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-950 px-4 py-2.5 outline-none focus:ring-2 focus:ring-sky-400" autocomplete="off">
+          <ul id="searchResults" class="absolute mt-2 hidden w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg overflow-hidden z-10"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular / Recommended -->
+    <section class="mt-12 grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl font-bold">Popular this week</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+          <a data-analytics="popular:prompting" href="prompting.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+            <h3 class="font-semibold">The 10 principles of effective prompting</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Practical techniques with examples you can paste.</p>
+          </a>
+          <a data-analytics="popular:notebooklm" href="notebooklm-tutorial.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+            <h3 class="font-semibold">NotebookLM for revision and research</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Grounded answers with citations, plus audio overviews.</p>
+          </a>
+          <a data-analytics="popular:platforms" href="ai-platforms.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+            <h3 class="font-semibold">Which AI should I use?</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Free vs paid, speed, document size, and features.</p>
+          </a>
+          <a data-analytics="popular:limitations" href="limitations.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+            <h3 class="font-semibold">Spotting hallucinations & checking facts</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Simple habits that protect your grades and integrity.</p>
+          </a>
+        </div>
+      </div>
+      <aside class="lg:col-span-1">
+        <div class="callout callout-warn">
+          <h3 class="font-semibold">Academic integrity quick check</h3>
+          <ul class="mt-2 text-sm text-slate-700 dark:text-slate-300 list-disc list-inside">
+            <li>Did you verify facts and citations?</li>
+            <li>Did you keep notes of how you used AI?</li>
+            <li>Does your use align with your module policy?</li>
+          </ul>
+          <a href="academic-integrity.html" class="inline-block mt-3 text-sky-700 dark:text-sky-300 font-medium underline">Read the guide →</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Micro‑quiz -->
+    <section class="mt-12">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
+        <h2 class="text-xl font-bold">Test yourself: responsible AI use</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Choose the best option for each scenario.</p>
+        <form id="quiz" class="mt-4 space-y-6">
+          <fieldset class="space-y-2">
+            <legend class="font-semibold">1) You ask AI to generate five sources and DOIs for your essay topic.</legend>
+            <label class="block"><input type="radio" name="q1" value="A" class="mr-2">Good idea — quick way to get references.</label>
+            <label class="block"><input type="radio" name="q1" value="B" class="mr-2">Okay if I also check they exist and are relevant.</label>
+            <label class="block"><input type="radio" name="q1" value="C" class="mr-2">Risky — AI often fabricates citations; use Scholar/Library.</label>
+          </fieldset>
+          <fieldset class="space-y-2">
+            <legend class="font-semibold">2) You used AI to outline your essay and improve clarity.</legend>
+            <label class="block"><input type="radio" name="q2" value="A" class="mr-2">Not allowed under any circumstances.</label>
+            <label class="block"><input type="radio" name="q2" value="B" class="mr-2">Generally fine if permitted by policy and acknowledged.</label>
+            <label class="block"><input type="radio" name="q2" value="C" class="mr-2">Always fine — no need to mention it.</label>
+          </fieldset>
+          <fieldset class="space-y-2">
+            <legend class="font-semibold">3) Best way to reduce hallucinations for course readings?</legend>
+            <label class="block"><input type="radio" name="q3" value="A" class="mr-2">Ask any chatbot to summarise from memory.</label>
+            <label class="block"><input type="radio" name="q3" value="B" class="mr-2">Use a grounded tool like NotebookLM with your PDFs.</label>
+            <label class="block"><input type="radio" name="q3" value="C" class="mr-2">Copy from Wikipedia instead.</label>
+          </fieldset>
+          <button type="button" id="submitQuiz" class="mt-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white px-4 py-2 font-semibold">Check answers</button>
+          <p id="quizResult" class="mt-3 font-medium"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Next steps -->
+    <section class="mt-12">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
+        <h2 class="text-xl font-bold">Where do you want to go next?</h2>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a data-analytics="chip:prompts" href="prompting.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Improve my prompts</a>
+          <a data-analytics="chip:litreview" href="research.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Plan a literature review</a>
+          <a data-analytics="chip:revision" href="notebooklm-tutorial.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Build a revision pack</a>
+          <a data-analytics="chip:platforms" href="ai-platforms.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Pick the right tool</a>
+          <a data-analytics="chip:integrity" href="academic-integrity.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Check what’s allowed</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-10 border-t border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+      <p>© <span id="year"></span> Tony Myers · Last updated <span id="lastUpdated"></span></p>
+      <div class="text-slate-600 dark:text-slate-400">Feedback: <a class="underline" href="mailto:t.myers@example.edu?subject=AI%20for%20Students%20feedback">email</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Header interactions
+    const mobileBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Theme toggle
+    const toggle = document.getElementById('themeToggle');
+    const sun = document.getElementById('sunIcon');
+    const moon = document.getElementById('moonIcon');
+    function updateIcons() {
+      const isDark = document.documentElement.classList.contains('dark');
+      sun.classList.toggle('hidden', !isDark);
+      moon.classList.toggle('hidden', isDark);
+    }
+    updateIcons();
+    toggle?.addEventListener('click', () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateIcons();
+      track('Theme Toggle', { mode: isDark ? 'dark' : 'light' });
+    });
+
+    // Client-side quick search
+    const PAGES = [
+      { title: 'Getting Started', url: 'getting-started.html', tags: 'start basics setup overview' },
+      { title: 'AI Literacy', url: 'ai-literacy.html', tags: 'literacy skills concepts' },
+      { title: 'Prompting', url: 'prompting.html', tags: 'prompt tips examples templates' },
+      { title: 'Research & Essays', url: 'research.html', tags: 'research citations essays sources' },
+      { title: 'Study Strategies', url: 'study-strategies.html', tags: 'revision flashcards spaced repetition' },
+      { title: 'AI Platforms', url: 'ai-platforms.html', tags: 'chatgpt claude gemini copilot perplexity' },
+      { title: 'Toolkit', url: 'toolkit.html', tags: 'tools productivity literature review elicit gamma' },
+      { title: 'NotebookLM Tutorial', url: 'notebooklm-tutorial.html', tags: 'notebooklm citations audio overviews' },
+      { title: 'Understanding AI', url: 'understanding-ai.html', tags: 'llm tokens context window temperature' },
+      { title: 'Limitations', url: 'limitations.html', tags: 'hallucinations fact-checking verification' },
+      { title: 'Academic Integrity', url: 'academic-integrity.html', tags: 'policy ethics acknowledgement referencing' },
+    ];
+    const input = document.getElementById('siteSearch');
+    const results = document.getElementById('searchResults');
+    window.addEventListener('keydown', (e) => { if (e.key === '/' && document.activeElement !== input) { e.preventDefault(); input?.focus(); } });
+    function renderResults(items) {
+      results.innerHTML = items.map(i => `
+        <li>
+          <a class="flex items-start gap-3 p-3 hover:bg-slate-50 dark:hover:bg-slate-800" href="${i.url}" data-analytics="searchClick:${i.title}">
+            <div class="mt-1 h-2.5 w-2.5 rounded-full bg-sky-500"></div>
+            <div>
+              <div class="font-medium">${i.title}</div>
+              <div class="text-xs text-slate-500 dark:text-slate-400">${i.tags}</div>
+            </div>
+          </a>
+        </li>`).join('');
+      results.classList.toggle('hidden', items.length === 0);
+      // attach click tracking for dynamic items
+      results.querySelectorAll('a[data-analytics^="searchClick:"]').forEach(a => {
+        a.addEventListener('click', () => track('Search Click', { title: a.getAttribute('data-analytics')?.split(':')[1] || 'unknown' }));
+      });
+    }
+    let searchFlagged = false; // session flag to avoid duplicate events
+    input?.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      if (q && !searchFlagged) { searchFlagged = true; track('Search Used', { query_length: q.length }); }
+      if (!q) return renderResults([]);
+      const items = PAGES.filter(p => (p.title + ' ' + p.tags).toLowerCase().includes(q)).slice(0, 8);
+      renderResults(items);
+    });
+    document.addEventListener('click', (e) => { if (!results.contains(e.target) && e.target !== input) results.classList.add('hidden'); });
+
+    // Micro-quiz
+    const answers = { q1: 'C', q2: 'B', q3: 'B' };
+    const btn = document.getElementById('submitQuiz');
+    const out = document.getElementById('quizResult');
+    btn?.addEventListener('click', () => {
+      const form = new FormData(document.getElementById('quiz'));
+      let score = 0; let total = 0;
+      for (const k in answers) { total++; if (form.get(k) === answers[k]) score++; }
+      out.textContent = `Score: ${score}/${total}`;
+      out.className = 'mt-3 font-medium ' + (score === total ? 'text-emerald-600' : 'text-amber-600');
+      track('Quiz Completed', { score, total });
+    });
+
+    // Link click tracking for cards/chips/popular
+    document.querySelectorAll('[data-analytics]').forEach(el => {
+      el.addEventListener('click', () => {
+        const val = el.getAttribute('data-analytics');
+        const [group, name] = (val || '').split(':');
+        track('Nav/Click', { group, name });
+      });
+    });
+
+    // Footer year + last updated
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent = new Date(document.lastModified).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+
+    // ---- Analytics helper (GDPR-friendly) ----------------------------------
+    // This function sends only aggregated, anonymous usage events.
+    // 1) If Plausible is enabled (script tag present), it uses plausible() with props.
+    // 2) Otherwise it attempts a no-cookie, no-PII sendBeacon to '/_analytics'.
+    //    Implement a small serverless endpoint to collect counts if desired.
+    function track(name, props = {}) {
+      try {
+        if (window.plausible) { window.plausible(name, { props }); return; }
+      } catch(_) {}
+      try {
+        const payload = { e: name, p: props, path: location.pathname, ts: Date.now() };
+        if (navigator.sendBeacon) {
+          const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+          navigator.sendBeacon('/_analytics', blob); // fails silently if not available
+        }
+      } catch(_) {}
+    }
+  </script>
 </body>
 </html>
