@@ -97,10 +97,19 @@
     /* Targeted dark-mode contrast fixes (no global overrides) */
     /* Ensure any leftover white backgrounds get a dark surface */
     .dark .bg-white { background-color: #0b1220 !important; }
-    .dark .border-slate-200 { border-color: #1f2937 !important; }
+    .dark .border-slate-200 { border-color: #334155 !important; }
 
-    /* Cards and panels */
-    .dark .card { background-color: #0b1220 !important; box-shadow: none; }
+    /* Pathway cards */
+    .pathway-card { transition: background-color .2s ease; }
+    .dark .pathway-card { background-color: #0b1220 !important; border-color: #334155 !important; }
+    .dark .pathway-card h3 { color: #e6edf3 !important; }
+    .dark .pathway-card p, .dark .pathway-card li { color: #cbd5e1 !important; }
+
+    /* Search card */
+    .dark .search-card { background-color: #0b1220 !important; border-color: #334155 !important; }
+    .dark .search-card h2, .dark .search-card p { color: #e6edf3 !important; }
+    .dark #siteSearch { background-color: #0b1220 !important; color:#e6edf3 !important; border-color:#334155 !important; }
+    .dark #searchResults { background-color:#0b1220 !important; border-color:#334155 !important; }
 
     /* Callouts: readable colours on dark */
     .dark .callout { color: #e5e7eb !important; }
@@ -111,7 +120,7 @@
     /* Quiz labels and legends */
     .dark #quiz legend, .dark #quiz label { color:#e6edf3 !important; }
 
-    /* Muted text classes (only these, not all <p>/<li>) */
+    /* Muted text classes (only these) */
     .dark .text-slate-500, .dark .text-slate-600 { color:#cbd5e1 !important; }
 
     /* Inputs */
@@ -202,7 +211,7 @@
       <h2 class="text-2xl md:text-3xl font-bold">Choose your pathway</h2>
       <p class="text-slate-600 dark:text-slate-300 mt-1">Start with your goal — we'll guide you to the right resources.</p>
       <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a data-analytics="pathway:learn" href="getting-started.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:learn"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 grid place-items-center text-xl">🧭</div>
             <div>
@@ -216,7 +225,7 @@
             <li>Model choices & costs</li>
           </ul>
         </a>
-        <a data-analytics="pathway:apply" href="research.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:apply"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 grid place-items-center text-xl">📚</div>
             <div>
@@ -230,7 +239,7 @@
             <li>Revision plans & quizzes</li>
           </ul>
         </a>
-        <a data-analytics="pathway:responsible" href="academic-integrity.html" class="card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:responsible"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 grid place-items-center text-xl">🛡️</div>
             <div>
@@ -249,7 +258,7 @@
 
     <!-- Quick search (client-side suggestions) -->
     <section class="mt-12">
-      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
+      <div class="search-card rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
         <div class="flex items-center justify-between flex-wrap gap-3">
           <h2 class="text-xl font-semibold">Find a page fast</h2>
           <p class="text-sm text-slate-500 dark:text-slate-400">Press <span class="kbd">/</span> to focus</p>
