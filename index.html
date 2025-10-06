@@ -43,6 +43,19 @@
     .callout-warn{background:#fffbeb;border-color:#fcd34d}
     .callout-danger{background:#fff1f2;border-color:#fecdd3}
   </style>
+  <style>
+    /* Dark mode contrast improvements for readability */
+    .dark .text-slate-400,
+    .dark .text-slate-500,
+    .dark .text-slate-600 { color: #e2e8f0 !important; } /* ~slate-200 */
+
+    /* Improve placeholder visibility in dark mode */
+    .dark ::placeholder { color: #cbd5e1; } /* ~slate-300 */
+
+    /* Ensure quiz legends and labels are readable */
+    .dark #quiz legend,
+    .dark #quiz label { color: #e5e7eb; } /* ~slate-200/100 */
+  </style>
   <script>
     // Dark mode persistence
     (function() {
