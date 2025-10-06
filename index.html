@@ -95,34 +95,36 @@
   </style>
   <style id="contrast-fix">
     /* --- Dark-mode contrast fixes (targeted) --- */
-    /* Ensure any leftover white backgrounds get a dark surface */
-    .dark .bg-white { background-color: #0b1220 !important; }
-    .dark .border-slate-200 { border-color: #334155 !important; }
+    .dark .bg-white { background-color:#0b1220 !important; }
+    .dark .border-slate-200 { border-color:#334155 !important; }
 
-    /* Header / top navigation */
-    .dark header { background-color: #0b1220 !important; border-color:#334155 !important; }
-    .dark header .nav-link { color:#e5e7eb !important; }
-    .dark header .nav-link:hover,
-    .dark header .nav-link.active { color:#7dd3fc !important; background-color: rgba(125,211,252,.12) !important; border-bottom-color:#7dd3fc !important; }
+    /* Header / top navigation (kept white so text can be black) */
+    header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    header .nav-link { color:#111827 !important; }
+    header .nav-link:hover,
+    header .nav-link.active { color:#000000 !important; background-color: rgba(0,0,0,.06) !important; border-bottom-color:#000000 !important; }
+    .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
 
     /* Pathway cards */
     .pathway-card { transition: background-color .2s ease; }
-    .dark .pathway-card { background-color: #0b1220 !important; border-color: #334155 !important; }
+    .dark .pathway-card { background-color:#0b1220 !important; border-color: #334155 !important; }
     .dark .pathway-card h3 { color: #e6edf3 !important; }
     .dark .pathway-card p, .dark .pathway-card li { color: #cbd5e1 !important; }
 
     /* Search card + input */
-    .dark .search-card { background-color: #0b1220 !important; border-color: #334155 !important; }
+    .dark .search-card { background-color:#0b1220 !important; border-color: #334155 !important; }
     .dark .search-card h2, .dark .search-card p { color: #e6edf3 !important; }
-    .dark #siteSearch { background-color: #0b1220 !important; color:#e6edf3 !important; border-color:#334155 !important; }
+    .dark #siteSearch { background-color:#0b1220 !important; color:#e6edf3 !important; border-color:#334155 !important; }
     .dark #siteSearch::placeholder { color:#cbd5e1 !important; }
     .dark #searchResults { background-color:#0b1220 !important; border-color:#334155 !important; }
 
-    /* Callouts */
-    .dark .callout { color: #e5e7eb !important; }
-    .dark .callout-tip    { background:#064e3b !important; border-color:#10b981 !important; }
-    .dark .callout-warn   { background:#7c2d12 !important; border-color:#f59e0b !important; }
-    .dark .callout-danger { background:#7f1d1d !important; border-color:#fca5a5 !important; }
+    /* Callouts (fix warn contrast) */
+    .dark .callout { color:#e5e7eb !important; }
+    .dark .callout-warn   { background:#2b2a1f !important; border-color:#f59e0b !important; }
+    .dark .callout-warn h3 { color:#fef3c7 !important; }
+    .dark .callout-warn li { color:#f1f5f9 !important; }
+    .dark .callout-warn li::marker { color:#f59e0b !important; }
+    .dark .callout a { color:#7dd3fc !important; text-decoration: underline; }
 
     /* Quiz */
     .dark #quiz legend, .dark #quiz label { color:#e6edf3 !important; }
@@ -130,7 +132,14 @@
     /* Muted text */
     .dark .text-slate-500, .dark .text-slate-600 { color:#cbd5e1 !important; }
 
-    /* KBD key styling */
+    /* Chips (Next steps) */
+    .chip { background-color:#f1f5f9; color:#0f172a; border:1px solid #e2e8f0; }
+    .chip:hover { background-color:#e2e8f0; }
+    .dark .chip { background-color:#0b1220 !important; color:#e6edf3 !important; border:1px solid #334155 !important; }
+    .dark .chip:hover { background-color:#111827 !important; }
+
+    /* KBD */
+    .kbd { border-color:#cbd5e1; background-color:#ffffffb3; color:#475569; }
     .dark .kbd { border-color:#475569 !important; background-color:#0b1220 !important; color:#e6edf3 !important; }
   </style>
   <style id="nav-black">
@@ -361,11 +370,11 @@
       <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
         <h2 class="text-xl font-bold">Where do you want to go next?</h2>
         <div class="mt-4 flex flex-wrap gap-3">
-          <a data-analytics="chip:prompts" href="prompting.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Improve my prompts</a>
-          <a data-analytics="chip:litreview" href="research.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Plan a literature review</a>
-          <a data-analytics="chip:revision" href="notebooklm-tutorial.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Build a revision pack</a>
-          <a data-analytics="chip:platforms" href="ai-platforms.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Pick the right tool</a>
-          <a data-analytics="chip:integrity" href="academic-integrity.html" class="px-3 py-2 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700">Check what’s allowed</a>
+          <a data-analytics="chip:prompts" href="prompting.html" class="chip px-3 py-2 rounded-md">Improve my prompts</a>
+          <a data-analytics="chip:litreview" href="research.html" class="chip px-3 py-2 rounded-md">Plan a literature review</a>
+          <a data-analytics="chip:revision" href="notebooklm-tutorial.html" class="chip px-3 py-2 rounded-md">Build a revision pack</a>
+          <a data-analytics="chip:platforms" href="ai-platforms.html" class="chip px-3 py-2 rounded-md">Pick the right tool</a>
+          <a data-analytics="chip:integrity" href="academic-integrity.html" class="chip px-3 py-2 rounded-md">Check what’s allowed</a>
         </div>
       </div>
     </section>
