@@ -133,6 +133,19 @@
     /* KBD key styling */
     .dark .kbd { border-color:#475569 !important; background-color:#0b1220 !important; color:#e6edf3 !important; }
   </style>
+  <style id="nav-black">
+    /* Force black text navigation with readable background in both modes */
+    header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    header .nav-link { color:#111827 !important; }
+    header .nav-link:hover,
+    header .nav-link.active { color:#000000 !important; background-color: rgba(0,0,0,.06) !important; border-bottom-color:#000000 !important; }
+    /* Brand text */
+    header a.text-xl.font-bold { color:#111827 !important; }
+    /* Ensure dark mode keeps a light header for contrast with black text */
+    .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu .nav-link { color:#111827 !important; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
   <a href="#main" class="sr-only sr-skip">Skip to content</a>
