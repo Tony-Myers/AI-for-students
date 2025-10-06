@@ -98,12 +98,15 @@
     .dark .bg-white { background-color:#0b1220 !important; }
     .dark .border-slate-200 { border-color:#334155 !important; }
 
-    /* Header / top navigation (kept white so text can be black) */
+    /* Header / top navigation (force white background + black text in both modes) */
     header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    header a.text-xl.font-bold { color:#111827 !important; }
     header .nav-link { color:#111827 !important; }
     header .nav-link:hover,
     header .nav-link.active { color:#000000 !important; background-color: rgba(0,0,0,.06) !important; border-bottom-color:#000000 !important; }
     .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu .nav-link { color:#111827 !important; }
 
     /* Pathway cards */
     .pathway-card { transition: background-color .2s ease; }
@@ -112,6 +115,7 @@
     .dark .pathway-card p, .dark .pathway-card li { color: #cbd5e1 !important; }
 
     /* Search card + input */
+    .search-card { border-radius:1rem; }
     .dark .search-card { background-color:#0b1220 !important; border-color: #334155 !important; }
     .dark .search-card h2, .dark .search-card p { color: #e6edf3 !important; }
     .dark #siteSearch { background-color:#0b1220 !important; color:#e6edf3 !important; border-color:#334155 !important; }
@@ -120,11 +124,11 @@
 
     /* Callouts (fix warn contrast) */
     .dark .callout { color:#e5e7eb !important; }
-    .dark .callout-warn   { background:#2b2a1f !important; border-color:#f59e0b !important; }
+    .dark .callout-warn   { background:#111827 !important; border-color:#f59e0b !important; }
     .dark .callout-warn h3 { color:#fef3c7 !important; }
     .dark .callout-warn li { color:#f1f5f9 !important; }
     .dark .callout-warn li::marker { color:#f59e0b !important; }
-    .dark .callout a { color:#7dd3fc !important; text-decoration: underline; }
+    .dark .callout-warn a { color:#93c5fd !important; text-decoration: underline; }
 
     /* Quiz */
     .dark #quiz legend, .dark #quiz label { color:#e6edf3 !important; }
@@ -133,7 +137,7 @@
     .dark .text-slate-500, .dark .text-slate-600 { color:#cbd5e1 !important; }
 
     /* Chips (Next steps) */
-    .chip { background-color:#f1f5f9; color:#0f172a; border:1px solid #e2e8f0; }
+    .chip { background-color:#f1f5f9; color:#0f172a; border:1px solid #e2e8f0; padding:.5rem .75rem; border-radius:.5rem; display:inline-block; }
     .chip:hover { background-color:#e2e8f0; }
     .dark .chip { background-color:#0b1220 !important; color:#e6edf3 !important; border:1px solid #334155 !important; }
     .dark .chip:hover { background-color:#111827 !important; }
