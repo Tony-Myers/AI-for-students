@@ -1,92 +1,250 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AI for Students: Getting Started</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
     .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .principle-card { transition:transform .3s,box-shadow .3s }
-    .principle-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .card { transition:transform .2s, box-shadow .2s }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -12px rgba(2,6,23,.15) }
+    .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:#ffffffb3;color:#475569}
+    .tip{background:#10b981;color:#000;border:1px solid #10b981;border-radius:.75rem}
+    .copy-btn { white-space: nowrap }
+    @media (prefers-color-scheme: dark) {
+      body { background:#0b1220; color:#e2e8f0 }
+      .bg-white { background:#0b1220 !important }
+      .text-slate-700 { color:#cbd5e1 !important }
+      .text-slate-600 { color:#cbd5e1 !important }
+      .border-slate-200 { border-color:#334155 !important }
+      .nav-link { color:#111827 !important; } /* we keep a light header for contrast */
+      header, #mobile-menu { background:#ffffff !important; border-color:#e5e7eb !important; }
+      .kbd{border-color:#475569;background:#0b1220;color:#e6edf3}
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
+<!-- Header -->
 <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
-  <div class="hidden md:flex space-x-4">
-  <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
-  <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Getting Started</a>
-  <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
-  <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
-  <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
-  <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
-  <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
-  <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
-  <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
-  <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Understanding AI</a>
-  <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Limitations</a>
-  <a href="notebooklm-tutorial.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">NotebookLM</a>
-  <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
-</div>
-    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+    <a href="index.html" class="text-xl font-bold text-sky-700 cursor-pointer" tabindex="0">AI for Students</a>
+    <div class="hidden md:flex space-x-4">
+      <a href="index.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Home</a>
+      <a href="getting-started.html" class="nav-link text-slate-600 px-3 py-2 rounded-md active">Getting Started</a>
+      <a href="ai-literacy.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Literacy</a>
+      <a href="prompting.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Prompting</a>
+      <a href="research.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Research & Essays</a>
+      <a href="study-strategies.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Study Strategies</a>
+      <a href="ai-platforms.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">AI Platforms</a>
+      <a href="toolkit.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Toolkit</a>
+      <a href="academic-integrity.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Academic Integrity</a>
+      <a href="understanding-ai.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Understanding AI</a>
+      <a href="limitations.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">Limitations</a>
+      <a href="notebooklm-tutorial.html" class="nav-link text-slate-600 px-3 py-2 rounded-md">NotebookLM</a>
+    </div>
+    <button id="mobile-menu-button" class="md:hidden p-2 text-slate-500 hover:text-sky-700" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
       <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
   </nav>
-<div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
-  <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
-  <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left">Getting Started</a>
-  <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
-  <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
-  <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
-  <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
-  <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
-  <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
-  <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
-  <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
-  <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
-  <a href="notebooklm-tutorial.html" class="nav-link block px-3 py-2 w-full text-left">NotebookLM</a>
-  <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
+  <div id="mobile-menu" class="hidden md:hidden px-3 pb-3 space-y-1">
+    <a href="index.html" class="nav-link block px-3 py-2 w-full text-left">Home</a>
+    <a href="getting-started.html" class="nav-link block px-3 py-2 w-full text-left active">Getting Started</a>
+    <a href="ai-literacy.html" class="nav-link block px-3 py-2 w-full text-left">AI Literacy</a>
+    <a href="prompting.html" class="nav-link block px-3 py-2 w-full text-left">Prompting</a>
+    <a href="research.html" class="nav-link block px-3 py-2 w-full text-left">Research & Essays</a>
+    <a href="study-strategies.html" class="nav-link block px-3 py-2 w-full text-left">Study Strategies</a>
+    <a href="ai-platforms.html" class="nav-link block px-3 py-2 w-full text-left">AI Platforms</a>
+    <a href="toolkit.html" class="nav-link block px-3 py-2 w-full text-left">Toolkit</a>
+    <a href="academic-integrity.html" class="nav-link block px-3 py-2 w-full text-left">Academic Integrity</a>
+    <a href="understanding-ai.html" class="nav-link block px-3 py-2 w-full text-left">Understanding AI</a>
+    <a href="limitations.html" class="nav-link block px-3 py-2 w-full text-left">Limitations</a>
+    <a href="notebooklm-tutorial.html" class="nav-link block px-3 py-2 w-full text-left">NotebookLM</a>
   </div>
 </header>
 
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-    <h2 class="text-3xl font-bold">Getting Started with AI for Students</h2>
-<p class="max-w-3xl mx-auto">Your essential first steps to using AI tools effectively and ethically for academic success.</p>
-  </div>
-  <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
-    <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg border border-sky-200 mb-6">
-      <p class="text-slate-700 leading-relaxed">The emergence of generative artificial intelligence (AI) creates significant opportunities and challenges within higher education. A proactive approach should be taken, centred on developing AI literacy among staff and students to understand the technology's capabilities, limitations, and inherent risks such as bias and misinformation. The objective is to learn to work with AI, not against it.</p>
-    </div>
-    <div class="grid grid-cols-1 gap-8">
-      <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
-        <h3 class="text-xl font-bold text-purple-700 mb-4">Evolving Pedagogy and Assessment</h3>
-        <p class="text-slate-700 leading-relaxed">The educator's role is shifting from the primary source of knowledge to a facilitator of learning experiences conducted in collaboration with AI. This requires rethinking pedagogical models and assessment methods to prioritise process-based learning, critical thinking, and problem-solving over simple knowledge recall.</p>
-      </div>
-      <div class="principle-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
-        <h3 class="text-xl font-bold text-emerald-700 mb-4">Enhancing Efficiency and Accessibility</h3>
-        <p class="text-slate-700 leading-relaxed">AI tools offer substantial benefits for reducing academic workload. They can be used to generate lesson plans, questions, and rubrics, and to automate administrative duties. AI also supports greater accessibility by adapting materials and providing tools such as text-to-speech and translation.</p>
-      </div>
-      <div class="principle-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
-        <h3 class="text-xl font-bold text-amber-700 mb-4">Effective AI Integration</h3>
-        <p class="text-slate-700 leading-relaxed">Effective AI integration requires developing clear ethical guidelines and policies, ensuring data privacy, and fostering a culture of experimentation and collaboration to prepare students for an AI-powered workforce.</p>
-      </div>
-      <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
-        <h3 class="text-xl font-bold text-rose-700 mb-4">Maintaining Human Agency and Authoring</h3>
-        <p class="text-slate-700 leading-relaxed">Central to responsible AI adoption is maintaining <strong>human agency and authoring</strong>, where AI serves as a partnership to develop new skills and AI literacies. The ultimate responsibility for scientific output and content integrity rests with the human user, not the AI.</p>
+
+  <!-- HERO -->
+  <section class="bg-black text-white rounded-xl p-10 sm:p-12 text-center space-y-4 mb-8">
+    <h1 class="text-3xl sm:text-4xl font-bold">New to AI? Start here.</h1>
+    <p class="max-w-3xl mx-auto text-slate-200">
+      This page shows you, step by step, how to use AI to study smarter — without risking your academic integrity.
+      No jargon. Just what to click, what to type, and how to stay safe.
+    </p>
+  </section>
+
+  <!-- WHY + WHAT YOU NEED -->
+  <section class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold mb-2">Why use AI at uni?</h2>
+      <ul class="list-disc list-inside text-slate-700 space-y-2">
+        <li><strong>Understand faster:</strong> Get plain-English explanations and examples.</li>
+        <li><strong>Study actively:</strong> Turn notes into quizzes, flashcards, and plans.</li>
+        <li><strong>Write better:</strong> Improve structure and clarity (you stay the author).</li>
+      </ul>
+      <div class="tip mt-4 p-4">
+        <p class="font-semibold">Tip</p>
+        <p>Think of AI as a <em>coach</em>, not a ghostwriter. It should help you learn — not do the learning for you.</p>
       </div>
     </div>
-  </div>
-  <div class="text-center mt-8">
-    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
-  </div>
+
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h2 class="text-xl font-bold mb-2">What you need (2 minutes)</h2>
+      <ol class="list-decimal list-inside text-slate-700 space-y-2">
+        <li><strong>Pick a tool:</strong> ChatGPT, Claude, Gemini, Copilot, or <a href="notebooklm-tutorial.html" class="text-sky-700 underline">NotebookLM</a> (great for your own PDFs).</li>
+        <li><strong>Know the rules:</strong> Check your module’s AI policy and the <a href="academic-integrity.html" class="text-sky-700 underline">Academic Integrity</a> page.</li>
+        <li><strong>Bring materials:</strong> Your notes, the brief, and any readings.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5-MINUTE QUICK START -->
+  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Your 5-minute quick start</h2>
+    <ol class="space-y-4 text-slate-700">
+      <li><strong>Open a chat</strong> in your chosen AI tool.</li>
+      <li><strong>Paste this setup prompt:</strong>
+        <div class="mt-2 border border-slate-200 rounded-lg p-3 bg-slate-50 text-sm overflow-x-auto">
+          <code>I’m a university student. Act as a supportive study coach. First ask me 3 questions:
+1) My module and topic
+2) The task (e.g., explain, plan, practise)
+3) What I’ve already tried.
+Then help me step-by-step with short check-ins, and don’t write anything I wouldn’t be allowed to submit. Always flag facts that need verification.</code>
+        </div>
+      </li>
+      <li><strong>Share your brief</strong> (paste key parts) and say what you want to achieve in this session (e.g., “understand theory”, “outline essay”, “revise Week 3”).</li>
+      <li><strong>Work in small loops:</strong> Ask, get help, try it yourself, then ask for feedback on your attempt.</li>
+      <li><strong>Finish well:</strong> Ask for a quick checklist of what to verify and what to do next.</li>
+    </ol>
+  </section>
+
+  <!-- READY-MADE PROMPTS -->
+  <section class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-bold mb-2">Common tasks (copy & paste)</h3>
+      <div class="space-y-3 text-sm">
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold">Understand a topic</p>
+          <code>Explain [topic] like I’m new to it. Use a real-world example. Then give me 5 quiz questions from easy to hard.</code>
+        </div>
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold">Plan an essay</p>
+          <code>Here’s my brief: “[paste]”. Help me outline a 2000-word essay: sections, key points, and where evidence is needed. Don’t write the essay.</code>
+        </div>
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold">Turn notes into revision</p>
+          <code>Turn these notes into spaced-repetition flashcards and a 10-question practice quiz with answers. Notes: [paste]</code>
+        </div>
+        <div class="border border-slate-200 rounded-lg p-3 bg-slate-50">
+          <p class="font-semibold">Check my understanding</p>
+          <code>Read my paragraph and tell me: 1) clarity, 2) logic, 3) what evidence is missing. Keep suggestions specific and brief. Text: [paste]</code>
+        </div>
+      </div>
+      <p class="mt-3 text-slate-600">Want more? See the <a href="prompting.html" class="text-sky-700 underline">Prompting Guide</a>.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-bold mb-2">Using your own sources</h3>
+      <p class="text-slate-700">To avoid hallucinations, use tools that work directly with your files.</p>
+      <ul class="list-disc list-inside text-slate-700 mt-2 space-y-2">
+        <li><a href="notebooklm-tutorial.html" class="text-sky-700 underline">NotebookLM</a> — chat with your PDFs/slides; every answer is cited.</li>
+        <li>Some chatbots let you attach files — always ask for page/paragraph citations.</li>
+      </ul>
+      <div class="tip mt-4 p-4">
+        <p class="font-semibold">Good practice</p>
+        <p>When AI gives a fact, ask: “Show me where that comes from” or “Give the source and page”.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICK A TOOL -->
+  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">Which AI tool should I pick?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+      <div class="card rounded-lg border border-slate-200 p-4">
+        <h4 class="font-semibold">ChatGPT / Copilot</h4>
+        <p class="text-slate-700 mt-1">General study help, brainstorming, draft refinement. Some plans support attaching files.</p>
+      </div>
+      <div class="card rounded-lg border border-slate-200 p-4">
+        <h4 class="font-semibold">Claude</h4>
+        <p class="text-slate-700 mt-1">Long documents, thoughtful explanations, good for editing tone and clarity.</p>
+      </div>
+      <div class="card rounded-lg border border-slate-200 p-4">
+        <h4 class="font-semibold">Gemini</h4>
+        <p class="text-slate-700 mt-1">Tight Google Docs/Drive integration; handy for slides and quick summaries.</p>
+      </div>
+      <div class="card rounded-lg border border-slate-200 p-4">
+        <h4 class="font-semibold">NotebookLM</h4>
+        <p class="text-slate-700 mt-1">Best for studying your own materials with citations and audio overviews.</p>
+      </div>
+    </div>
+    <p class="text-slate-600 mt-3">See <a href="ai-platforms.html" class="text-sky-700 underline">AI Platforms</a> for pros/cons and choices.</p>
+  </section>
+
+  <!-- INTEGRITY + SAFETY -->
+  <section class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-bold mb-2">Stay within the rules</h3>
+      <ul class="list-disc list-inside text-slate-700 space-y-2">
+        <li><strong>Be transparent:</strong> If your module asks, acknowledge how you used AI.</li>
+        <li><strong>Don’t submit AI-written text</strong> as your own unless your policy explicitly allows it.</li>
+        <li><strong>Verify facts & references</strong> using reliable sources (library databases, official stats).</li>
+      </ul>
+      <p class="mt-3 text-slate-600">Full guidance: <a href="academic-integrity.html" class="text-sky-700 underline">Academic Integrity</a> and <a href="limitations.html" class="text-sky-700 underline">Limitations & Fact-Checking</a>.</p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg p-6">
+      <h3 class="text-xl font-bold mb-2">Accessibility & wellbeing</h3>
+      <ul class="list-disc list-inside text-slate-700 space-y-2">
+        <li>Ask for audio summaries or bullet versions if reading is tough today.</li>
+        <li>Use it to plan short, realistic study sessions (e.g., “help me make a 25-minute plan for Topic X”).</li>
+        <li>Prefer step-by-step explanations and practice questions for active learning.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+    <h2 class="text-2xl font-bold mb-4">If it’s not helping…</h2>
+    <div class="grid md:grid-cols-2 gap-6 text-slate-700">
+      <div>
+        <h4 class="font-semibold">Make your prompt clearer</h4>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>Say your level (e.g., first-year, MSc) and the exact topic.</li>
+          <li>Tell it what format you want: bullets, table, 3 steps, 5 quiz questions.</li>
+          <li>Paste the assignment brief and your notes.</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold">Reduce errors</h4>
+        <ul class="list-disc list-inside space-y-1 text-sm">
+          <li>Ask for sources or page numbers; double-check them.</li>
+          <li>Use <a href="notebooklm-tutorial.html" class="text-sky-700 underline">NotebookLM</a> to ground answers in your PDFs.</li>
+          <li>Split big tasks into small steps and verify each step.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="text-center">
+    <div class="inline-flex flex-wrap gap-3 justify-center">
+      <a href="prompting.html" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold">Improve my prompts</a>
+      <a href="research.html" class="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-semibold">Plan a literature review</a>
+      <a href="study-strategies.html" class="px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-semibold">Build a revision plan</a>
+      <a href="notebooklm-tutorial.html" class="px-4 py-2 rounded-lg bg-purple-700 hover:bg-purple-600 text-white font-semibold">Use NotebookLM</a>
+    </div>
+    <p class="mt-4 text-slate-500">Press <span class="kbd">/</span> to search the site.</p>
+  </section>
+
 </main>
 
 <footer class="bg-slate-800 text-white py-6 text-center text-sm">
@@ -94,17 +252,18 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
-});
+  // Mobile menu
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
+      });
+    }
+  });
 </script>
 
 </body>
 </html>
-
