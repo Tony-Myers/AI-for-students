@@ -82,7 +82,7 @@
               mask-position: left bottom;
       -webkit-mask-size: contain;
               mask-size: contain;
-      /* High‑DPI variants automatically if present */
+      /* High-DPI variants automatically if present */
       -webkit-mask-image: -webkit-image-set(url('Sig_ATB.png') 1x, url('Sig_ATB@2x.png') 2x, url('Sig_ATB@3x.png') 3x);
               mask-image: image-set(url('Sig_ATB.png') 1x, url('Sig_ATB@2x.png') 2x, url('Sig_ATB@3x.png') 3x);
       filter: drop-shadow(0 0 .5px rgba(255,255,255,.9));
@@ -130,7 +130,7 @@
     .dark .callout-warn li::marker { color:#f59e0b !important; }
     .dark .callout-warn a { color:#93c5fd !important; text-decoration: underline; }
 
-    /* Tip box in hero — ensure high contrast on dark */
+    /* (old dark tip styling left in place; overridden below for uniform look) */
     .dark .callout-tip { background:#064e3b !important; border-color:#10b981 !important; }
     .dark .callout-tip, .dark .callout-tip * { color:#ecfeff !important; }
 
@@ -150,6 +150,22 @@
     .kbd { border-color:#cbd5e1; background-color:#ffffffb3; color:#475569; }
     .dark .kbd { border-color:#475569 !important; background-color:#0b1220 !important; color:#e6edf3 !important; }
   </style>
+
+  <!-- NEW: Uniform Tip styling (same green + black in both modes) -->
+  <style id="tip-uniform">
+    .callout-tip {
+      background: #10b981 !important;   /* emerald-500 */
+      border-color: #10b981 !important;
+      color: #000 !important;
+    }
+    .callout-tip * { color: #000 !important; }
+    .dark .callout-tip {
+      background: #10b981 !important;
+      border-color: #10b981 !important;
+      color: #000 !important;
+    }
+  </style>
+
   <style id="nav-black">
     /* Force black text navigation with readable background in both modes */
     header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
@@ -223,17 +239,17 @@
           <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
         </div>
         <div class="callout callout-tip mt-6"><strong>Tip:</strong> Treat AI like a study coach. Ask it to quiz you, explain your own notes back to you, and challenge your thinking — but always verify facts and citations.</div>
-        <div class=\"mt-6\">
+        <div class="mt-6">
           <!-- Prefer SVG for crisp, scalable signature; fallback to high-DPI PNGs -->
           <!-- Signature: mask-based (removes black box), crisp, and blends with hero background -->
-<img src="images/Sig_ATB_trans.svg"
-                 onerror="this.onerror=null; this.src='images/Sig_ATB.png'; this.srcset='images/Sig_ATB@2x.png 2x, images/Sig_ATB@3x.png 3x';"
-                 alt="All the best, Tony"
-                 class="h-24 md:h-28 w-auto opacity-95"
-                 loading="lazy">
+          <img src="images/Sig_ATB_trans.svg"
+               onerror="this.onerror=null; this.src='images/Sig_ATB.png'; this.srcset='images/Sig_ATB@2x.png 2x, images/Sig_ATB@3x.png 3x';"
+               alt="All the best, Tony"
+               class="h-24 md:h-28 w-auto opacity-95"
+               loading="lazy">
         </div>
       </div>
-      <div class=\"flex items-center justify-center\">
+      <div class="flex items-center justify-center">
         <div class="w-[420px] h-[420px] max-w-full rounded-full border-4 border-sky-400/50 bg-sky-900/30 flex items-center justify-center">
           <picture>
             <source srcset="/AI-for-education/images/hero-image.gif" type="image/gif">
@@ -248,7 +264,7 @@
       <h2 class="text-2xl md:text-3xl font-bold">Choose your pathway</h2>
       <p class="text-slate-600 dark:text-slate-300 mt-1">Start with your goal — we'll guide you to the right resources.</p>
       <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a data-analytics="pathway:learn"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:learn" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 grid place-items-center text-xl">🧭</div>
             <div>
@@ -262,7 +278,7 @@
             <li>Model choices & costs</li>
           </ul>
         </a>
-        <a data-analytics="pathway:apply"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:apply" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 grid place-items-center text-xl">📚</div>
             <div>
@@ -276,7 +292,7 @@
             <li>Revision plans & quizzes</li>
           </ul>
         </a>
-        <a data-analytics="pathway:responsible"$1class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+        <a data-analytics="pathway:responsible" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 grid place-items-center text-xl">🛡️</div>
             <div>
@@ -285,8 +301,8 @@
             </div>
           </div>
           <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
-            <li>Traffic‑light examples</li>
-            <li>Fact‑checking habits</li>
+            <li>Traffic-light examples</li>
+            <li>Fact-checking habits</li>
             <li>Avoiding hallucinations</li>
           </ul>
         </a>
@@ -343,7 +359,7 @@
       </aside>
     </section>
 
-    <!-- Micro‑quiz -->
+    <!-- Micro-quiz -->
     <section class="mt-12">
       <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
         <h2 class="text-xl font-bold">Test yourself: responsible AI use</h2>
