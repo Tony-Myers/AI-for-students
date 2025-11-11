@@ -1,412 +1,423 @@
 <!DOCTYPE html>
 <html lang="en-GB" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI for Students · Your Academic Success Toolkit</title>
-  <meta name="description" content="Practical, ethical guidance for using AI in your studies: getting started, prompting, research & essays, study strategies, and academic integrity.">
-  <meta property="og:title" content="AI for Students · Your Academic Success Toolkit">
-  <meta property="og:description" content="Practical, ethical guidance for using AI in your studies.">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0ea5e9">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI for Students · Your Academic Success Toolkit</title>
+  <meta name="description" content="Practical, ethical guidance for using AI in your studies: getting started, prompting, research & essays, study strategies, and academic integrity.">
+  <meta property="og:title" content="AI for Students · Your Academic Success Toolkit">
+  <meta property="og:description" content="Practical, ethical guidance for using AI in your studies.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0ea5e9">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    :root { color-scheme: light dark; }
-    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    body { background:#f8fafc; color:#0f172a; }
-    .dark body { background:#0b1220; color:#e2e8f0; }
+  <style>
+    :root { color-scheme: light dark; }
+    html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    body { background:#f8fafc; color:#0f172a; }
+    .dark body { background:#0b1220; color:#e2e8f0; }
 
-    /* Navigation link styles */
-    .nav-link { transition: color .2s, background-color .2s, border-color .2s; border-bottom: 2px solid transparent; border-radius: .375rem; color:#111827; }
-    .nav-link:hover, .nav-link.active { color:#000; background-color: rgba(0,0,0,.06); border-bottom-color:#000; }
-    .dark .nav-link { color:#111827; } /* header stays light for contrast */
+    /* Navigation link styles */
+    .nav-link { transition: color .2s, background-color .2s, border-color .2s; border-bottom: 2px solid transparent; border-radius: .375rem; color:#111827; }
+    .nav-link:hover, .nav-link.active { color:#000; background-color: rgba(0,0,0,.06); border-bottom-color:#000; }
+    .dark .nav-link { color:#111827; } /* header stays light for contrast */
 
-    /* Cards */
-    .card { transition: transform .2s, box-shadow .2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); }
+    /* Cards */
+    .card { transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); }
 
-    /* Accessibility: skip link */
-    .sr-skip:focus { position:absolute; left:0; top:0; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:.375rem; z-index:50; }
+    /* Accessibility: skip link */
+    .sr-skip:focus { position:absolute; left:0; top:0; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:.375rem; z-index:50; }
 
-    /* Small utilities */
-    .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:rgba(255,255,255,.7);color:#475569}
-    .callout{border-radius:.5rem;border:1px solid #e2e8f0;padding:1rem}
-    .callout-tip{background:#10b981 !important; border-color:#10b981 !important; color:#000 !important;}
-    .callout-tip *{color:#000 !important;}
-    .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600 { color:#e2e8f0 !important; }
-    .dark ::placeholder { color:#cbd5e1; }
-    .dark #quiz legend, .dark #quiz label { color:#e5e7eb; }
+    /* Small utilities */
+    .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:rgba(255,255,255,.7);color:#475569}
+    .callout{border-radius:.5rem;border:1px solid #e2e8f0;padding:1rem}
+    .callout-tip{background:#10b981 !important; border-color:#10b981 !important; color:#000 !important;}
+    .callout-tip *{color:#000 !important;}
+    .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600 { color:#e2e8f0 !important; }
+    .dark ::placeholder { color:#cbd5e1; }
+    .dark #quiz legend, .dark #quiz label { color:#e5e7eb; }
 
-    /* Keep header light for readability */
-    header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
-    .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
-    .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
-    .dark #mobile-menu .nav-link { color:#111827 !important; }
-  </style>
+    /* Keep header light for readability */
+    header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
+    .dark #mobile-menu .nav-link { color:#111827 !important; }
+  </style>
 
-  <!-- Persist dark-mode preference -->
-  <script>
-    (function() {
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if ((saved === 'dark') || (!saved && prefersDark)) {
-        document.documentElement.classList.add('dark');
-      }
-    })();
-  </script>
+  <!-- Persist dark-mode preference -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if ((saved === 'dark') || (!saved && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
-  <a href="#main" class="sr-only sr-skip">Skip to content</a>
+  <a href="#main" class="sr-only sr-skip">Skip to content</a>
 
-  <!-- =========================
-       Header / Navigation
-  ========================== -->
-  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-          x-data="{ openMenu:false, openDropdown:null }">
-    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Brand -->
-      <a href="index.html" class="text-xl font-bold text-sky-700">AI for Students</a>
+  <!-- =========================
+       Header / Navigation
+  ========================== -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
+          x-data="{ openMenu:false, openDropdown:null }">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="index.html" class="text-xl font-bold text-sky-700">AI for Students</a>
 
-      <!-- Desktop nav -->
-      <div class="hidden md:flex items-center gap-2">
-        <a href="index.html" class="nav-link px-3 py-2 active" aria-current="page">Home</a>
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-2">
+        <a href="index.html" class="nav-link px-3 py-2 active" aria-current="page">Home</a>
 
-        <!-- Getting Started -->
-        <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-            Getting Started
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-          </button>
-          <div x-show="openDropdown==='start'" x-transition
-               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-            <a class="block px-4 py-2 hover:bg-sky-50" href="ai-literacy.html">AI Literacy</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="understanding-ai.html">Understanding AI</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="prompting.html">Prompting Guide</a>
-          </div>
-        </div>
+        <!-- Getting Started -->
+        <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
+          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Getting Started
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+          </button>
+          <div x-show="openDropdown==='start'" x-transition
+               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
+            <a class="block px-4 py-2 hover:bg-sky-50" href="ai-literacy.html">AI Literacy</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="understanding-ai.html">Understanding AI</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="prompting.html">Prompting Guide</a>
+          </div>
+        </div>
 
-        <!-- Study Support -->
-        <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-            Study Support
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-          </button>
-          <div x-show="openDropdown==='study'" x-transition
-               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-            <a class="block px-4 py-2 hover:bg-sky-50" href="study-strategies.html">Study Strategies</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="research.html">Research & Essays</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="ai-platforms.html">AI Tools</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="toolkit.html">Toolkit</a>
-          </div>
-        </div>
+        <!-- Study Support -->
+        <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
+          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Study Support
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+          </button>
+          <div x-show="openDropdown==='study'" x-transition
+               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
+            <a class="block px-4 py-2 hover:bg-sky-50" href="study-strategies.html">Study Strategies</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="research.html">Research & Essays</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="ai-platforms.html">AI Tools</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="toolkit.html">Toolkit</a>
+          </div>
+        </div>
 
-        <!-- Integrity & Policy -->
-        <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-            Integrity & Policy
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-          </button>
-          <div x-show="openDropdown==='integrity'" x-transition
-               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-            <a class="block px-4 py-2 hover:bg-sky-50" href="academic-integrity.html">Academic Integrity</a>
-            <a class="block px-4 py-2 hover:bg-sky-50" href="limitations.html">Limitations</a>
-          </div>
-        </div>
+        <!-- Integrity & Policy -->
+        <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
+          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Integrity & Policy
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+          </button>
+          <div x-show="openDropdown==='integrity'" x-transition
+               class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
+            <a class="block px-4 py-2 hover:bg-sky-50" href="academic-integrity.html">Academic Integrity</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="limitations.html">Limitations</a>
+          </div>
+        </div>
 
-        <!-- Resources -->
-        <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-            Resources
-            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-          </button>
-          <div x-show="openDropdown==='resources'" x-transition
-               class="absolute left-0 mt-2 w-72 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-            <a class="block px-4 py-2 hover:bg-sky-50" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
-            <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
-          </div>
-        </div>
+        <!-- Resources -->
+        <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
+          <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+          </button>
+          <div x-show="openDropdown==='resources'" x-transition
+               class="absolute left-0 mt-2 w-72 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
+            <!-- *** START CHANGE 1 *** -->
+            <a class="block px-4 py-2 hover:bg-sky-50" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="researchrabbit-tutorial.html">ResearchRabbit Tutorial</a>
+            <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
+            <!-- *** END CHANGE 1 *** -->
+          </div>
+        </div>
 
-        <!-- CTA Buttons -->
-        <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-        <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
-      </div>
+        <!-- CTA Buttons -->
+        <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
+        <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      </div>
 
-      <!-- Mobile menu button -->
-      <div class="md:hidden flex items-center gap-2">
-        <button @click="openMenu=!openMenu"
-                class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100"
-                aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-    </nav>
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center gap-2">
+        <button @click="openMenu=!openMenu"
+                class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100"
+                aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
 
-    <!-- Mobile menu -->
-    <div id="mobile-menu" x-show="openMenu" x-transition
-         class="md:hidden px-4 pb-3 space-y-2 bg-white border-t border-slate-200">
-      <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100">Home</a>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" x-show="openMenu" x-transition
+         class="md:hidden px-4 pb-3 space-y-2 bg-white border-t border-slate-200">
+      <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100">Home</a>
 
-      <details class="rounded">
-        <summary class="px-3 py-2 font-semibold cursor-pointer">Getting Started</summary>
-        <nav class="pl-4 py-1 space-y-1">
-          <a href="ai-literacy.html" class="block px-3 py-1 rounded hover:bg-slate-100">AI Literacy</a>
-          <a href="understanding-ai.html" class="block px-3 py-1 rounded hover:bg-slate-100">Understanding AI</a>
-          <a href="prompting.html" class="block px-3 py-1 rounded hover:bg-slate-100">Prompting Guide</a>
-        </nav>
-      </details>
+      <details class="rounded">
+        <summary class="px-3 py-2 font-semibold cursor-pointer">Getting Started</summary>
+        <nav class="pl-4 py-1 space-y-1">
+          <a href="ai-literacy.html" class="block px-3 py-1 rounded hover:bg-slate-100">AI Literacy</a>
+          <a href="understanding-ai.html" class="block px-3 py-1 rounded hover:bg-slate-100">Understanding AI</a>
+          <a href="prompting.html" class="block px-3 py-1 rounded hover:bg-slate-100">Prompting Guide</a>
+        </nav>
+      </details>
 
-      <details class="rounded">
-        <summary class="px-3 py-2 font-semibold cursor-pointer">Study Support</summary>
-        <nav class="pl-4 py-1 space-y-1">
-          <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100">Study Strategies</a>
-          <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100">Research & Essays</a>
-          <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100">AI Tools</a>
-          <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100">Toolkit</a>
-        </nav>
-      </details>
+      <details class="rounded">
+        <summary class="px-3 py-2 font-semibold cursor-pointer">Study Support</summary>
+        <nav class="pl-4 py-1 space-y-1">
+          <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100">Study Strategies</a>
+          <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100">Research & Essays</a>
+          <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100">AI Tools</a>
+          <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100">Toolkit</a>
+        </nav>
+      </details>
 
-      <details class="rounded">
-        <summary class="px-3 py-2 font-semibold cursor-pointer">Integrity & Policy</summary>
-        <nav class="pl-4 py-1 space-y-1">
-          <a href="academic-integrity.html" class="block px-3 py-1 rounded hover:bg-slate-100">Academic Integrity</a>
-          <a href="limitations.html" class="block px-3 py-1 rounded hover:bg-slate-100">Limitations</a>
-        </nav>
-      </details>
+      <details class="rounded">
+        <summary class="px-3 py-2 font-semibold cursor-pointer">Integrity & Policy</summary>
+        <nav class="pl-4 py-1 space-y-1">
+          <a href="academic-integrity.html" class="block px-3 py-1 rounded hover:bg-slate-100">Academic Integrity</a>
+          <a href="limitations.html" class="block px-3 py-1 rounded hover:bg-slate-100">Limitations</a>
+        </nav>
+      </details>
 
-      <details class="rounded">
-        <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
-        <nav class="pl-4 py-1 space-y-1">
-          <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100">NotebookLM Tutorial</a>
-          <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
-        </nav>
-      </details>
+      <details class="rounded">
+        <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
+        <nav class="pl-4 py-1 space-y-1">
+          <!-- *** START CHANGE 2 *** -->
+          <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100">NotebookLM Tutorial</a>
+          <a href="researchrabbit-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100">ResearchRabbit Tutorial</a>
+          <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
+          <!-- *** END CHANGE 2 *** -->
+        </nav>
+      </details>
 
-      <!-- Mobile CTAs -->
-      <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-      <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
-    </div>
-  </header>
+      <!-- Mobile CTAs -->
+      <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+      <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    </div>
+  </header>
 
-  <!-- =========================
-       Main content
-  ========================== -->
+  <!-- =========================
+       Main content
+  ========================== -->
 <section class="bg-slate-900 text-white rounded-2xl p-8 sm:p-12 grid md:grid-cols-[1.2fr,1fr] gap-8 items-center">
-  <!-- Left column: heading, CTAs, tip, signature (NO small hero image here) -->
-  <div>
-    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-      AI for Students
-      <span class="block text-sky-300">Learn faster. Think deeper. Act ethically.</span>
-    </h1>
+  <!-- Left column: heading, CTAs, tip, signature (NO small hero image here) -->
+  <div>
+    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+      AI for Students
+      <span class="block text-sky-300">Learn faster. Think deeper. Act ethically.</span>
+    </h1>
 
-    <p class="mt-4 text-slate-200 max-w-prose">
-      This site helps you harness AI effectively and responsibly across your studies — from first prompts to research and writing, with integrity at the core.
-    </p>
+    <p class="mt-4 text-slate-200 max-w-prose">
+      This site helps you harness AI effectively and responsibly across your studies — from first prompts to research and writing, with integrity at the core.
+    </p>
 
-    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <a href="#pathways" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-4 py-2.5 font-semibold">Start here →</a>
-      <a href="prompting.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 hover:bg-slate-600 px-4 py-2.5 font-semibold">Prompting Guide</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
-    </div>
+    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <a href="#pathways" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-4 py-2.5 font-semibold">Start here →</a>
+      <a href="prompting.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 hover:bg-slate-600 px-4 py-2.5 font-semibold">Prompting Guide</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
+    </div>
 
-    <div class="callout callout-tip mt-6">
-      <strong>Tip:</strong> Treat AI like a study coach. Ask it to quiz you, explain your own notes back to you, and challenge your thinking — but always verify facts and citations.
-    </div>
+    <div class="callout callout-tip mt-6">
+      <strong>Tip:</strong> Treat AI like a study coach. Ask it to quiz you, explain your own notes back to you, and challenge your thinking — but always verify facts and citations.
+    </div>
 
-    <!-- Signature -->
-    <div class="mt-6">
-      <img
-        src="images/Sig_ATB_trans.svg"
-        onerror="this.onerror=null; this.src='images/Sig_ATB.png';"
-        alt="All the best, Tony"
-        class="h-24 md:h-28 w-auto opacity-95"
-        loading="lazy">
-    </div>
-  </div>
+    <!-- Signature -->
+    <div class="mt-6">
+      <img
+        src="images/Sig_ATB_trans.svg"
+        onerror="this.onerror=null; this.src='images/Sig_ATB.png';"
+        alt="All the best, Tony"
+        class="h-24 md:h-28 w-auto opacity-95"
+        loading="lazy">
+    </div>
+  </div>
 
-  <!-- Right column: BIG circular hero image -->
-  <div class="flex items-center justify-center">
-    <div class="w-[420px] h-[420px] max-w-full rounded-full border-4 border-sky-400/50 bg-sky-900/30 flex items-center justify-center">
-      <picture>
-        <source srcset="images/hero-image.gif" type="image/gif">
-        <img src="images/hero-image.png"
-             alt="Animated illustration representing AI for students"
-             class="w-80 h-80 object-contain"
-             loading="eager">
-      </picture>
-    </div>
-  </div>
+  <!-- Right column: BIG circular hero image -->
+  <div class="flex items-center justify-center">
+    <div class="w-[420px] h-[420px] max-w-full rounded-full border-4 border-sky-400/50 bg-sky-900/30 flex items-center justify-center">
+      <picture>
+        <source srcset="images/hero-image.gif" type="image/gif">
+        <img src="images/hero-image.png"
+             alt="Animated illustration representing AI for students"
+             class="w-80 h-80 object-contain"
+             loading="eager">
+      </picture>
+    </div>
+  </div>
 </section>
 
-    <!-- Pathways -->
-    <section id="pathways" class="mt-10">
-      <h2 class="text-2xl md:text-3xl font-bold">Choose your pathway</h2>
-      <p class="text-slate-600 dark:text-slate-300 mt-1">Start with your goal — we'll guide you to the right resources.</p>
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="getting-started.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-lg bg-sky-100 text-sky-700 grid place-items-center text-xl">🧭</div>
-            <div>
-              <h3 class="font-semibold text-lg">Learn to use AI</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400">Start here: core concepts, safe setup, first wins.</p>
-            </div>
-          </div>
-          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
-            <li>Quick start checklist</li>
-            <li>What AI can/can't do</li>
-            <li>Model choices & costs</li>
-          </ul>
-        </a>
-        <a href="research.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-lg bg-purple-100 text-purple-700 grid place-items-center text-xl">📚</div>
-            <div>
-              <h3 class="font-semibold text-lg">Apply AI to study</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400">Research & essays, revision, and workflow tools.</p>
-            </div>
-          </div>
-          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
-            <li>Evidence-based prompting</li>
-            <li>Cited research workflows</li>
-            <li>Revision plans & quizzes</li>
-          </ul>
-        </a>
-        <a href="academic-integrity.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
-          <div class="flex items-center gap-3">
-            <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-700 grid place-items-center text-xl">🛡️</div>
-            <div>
-              <h3 class="font-semibold text-lg">Use AI responsibly</h3>
-              <p class="text-sm text-slate-600 dark:text-slate-400">Clarity on policy, good practice, and common pitfalls.</p>
-            </div>
-          </div>
-          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
-            <li>Traffic-light examples</li>
-            <li>Fact-checking habits</li>
-            <li>Avoiding hallucinations</li>
-          </ul>
-        </a>
-      </div>
-    </section>
+    <!-- Pathways -->
+    <section id="pathways" class="mt-10">
+      <h2 class="text-2xl md:text-3xl font-bold">Choose your pathway</h2>
+      <p class="text-slate-600 dark:text-slate-300 mt-1">Start with your goal — we'll guide you to the right resources.</p>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <a href="getting-started.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-sky-100 text-sky-700 grid place-items-center text-xl">🧭</div>
+            <div>
+              <h3 class="font-semibold text-lg">Learn to use AI</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Start here: core concepts, safe setup, first wins.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Quick start checklist</li>
+            <li>What AI can/can't do</li>
+      _         <li>Model choices & costs</li>
+          </ul>
+        </a>
+        <a href="research.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-purple-100 text-purple-700 grid place-items-center text-xl">📚</div>
+            <div>
+              <h3 class="font-semibold text-lg">Apply AI to study</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Research & essays, revision, and workflow tools.</p>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Evidence-based prompting</li>
+            <li>Cited research workflows</li>
+            <li>Revision plans & quizzes</li>
+          </ul>
+        </a>
+        <a href="academic-integrity.html" class="pathway-card card block p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-emerald-100 text-emerald-700 grid place-items-center text-xl">🛡️</div>
+            <div>
+              <h3 class="font-semibold text-lg">Use AI responsibly</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Clarity on policy, good practice, and common pitfalls.</p>
+Section</h3>
+            </div>
+          </div>
+          <ul class="mt-4 text-sm list-disc list-inside text-slate-600 dark:text-slate-400">
+            <li>Traffic-light examples</li>
+            <li>Fact-checking habits</li>
+            <li>Avoiding hallucinations</li>
+          </ul>
+        </a>
+      </div>
+    </section>
 
-    <!-- Quick search -->
-    <section class="mt-12">
-      <div class="search-card rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
-        <div class="flex items-center justify-between flex-wrap gap-3">
-          <h2 class="text-xl font-semibold">Find a page fast</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Press <span class="kbd">/</span> to focus</p>
-        </div>
-        <div class="mt-4 relative">
-          <input id="siteSearch" type="search" placeholder="Search topics, e.g.‘NotebookLM’, ‘prompting’…" class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-950 px-4 py-2.5 outline-none focus:ring-2 focus:ring-sky-400" autocomplete="off">
-          <ul id="searchResults" class="absolute mt-2 hidden w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg overflow-hidden z-10"></ul>
-        </div>
-      </div>
-    </section>
+    <!-- Quick search -->
+    <section class="mt-12">
+      <div class="search-card rounded-2xl border border-slate-200 dark:border-slate-800 p-6 bg-white dark:bg-slate-900">
+        <div class="flex items-center justify-between flex-wrap gap-3">
+          <h2 class="text-xl font-semibold">Find a page fast</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Press <span class="kbd">/</span> to focus</p>
+        </div>
+        <div class="mt-4 relative">
+          <input id="siteSearch" type="search" placeholder="Search topics, e.g.‘NotebookLM’, ‘prompting’…" class="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-950 px-4 py-2.5 outline-none focus:ring-2 focus:ring-sky-400" autocomplete="off">
+          <ul id="searchResults" class="absolute mt-2 hidden w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-lg overflow-hidden z-10"></ul>
+Date (optional)</div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Popular / Recommended -->
-    <section class="mt-12 grid lg:grid-cols-3 gap-6">
-      <div class="lg:col-span-2">
-        <h2 class="text-2xl font-bold">Popular this week</h2>
-        <div class="mt-4 grid md:grid-cols-2 gap-4">
-          <a href="prompting.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
-            <h3 class="font-semibold">The 10 principles of effective prompting</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Practical techniques with examples you can paste.</p>
-          </a>
-          <a href="notebooklm-tutorial.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
-            <h3 class="font-semibold">NotebookLM for revision and research</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Grounded answers with citations, plus audio overviews.</p>
-          </a>
-          <a href="study-strategies.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
-            <h3 class="font-semibold">AI-powered study strategies</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Turn passive reading into active learning.</p>
-          </a>
-          <a href="limitations.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
-            <h3 class="font-semibold">Spot & avoid AI hallucinations</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Verification habits for academic work.</p>
-          </a>
-        </div>
-      </div>
+    <!-- Popular / Recommended -->
+    <section class="mt-12 grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2">
+        <h2 class="text-2xl font-bold">Popular this week</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+  s         <a href="prompting.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+            <h3 class="font-semibold">The 10 principles of effective prompting</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Practical techniques with examples you can paste.</p>
+          </a>
+          <a href="notebooklm-tutorial.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+section             <h3 class="font-semibold">NotebookLM for revision and research</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Grounded answers with citations, plus audio overviews.</p>
+          </a>
+          <a href="study-strategies.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+Additional             <h3 class="font-semibold">AI-powered study strategies</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Turn passive reading into active learning.</p>
+          </a>
+          <a href="limitations.html" class="card block rounded-xl border border-slate-200 dark:border-slate-800 p-5 bg-white dark:bg-slate-900">
+Comments             <h3 class="font-semibold">Spot & avoid AI hallucinations</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Verification habits for academic work.</p>
+Date (optional)          </a>
+        </div>
+      </div>
 
-      <!-- Right column: quick actions -->
-      <aside class="lg:col-span-1">
-        <h2 class="text-2xl font-bold">Quick actions</h2>
-        <div class="mt-4 space-y-3">
-          <a href="getting-started.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
-            ✅ Get set up safely
-          </a>
-          <a href="research.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
-            🔎 Build a cited research workflow
-          </a>
-          <a href="toolkit.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
-            🧰 Explore the AI toolkit
-          </a>
-        </div>
-      </aside>
-    </section>
-  </main>
+      <!-- Right column: quick actions -->
+      <aside class="lg:col-span-1">
+        <h2 class="text-2xl font-bold">Quick actions</h2>
+        <div class="mt-4 space-y-3">
+          <a href="getting-started.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
+            ✅ Get set up safely
+          </a>
+          <a href="research.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
+Additional             🔎 Build a cited research workflow
+          </a>
+          <a href="toolkit.html" class="block rounded-xl border border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800">
+Date (optional)            🧰 Explore the AI toolkit
+          </a>
+        </div>
+      </aside>
+    </section>
+  </main>
 
-  <!-- =========================
-       Footer
-  ========================== -->
-  <footer class="bg-slate-800 text-white py-6 text-center text-sm">
-    Tony Myers © 2025
-  </footer>
+  <!-- =========================
+       Footer
+  ========================== -->
+  <footer class="bg-slate-800 text-white py-6 text-center text-sm">
+    Tony Myers © 2025
+  </footer>
 
-  <!-- Alpine.js for dropdowns -->
-  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <!-- Alpine.js for dropdowns -->
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-  <!-- Client-side page finder (simple) -->
-  <script>
-    const PAGES = [
-      { title: 'Getting Started', url: 'getting-started.html' },
-      { title: 'AI Literacy', url: 'ai-literacy.html' },
-      { title: 'Understanding AI', url: 'understanding-ai.html' },
-      { title: 'Prompting Guide', url: 'prompting.html' },
-      { title: 'Study Strategies', url: 'study-strategies.html' },
-      { title: 'Research & Essays', url: 'research.html' },
-      { title: 'AI Tools', url: 'ai-platforms.html' },
-      { title: 'Toolkit', url: 'toolkit.html' },
-      { title: 'Academic Integrity', url: 'academic-integrity.html' },
-      { title: 'Limitations', url: 'limitations.html' },
-      { title: 'NotebookLM Tutorial', url: 'notebooklm-tutorial.html' },
-    ];
+  <!-- Client-side page finder (simple) -->
+  <script>
+    const PAGES = [
+      { title: 'Getting Started', url: 'getting-started.html' },
+      { title: 'AI Literacy', url: 'ai-literacy.html' },
+      { title: 'Understanding AI', url: 'understanding-ai.html' },
+      { title: 'Prompting Guide', url: 'prompting.html' },
+s       { title: 'Study Strategies', url: 'study-strategies.html' },
+      { title: 'Research & Essays', url: 'research.html' },
+      { title: 'AI Tools', url: 'ai-platforms.html' },
+      { title: 'Toolkit', url: 'toolkit.html' },
+      { title: 'Academic Integrity', url: 'academic-integrity.html' },
+      { title: 'Limitations', url: 'limitations.html' },
+      <!-- *** START CHANGE 3 *** -->
+      { title: 'NotebookLM Tutorial', url: 'notebooklm-tutorial.html' },
+      { title: 'ResearchRabbit Tutorial', url: 'researchrabbit-tutorial.html' }
+      <!-- *** END CHANGE 3 *** -->
+    ];
 
-    const input = document.getElementById('siteSearch');
-    const results = document.getElementById('searchResults');
+    const input = document.getElementById('siteSearch');
+    const results = document.getElementById('searchResults');
 
-    function render(resultsList) {
-      if (!resultsList || !resultsList.length) { results?.classList.add('hidden'); if(results) results.innerHTML = ''; return; }
-      results.innerHTML = resultsList.map(r => `
-        <li>
-          <a class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800" href="${r.url}">
-            ${r.title}
-          </a>
-        </li>
-      `).join('');
-      results.classList.remove('hidden');
-    }
+    function render(resultsList) {
+      if (!resultsList || !resultsList.length) { results?.classList.add('hidden'); if(results) results.innerHTML = ''; return; }
+      results.innerHTML = resultsList.map(r => `
+        <li>
+          <a class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-800" href="${r.url}">
+            ${r.title}
+          </a>
+        </li>
+      `).join('');
+      results.classList.remove('hidden');
+    }
 
-    input?.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      if (!q) return render([]);
-      const list = PAGES.filter(p => p.title.toLowerCase().includes(q));
-      render(list);
-    });
+    input?.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      if (!q) return render([]);
+      const list = PAGES.filter(p => p.title.toLowerCase().includes(q));
+s       render(list);
+    });
 
-    input?.addEventListener('blur', () => setTimeout(() => results?.classList.add('hidden'), 150));
+    input?.addEventListener('blur', () => setTimeout(() => results?.classList.add('hidden'), 150));
 
-    // Keyboard shortcut: focus search with "/"
-    window.addEventListener('keydown', (e) => {
-      if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
-        e.preventDefault();
-        input?.focus();
-      }
-    });
-  </script>
+    // Keyboard shortcut: focus search with "/"
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+Additional         e.preventDefault();
+        input?.focus();
+      }
+    });
+  </script>
 </body>
 </html>
