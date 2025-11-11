@@ -1,225 +1,123 @@
 <!DOCTYPE html>
-
 <html lang="en-GB" class="scroll-smooth">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>AI for Students · Your Academic Success Toolkit</title>
-
   <meta name="description" content="Practical, ethical guidance for using AI in your studies: getting started, prompting, research & essays, study strategies, and academic integrity.">
-
   <meta property="og:title" content="AI for Students · Your Academic Success Toolkit">
-
   <meta property="og:description" content="Practical, ethical guidance for using AI in your studies.">
-
   <meta property="og:type" content="website">
-
   <meta name="theme-color" content="#0ea5e9">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
   <script src="https://cdn.tailwindcss.com"></script>
 
-
-
   <style>
-
     :root { color-scheme: light dark; }
-
     html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-
     body { background:#f8fafc; color:#0f172a; }
-
     .dark body { background:#0b1220; color:#e2e8f0; }
-
-
 
     /* Navigation link styles */
 
     .nav-link { transition: color .2s, background-color .2s, border-color .2s; border-bottom: 2px solid transparent; border-radius: .375rem; color:#111827; }
-
     .nav-link:hover, .nav-link.active { color:#000; background-color: rgba(0,0,0,.06); border-bottom-color:#000; }
-
     .dark .nav-link { color:#111827; } /* header stays light for contrast */
 
-
-
     /* Cards */
-
     .card { transition: transform .2s, box-shadow .2s; }
-
     .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); }
 
-
-
     /* Accessibility: skip link */
-
     .sr-skip:focus { position:absolute; left:0; top:0; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:.375rem; z-index:50; }
-
-
 
     /* Small utilities */
 
     .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:rgba(255,255,255,.7);color:#475569}
-
     .callout{border-radius:.5rem;border:1px solid #e2e8f0;padding:1rem}
-
     .callout-tip{background:#10b981 !important; border-color:#10b981 !important; color:#000 !important;}
-
     .callout-tip *{color:#000 !important;}
-
     .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600 { color:#e2e8f0 !important; }
-
     .dark ::placeholder { color:#cbd5e1; }
-
     .dark #quiz legend, .dark #quiz label { color:#e5e7eb; }
 
-
-
     /* Keep header light for readability */
-
     header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
 
     .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
-
     .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
-
     .dark #mobile-menu .nav-link { color:#111827 !important; }
-
   </style>
-
-
 
   <!-- Persist dark-mode preference -->
 
   <script>
-
     (function() {
-
       const saved = localStorage.getItem('theme');
-
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
       if ((saved === 'dark') || (!saved && prefersDark)) {
-
         document.documentElement.classList.add('dark');
-
       }
-
     })();
 
   </script>
-
 </head>
-
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100">
-
   <a href="#main" class="sr-only sr-skip">Skip to content</a>
-
-
-
   <!-- =========================
 
        Header / Navigation
 
   ========================== -->
-
   <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-
           x-data="{ openMenu:false, openDropdown:null }">
-
     <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-
       <!-- Brand -->
-
       <a href="index.html" class="text-xl font-bold text-sky-700">AI for Students</a>
 
-
-
       <!-- Desktop nav -->
-
       <div class="hidden md:flex items-center gap-2">
 
         <a href="index.html" class="nav-link px-3 py-2 active" aria-current="page">Home</a>
-
-
-
         <!-- Getting Started -->
-
         <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-
           <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-
             Getting Started
-
             <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-
           </button>
-
           <div x-show="openDropdown==='start'" x-transition
-
                class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="ai-literacy.html">AI Literacy</a>
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="understanding-ai.html">Understanding AI</a>
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="prompting.html">Prompting Guide</a>
-
           </div>
 
         </div>
 
-
-
         <!-- Study Support -->
-
         <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-
           <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-
             Study Support
-
             <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-
           </button>
 
           <div x-show="openDropdown==='study'" x-transition
-
                class="absolute left-0 mt-2 w-64 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="study-strategies.html">Study Strategies</a>
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="research.html">Research & Essays</a>
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="ai-platforms.html">AI Tools</a>
-
             <a class="block px-4 py-2 hover:bg-sky-50" href="toolkit.html">Toolkit</a>
-
           </div>
 
         </div>
 
-
-
         <!-- Integrity & Policy -->
-
         <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-
           <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-
             Integrity & Policy
-
             <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-
           </button>
 
           <div x-show="openDropdown==='integrity'" x-transition
@@ -253,6 +151,7 @@
                class="absolute left-0 mt-2 w-72 bg-white rounded-md shadow-lg py-2 border border-slate-200 z-40">
 
             <a class="block px-4 py-2 hover:bg-sky-50" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+            <a class="block px-4 py-2 hover:bg-sky-50" href="researchrabbit-tutorial.html">ResearchRabbit Tutorial</a>
 
             <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
 
