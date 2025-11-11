@@ -11,7 +11,6 @@
   <style>
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
-    /* Simple active state for demonstration - in a real site this would be dynamic */
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
     .nav-link:focus, button:focus, a:focus, input:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
     .feature-card { transition:transform .3s,box-shadow .3s }
@@ -21,62 +20,145 @@
     .step-number { width: 40px; height: 40px; flex-shrink: 0; }
   </style>
 </head>
-<body class="antialiased">
+<body class="bg-slate-50 text-slate-800">
 
-<!-- Header -->
-<header class="bg-white shadow-sm sticky top-0 z-10">
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo/Title -->
-      <div class="flex-shrink-0 flex items-center">
-        <span class="font-bold text-xl text-sky-700">AI for Students</span>
-      </div>
-      
-      <!-- Desktop Nav -->
-      <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
-        <a href="#intro" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Why?</a>
-        <a href="#steps" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Get Started</a>
-        <a href="#features" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Features</a>
-        <a href="#workflows" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Workflows</a>
-        <a href="#limits" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Limits</a>
-        <a href="#tasks" class="nav-link px-3 py-2 text-sm font-medium text-slate-700">Checklist</a>
-      </div>
+<!-- Header / Navigation (Copied from toolkit.html) -->
+<header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
+        x-data="{ openMenu:false, openDropdown:null }">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Brand -->
+    <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
 
-      <!-- Mobile Menu Button -->
-      <div class="sm:hidden flex items-center">
-        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-2">
+      <a href="index.html" class="nav-link px-3 py-2">Home</a>
+
+      <!-- Getting Started -->
+      <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          Getting Started
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
+        <div x-show="openDropdown==='start'" x-transition
+             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-literacy.html">AI Literacy</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="understanding-ai.html">Understanding AI</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="prompting.html">Prompting Guide</a>
+        </div>
       </div>
+
+      <!-- Study Support -->
+      <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          Study Support
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+        </button>
+        <div x-show="openDropdown==='study'" x-transition
+             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="study-strategies.html">Study Strategies</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="research.html">Research & Essays</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Tools</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="toolkit.html">Toolkit</a>
+        </div>
+      </div>
+
+      <!-- Integrity & Policy -->
+      <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          Integrity & Policy
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+        </button>
+        <div x-show="openDropdown==='integrity'" x-transition
+             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="academic-integrity.html">Academic Integrity</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="limitations.html">Limitations</a>
+        </div>
+      </div>
+
+      <!-- Resources & Guides -->
+      <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+          Resources
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
+        </button>
+        <div x-show="openDropdown==='resources'" x-transition
+             class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
+        </div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <div class="md:hidden flex items-center gap-2">
+      <button @click="openMenu=!openMenu"
+              class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
     </div>
   </nav>
 
-  <!-- Mobile Menu, show/hide based on menu state. -->
-  <div class="hidden sm:hidden" id="mobile-menu">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="#intro" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Why?</a>
-      <a href="#steps" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Get Started</a>
-      <a href="#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Features</a>
-      <a href="#workflows" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Workflows</a>
-      <a href="#limits" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Limits</a>
-      <a href="#tasks" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700">Checklist</a>
-    </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" x-show="openMenu" x-transition
+       class="md:hidden px-4 pb-3 space-y-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+    <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
+
+    <details class="rounded">
+      <summary class="px-3 py-2 font-semibold cursor-pointer">Getting Started</summary>
+      <nav class="pl-4 py-1 space-y-1">
+        <a href="ai-literacy.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Literacy</a>
+        <a href="understanding-ai.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Understanding AI</a>
+        <a href="prompting.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Prompting Guide</a>
+      </nav>
+    </details>
+
+    <details class="rounded">
+      <summary class="px-3 py-2 font-semibold cursor-pointer">Study Support</summary>
+      <nav class="pl-4 py-1 space-y-1">
+        <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Study Strategies</a>
+        <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research & Essays</a>
+        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Tools</a>
+        <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Toolkit</a>
+      </nav>
+    </details>
+
+    <details class="rounded">
+      <summary class="px-3 py-2 font-semibold cursor-pointer">Integrity & Policy</summary>
+      <nav class="pl-4 py-1 space-y-1">
+        <a href="academic-integrity.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Academic Integrity</a>
+        <a href="limitations.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Limitations</a>
+      </nav>
+    </details>
+
+    <details class="rounded">
+      <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
+      <nav class="pl-4 py-1 space-y-1">
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
+      </nav>
+    </details>
+
+    <!-- Mobile CTAs -->
+    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
 <!-- Main Content -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-  <!-- Hero Section -->
-  <div class="text-center mb-16">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-sky-800 mb-4">Master NotebookLM for Academic Success</h1>
-    <p class="text-xl text-slate-600 max-w-3xl mx-auto">Transform your course materials into interactive study resources with Google's AI-powered research assistant. Create audio summaries, study guides, quizzes, flashcards, and more.</p>
+  <!-- Hero Section (Copied from notebooklm-tutorial (1).html) -->
+  <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
+    <h2 class="text-3xl font-bold">Master NotebookLM for Academic Success</h2>
+    <p class="max-w-3xl mx-auto">Transform your course materials into interactive study resources with Google's AI-powered research assistant. Create audio summaries, study guides, quizzes, flashcards, and more.</p>
   </div>
 
   <!-- Why NotebookLM? -->
@@ -287,6 +369,7 @@
           <h3 class="text-xl font-bold text-cyan-700">Note-Taking & Annotation</h3>
         </div>
         <p class="text-slate-600 mb-4">Create notes within NotebookLM that integrate with your sources. Pin important AI responses and highlight key passages from your sources to save them as notes.</p>
+
         <div class="bg-cyan-50 p-4 rounded-lg border border-cyan-100 text-sm">
           <h4 class="font-semibold text-cyan-700 mb-2">Features:</h4>
            <ul class="list-disc list-inside text-slate-700 space-y-1">
@@ -430,47 +513,15 @@
   Tony Myers © 2025
 </footer>
 
+<!-- Alpine.js for dropdowns -->
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 <script>
+// This is a minimal script to handle the mobile menu button toggling if needed,
+// but Alpine.js handles the dropdowns and mobile menu visibility.
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-  
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-      mobileMenu.classList.toggle('hidden');
-      
-      // Toggle icons
-      mobileMenuButton.querySelector('svg:first-child').classList.toggle('hidden', !isExpanded);
-      mobileMenuButton.querySelector('svg:last-child').classList.toggle('hidden', isExpanded);
-    });
-
-    // Close mobile menu when a link is clicked
-    mobileMenuLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.querySelector('svg:first-child').classList.remove('hidden');
-        mobileMenuButton.querySelector('svg:last-child').classList.add('hidden');
-      });
-    });
-  }
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if(targetElement) {
-        targetElement.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
+  // Alpine.js handles the 'openMenu' state, but if you needed
+  // to add other non-Alpine JS, it would go here.
 });
 </script>
 
