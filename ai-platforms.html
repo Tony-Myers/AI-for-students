@@ -21,18 +21,14 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-<!-- Header / Navigation (Dropdowns + CTAs) -->
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
         x-data="{ openMenu:false, openDropdown:null }">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <!-- Brand -->
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
 
-    <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-2">
       <a href="index.html" class="nav-link px-3 py-2">Home</a>
 
-      <!-- Getting Started -->
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Getting Started
@@ -46,7 +42,6 @@
         </div>
       </div>
 
-      <!-- Study Support -->
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Study Support
@@ -61,7 +56,6 @@
         </div>
       </div>
 
-      <!-- Integrity & Policy -->
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Integrity & Policy
@@ -74,7 +68,6 @@
         </div>
       </div>
 
-      <!-- Resources & Guides -->
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Resources
@@ -87,12 +80,10 @@
         </div>
       </div>
 
-      <!-- CTA Buttons -->
       <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
       <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
-    <!-- Mobile menu button -->
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -105,7 +96,6 @@
     </div>
   </nav>
 
-  <!-- Mobile menu -->
   <div id="mobile-menu" x-show="openMenu" x-transition
        class="md:hidden px-4 pb-3 space-y-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
     <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
@@ -145,13 +135,11 @@
       </nav>
     </details>
 
-    <!-- Mobile CTAs -->
     <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
     <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
-<!-- Alpine.js for dropdowns -->
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
@@ -315,6 +303,26 @@ document.addEventListener('DOMContentLoaded', function() {
       link: "https://chat.deepseek.com/", 
       features: "Advanced reasoning, superior coding capabilities, mathematics, competitive performance with leading models",
       studentTip: "Ideal for computer science and engineering students - excels at debugging code and explaining complex algorithms"
+    },
+    { 
+      name: "Kimi", 
+      provider: "Moonshot AI", 
+      strengths: "Extremely large context window (2M+ tokens), ideal for long-form text analysis", 
+      bestFor: "Summarising entire books, analysing multiple research papers, finding details in massive documents", 
+      pricing: "Free", 
+      link: "https://kimi.ai/", 
+      features: "Massive context window, PDF/doc/txt uploads, web search, high-speed processing",
+      studentTip: "Upload your entire semester's readings at once and ask it to find connections between them."
+    },
+    { 
+      name: "Ernie", 
+      provider: "Baidu", 
+      strengths: "State-of-the-art performance, especially strong in Chinese language, powerful multimodal skills", 
+      bestFor: "Chinese language studies, multimodal projects, complex reasoning, advanced research", 
+      pricing: "Free + Paid tiers", 
+      link: "https://ernie.baidu.com/", 
+      features: "Advanced multimodal understanding, flagship Chinese-language model, real-time information, image generation",
+      studentTip: "The go-to tool if your studies involve Chinese language or media. Also a powerful all-rounder."
     }
   ];
 
