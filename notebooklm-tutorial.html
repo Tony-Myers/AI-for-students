@@ -22,18 +22,14 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-<!-- Header / Navigation (Copied from toolkit.html) -->
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
         x-data="{ openMenu:false, openDropdown:null }">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <!-- Brand -->
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
 
-    <!-- Desktop nav -->
     <div class="hidden md:flex items-center gap-2">
       <a href="index.html" class="nav-link px-3 py-2">Home</a>
 
-      <!-- Getting Started -->
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Getting Started
@@ -47,7 +43,6 @@
         </div>
       </div>
 
-      <!-- Study Support -->
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Study Support
@@ -62,7 +57,6 @@
         </div>
       </div>
 
-      <!-- Integrity & Policy -->
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Integrity & Policy
@@ -75,7 +69,6 @@
         </div>
       </div>
 
-      <!-- Resources & Guides -->
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
         <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
           Resources
@@ -89,12 +82,10 @@
         </div>
       </div>
 
-      <!-- CTA Buttons -->
       <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
       <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
-    <!-- Mobile menu button -->
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
@@ -107,7 +98,6 @@
     </div>
   </nav>
 
-  <!-- Mobile menu -->
   <div id="mobile-menu" x-show="openMenu" x-transition
        class="md:hidden px-4 pb-3 space-y-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
     <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
@@ -147,22 +137,18 @@
       </nav>
     </details>
 
-    <!-- Mobile CTAs -->
     <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
     <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
-<!-- Main Content -->
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-  <!-- Hero Section (Copied from notebooklm-tutorial (1).html) -->
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
     <h2 class="text-3xl font-bold">Master NotebookLM for Academic Success</h2>
     <p class="max-w-3xl mx-auto">Transform your course materials into interactive study resources with Google's AI-powered research assistant. Create audio summaries, study guides, quizzes, flashcards, and more.</p>
   </div>
 
-  <!-- Why NotebookLM? -->
   <div id="intro" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🎯 Why NotebookLM Is Perfect for Students</h2>
     <div class="grid md:grid-cols-2 gap-8">
@@ -189,11 +175,9 @@
     </div>
   </div>
 
-  <!-- How to Use It -->
   <div id="steps" class="bg-sky-50 p-8 rounded-xl border border-sky-200 mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Getting Started with NotebookLM</h2>
     <div class="max-w-3xl mx-auto space-y-8">
-      <!-- Step 1 -->
       <div class="flex items-start space-x-4">
         <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">1</div>
         <div>
@@ -204,7 +188,6 @@
           </div>
         </div>
       </div>
-      <!-- Step 2 -->
       <div class="flex items-start space-x-4">
         <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">2</div>
         <div>
@@ -222,7 +205,6 @@
           </div>
         </div>
       </div>
-      <!-- Step 3 -->
       <div class="flex items-start space-x-4">
         <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">3</div>
         <div>
@@ -233,12 +215,10 @@
     </div>
   </div>
 
-  <!-- Core Features -->
   <div id="features" class="mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Complete Feature Guide</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       
-      <!-- Feature: Audio Overviews -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -258,7 +238,6 @@
         </div>
       </div>
 
-      <!-- Feature: YouTube Video Processing -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-indigo-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -273,7 +252,6 @@
         </div>
       </div>
 
-      <!-- Feature: Automatic Study Reports -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -293,7 +271,6 @@
         </div>
       </div>
 
-      <!-- Feature: Custom Quizzes -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-rose-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -312,7 +289,6 @@
         </div>
       </div>
 
-      <!-- Feature: Flashcard Generation -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-emerald-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -327,7 +303,6 @@
         </div>
       </div>
 
-      <!-- Feature: Concept Mapping -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-amber-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -342,7 +317,6 @@
         </div>
       </div>
 
-      <!-- Feature: Interactive Q&A -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -361,7 +335,6 @@
         </div>
       </div>
 
-      <!-- Feature: Note-Taking & Annotation -->
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-cyan-100 rounded-full w-12 h-12 flex items-center justify-center">
@@ -384,7 +357,6 @@
     </div>
   </div>
 
-  <!-- Practical Study Workflows -->
   <div id="workflows" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Practical Study Workflows</h2>
     <div class="grid md:grid-cols-2 gap-6">
@@ -436,9 +408,48 @@
     </div>
   </div>
 
-  <!-- Limitations & Best Practices -->
   <div id="limits" class="bg-amber-50 p-8 rounded-xl border border-amber-200 mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-amber-800 mb-6 text-center">⚠️ Important Limitations & Best Practices</h2>
+    
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-amber-300 mb-10">
+      <h3 class="text-2xl font-bold text-amber-700 mb-4 text-center">A Deep Dive: How to Use Citations Correctly</h3>
+      <p class="text-lg text-slate-700 mb-6 text-center max-w-3xl mx-auto">
+        The inline citations are the single most useful anti-hallucination feature NotebookLM gives you, but they still have to be used correctly.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-6">
+        
+        <div>
+          <h4 class="text-xl font-semibold text-slate-800 mb-3">How the citation system actually works</h4>
+          <ul class="list-disc list-inside space-y-2 text-slate-700">
+            <li>Every inline number is a link back to the exact chunk the model thinks supports the sentence.</li>
+            <li>If the chunk really does contain the claim, you can see it in a few seconds and move on.</li>
+            <li>If the chunk is only loosely related (or the model stitched together two unrelated passages) you’ll spot the mismatch immediately.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xl font-semibold text-rose-700 mb-3">What can still go wrong</h4>
+          <ol class="list-decimal list-inside space-y-3 text-slate-700">
+            <li><strong>Wrong chunk:</strong> The model points to page 4, but the RCT claim is never stated there; the correct disclaimer is on page 7 and never retrieved.</li>
+            <li><strong>Over-interpretation:</strong> The cited sentence says “we compared pre- and post-intervention scores.” NotebookLM re-phrases that as “we conducted an RCT” and cites the sentence anyway.</li>
+            <li><strong>Missing negative:</strong> The document says “no control group was used.” Because that wording is negative, the retriever down-weights it; the generator never sees it and produces the opposite claim, while still giving you a citation that looks legitimate.</li>
+          </ol>
+        </div>
+      </div>
+
+      <hr class="my-6 border-amber-200">
+
+      <div>
+        <h4 class="text-xl font-semibold text-sky-700 mb-4 text-center">Practical Verification Checklist</h4>
+        <ul class="list-disc list-inside space-y-2 text-slate-700 max-w-3xl mx-auto">
+          <li>Click every citation for any method statement, number, or quote.</li>
+          <li>Read ±2 sentences around the cited passage; the qualifier you need is often in the neighbouring clause.</li>
+          <li>If the claim is central (RCT, sample size, p-value, legal holding), do a Ctrl-F search for the key term across the whole file; the retriever sometimes misses a single sentence that changes the meaning.</li>
+          <li>For multi-document notebooks, notice which file the citation comes from; NotebookLM can blend documents and create “phantom” cross-references.</li>
+        </ul>
+      </div>
+    </div>
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       <div>
         <h3 class="text-xl font-semibold text-slate-700 mb-3">What to Remember</h3>
@@ -464,7 +475,6 @@
     </div>
   </div>
 
-  <!-- Checklist -->
   <div id="tasks" class="bg-sky-50 p-8 rounded-xl border border-sky-200 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🚀 Your Getting Started Checklist</h2>
     <div class="space-y-4 max-w-2xl mx-auto">
@@ -503,18 +513,15 @@
     </div>
   </div>
 
-  <!-- Back link -->
   <div class="text-center mt-12">
     <a href="index.html" class="px-5 py-3 bg-slate-200 text-slate-700 font-medium rounded-lg hover:bg-slate-300 transition-colors">← Back to Home</a>
   </div>
 </main>
 
-<!-- Footer -->
 <footer class="bg-slate-800 text-slate-300 py-6 text-center text-sm mt-16">
   Tony Myers © 2025
 </footer>
 
-<!-- Alpine.js for dropdowns -->
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 <script>
