@@ -15,500 +15,227 @@
     .nav-link:focus, button:focus, a:focus, input:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
     .feature-card { transition:transform .3s,box-shadow .3s }
     .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05); }
-    /* Style for checked checklist items */
     input[type="checkbox"]:checked + span { text-decoration: line-through; color: #64748b; }
     .step-number { width: 40px; height: 40px; flex-shrink: 0; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-<header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+<header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50" x-data="{ openMenu:false }">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
+    <a href="index.html" class="text-xl font-bold text-sky-700">AI for Students</a>
 
     <div class="hidden md:flex items-center gap-2">
       <a href="index.html" class="nav-link px-3 py-2">Home</a>
-
-      <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Getting Started
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-        </button>
-        <div x-show="openDropdown==='start'" x-transition
-             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-literacy.html">AI Literacy</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="understanding-ai.html">Understanding AI</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="prompting.html">Prompting Guide</a>
-        </div>
-      </div>
-
-      <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Study Support
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-        </button>
-        <div x-show="openDropdown==='study'" x-transition
-             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="study-strategies.html">Study Strategies</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="research.html">Research & Essays</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Tools</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="toolkit.html">Toolkit</a>
-        </div>
-      </div>
-
-      <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Integrity & Policy
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-        </button>
-        <div x-show="openDropdown==='integrity'" x-transition
-             class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="academic-integrity.html">Academic Integrity</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="limitations.html">Limitations</a>
-        </div>
-      </div>
-
-      <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
-          Resources
-          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
-        </button>
-        <div x-show="openDropdown==='resources'" x-transition
-             class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
-          <a class="block px-4 py-2 hover:bg-sky-50" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
-          <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
-        </div>
-      </div>
-
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="notebooklm-tutorial.html" class="nav-link px-3 py-2 active font-medium text-sky-800 bg-sky-50">NotebookLM Tutorial</a>
+      <a href="toolkit.html" class="nav-link px-3 py-2">Toolkit</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white ml-2">Use AI Responsibly</a>
     </div>
 
     <div class="md:hidden flex items-center gap-2">
-      <button @click="openMenu=!openMenu"
-              class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <button @click="openMenu=!openMenu" class="p-2 rounded-md text-slate-600 hover:bg-slate-100">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
   </nav>
 
-  <div id="mobile-menu" x-show="openMenu" x-transition
-       class="md:hidden px-4 pb-3 space-y-2 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-    <a href="index.html" class="block px-3 py-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Home</a>
-
-    <details class="rounded">
-      <summary class="px-3 py-2 font-semibold cursor-pointer">Getting Started</summary>
-      <nav class="pl-4 py-1 space-y-1">
-        <a href="ai-literacy.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Literacy</a>
-        <a href="understanding-ai.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Understanding AI</a>
-        <a href="prompting.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Prompting Guide</a>
-      </nav>
-    </details>
-
-    <details class="rounded">
-      <summary class="px-3 py-2 font-semibold cursor-pointer">Study Support</summary>
-      <nav class="pl-4 py-1 space-y-1">
-        <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Study Strategies</a>
-        <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research & Essays</a>
-        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Tools</a>
-        <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Toolkit</a>
-      </nav>
-    </details>
-
-    <details class="rounded">
-      <summary class="px-3 py-2 font-semibold cursor-pointer">Integrity & Policy</summary>
-      <nav class="pl-4 py-1 space-y-1">
-        <a href="academic-integrity.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Academic Integrity</a>
-        <a href="limitations.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Limitations</a>
-      </nav>
-    </details>
-
-    <details class="rounded">
-      <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
-      <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
-        <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
-      </nav>
-    </details>
-
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+  <div x-show="openMenu" class="md:hidden px-4 pb-3 space-y-2 bg-white border-t border-slate-200">
+    <a href="index.html" class="block px-3 py-2 hover:bg-slate-100 rounded">Home</a>
+    <a href="notebooklm-tutorial.html" class="block px-3 py-2 bg-sky-50 text-sky-800 font-medium rounded">NotebookLM Tutorial</a>
+    <a href="toolkit.html" class="block px-3 py-2 hover:bg-slate-100 rounded">Toolkit</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold mt-4">Use AI Responsibly</a>
   </div>
 </header>
 
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-    <h2 class="text-3xl font-bold">Master NotebookLM for Academic Success</h2>
-    <p class="max-w-3xl mx-auto">Transform your course materials into interactive study resources with Google's AI-powered research assistant. Create audio summaries, study guides, quizzes, flashcards, and more.</p>
+    <h2 class="text-3xl font-bold">Master NotebookLM: The Student's Super-Tool</h2>
+    <p class="max-w-3xl mx-auto text-lg text-slate-300">Turn your lectures into podcasts, your notes into quizzes, and your readings into slide decks. The ultimate AI study companion.</p>
   </div>
 
   <div id="intro" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🎯 Why NotebookLM Is Perfect for Students</h2>
+    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🎯 Why It's A Game Changer</h2>
     <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 class="text-xl font-semibold text-sky-700 mb-3">Unique Advantages</h3>
+        <h3 class="text-xl font-semibold text-sky-700 mb-3">Multimodal Power</h3>
+        <p class="text-slate-600 mb-4">NotebookLM doesn't just read text anymore. It can now listen to audio, watch videos, and help you visualise complex ideas.</p>
         <ul class="list-disc list-inside space-y-2 text-slate-700">
-          <li><strong>Grounded responses:</strong> Only uses your uploaded materials.</li>
-          <li><strong>Citations included:</strong> Shows exact source for every answer.</li>
-          <li><strong>No hallucinations from web:</strong> Stays faithful to your documents.</li>
-          <li><strong>Completely free:</strong> No subscription needed.</li>
-          <li><strong>Multiple formats:</strong> Upload PDFs, videos, audio, websites.</li>
+          <li><strong>Audio to Podcast:</strong> Turn boring readings into engaging discussions.</li>
+          <li><strong>Video to Notes:</strong> Summarise YouTube lectures in seconds.</li>
+          <li><strong>Text to Visuals:</strong> Generate data for mind maps and infographics.</li>
         </ul>
       </div>
       <div>
-        <h3 class="text-xl font-semibold text-sky-700 mb-3">Perfect For</h3>
+        <h3 class="text-xl font-semibold text-sky-700 mb-3">Academic Safety</h3>
+        <p class="text-slate-600 mb-4">Unlike ChatGPT, NotebookLM is "grounded" in your documents, but it isn't perfect.</p>
         <ul class="list-disc list-inside space-y-2 text-slate-700">
-          <li>Creating revision materials from lecture notes.</li>
-          <li>Understanding complex readings and textbooks.</li>
-          <li>Preparing for exams with practice questions.</li>
-          <li>Synthesising information across multiple sources.</li>
-          <li>Processing recorded lectures and videos.</li>
+          <li><strong>Grounded (But Fallible):</strong> It sticks to your uploads, greatly reducing hallucinations, but it can still misinterpret complex text.</li>
+          <li><strong>Citations are Key:</strong> Every claim links back to your specific slide or page—you <em>must</em> click these to verify.</li>
+          <li><strong>Private:</strong> Your data isn't used to train public models (check settings).</li>
         </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="steps" class="bg-sky-50 p-8 rounded-xl border border-sky-200 mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Getting Started with NotebookLM</h2>
-    <div class="max-w-3xl mx-auto space-y-8">
-      <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">1</div>
-        <div>
-          <h3 class="text-2xl font-semibold text-slate-800 mb-2">Create Your Notebook</h3>
-          <p class="text-lg text-slate-700">Visit <a href="https://notebooklm.google.com" class="text-sky-600 hover:underline font-medium" target="_blank" rel="noopener noreferrer">notebooklm.google.com</a> and click "New Notebook". Each notebook is a dedicated space for a specific module, topic, or assignment.</p>
-          <div class="bg-sky-100 p-3 rounded-lg mt-3 text-slate-700 border border-sky-200">
-            <strong>Organisation Tip:</strong> Create separate notebooks for each course module or major assignment to keep materials organised and focused.
-          </div>
-        </div>
-      </div>
-      <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">2</div>
-        <div>
-          <h3 class="text-2xl font-semibold text-slate-800 mb-2">Upload Your Sources</h3>
-          <p class="text-lg text-slate-700 mb-4">Add lecture slides, readings, textbook chapters, recorded lectures, or your own notes. NotebookLM can process multiple format types.</p>
-          <div class="bg-white p-4 rounded-lg border border-slate-200">
-            <h4 class="text-md font-semibold text-emerald-700 mb-2">Supported formats:</h4>
-            <ul class="list-disc list-inside text-slate-700 space-y-1">
-              <li><strong>Documents:</strong> PDFs, Google Docs, text files, Google Slides</li>
-              <li><strong>Web content:</strong> Websites, URLs, copied text</li>
-              <li><strong>Video:</strong> YouTube videos (processes transcripts)</li>
-              <li><strong>Audio:</strong> Audio recordings, MP3 files (transcribes content)</li>
-            </ul>
-            <p class="text-sm text-slate-600 mt-3">Free version: Up to 50 sources per notebook, 100 notebooks total.</p>
-          </div>
-        </div>
-      </div>
-      <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">3</div>
-        <div>
-          <h3 class="text-2xl font-semibold text-slate-800 mb-2">Start Creating Study Materials</h3>
-          <p class="text-lg text-slate-700">Use the automatic tools or chat interface to generate study materials, summaries, and practice questions. Every response includes citations showing exactly where the information came from.</p>
-        </div>
       </div>
     </div>
   </div>
 
   <div id="features" class="mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Complete Feature Guide</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    
+    <div class="mb-8 bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-md shadow-sm">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-bold text-amber-800">Critical Warning: Hallucinations Can Still Happen</h3>
+          <div class="mt-1 text-sm text-amber-700">
+            <p>Using your own files makes NotebookLM much safer than ChatGPT, but it does <strong>not</strong> guarantee 100% accuracy. The AI might still misunderstand a sentence or combine two unrelated facts.</p>
+            <p class="mt-2 font-semibold">Always click the inline citation numbers to verify the source text before using it in your work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">New Feature Guide</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       
-      <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
+      <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100 relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-bl">POPULAR</div>
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.636 5.636a9 9 0 0112.728 0m-12.728 0l-2.829 2.829m18.384-2.829l2.829 2.829M9 17v-6a3 3 0 013-3h0a3 3 0 013 3v6m-6 0h6" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-purple-700">Audio Overviews (Podcasts)</h3>
+          <h3 class="text-xl font-bold text-purple-700">AI Podcast</h3>
         </div>
-        <p class="text-slate-600 mb-4">Generates engaging podcast-style conversations between two AI hosts who discuss and explain your materials. Perfect for revision whilst commuting or exercising.</p>
-        <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 text-sm">
-          <h4 class="font-semibold text-purple-700 mb-2">How to use:</h4>
-          <ol class="list-decimal list-inside text-slate-700 space-y-1">
-            <li>Upload your course materials.</li>
-            <li>Click "Notebook guide" in the bottom right corner.</li>
-            <li>Select "Audio Overview" from the options.</li>
-            <li>Listen, download (MP3), or share.</li>
-          </ol>
+        <p class="text-slate-600 text-sm mb-4">Also known as <strong>Audio Overview</strong>. One click transforms your dense readings into a lively "Deep Dive" podcast between two AI hosts. They discuss, debate, and explain your specific module content.</p>
+        <div class="bg-purple-50 p-3 rounded text-xs text-purple-800 font-medium">
+          ✨ Tip: Download the MP3 and listen while walking to campus.
         </div>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
-          <div class="p-3 bg-indigo-100 rounded-full w-12 h-12 flex items-center justify-center">
-             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <div class="p-3 bg-red-100 rounded-full w-12 h-12 flex items-center justify-center">
+             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-indigo-700">YouTube Video Processing</h3>
+          <h3 class="text-xl font-bold text-red-700">Video Reports</h3>
         </div>
-        <p class="text-slate-600 mb-4">Upload YouTube lecture videos, and NotebookLM automatically transcribes them, allowing you to chat with the content, create summaries, and find key moments.</p>
-        <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 text-sm">
-          <h4 class="font-semibold text-indigo-700 mb-2">Pro Tip:</h4>
-          <p class="text-slate-700">Combine video transcripts with lecture slides. Ask: "Compare what the lecturer explained in the video with the information on the slides."</p>
-        </div>
+        <p class="text-slate-600 text-sm mb-4">Paste a YouTube URL (e.g., a recorded lecture or educational documentary). NotebookLM "watches" it by processing the transcript and lets you ask questions, summarise key arguments, or compare the video to your textbook.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
-          <div class="p-3 bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+          <div class="p-3 bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-sky-700">Automatic Study Reports</h3>
+          <h3 class="text-xl font-bold text-orange-700">Slide Deck Prep</h3>
         </div>
-        <p class="text-slate-600 mb-4">Generate comprehensive study materials automatically from your sources. Click "Notebook guide" to create these reports.</p>
-        <div class="bg-sky-50 p-4 rounded-lg border border-sky-100 text-sm">
-          <h4 class="font-semibold text-sky-700 mb-2">Available Reports:</h4>
-          <ul class="list-disc list-inside text-slate-700 space-y-1">
-            <li><strong>Study Guide:</strong> Key concepts and main arguments.</li>
-            <li><strong>Briefing Document:</strong> Executive summary of essentials.</li>
-            <li><strong>FAQ:</strong> Generated questions and answers.</li>
-            <li><strong>Timeline:</strong> Chronological organisation of events.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="p-3 bg-rose-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          </div>
-          <h3 class="text-xl font-bold text-rose-700">Custom Quizzes</h3>
-        </div>
-        <p class="text-slate-600 mb-4">Create tailored quizzes to test your understanding. NotebookLM generates questions directly from your uploaded sources with answers and explanations.</p>
-        <div class="bg-rose-50 p-4 rounded-lg border border-rose-100 text-sm">
-          <h4 class="font-semibold text-rose-700 mb-2">Example Prompts:</h4>
-          <ul class="list-disc list-inside text-slate-700 space-y-1">
-            <li>"Create a 10-question multiple choice quiz on photosynthesis."</li>
-            <li>"Generate 5 essay questions about the French Revolution."</li>
-            <li>"Make 15 true/false questions covering all uploaded materials."</li>
-          </ul>
-        </div>
+        <p class="text-slate-600 text-sm mb-4">Need to present? Ask NotebookLM to <em>"Generate a 10-slide outline for this topic."</em> It will give you the title, bullet points, and speaker notes for each slide based on your sources.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-emerald-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M5 11v2m14-2v2" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-emerald-700">Flashcard Generation</h3>
+          <h3 class="text-xl font-bold text-emerald-700">Quiz & Flashcards</h3>
         </div>
-        <p class="text-slate-600 mb-4">Generate flashcards for active recall practice. Create term-definition pairs, question-answer cards, or concept explanation cards from your materials.</p>
-        <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-100 text-sm">
-          <h4 class="font-semibold text-emerald-700 mb-2">Example Prompt:</h4>
-          <p class="text-slate-700">"Create 20 flashcards covering all key terms from my psychology notes. Include the term, its definition, and an example."</p>
-        </div>
-      </div>
-
-      <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="p-3 bg-amber-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
-          </div>
-          <h3 class="text-xl font-bold text-amber-700">Concept Mapping</h3>
-        </div>
-        <p class="text-slate-600 mb-4">Create visual representations of relationships between concepts, map out complex processes, or generate timelines of events from your course materials.</p>
-        <div class="bg-amber-50 p-4 rounded-lg border border-amber-100 text-sm">
-          <h4 class="font-semibold text-amber-700 mb-2">Example Prompt:</h4>
-          <p class="text-slate-700">"Create a concept map showing how cellular respiration, photosynthesis, and the carbon cycle are interconnected."</p>
-        </div>
+        <p class="text-slate-600 text-sm mb-4">Stop manually typing cards. NotebookLM can instantly generate:</p>
+        <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
+          <li>Multiple choice quizzes with answer keys.</li>
+          <li>Flashcard tables (Term/Definition) you can paste into Anki or Quizlet.</li>
+        </ul>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-blue-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-blue-700">Interactive Q&A with Citations</h3>
+          <h3 class="text-xl font-bold text-blue-700">Mind Maps & Visuals</h3>
         </div>
-        <p class="text-slate-600 mb-4">Chat with your course materials to deepen understanding. Every answer includes direct citations to the exact passage in your uploaded documents.</p>
-        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm">
-          <h4 class="font-semibold text-blue-700 mb-2">Example Questions:</h4>
-           <ul class="list-disc list-inside text-slate-700 space-y-1">
-            <li>"Explain the main argument in Chapter 3 in simple terms."</li>
-            <li>"Compare Marx and Weber's views on capitalism based on the sources."</li>
-            <li>"What are the limitations of this approach?"</li>
-          </ul>
-        </div>
+        <p class="text-slate-600 text-sm mb-4">Visual learner? Ask: <em>"Create a text-based mind map of these concepts"</em> or <em>"Suggest data points for an infographic on this topic."</em> It structures the information hierarchically so you can draw it easily.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
         <div class="flex items-center gap-4 mb-4">
-          <div class="p-3 bg-cyan-100 rounded-full w-12 h-12 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+          <div class="p-3 bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-cyan-700">Note-Taking & Annotation</h3>
+          <h3 class="text-xl font-bold text-sky-700">Instant Study Guides</h3>
         </div>
-        <p class="text-slate-600 mb-4">Create notes within NotebookLM that integrate with your sources. Pin important AI responses and highlight key passages from your sources to save them as notes.</p>
-
-        <div class="bg-cyan-50 p-4 rounded-lg border border-cyan-100 text-sm">
-          <h4 class="font-semibold text-cyan-700 mb-2">Features:</h4>
-           <ul class="list-disc list-inside text-slate-700 space-y-1">
-            <li><strong>Pin important responses:</strong> Save useful AI answers.</li>
-            <li><strong>Create notes from sources:</strong> Highlight and save passages.</li>
-            <li><strong>Export everything:</strong> Save notes to Google Docs.</li>
-          </ul>
-        </div>
+        <p class="text-slate-600 text-sm mb-4">One click on the "Notebook Guide" button automatically creates a Briefing Doc, FAQ, Timeline, or Study Guide for everything you've uploaded.</p>
       </div>
 
     </div>
   </div>
 
   <div id="workflows" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Practical Study Workflows</h2>
+    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">New Study Workflows</h2>
     <div class="grid md:grid-cols-2 gap-6">
       
-      <div class="bg-sky-50 p-6 rounded-lg border border-sky-200">
-        <h3 class="text-lg font-bold text-sky-700 mb-3">📖 Weekly Lecture Processing</h3>
-        <ol class="list-decimal list-inside text-slate-700 space-y-2">
-          <li>Upload lecture slides, video recording, and your notes.</li>
-          <li>Generate a study guide to identify key concepts.</li>
-          <li>Create 10-15 quiz questions for self-testing.</li>
-          <li>Generate an audio overview to listen to during your commute.</li>
-          <li>Make flashcards for new terminology.</li>
-        </ol>
-      </div>
-
       <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
-        <h3 class="text-lg font-bold text-purple-700 mb-3">📚 Exam Revision Strategy</h3>
-        <ol class="list-decimal list-inside text-slate-700 space-y-2">
-          <li>Create one notebook per exam topic.</li>
-          <li>Upload all relevant readings, notes, and videos.</li>
-          <li>Generate comprehensive study guides and timelines.</li>
-          <li>Create progressive quizzes from easy to challenging.</li>
-          <li>Make audio overviews for final week revision.</li>
+        <h3 class="text-lg font-bold text-purple-700 mb-3">🎧 The Commuter's Revision</h3>
+        <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
+          <li>Upload your week's lecture slides and reading PDF.</li>
+          <li>Click <strong>"Generate Audio Overview"</strong>.</li>
+          <li>Download the audio file to your phone.</li>
+          <li><strong>Outcome:</strong> Revise the core concepts while on the bus or at the gym, listening to two AI hosts debate your specific lecture material.</li>
         </ol>
       </div>
 
-      <div class="bg-emerald-50 p-6 rounded-lg border border-emerald-200">
-        <h3 class="text-lg font-bold text-emerald-700 mb-3">✍️ Essay Research & Planning</h3>
-        <ol class="list-decimal list-inside text-slate-700 space-y-2">
-          <li>Upload all essay sources to one notebook.</li>
-          <li>Ask: "What are the main arguments about [topic] across all sources?"</li>
-          <li>Request: "Compare perspectives and identify points of disagreement."</li>
-          <li>Generate: "Key quotes supporting [argument] with citations."</li>
-          <li>Create an outline based on synthesised information.</li>
+      <div class="bg-red-50 p-6 rounded-lg border border-red-200">
+        <h3 class="text-lg font-bold text-red-700 mb-3">📹 The YouTube Synthesiser</h3>
+        <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
+          <li>Find a complex educational video on YouTube (e.g., a TED talk or tutorial).</li>
+          <li>Paste the URL into NotebookLM as a source.</li>
+          <li>Ask: <em>"Compare the video's definition of X with my textbook PDF."</em></li>
+          <li><strong>Outcome:</strong> A perfect synthesis of video and text sources without having to re-watch 2 hours of footage.</li>
         </ol>
       </div>
 
-      <div class="bg-amber-50 p-6 rounded-lg border border-amber-200">
-        <h3 class="text-lg font-bold text-amber-700 mb-3">📹 Recorded Lecture Study</h3>
-        <ol class="list-decimal list-inside text-slate-700 space-y-2">
-          <li>Add YouTube URL or upload audio recording of lecture.</li>
-          <li>Ask specific questions about confusing parts.</li>
-          <li>Generate a study guide from the transcript.</li>
-          <li>Create a quiz on the lecture content.</li>
-          <li>Compare lecture content with textbook readings.</li>
+      <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
+        <h3 class="text-lg font-bold text-orange-700 mb-3">📊 The Presentation Builder</h3>
+        <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
+          <li>Upload your research papers and essay draft.</li>
+          <li>Prompt: <em>"Create a 5-slide deck outline for this research. Include a title, 3 bullets, and speaker notes for each slide."</em></li>
+          <li><strong>Outcome:</strong> You get the entire structure of your presentation instantly, ready to copy-paste into PowerPoint or Canva.</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+        <h3 class="text-lg font-bold text-blue-700 mb-3">🧠 The Visual Planner</h3>
+        <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
+          <li>Upload a dense academic article.</li>
+          <li>Prompt: <em>"Identify the 5 main themes and their sub-concepts for a Mind Map."</em></li>
+          <li><strong>Outcome:</strong> A structured hierarchy you can quickly draw out or input into a mind-mapping tool like Miro or Coggle.</li>
         </ol>
       </div>
 
     </div>
   </div>
 
-  <div id="limits" class="bg-amber-50 p-8 rounded-xl border border-amber-200 mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-amber-800 mb-6 text-center">⚠️ Important Limitations & Best Practices</h2>
-    
-    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-amber-300 mb-10">
-      <h3 class="text-2xl font-bold text-amber-700 mb-4 text-center">A Deep Dive: How to Use Citations Correctly</h3>
-      <p class="text-lg text-slate-700 mb-6 text-center max-w-3xl mx-auto">
-        The inline citations are the single most useful anti-hallucination feature NotebookLM gives you, but they still have to be used correctly.
-      </p>
-      
-      <div class="grid md:grid-cols-2 gap-6 mb-6">
-        
-        <div>
-          <h4 class="text-xl font-semibold text-slate-800 mb-3">How the citation system actually works</h4>
-          <ul class="list-disc list-inside space-y-2 text-slate-700">
-            <li>Every inline number is a link back to the exact chunk the model thinks supports the sentence.</li>
-            <li>If the chunk really does contain the claim, you can see it in a few seconds and move on.</li>
-            <li>If the chunk is only loosely related (or the model stitched together two unrelated passages) you’ll spot the mismatch immediately.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="text-xl font-semibold text-rose-700 mb-3">What can still go wrong</h4>
-          <ol class="list-decimal list-inside space-y-3 text-slate-700">
-            <li><strong>Wrong chunk:</strong> The model points to page 4, but the RCT claim is never stated there; the correct disclaimer is on page 7 and never retrieved.</li>
-            <li><strong>Over-interpretation:</strong> The cited sentence says “we compared pre- and post-intervention scores.” NotebookLM re-phrases that as “we conducted an RCT” and cites the sentence anyway.</li>
-            <li><strong>Missing negative:</strong> The document says “no control group was used.” Because that wording is negative, the retriever down-weights it; the generator never sees it and produces the opposite claim, while still giving you a citation that looks legitimate.</li>
-          </ol>
-        </div>
-      </div>
-
-      <hr class="my-6 border-amber-200">
-
-      <div>
-        <h4 class="text-xl font-semibold text-sky-700 mb-4 text-center">Practical Verification Checklist</h4>
-        <ul class="list-disc list-inside space-y-2 text-slate-700 max-w-3xl mx-auto">
-          <li>Click every citation for any method statement, number, or quote.</li>
-          <li>Read ±2 sentences around the cited passage; the qualifier you need is often in the neighbouring clause.</li>
-          <li>If the claim is central (RCT, sample size, p-value, legal holding), do a Ctrl-F search for the key term across the whole file; the retriever sometimes misses a single sentence that changes the meaning.</li>
-          <li>For multi-document notebooks, notice which file the citation comes from; NotebookLM can blend documents and create “phantom” cross-references.</li>
-        </ul>
-      </div>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      <div>
-        <h3 class="text-xl font-semibold text-slate-700 mb-3">What to Remember</h3>
-        <ul class="list-disc list-inside space-y-2 text-slate-700">
-          <li>NotebookLM only uses your uploaded sources (no external web search).</li>
-          <li>Always verify citations by clicking through to source passages.</li>
-          <li>Free version: 100 notebooks, 50 sources each, 3 audio overviews per day.</li>
-          <li>Generated content is for learning, not for direct submission.</li>
-          <li>Check your university's AI policy before using for assignments.</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold text-slate-700 mb-3">Best Practices</h3>
-        <ul class="list-disc list-inside space-y-2 text-slate-700">
-          <li>Upload high-quality, relevant sources only.</li>
-          <li>Organise notebooks by topic for better results.</li>
-          <li>Always click citations to verify information.</li>
-          <li>Combine NotebookLM with your own notes and thinking.</li>
-          <li>Test yourself regularly with generated quizzes.</li>
-          <li>Use multiple study methods (audio + visual + practice).</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="tasks" class="bg-sky-50 p-8 rounded-xl border border-sky-200 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🚀 Your Getting Started Checklist</h2>
-    <div class="space-y-4 max-w-2xl mx-auto">
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Visit <a href="https://notebooklm.google.com" class="text-sky-600 hover:underline font-semibold" target="_blank" rel="noopener noreferrer">notebooklm.google.com</a> and create your first notebook</span>
+  <div id="checklist" class="bg-sky-50 p-8 rounded-xl border border-sky-200 scroll-mt-20">
+    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🚀 Try These Prompts Today</h2>
+    <div class="space-y-3 max-w-2xl mx-auto">
+      <label class="flex items-start space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
+        <input type="checkbox" class="w-5 h-5 mt-1 text-sky-600 rounded focus:ring-sky-500">
+        <span class="text-sm"><strong>Audio:</strong> "Generate an Audio Overview (podcast) for this week's readings."</span>
       </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Upload lecture slides or course readings from your current module</span>
+      <label class="flex items-start space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
+        <input type="checkbox" class="w-5 h-5 mt-1 text-sky-600 rounded focus:ring-sky-500">
+        <span class="text-sm"><strong>Quiz:</strong> "Create a hard 10-question multiple choice quiz on Chapter 4 with explanations."</span>
       </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Generate your first audio overview and listen to it</span>
+      <label class="flex items-start space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
+        <input type="checkbox" class="w-5 h-5 mt-1 text-sky-600 rounded focus:ring-sky-500">
+        <span class="text-sm"><strong>Infographic:</strong> "Extract the key statistics from these papers for an infographic timeline."</span>
       </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Create a study guide for your next exam topic</span>
-      </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Make 20 flashcards for key terminology in your course</span>
-      </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Generate a practice quiz and test yourself</span>
-      </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Upload a recorded lecture (YouTube or audio) and chat with it</span>
-      </label>
-      <label class="flex items-center space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
-        <input type="checkbox" class="w-5 h-5 text-sky-600 rounded focus:ring-sky-500">
-        <span>Create a concept map showing topic relationships</span>
+      <label class="flex items-start space-x-3 text-slate-700 hover:bg-white p-3 rounded-lg transition-colors cursor-pointer border border-transparent hover:border-slate-200">
+        <input type="checkbox" class="w-5 h-5 mt-1 text-sky-600 rounded focus:ring-sky-500">
+        <span class="text-sm"><strong>Flashcards:</strong> "Make a table of all key terms and definitions for a revision card set."</span>
       </label>
     </div>
   </div>
@@ -523,15 +250,5 @@
 </footer>
 
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-<script>
-// This is a minimal script to handle the mobile menu button toggling if needed,
-// but Alpine.js handles the dropdowns and mobile menu visibility.
-document.addEventListener('DOMContentLoaded', function() {
-  // Alpine.js handles the 'openMenu' state, but if you needed
-  // to add other non-Alpine JS, it would go here.
-});
-</script>
-
 </body>
 </html>
