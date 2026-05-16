@@ -215,6 +215,8 @@ h3 {
   border-radius: 8px;
   box-shadow: var(--shadow);
   border: 8px solid rgba(255, 255, 255, 0.24);
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
 }
 
 .notice {
@@ -264,6 +266,11 @@ h3 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
+}
+
+.three-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
 }
 
 .card,
@@ -383,6 +390,10 @@ tbody tr:last-child td {
   padding: 16px;
 }
 
+.small-note {
+  font-size: 0.95rem;
+}
+
 .checklist-section {
   padding-bottom: 56px;
 }
@@ -460,7 +471,6 @@ tbody tr:last-child td {
     padding: 36px 0;
   }
 
-  .top-nav a,
   .button,
   .print-button {
     width: 100%;
