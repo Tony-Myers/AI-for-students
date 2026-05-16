@@ -159,7 +159,7 @@
     <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
         <h3 class="text-2xl font-bold text-slate-800 mb-4">Revolutionising How You Study</h3>
         <div class="space-y-4 text-slate-700 leading-relaxed">
-            <p>AI tools offer unprecedented opportunities to personalise your learning experience. From creating custom study materials and practice tests to getting instant explanations of difficult concepts, AI can adapt to your unique learning style and pace.</p>
+            <p>AI tools can help you personalise parts of your study routine. From creating study materials and practice tests to getting quick explanations of difficult concepts, AI can support active learning when you check its output carefully.</p>
             <p>The key is knowing how to integrate these tools effectively into your study routine. This means using AI to enhance your understanding and retention, not to replace the critical thinking and deep learning that leads to academic success.</p>
             <p>Below you'll find practical strategies organised around different aspects of the learning process. Each section includes specific techniques you can implement immediately to improve your study effectiveness.</p>
         </div>
@@ -171,12 +171,12 @@
         <p class="text-center text-slate-600">Click on a study strategy above to explore AI applications for that area.</p>
       </div>
     </div>
-    
+
     <div class="bg-white rounded-xl shadow-lg p-8 mt-8">
         <h3 class="text-2xl font-bold text-slate-800 mb-2">Maximising Study Effectiveness with AI</h3>
         <p class="text-slate-600 mb-6 max-w-4xl">Use this framework to ensure you're getting the most educational value from AI tools whilst developing genuine understanding and critical thinking skills.</p>
         <div class="space-y-4">
-            
+
             <div class="p-4 rounded-lg border border-slate-200 bg-slate-50/50">
                 <h4 class="font-bold text-lg text-green-700">🎯 High-Impact AI Use</h4>
                 <p class="text-slate-700 mt-2">Use AI to enhance your learning process and develop deeper understanding of concepts.</p>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const studyStrategiesData = {
     "Active Learning": {
       title: "Active Learning & Comprehension",
-      description: "Use AI to transform passive reading into active engagement. Create interactive learning experiences that help you truly understand and remember complex material.",
+      description: "Use AI to turn passive reading into active engagement. Create interactive learning tasks that help you check your understanding and remember complex material.",
       practicalApplications: [
         "Turn textbook chapters into interactive Q&A sessions",
         "Generate practice questions from your lecture notes",
@@ -241,8 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "Help me understand quantum mechanics by creating an analogy using everyday objects and situations."
       ],
       tools: [
-        {name: "ChatGPT", url: "https://chatgpt.com"}, 
-        {name: "Claude", url: "https://claude.ai"}, 
+        {name: "ChatGPT", url: "https://chatgpt.com"},
+        {name: "Claude", url: "https://claude.ai"},
         {name: "NotebookLM", url: "https://notebooklm.google.com"}
       ]
     },
@@ -260,8 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "I'm a visual learner studying the French Revolution. Create a timeline with key events and explain how they connect to each other."
       ],
       tools: [
-        {name: "NotebookLM", url: "https://notebooklm.google.com"}, 
-        {name: "Anki", url: "https://apps.ankiweb.net"}, 
+        {name: "NotebookLM", url: "https://notebooklm.google.com"},
+        {name: "Anki", url: "https://apps.ankiweb.net"},
         {name: "Quizlet", url: "https://quizlet.com"}
       ]
     },
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "I have exams in three subjects over two weeks. Help me create a revision timetable that balances all subjects and includes regular review sessions."
       ],
       tools: [
-        {name: "ChatGPT", url: "https://chatgpt.com"}, 
+        {name: "ChatGPT", url: "https://chatgpt.com"},
         {name: "Claude", url: "https://claude.ai"},
         {name: "AI Studio", url: "https://aistudio.google.com"}
       ]
@@ -298,8 +298,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "Help me understand how to evaluate whether a website is credible for my psychology assignment on depression treatments."
       ],
       tools: [
-        {name: "Perplexity", url: "https://perplexity.ai"}, 
-        {name: "Research Rabbit", url: "https://researchrabbitapp.com"}, 
+        {name: "Perplexity", url: "https://perplexity.ai"},
+        {name: "Research Rabbit", url: "https://researchrabbitapp.com"},
         {name: "Google Scholar", url: "https://scholar.google.com"}
       ]
     },
@@ -317,8 +317,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "I keep procrastinating on my statistics homework. Suggest specific strategies to help me stay motivated and make progress consistently."
       ],
       tools: [
-        {name: "ChatGPT", url: "https://chatgpt.com"}, 
-        {name: "Notion", url: "https://notion.so"}, 
+        {name: "ChatGPT", url: "https://chatgpt.com"},
+        {name: "Notion", url: "https://notion.so"},
         {name: "Todoist", url: "https://todoist.com"}
       ]
     },
@@ -336,8 +336,8 @@ document.addEventListener('DOMContentLoaded', function() {
         "English isn't my first language. Can you explain this economics concept using simpler vocabulary while keeping the meaning accurate?"
       ],
       tools: [
-        {name: "Microsoft Copilot", url: "https://copilot.microsoft.com"}, 
-        {name: "Read&Write", url: "https://www.texthelp.com/en-gb/products/read-write/"}, 
+        {name: "Microsoft Copilot", url: "https://copilot.microsoft.com"},
+        {name: "Read&Write", url: "https://www.texthelp.com/en-gb/products/read-write/"},
         {name: "Natural Reader", url: "https://www.naturalreaders.com"}
       ]
     }
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ${!isLast ? '<div class="text-sky-400 font-bold text-2xl hidden md:block">→</div>' : ''}
       `;
     });
-    
+
     window.showStudyStage = function(key) {
       const item = studyStrategiesData[key];
       let contentHTML = `
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       contentEl.innerHTML = contentHTML;
     };
-    
+
     // Default to showing the first stage
     if (Object.keys(studyStrategiesData).length > 0) {
         window.showStudyStage(Object.keys(studyStrategiesData)[0]);

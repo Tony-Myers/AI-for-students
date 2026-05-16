@@ -176,6 +176,32 @@
       <button onclick="downloadTemplate('socratic','txt')" class="bg-orange-600 text-white px-4 py-2 rounded hover:bg-orange-700">🎓 Socratic Tutor (.txt)</button>
     </div>
   </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <div class="text-center mb-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">The 7-Part Student Prompt Framework</h3>
+      <p class="text-slate-600 max-w-3xl mx-auto">Good prompting is context design. This structure gives the model enough information to help, while making your boundaries and checks explicit.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-sky-700">1. Role</h4><p class="text-sm text-slate-600 mt-1">What kind of help do you need: tutor, reviewer, planning partner, critic?</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-emerald-700">2. Task</h4><p class="text-sm text-slate-600 mt-1">Name the action: explain, quiz, compare, organise, critique or suggest checks.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-purple-700">3. Context</h4><p class="text-sm text-slate-600 mt-1">State your level, module, assignment type, marking criteria and current progress.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-amber-700">4. Source Material</h4><p class="text-sm text-slate-600 mt-1">Paste the relevant extract, notes, rubric or data. Do not ask the model to invent evidence.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-rose-700">5. Boundaries</h4><p class="text-sm text-slate-600 mt-1">Say what it must not do: no invented references, no final submission text, no unsupported claims.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-indigo-700">6. Format</h4><p class="text-sm text-slate-600 mt-1">Ask for a checklist, table, outline, questions, paragraph-level feedback or revision plan.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 lg:col-span-2"><h4 class="font-bold text-teal-700">7. Verification</h4><p class="text-sm text-slate-600 mt-1">Ask it to flag uncertainty, missing evidence, claims to check, and where your own judgement is needed.</p></div>
+    </div>
+    <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+      <h4 class="font-bold text-slate-800 mb-3">Copy-and-adapt prompt</h4>
+      <pre class="text-sm overflow-x-auto whitespace-pre-wrap p-3 rounded bg-white border border-slate-200 text-slate-700">Role: Act as a supportive academic study tutor.
+Task: Help me improve my plan, not write the assignment for me.
+Context: I am a [level] student on [module]. The task is [brief summary]. I have already done [reading/thinking so far].
+Source material: [paste assignment brief, rubric, notes or short extract].
+Boundaries: Use only the material I provide. Do not invent citations, statistics or claims. Do not write final submission paragraphs.
+Format: Give me a table with: point | what works | missing evidence | question I should answer next.
+Verification: Flag any claim that needs checking in the original source or library database. Separate evidence from interpretation.</pre>
+    </div>
+  </div>
   <div class="bg-white rounded-xl shadow-lg p-8">
     <div class="text-center mb-8">
       <h3 class="text-2xl font-bold text-slate-800 mb-4">The 10 Evidence-Based Principles of Effective Prompting</h3>
@@ -395,7 +421,7 @@ The dialogue between you and the student should continue iteratively until the s
   window.downloadTemplate = function(type, format) {
     let content = '';
     let filename = '';
-    
+
     if (type === 'study') {
       content = studyBuddyPrompt;
       filename = `study-buddy-prompt.${format}`;
@@ -409,7 +435,7 @@ The dialogue between you and the student should continue iteratively until the s
       content = socraticTutorPrompt;
       filename = `socratic-tutor-prompt.${format}`;
     }
-    
+
     const blob = new Blob([content], { type: format === 'md' ? 'text/markdown' : 'text/plain' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

@@ -156,13 +156,13 @@
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
     <h2 class="text-3xl font-bold">AI Limitations & Fact-Checking Strategies</h2>
-    <p class="max-w-3xl mx-auto">Learn to recognise AI limitations, spot hallucinations, and verify information effectively for academic success.</p>
+    <p class="max-w-3xl mx-auto">Learn to recognise AI limitations, spot hallucinations, and build verification into your study workflow.</p>
   </div>
 
   <div class="bg-red-50 border border-red-200 rounded-xl p-6 mb-8">
     <h3 class="text-xl font-bold text-red-700 mb-4">🚨 Critical Reality Check</h3>
-    <p class="text-slate-700 mb-4">AI tools are powerful learning assistants, but they are not infallible. They can confidently present false information, fabricate sources, and make mathematical errors. Understanding these limitations is essential for using AI responsibly in your academic work.</p>
-    <p class="text-slate-700 font-semibold">Never submit work containing AI-generated facts, statistics, or citations without verifying them yourself.</p>
+    <p class="text-slate-700 mb-4">AI tools can be useful learning assistants, but fluency is not evidence. They can confidently present false information, fabricate sources, and make mathematical errors. Understanding these limitations is essential for using AI responsibly in your academic work.</p>
+    <p class="text-slate-700 font-semibold">Never submit work containing AI-generated facts, statistics, interpretations or citations without verifying them yourself.</p>
   </div>
 
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
@@ -211,9 +211,34 @@
   </div>
 
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Fluency Is Not Evidence</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
+      <p>A polished answer can still be wrong. Agreement between two AI tools is also not the same as independent corroboration, because models may share training sources, assumptions or failure patterns.</p>
+      <p>Use AI to generate possible explanations, questions and checks. Use original sources, data, worked calculations, official guidance and your own judgement to decide what is supported.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="limitation-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+        <h4 class="text-lg font-bold text-emerald-700 mb-3">Conservative</h4>
+        <p class="text-sm text-slate-700">Directly supported by the source or data you have checked. Lowest risk for academic writing.</p>
+        <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What evidence supports this?</p>
+      </div>
+      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">Interpretive</h4>
+        <p class="text-sm text-slate-700">A reasonable reading of the evidence, but it depends on assumptions you should name.</p>
+        <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What additional evidence is needed?</p>
+      </div>
+      <div class="limitation-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
+        <h4 class="text-lg font-bold text-rose-700 mb-3">Speculative</h4>
+        <p class="text-sm text-slate-700">Useful for brainstorming, but not suitable as a claim unless you can verify it independently.</p>
+        <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What would count against this?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <h3 class="text-2xl font-bold text-slate-800 mb-6">Essential Fact-Checking Strategies for Students</h3>
-    <p class="text-slate-700 mb-6">Develop these habits to verify AI-generated information before using it in your academic work:</p>
-    
+    <p class="text-slate-700 mb-6">Verification is structural: build these checks into your prompt, notes and editing process rather than leaving them until the final proofread.</p>
+
     <div class="space-y-4">
       <div class="border border-slate-200 rounded-lg">
         <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(0)">
@@ -284,21 +309,21 @@
 
       <div class="border border-slate-200 rounded-lg">
         <button class="accordion-toggle w-full flex justify-between p-4 hover:bg-slate-50 font-semibold text-left" onclick="toggleAccordion(3)">
-          <span>4. Use Multiple AI Tools to Cross-Check</span>
+          <span>4. Use Multiple AI Tools to Find Uncertainty</span>
           <span id="arrow-3" class="transition-transform duration-300">▼</span>
         </button>
         <div id="accordion-3" class="accordion-content">
           <div class="p-4 border-t text-slate-700">
-            <p class="mb-3"><strong>Why:</strong> Different models have different training data and may catch each other's errors.</p>
+            <p class="mb-3"><strong>Why:</strong> Different models may expose weak spots, alternative interpretations or missing checks. Agreement between models is useful, but it is not proof.</p>
             <p class="mb-3"><strong>How:</strong></p>
             <ul class="list-disc list-inside space-y-1 mb-3">
-              <li>Ask the same question to ChatGPT, Claude, and Gemini</li>
-              <li>Look for consensus across multiple models</li>
+              <li>Ask the same question to more than one tool when the issue matters</li>
+              <li>Look for differences, uncertainty and assumptions</li>
               <li>Investigate any discrepancies thoroughly</li>
               <li>Use specialised tools (Perplexity with citations, NotebookLM for your documents)</li>
             </ul>
             <div class="bg-emerald-50 p-3 rounded border border-emerald-200">
-              <p class="text-sm"><strong>Strategy:</strong> If models disagree, that is a red flag to do additional research using academic databases.</p>
+              <p class="text-sm"><strong>Strategy:</strong> If models disagree, do additional research using academic databases. If they agree, still verify the claim in a source you can cite.</p>
             </div>
           </div>
         </div>
@@ -320,7 +345,7 @@
               <li>Be cautious with evolving fields (technology, medicine, current events)</li>
             </ul>
             <div class="bg-purple-50 p-3 rounded border border-purple-200">
-              <p class="text-sm"><strong>Current Models (2025):</strong> ChatGPT (GPT-5) has October 2024 cut-off, Claude Sonnet 4.5 has April 2024 cut-off, Gemini 2.5 Pro has early 2025 cut-off. Always check the latest information for your specific tool as these dates update regularly.</p>
+              <p class="text-sm"><strong>Note:</strong> Knowledge cut-off dates and web access change regularly. Check the current help page for the tool you are using, especially for recent events, policy, law, medicine, prices or technical specifications.</p>
             </div>
           </div>
         </div>
@@ -331,7 +356,7 @@
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <h3 class="text-2xl font-bold text-slate-800 mb-6">Recommended Verification Tools</h3>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
+
       <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
         <h4 class="text-lg font-bold text-sky-700 mb-3">Academic Databases</h4>
         <ul class="text-sm text-slate-700 space-y-2">
@@ -368,6 +393,32 @@
   </div>
 
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+    <h3 class="text-2xl font-bold text-slate-800 mb-6">Source-Grounded Tools Help, but They Are Not Magic</h3>
+    <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
+      <p>Tools such as NotebookLM and retrieval-based chat systems can answer from a set of documents you provide. This is useful because it gives you a narrower source base and often points back to passages.</p>
+      <p>However, source-grounded does not mean automatically correct. The tool may miss a relevant passage, over-weight a weak match, misread a quotation, or sound confident from only part of the evidence.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
+        <h4 class="text-lg font-bold text-sky-700 mb-3">Use It For</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Finding candidate passages in readings you have chosen</li>
+          <li>• Generating questions for closer reading</li>
+          <li>• Comparing what a small set of sources appears to say</li>
+        </ul>
+      </div>
+      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-700 mb-3">Still Check</h4>
+        <ul class="text-sm text-slate-700 space-y-2">
+          <li>• Does the cited passage actually support the answer?</li>
+          <li>• Are important sources missing from the notebook?</li>
+          <li>• Has the tool confused summary with analysis?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <h3 class="text-2xl font-bold text-slate-800 mb-6">Understanding Context Windows & Token Limits</h3>
     <div class="space-y-4 text-slate-700 leading-relaxed mb-6">
       <p>The context window (also called context length) is the maximum amount of text an AI model can process at once. This includes your entire conversation history, uploaded documents, and the model's responses.</p>
@@ -398,33 +449,33 @@
     </div>
 
     <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded border border-purple-200">
-      <h4 class="text-lg font-bold text-purple-700 mb-4">Current Context Windows (2025)</h4>
+      <h4 class="text-lg font-bold text-purple-700 mb-4">What to Check Before Uploading a Large File</h4>
       <div class="grid md:grid-cols-2 gap-4 text-sm">
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">ChatGPT (GPT-5): 128,000 tokens</p>
-          <p class="text-slate-600">Approximately 96,000 words or 300 pages</p>
+          <p class="font-semibold">Capacity</p>
+          <p class="text-slate-600">How much text can this tool process at once, and does it warn you when material is skipped?</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Claude Sonnet 4.5: 200,000 tokens</p>
-          <p class="text-slate-600">Approximately 150,000 words or 500 pages</p>
+          <p class="font-semibold">Retrieval</p>
+          <p class="text-slate-600">Does the tool search the whole file, selected passages, or only a summary of the upload?</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Gemini 2.5 Pro: 1,000,000+ tokens</p>
-          <p class="text-slate-600">Approximately 750,000+ words or 2,000+ pages</p>
+          <p class="font-semibold">Privacy</p>
+          <p class="text-slate-600">Will the upload be stored, reviewed, shared, or used for training? Are you using a personal or institution-approved account?</p>
         </div>
         <div class="bg-white p-3 rounded">
-          <p class="font-semibold">Gemini 2.5 Flash: 1,000,000+ tokens</p>
-          <p class="text-slate-600">Faster responses with same large context</p>
+          <p class="font-semibold">Verification</p>
+          <p class="text-slate-600">Can you trace every important answer back to the original passage, page, table or dataset?</p>
         </div>
       </div>
-      <p class="text-sm text-slate-600 mt-4"><strong>Note:</strong> Actual usable context may be less due to system instructions and other overhead. Context windows are regularly expanding, so check the latest model documentation.</p>
+      <p class="text-sm text-slate-600 mt-4"><strong>Note:</strong> Model limits and product settings change regularly, so check the current documentation for the exact tool you are using.</p>
     </div>
   </div>
 
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <h3 class="text-2xl font-bold text-slate-800 mb-6">Best Practices for Managing Context</h3>
     <div class="grid md:grid-cols-2 gap-6">
-      
+
       <div>
         <h4 class="text-lg font-bold text-slate-700 mb-3">✅ Do These</h4>
         <ul class="text-slate-700 space-y-2">

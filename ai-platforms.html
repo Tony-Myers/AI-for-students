@@ -144,16 +144,16 @@
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
       <h2 class="text-3xl font-bold">Essential AI Platforms for Students</h2>
-      <p class="max-w-3xl mx-auto">Discover the AI tools that can transform your learning experience. Each platform offers unique features for studying, research, and academic success.</p>
+      <p class="max-w-3xl mx-auto">Compare AI tools for studying, research and writing support. Match the platform to the task, the data risk, and your module rules.</p>
     </div>
-    
+
     <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-6 mb-8 border border-amber-200">
       <h3 class="text-xl font-bold text-amber-700 mb-4">💰 Money-Saving Tips for Students</h3>
       <div class="grid md:grid-cols-2 gap-6">
         <div>
           <h4 class="font-semibold text-slate-700 mb-2">Free Options First</h4>
           <ul class="text-sm text-slate-600 space-y-1">
-            <li>• Start with NotebookLM and AI Studio (completely free)</li>
+            <li>• Start with free tiers and tools your university already provides</li>
             <li>• Use free tiers of ChatGPT, Claude, and Gemini</li>
             <li>• Check if your university provides Microsoft Copilot</li>
           </ul>
@@ -165,6 +165,29 @@
             <li>• Need faster responses for time-sensitive work</li>
             <li>• Working with large documents regularly</li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">Privacy and Security: Match the Tool to the Data</h3>
+      <p class="text-slate-700 mb-6">Use the lowest-risk tool that fits the task. Security-focused platforms can reduce exposure, but they do not remove your responsibility to check accuracy, follow the assignment brief, and avoid uploading material you do not have permission to share.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+          <h4 class="font-bold text-sky-700 mb-2">Public chat tools</h4>
+          <p class="text-sm text-slate-600">Useful for low-risk brainstorming, explanations and practice. Avoid personal, confidential, unpublished or other students' material.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+          <h4 class="font-bold text-emerald-700 mb-2">University-provided tools</h4>
+          <p class="text-sm text-slate-600">ChatGPT Edu, Microsoft 365 Copilot Chat, Gemini for Workspace/Education or Claude for Work may have stronger controls. Check your institution's licence and policy.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+          <h4 class="font-bold text-purple-700 mb-2">Privacy-focused web tools</h4>
+          <p class="text-sm text-slate-600">Duck.ai, Lumo, Brave Leo and Okara are designed around reduced tracking or encrypted storage. Still avoid data you are not allowed to upload.</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+          <h4 class="font-bold text-amber-700 mb-2">Local tools</h4>
+          <p class="text-sm text-slate-600">LM Studio, Ollama, Jan and GPT4All can run models on your own device. This helps confidentiality, but smaller models may be less capable and still need checking.</p>
         </div>
       </div>
     </div>
@@ -194,135 +217,185 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   const studentAiPlatforms = [
-    { 
-      name: "ChatGPT", 
-      provider: "OpenAI", 
-      strengths: "Versatile study companion, excellent for explanations and brainstorming", 
-      bestFor: "Understanding concepts, essay planning, practice questions, homework help", 
-      pricing: "Free + £16/month Pro", 
-      link: "https://chatgpt.com", 
+    {
+      name: "ChatGPT",
+      provider: "OpenAI",
+      strengths: "Versatile study companion for explanations and brainstorming",
+      bestFor: "Understanding concepts, essay planning, practice questions, homework help",
+      pricing: "Free + paid tiers",
+      link: "https://chatgpt.com",
       features: "Voice conversations, file uploads, web browsing, image analysis",
-      studentTip: "Perfect starter tool - great for breaking down complex topics into understandable explanations"
+      studentTip: "Useful starting tool for breaking down complex topics into understandable explanations"
     },
-    { 
-      name: "Claude", 
-      provider: "Anthropic", 
-      strengths: "Excellent for long documents, ethical reasoning, detailed analysis", 
-      bestFor: "Essay feedback, research analysis, document review, critical thinking", 
-      pricing: "Free + £16/month Pro", 
-      link: "https://claude.ai", 
-      features: "200k+ token context, document uploads, ethical focus, detailed reasoning",
-      studentTip: "Best for getting detailed feedback on your drafts and analysing complex readings"
+    {
+      name: "Claude",
+      provider: "Anthropic",
+      strengths: "Useful for long documents, careful reasoning and detailed analysis",
+      bestFor: "Essay feedback, research analysis, document review, critical thinking",
+      pricing: "Free + paid tiers",
+      link: "https://claude.ai",
+      features: "Long-document support, document uploads, detailed reasoning",
+      studentTip: "Useful for detailed feedback on your drafts and for analysing complex readings"
     },
-    { 
-      name: "Gemini", 
-      provider: "Google", 
-      strengths: "Integrates with Google Workspace, real-time information access", 
-      bestFor: "Research with current information, Google Docs integration, fact-checking", 
-      pricing: "Free + £16/month Advanced", 
-      link: "https://gemini.google.com", 
+    {
+      name: "Gemini",
+      provider: "Google",
+      strengths: "Integrates with Google Workspace, real-time information access",
+      bestFor: "Research with current information, Google Docs integration, fact-checking",
+      pricing: "Free + paid tiers",
+      link: "https://gemini.google.com",
       features: "Google Search integration, Workspace connectivity, real-time information",
-      studentTip: "Great if you use Google Docs/Drive - seamlessly integrates with your existing workflow"
+      studentTip: "Useful if you already use Google Docs or Drive"
     },
-    { 
-      name: "Copilot", 
-      provider: "Microsoft", 
-      strengths: "Microsoft 365 integration, free with education accounts", 
-      bestFor: "Students using Microsoft tools, PowerPoint creation, Excel analysis", 
-      pricing: "Free with education account", 
-      link: "https://copilot.microsoft.com", 
+    {
+      name: "Copilot",
+      provider: "Microsoft",
+      strengths: "Microsoft 365 integration, free with education accounts",
+      bestFor: "Students using Microsoft tools, PowerPoint creation, Excel analysis",
+      pricing: "Often available through education accounts",
+      link: "https://copilot.microsoft.com",
       features: "Office integration, education benefits, document creation",
       studentTip: "Check if your university provides free access - often included in student Office 365"
     },
-    { 
-      name: "Perplexity", 
-      provider: "Perplexity AI", 
-      strengths: "Real-time web search with citations, research-focused", 
-      bestFor: "Finding current information, fact-checking, research with sources", 
-      pricing: "Free + £16/month Pro", 
-      link: "https://www.perplexity.ai", 
+    {
+      name: "Perplexity",
+      provider: "Perplexity AI",
+      strengths: "Real-time web search with citations, research-focused",
+      bestFor: "Finding current information, fact-checking, research with sources",
+      pricing: "Free + paid tiers",
+      link: "https://www.perplexity.ai",
       features: "Live web search, automatic citations, academic search mode",
-      studentTip: "Excellent for research projects - provides sources you can actually cite in your work"
+      studentTip: "Useful for finding sources to inspect, but only cite sources you have opened and checked yourself"
     },
-    { 
-      name: "NotebookLM", 
-      provider: "Google", 
-      strengths: "Upload your readings and chat with them, creates study materials", 
-      bestFor: "Analysing course readings, creating study guides, audio summaries", 
-      pricing: "Free + Plus tier", 
-      link: "https://notebooklm.google.com", 
+    {
+      name: "NotebookLM",
+      provider: "Google",
+      strengths: "Upload your readings and chat with them, creates study materials",
+      bestFor: "Analysing course readings, creating study guides, audio summaries",
+      pricing: "Free + Plus tier",
+      link: "https://notebooklm.google.com",
       features: "Document upload, study guide generation, podcast-style audio summaries",
       studentTip: "Upload lecture slides and readings to create personalised study materials"
     },
-    { 
-      name: "AI Studio", 
-      provider: "Google", 
-      strengths: "Free access to powerful models, multimodal capabilities", 
-      bestFor: "Advanced prompting, image analysis, experimental features", 
-      pricing: "Free", 
-      link: "https://aistudio.google.com", 
+    {
+      name: "AI Studio",
+      provider: "Google",
+      strengths: "Free access to multimodal model experiments",
+      bestFor: "Advanced prompting, image analysis, experimental features",
+      pricing: "Free",
+      link: "https://aistudio.google.com",
       features: "Advanced prompting, image/video analysis, system instructions",
-      studentTip: "Free alternative to paid tools - great for students on a budget"
+      studentTip: "Useful for experimenting with prompts, but check current data settings before uploading files"
     },
-    { 
-      name: "Meta AI", 
-      provider: "Meta", 
-      strengths: "Image generation, creative tasks, social integration", 
-      bestFor: "Creative projects, visual presentations, social media content", 
-      pricing: "Free", 
-      link: "https://www.meta.ai", 
+    {
+      name: "Duck.ai",
+      provider: "DuckDuckGo",
+      strengths: "Privacy-focused access to several chat models without needing an account",
+      bestFor: "Low-risk brainstorming, comparing model responses, private practice prompts",
+      pricing: "Free + subscription options",
+      link: "https://duck.ai",
+      features: "Proxies requests, removes personal metadata before model-provider requests, no chat model training on conversations",
+      studentTip: "Useful when you want less tracking for ordinary study questions, but still do not upload confidential or identifiable data"
+    },
+    {
+      name: "Lumo",
+      provider: "Proton",
+      strengths: "Privacy-first AI assistant from Proton with zero-access encrypted chat history",
+      bestFor: "Private study notes, low-risk drafts and general academic planning",
+      pricing: "Free + paid tiers",
+      link: "https://lumo.proton.me",
+      features: "Runs on Proton-controlled servers, no-logs policy, no chat training, optional web search",
+      studentTip: "Good for privacy-conscious study support; check whether web search or file uploads are appropriate for your material"
+    },
+    {
+      name: "Brave Leo",
+      provider: "Brave",
+      strengths: "Browser-integrated AI assistant with privacy-focused defaults",
+      bestFor: "Summarising public web pages, translation, quick explanations from the current tab",
+      pricing: "Free + paid tiers",
+      link: "https://brave.com/leo/",
+      features: "No account required for free use, conversations not persisted for model training, optional local chat history",
+      studentTip: "Handy for page-level tasks, but verify summaries against the page and avoid relying on it as a citation source"
+    },
+    {
+      name: "Okara",
+      provider: "Okara",
+      strengths: "Privacy-focused multi-model workspace with encrypted-at-rest chat history",
+      bestFor: "Students who want a private workspace for low-risk AI conversations",
+      pricing: "Free + paid tiers",
+      link: "https://okara.ai",
+      features: "Encrypted storage, zero-access architecture for stored conversation history, access to multiple models",
+      studentTip: "Newer privacy-focused option. Check the current terms before using it with anything sensitive"
+    },
+    {
+      name: "Meta AI",
+      provider: "Meta",
+      strengths: "Image generation, creative tasks, social integration",
+      bestFor: "Creative projects, visual presentations, social media content",
+      pricing: "Free",
+      link: "https://www.meta.ai",
       features: "Image generation, creative writing, social platform integration",
-      studentTip: "Perfect for creating visuals for presentations or creative assignments"
+      studentTip: "Useful for creative visual ideas when images are allowed by the assignment brief"
     },
-    { 
-      name: "Mistral AI", 
-      provider: "Mistral AI", 
-      strengths: "Strong multilingual capabilities, excellent coding assistance, European AI alternative", 
-      bestFor: "Coding projects, multilingual tasks, European language support, research", 
-      pricing: "Free + Paid tiers", 
-      link: "https://mistral.ai/", 
+    {
+      name: "Mistral AI",
+      provider: "Mistral AI",
+      strengths: "Multilingual capabilities, coding assistance, European AI alternative",
+      bestFor: "Coding projects, multilingual tasks, European language support, research",
+      pricing: "Free + Paid tiers",
+      link: "https://mistral.ai/",
       features: "Le Chat interface, multilingual support, coding assistance, document processing",
-      studentTip: "Excellent choice for coding students and those needing strong European language support"
+      studentTip: "Worth trying for coding support and European language tasks, with normal checking required"
     },
-    { 
-      name: "Qwen", 
-      provider: "Alibaba Cloud", 
-      strengths: "Advanced reasoning capabilities, multimodal processing, educational applications", 
-      bestFor: "Complex reasoning tasks, coding, mathematical problems, research analysis", 
-      pricing: "Free + Paid tiers", 
-      link: "https://chat.qwen.ai/", 
+    {
+      name: "Qwen",
+      provider: "Alibaba Cloud",
+      strengths: "Advanced reasoning capabilities, multimodal processing, educational applications",
+      bestFor: "Complex reasoning tasks, coding, mathematical problems, research analysis",
+      pricing: "Free + Paid tiers",
+      link: "https://chat.qwen.ai/",
       features: "Multimodal processing, long context understanding, educational tools, strong reasoning",
-      studentTip: "Perfect for complex problem-solving and mathematical reasoning - excellent for STEM subjects"
+      studentTip: "Useful for complex problem-solving practice, but work through the steps yourself before relying on an answer"
     },
-    { 
-      name: "DeepSeek", 
-      provider: "DeepSeek AI", 
-      strengths: "Exceptional reasoning and coding abilities, cost-effective, strong performance on technical tasks", 
-      bestFor: "Programming assignments, mathematical problem-solving, logical reasoning, STEM coursework", 
-      pricing: "Free + Paid API", 
-      link: "https://chat.deepseek.com/", 
-      features: "Advanced reasoning, superior coding capabilities, mathematics, competitive performance with leading models",
-      studentTip: "Ideal for computer science and engineering students - excels at debugging code and explaining complex algorithms"
+    {
+      name: "DeepSeek",
+      provider: "DeepSeek AI",
+      strengths: "Reasoning and coding support, with a focus on technical tasks",
+      bestFor: "Programming assignments, mathematical problem-solving, logical reasoning, STEM coursework",
+      pricing: "Free + Paid API",
+      link: "https://chat.deepseek.com/",
+      features: "Reasoning, coding support, mathematics, technical explanations",
+      studentTip: "Useful for computer science and engineering practice, but test code and calculations yourself"
     },
-    { 
-      name: "Kimi", 
-      provider: "Moonshot AI", 
-      strengths: "Extremely large context window (2M+ tokens), ideal for long-form text analysis", 
-      bestFor: "Summarising entire books, analysing multiple research papers, finding details in massive documents", 
-      pricing: "Free", 
-      link: "https://kimi.ai/", 
-      features: "Massive context window, PDF/doc/txt uploads, web search, high-speed processing",
-      studentTip: "Upload your entire semester's readings at once and ask it to find connections between them."
+    {
+      name: "Kimi",
+      provider: "Moonshot AI",
+      strengths: "Long-context document analysis",
+      bestFor: "Summarising long texts, analysing multiple papers, finding candidate details in large documents",
+      pricing: "Free",
+      link: "https://kimi.ai/",
+      features: "Large context window, PDF/doc/txt uploads, web search",
+      studentTip: "Use focused uploads and verify important connections against the original sources."
     },
-    { 
-      name: "Ernie", 
-      provider: "Baidu", 
-      strengths: "State-of-the-art performance, especially strong in Chinese language, powerful multimodal skills", 
-      bestFor: "Chinese language studies, multimodal projects, complex reasoning, advanced research", 
-      pricing: "Free + Paid tiers", 
-      link: "https://ernie.baidu.com/", 
-      features: "Advanced multimodal understanding, flagship Chinese-language model, real-time information, image generation",
-      studentTip: "The go-to tool if your studies involve Chinese language or media. Also a powerful all-rounder."
+    {
+      name: "LM Studio / Ollama / Jan",
+      provider: "Local AI tools",
+      strengths: "Run open models on your own computer rather than sending prompts to a cloud chat service",
+      bestFor: "Privacy-conscious experimentation, offline drafting support, learning how models behave",
+      pricing: "Free",
+      link: "https://lmstudio.ai/",
+      features: "Local model downloads, offline chat options, model switching depending on your device",
+      studentTip: "Local does not mean correct. Use for material you can check carefully, and make sure your device can handle the model"
+    },
+    {
+      name: "Ernie",
+      provider: "Baidu",
+      strengths: "Chinese-language support and multimodal features",
+      bestFor: "Chinese language studies, multimodal projects, complex reasoning practice",
+      pricing: "Free + Paid tiers",
+      link: "https://ernie.baidu.com/",
+      features: "Multimodal understanding, Chinese-language support, real-time information, image generation",
+      studentTip: "Worth considering if your studies involve Chinese language or media; check outputs carefully."
     }
   ];
 
@@ -333,9 +406,9 @@ document.addEventListener('DOMContentLoaded', function() {
     studentAiPlatforms.forEach((platform) => {
       const card = document.createElement('div');
       card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
-      
+
       const priceColor = platform.pricing.includes('Free') ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800';
-      
+
       card.innerHTML = `
         <div class="flex justify-between items-start mb-3">
           <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
