@@ -51,7 +51,7 @@
              class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="study-strategies.html">Study Strategies</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="research.html">Research & Essays</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Tools</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Platforms</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="toolkit.html">Toolkit</a>
         </div>
       </div>
@@ -76,6 +76,7 @@
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
       </div>
@@ -114,7 +115,7 @@
       <nav class="pl-4 py-1 space-y-1">
         <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Study Strategies</a>
         <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research & Essays</a>
-        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Tools</a>
+        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Platforms</a>
         <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Toolkit</a>
       </nav>
     </details>
@@ -131,6 +132,7 @@
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
         <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
     </details>
@@ -152,18 +154,18 @@
       <div class="grid md:grid-cols-2 gap-6">
         <div>
           <h4 class="font-semibold text-slate-700 mb-2">Free Options First</h4>
-          <ul class="text-sm text-slate-600 space-y-1">
-            <li>• Start with free tiers and tools your university already provides</li>
-            <li>• Use free tiers of ChatGPT, Claude, and Gemini</li>
-            <li>• Check if your university provides Microsoft Copilot</li>
+          <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+            <li>Start with free tiers and tools your university already provides</li>
+            <li>Use free tiers of ChatGPT, Claude, and Gemini</li>
+            <li>Check if your university provides Microsoft Copilot</li>
           </ul>
         </div>
         <div>
           <h4 class="font-semibold text-slate-700 mb-2">When to Consider Paid</h4>
-          <ul class="text-sm text-slate-600 space-y-1">
-            <li>• Heavy usage during exam periods</li>
-            <li>• Need faster responses for time-sensitive work</li>
-            <li>• Working with large documents regularly</li>
+          <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+            <li>Heavy usage during exam periods</li>
+            <li>Need faster responses for time-sensitive work</li>
+            <li>Working with large documents regularly</li>
           </ul>
         </div>
       </div>
@@ -172,6 +174,7 @@
     <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
       <h3 class="text-2xl font-bold text-slate-800 mb-4">Privacy and Security: Match the Tool to the Data</h3>
       <p class="text-slate-700 mb-6">Use the lowest-risk tool that fits the task. Security-focused platforms can reduce exposure, but they do not remove your responsibility to check accuracy, follow the assignment brief, and avoid uploading material you do not have permission to share.</p>
+      <p class="text-sm text-slate-600 mb-6"><strong>Check current details:</strong> product features, pricing, model access and privacy settings change frequently. Treat the platforms below as examples and check current provider documentation, plus any institutional guidance, before uploading assessed, personal or sensitive material.</p>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
           <h4 class="font-bold text-sky-700 mb-2">Public chat tools</h4>
@@ -193,9 +196,8 @@
     </div>
 
     <div class="bg-white rounded-xl shadow-lg p-8">
-      <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <p class="col-span-full text-center text-slate-600">Loading AI platforms...</p>
-      </div>
+      <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <noscript><p class="text-center text-slate-600">Enable JavaScript to use the AI platforms explorer.</p></noscript>
     </div>
     <div class="text-center mt-8">
       <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>

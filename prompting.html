@@ -54,7 +54,7 @@
              class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="study-strategies.html">Study Strategies</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="research.html">Research & Essays</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Tools</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Platforms</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="toolkit.html">Toolkit</a>
         </div>
       </div>
@@ -81,6 +81,7 @@
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
       </div>
@@ -122,7 +123,7 @@
       <nav class="pl-4 py-1 space-y-1">
         <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Study Strategies</a>
         <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research & Essays</a>
-        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Tools</a>
+        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Platforms</a>
         <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Toolkit</a>
       </nav>
     </details>
@@ -139,6 +140,7 @@
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
         <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
     </details>
@@ -187,7 +189,7 @@
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-emerald-700">2. Task</h4><p class="text-sm text-slate-600 mt-1">Name the action: explain, quiz, compare, organise, critique or suggest checks.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-purple-700">3. Context</h4><p class="text-sm text-slate-600 mt-1">State your level, module, assignment type, marking criteria and current progress.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-amber-700">4. Source Material</h4><p class="text-sm text-slate-600 mt-1">Paste the relevant extract, notes, rubric or data. Do not ask the model to invent evidence.</p></div>
-      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-rose-700">5. Boundaries</h4><p class="text-sm text-slate-600 mt-1">Say what it must not do: no invented references, no final submission text, no unsupported claims.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-rose-700">5. Boundaries</h4><p class="text-sm text-slate-600 mt-1">Say what it must not do: no invented references, no unsupported claims, and no submission-ready wording unless the brief explicitly permits it.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-indigo-700">6. Format</h4><p class="text-sm text-slate-600 mt-1">Ask for a checklist, table, outline, questions, paragraph-level feedback or revision plan.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 lg:col-span-2"><h4 class="font-bold text-teal-700">7. Verification</h4><p class="text-sm text-slate-600 mt-1">Ask it to flag uncertainty, missing evidence, claims to check, and where your own judgement is needed.</p></div>
     </div>
@@ -197,7 +199,7 @@
 Task: Help me improve my plan, not write the assignment for me.
 Context: I am a [level] student on [module]. The task is [brief summary]. I have already done [reading/thinking so far].
 Source material: [paste assignment brief, rubric, notes or short extract].
-Boundaries: Use only the material I provide. Do not invent citations, statistics or claims. Do not write final submission paragraphs.
+Boundaries: Use only the material I provide. Do not invent citations, statistics or claims. Do not produce submission-ready wording unless this assessment explicitly permits AI-generated text.
 Format: Give me a table with: point | what works | missing evidence | question I should answer next.
 Verification: Flag any claim that needs checking in the original source or library database. Separate evidence from interpretation.</pre>
     </div>

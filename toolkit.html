@@ -58,7 +58,7 @@
              class="absolute left-0 mt-2 w-64 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="study-strategies.html">Study Strategies</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="research.html">Research & Essays</a>
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Tools</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="ai-platforms.html">AI Platforms</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="toolkit.html">Toolkit</a>
         </div>
       </div>
@@ -85,6 +85,7 @@
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
       </div>
@@ -126,7 +127,7 @@
       <nav class="pl-4 py-1 space-y-1">
         <a href="study-strategies.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Study Strategies</a>
         <a href="research.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Research & Essays</a>
-        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Tools</a>
+        <a href="ai-platforms.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">AI Platforms</a>
         <a href="toolkit.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Toolkit</a>
       </nav>
     </details>
@@ -143,6 +144,7 @@
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
         <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
     </details>
@@ -165,8 +167,9 @@
       <h2 class="text-3xl font-bold text-center text-slate-800">Featured Student Tools</h2>
 
       <div class="bg-white rounded-xl shadow-lg p-8 tool-card">
-        <h3 class="text-2xl font-bold text-sky-700 mb-4">NotebookLM</h3>
-        <p class="text-slate-600 mb-6">NotebookLM is a source-grounded research assistant designed to work with sources you upload, such as PDFs, Docs and websites. It can provide inline citations and help you navigate a focused source set, but you still need to check that the cited passage supports the answer.</p>
+      <h3 class="text-2xl font-bold text-sky-700 mb-4">NotebookLM</h3>
+      <p class="text-slate-600 mb-6">NotebookLM is a source-grounded research assistant designed to work with sources you upload, such as PDFs, Docs and websites. It can provide inline citations and help you navigate a focused source set, but you still need to check that the cited passage supports the answer.</p>
+      <p class="text-sm text-slate-600 mb-6"><strong>Check current details:</strong> product features, pricing, model access and privacy settings change frequently. Treat the tools listed here as examples and check current provider documentation before relying on a feature for assessed work.</p>
         <div class="grid md:grid-cols-2 gap-8">
             <div>
                 <h4 class="text-lg font-semibold text-slate-700 mb-3">Key Student Benefits</h4>
@@ -187,23 +190,25 @@
             </div>
         </div>
         <div class="mt-8">
-             <h4 class="text-lg font-semibold text-slate-700 mb-3">Free vs. Plus Comparison</h4>
-             <div class="overflow-x-auto">
-                <table class="w-full text-sm comparison-table">
-                    <thead>
-                        <tr><th>Feature</th><th>Free</th><th>Plus (Paid)</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Notebooks</td><td>100</td><td>Up to 500</td></tr>
-                        <tr><td>Sources per notebook</td><td>50</td><td>Up to 300</td></tr>
-                        <tr><td>Chat queries/day</td><td>50</td><td>500</td></tr>
-                        <tr><td>Audio Overviews/day</td><td>3</td><td>20</td></tr>
-                        <tr><td>Summary Customisation</td><td>✖</td><td>✔ Tone, style, length</td></tr>
-                        <tr><td>Sharing & Analytics</td><td>✖</td><td>✔ Shared notebooks, usage insights</td></tr>
-                        <tr><td>Enterprise Privacy & Security</td><td>Standard user-level</td><td>IAM, VPC‑SC, organisational controls</td></tr>
-                    </tbody>
-                </table>
+          <h4 class="text-lg font-semibold text-slate-700 mb-3">Choosing a NotebookLM Account or Tier</h4>
+          <div class="grid md:grid-cols-2 gap-4" role="list" aria-label="NotebookLM account checks">
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4" role="listitem">
+              <h5 class="font-bold text-slate-800 mb-2">Capacity</h5>
+              <p class="text-sm text-slate-600">Check the current limits for notebooks, sources, chat use and audio overviews. These limits change more often than study habits do.</p>
             </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4" role="listitem">
+              <h5 class="font-bold text-slate-800 mb-2">Privacy and account type</h5>
+              <p class="text-sm text-slate-600">A personal account, institution-approved account and paid workspace can have different controls. Check before uploading assessed, unpublished or personal material.</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4" role="listitem">
+              <h5 class="font-bold text-slate-800 mb-2">Sharing and collaboration</h5>
+              <p class="text-sm text-slate-600">Before group work, confirm whether sharing, access control and usage visibility match your module rules and group agreement.</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-lg p-4" role="listitem">
+              <h5 class="font-bold text-slate-800 mb-2">Output controls</h5>
+              <p class="text-sm text-slate-600">Features such as summary style, length and export options may vary. Treat outputs as study aids, then verify them against the cited source passages.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -317,9 +322,8 @@
           </select>
         </div>
       </div>
-      <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <p class="col-span-full text-center text-slate-600">Loading toolkit...</p>
-      </div>
+      <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      <noscript><p class="text-center text-slate-600">Enable JavaScript to use the toolkit explorer.</p></noscript>
     </div>
     <div class="text-center mt-8">
       <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
