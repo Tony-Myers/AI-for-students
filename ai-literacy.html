@@ -12,9 +12,16 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .principle-card { transition:transform .3s,box-shadow .3s }
-    .principle-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="ai-literacy.html"] { color:#0369a1; background:#f0f9ff; font-weight:600; }
+    .literacy-content > div > p { max-width:75ch; }
+    .literacy-content a { color:#0369a1; text-decoration:underline; text-underline-offset:3px; }
+    .literacy-content a:hover { color:#075985; }
+    .literacy-content .principle-card { border-top:3px solid #7dd3fc; box-shadow:0 1px 3px rgba(15,23,42,.04); }
+    .literacy-content .principle-card h3 { color:#0f172a; }
+    .literacy-content .literacy-caution { border-left:3px solid #b45309; padding:.75rem 1rem; background:#fffbeb; color:#78350f; }
+    .literacy-content .literacy-guidance { border-left:3px solid #047857; padding-left:1.25rem; }
+    @media (prefers-reduced-motion:reduce) { .nav-link { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -87,8 +94,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -146,7 +153,7 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
     <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
@@ -158,64 +165,64 @@
     <h1 class="text-3xl font-bold">Building Your AI Literacy as a Student</h1>
     <p class="max-w-3xl mx-auto">Understand → Decide → Interrogate → Verify → Account</p>
   </div>
-  <div class="bg-white rounded-xl shadow-lg p-8 space-y-8">
-    <div class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-lg border border-indigo-200 mb-6">
-      <h3 class="text-xl font-bold text-indigo-700 mb-4">What is AI Literacy for Students?</h3>
+  <div class="literacy-content space-y-10">
+    <div class="mb-6">
+      <h3 class="text-xl font-bold text-slate-900 mb-4">What is AI Literacy for Students?</h3>
       <p class="text-slate-700 leading-relaxed mb-4">AI literacy means understanding generative AI, deciding whether it is useful for a particular learning task, questioning its outputs, checking evidence and accounting for your decisions. Using AI is optional unless your assessment requires it.</p>
       <div class="grid md:grid-cols-3 gap-3 mb-4">
-        <div class="bg-white/70 p-4 rounded border border-indigo-100">
-          <h4 class="font-semibold text-indigo-700 mb-1">Collaborator, not evidence</h4>
+        <div class="bg-white p-5 rounded-lg border border-slate-200">
+          <h4 class="font-semibold text-slate-800 mb-1">Collaborator, not evidence</h4>
           <p class="text-sm text-slate-600">AI can help you generate questions, test ideas and improve clarity. Your course readings, data, sources and judgement carry the academic weight.</p>
         </div>
-        <div class="bg-white/70 p-4 rounded border border-indigo-100">
-          <h4 class="font-semibold text-indigo-700 mb-1">Verification is part of the task</h4>
+        <div class="bg-white p-5 rounded-lg border border-slate-200">
+          <h4 class="font-semibold text-slate-800 mb-1">Verification is part of the task</h4>
           <p class="text-sm text-slate-600">Do not leave checking until the end. Build source checks, uncertainty flags and evidence questions into the way you prompt and write.</p>
         </div>
-        <div class="bg-white/70 p-4 rounded border border-indigo-100">
-          <h4 class="font-semibold text-indigo-700 mb-1">Use the right tool for the risk</h4>
+        <div class="bg-white p-5 rounded-lg border border-slate-200">
+          <h4 class="font-semibold text-slate-800 mb-1">Use the right tool for the risk</h4>
           <p class="text-sm text-slate-600">Use only material you are permitted to share. Personal, confidential, unpublished or other students' material may be unsuitable to upload, including to a service marketed as private.</p>
         </div>
       </div>
-      <p class="text-slate-700 leading-relaxed">Test your current knowledge with <a href="https://forms.cloud.microsoft/e/ZuEQnacEvV" class="text-indigo-600 font-semibold hover:underline" target="_blank" rel="noopener noreferrer">The Generative AI Literacy Assessment Test</a>.</p>
+      <p class="text-slate-700 leading-relaxed">Test your current knowledge with <a href="https://forms.cloud.microsoft/e/ZuEQnacEvV" class="text-sky-700 font-semibold underline hover:text-sky-800" target="_blank" rel="noopener noreferrer">The Generative AI Literacy Assessment Test</a>.</p>
     </div>
     <div class="border-t border-slate-200 pt-8">
       <h2 class="text-2xl font-bold text-slate-800 mb-6">Understand → Decide → Interrogate → Verify → Account</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <article class="principle-card bg-sky-50 p-6 rounded border border-sky-200">
-          <h3 class="text-lg font-bold text-sky-700 mb-3">Understand</h3>
+        <article class="principle-card bg-white p-6 rounded-lg border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Understand</h3>
           <p class="text-slate-700 mb-3">Understand what generative AI can and cannot do. It generates plausible outputs from learned patterns and supplied context. It can help explore questions and organise material, but it can also invent evidence, misrepresent sources or reason incorrectly.</p>
           <p class="text-sm text-slate-600">A fluent answer is not evidence of accuracy. See <a href="understanding-ai.html" class="text-sky-700 underline">Understanding AI</a>.</p>
         </article>
-        <article class="principle-card bg-emerald-50 p-6 rounded border border-emerald-200">
-          <h3 class="text-lg font-bold text-emerald-700 mb-3">Decide</h3>
+        <article class="principle-card bg-white p-6 rounded-lg border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Decide</h3>
           <p class="text-slate-700 mb-3">Identify what you need to learn before choosing a tool. Would AI add value compared with attempting the task yourself, using course resources or asking a tutor? Sometimes the appropriate decision is not to use AI.</p>
           <p class="text-sm text-slate-600">Ask whether AI would support the learning or reasoning the assessment is intended to develop, or do that work for you.</p>
         </article>
-        <article class="principle-card bg-amber-50 p-6 rounded border border-amber-200">
-          <h3 class="text-lg font-bold text-amber-700 mb-3">Interrogate</h3>
+        <article class="principle-card bg-white p-6 rounded-lg border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Interrogate</h3>
           <p class="text-slate-700 mb-3">Question outputs actively. Challenge assumptions, ask what might be missing and consider alternative explanations. Compare the response with your own attempt and explain your reasoning in your own words.</p>
           <p class="text-sm text-slate-600">A helpful prompt can improve an interaction, but it cannot guarantee reliability. See the <a href="prompting.html" class="text-sky-700 underline">Prompting Guide</a>.</p>
         </article>
-        <article class="principle-card bg-purple-50 p-6 rounded border border-purple-200">
-          <h3 class="text-lg font-bold text-purple-700 mb-3">Verify</h3>
+        <article class="principle-card bg-white p-6 rounded-lg border border-slate-200">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Verify</h3>
           <p class="text-slate-700 mb-3">Check important claims against appropriate original or credible sources and evidence. Locate and read suggested sources: check that they exist and actually support the claim, with relevant context and limitations.</p>
-          <p class="text-sm text-slate-600">Citations, web access and agreement between AI systems do not establish truth. Follow the <a href="limitations.html" class="text-sky-700 underline">detailed verification guidance</a>.</p>
+          <p class="literacy-caution text-sm">Citations, web access and agreement between AI systems do not establish truth. Follow the <a href="limitations.html" class="text-sky-700 underline">detailed verification guidance</a>.</p>
         </article>
-        <article class="principle-card bg-rose-50 p-6 rounded border border-rose-200 md:col-span-2">
-          <h3 class="text-lg font-bold text-rose-700 mb-3">Account</h3>
+        <article class="principle-card bg-white p-6 rounded-lg border border-slate-200 md:col-span-2">
+          <h3 class="text-lg font-bold text-slate-900 mb-3">Account</h3>
           <p class="text-slate-700 mb-3">You remain responsible for what you submit, including evidence, argument and final judgement. Follow assessment-specific permission and disclosure requirements, and keep a record of AI contributions and the checks you completed where required.</p>
-          <p class="text-sm text-slate-600">The assessment brief or explicit staff guidance takes precedence over this general guide. Disclosure does not make prohibited use permissible. See <a href="academic-integrity.html" class="text-sky-700 underline">assessment permission, disclosure and privacy</a>.</p>
+          <p class="literacy-caution text-sm">The assessment brief or explicit staff guidance takes precedence over this general guide. Disclosure does not make prohibited use permissible. See <a href="academic-integrity.html" class="text-sky-700 underline">assessment permission, disclosure and privacy</a>.</p>
         </article>
       </div>
     </div>
-    <div class="border-t border-slate-200 pt-8">
-      <h2 class="text-2xl font-bold text-slate-800 mb-4">Collaborator, not evidence</h2>
+    <div class="literacy-guidance border-t border-slate-200 pt-8">
+      <h2 class="text-2xl font-bold text-emerald-700 mb-4">Collaborator, not evidence</h2>
       <p class="text-slate-700 mb-3">AI can help you generate questions, practise explanations and review your own work. Your course readings, data, original sources and judgement carry the academic weight. You should be able to explain, evidence and defend what you submit.</p>
       <p class="text-slate-700">Practice questions, brainstorming and draft feedback still depend on the assessment rules. Do not assume that a task is permitted simply because you describe it as learning support.</p>
     </div>
   </div>
   <div class="text-center mt-8">
-    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
   </div>
 </main>
 
