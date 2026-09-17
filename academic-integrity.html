@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI for Students · Academic Integrity & Responsible Use</title>
-  <meta name="description" content="What’s allowed with AI, how to disclose use, avoid plagiarism, protect your data, and think ethically.">
+  <meta name="description" content="Assessment-specific AI permission, accurate disclosure, privacy and student responsibility.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
   <!-- Header -->
 <!-- Header / Navigation (Dropdowns + CTAs) -->
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+        x-data="{ openMenu:false, openDropdown:null }" @keydown.escape="openDropdown=null; openMenu=false">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand -->
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
@@ -35,7 +35,7 @@
 
       <!-- Getting Started -->
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='start'" :aria-expanded="openDropdown === 'start' ? 'true' : 'false'">
           Getting Started
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -49,7 +49,7 @@
 
       <!-- Study Support -->
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='study'" :aria-expanded="openDropdown === 'study' ? 'true' : 'false'">
           Study Support
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -64,7 +64,7 @@
 
       <!-- Integrity & Policy -->
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='integrity'" :aria-expanded="openDropdown === 'integrity' ? 'true' : 'false'">
           Integrity & Policy
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -77,13 +77,13 @@
 
       <!-- Resources & Guides -->
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='resources'" :aria-expanded="openDropdown === 'resources' ? 'true' : 'false'">
           Resources
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">Gemini Notebook Tutorial</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
@@ -98,7 +98,7 @@
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+              :aria-expanded="openMenu ? 'true' : 'false'" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"/>
@@ -142,7 +142,7 @@
     <details class="rounded">
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Gemini Notebook Tutorial</a>
         <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
@@ -159,24 +159,24 @@
     <!-- Hero -->
     <section class="bg-slate-900 text-white rounded-2xl p-8 sm:p-12">
       <h1 class="text-3xl md:text-4xl font-extrabold">Use AI responsibly</h1>
-      <p class="mt-3 max-w-3xl text-slate-200">This page explains what’s allowed, how to acknowledge AI use, how to protect your privacy, and how to verify AI-supported work before you submit.</p>
+      <p class="mt-3 max-w-3xl text-slate-200">Use this page for assessment permission, disclosure and privacy. The assessment brief or explicit staff guidance takes precedence over this general guidance. You remain responsible for what you submit.</p>
       <div class="mt-6 grid gap-3 sm:grid-cols-3">
         <a href="#traffic" class="rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold px-4 py-2 text-center">What’s allowed</a>
         <a href="#disclose" class="rounded-lg bg-slate-700 hover:bg-slate-600 font-semibold px-4 py-2 text-center">How to disclose AI use</a>
         <a href="#ethics" class="rounded-lg bg-emerald-700 hover:bg-emerald-600 font-semibold px-4 py-2 text-center">Ethics checklist</a>
       </div>
       <div class="callout callout-tip mt-6">
-        <strong>Tip:</strong> Keep a short <em>AI use log</em> while you work (date, tool, what you did, what changed). It makes disclosure easy and protects your marks.
+        <strong>Tip:</strong> Keep a short <em>AI use log</em> while you work (date, tool, what you did, what changed). It helps you describe the actual contribution of AI and the checks you completed.
       </div>
     </section>
 
     <!-- Traffic light examples -->
     <section id="traffic" class="mt-10">
       <h2 class="text-2xl md:text-3xl font-bold">What’s allowed? (quick guide)</h2>
-      <p class="text-slate-600 dark:text-slate-300">Always check your assignment brief. Policies differ by task and module.</p>
+      <p class="text-slate-600 dark:text-slate-300">Always check your assessment brief or explicit staff guidance. Permission differs by task and module; these examples do not authorise AI use. Disclosure does not make prohibited use permissible.</p>
       <div class="mt-6 grid gap-4 md:grid-cols-3">
         <div class="rounded-xl border border-slate-200 p-5 bg-white dark:bg-slate-900">
-          <div class="badge badge-green">Green — usually allowed</div>
+          <div class="badge badge-green">Uses that may be permitted — check your assessment</div>
           <ul class="mt-3 list-disc list-inside text-slate-700 dark:text-slate-300 text-sm space-y-1">
             <li>Brainstorming topics and outlines</li>
             <li>Explaining concepts in your own words</li>
@@ -185,19 +185,19 @@
           </ul>
         </div>
         <div class="rounded-xl border border-slate-200 p-5 bg-white dark:bg-slate-900">
-          <div class="badge badge-amber">Amber — ask first</div>
+          <div class="badge badge-amber">Assessment-dependent uses — check first</div>
           <ul class="mt-3 list-disc list-inside text-slate-700 dark:text-slate-300 text-sm space-y-1">
-            <li>Summarising readings you <em>cannot share</em> (copyright/confidential)</li>
+            <li>Summarising readings where upload permission needs checking</li>
             <li>Rewriting paragraphs for you</li>
             <li>Producing reference lists (risk of fabricated citations)</li>
-            <li>Uploading personal data or other students’ work</li>
+            <li>Uploading material whose sharing permission is unclear</li>
           </ul>
         </div>
         <div class="rounded-xl border border-slate-200 p-5 bg-white dark:bg-slate-900">
-          <div class="badge badge-red">Red — not allowed</div>
+          <div class="badge badge-red">Normally inappropriate unless explicitly permitted</div>
           <ul class="mt-3 list-disc list-inside text-slate-700 dark:text-slate-300 text-sm space-y-1">
-            <li>Submitting AI‑generated text or images as your own ideas</li>
-            <li>Faking or padding citations/DOIs</li>
+            <li>Using AI-generated submission material outside the permitted uses</li>
+            <li>Replacing the reasoning or practice you are required to demonstrate</li>
             <li>Using AI during closed assessments without permission</li>
             <li>Automating tasks the brief asks you to do yourself</li>
           </ul>
@@ -205,45 +205,44 @@
       </div>
     </section>
 
-    <!-- Levels framework (condensed for students) -->
     <section class="mt-12">
-      <h2 class="text-2xl md:text-3xl font-bold">Assignment AI levels (check your brief)</h2>
-      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">Many modules specify how AI may be used for each assessment. Here’s a student‑friendly summary:</p>
+      <h2 class="text-2xl md:text-3xl font-bold">Permission varies between assessments</h2>
+      <p class="text-slate-600 dark:text-slate-300 max-w-3xl mt-3">Some assessments prohibit AI, some permit specified uses, and some require it. The assessment brief or explicit staff guidance takes precedence over this general guide. If permission is unclear, ask your lecturer before using AI.</p>
       <div class="mt-6 grid md:grid-cols-2 gap-4">
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 1</h3><span class="badge badge-red">No AI</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">No AI at any stage. E.g., closed exams.</p></div>
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 2</h3><span class="badge badge-amber">Planning only</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Brainstorm/outline OK; <em>no AI text</em> in final work.</p></div>
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 3</h3><span class="badge badge-amber">Editing only</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">AI can improve clarity/grammar; ideas are yours.</p></div>
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 4</h3><span class="badge badge-blue">AI + analysis</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">AI produces parts; you critique/justify and cite.</p></div>
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 5</h3><span class="badge badge-green">Collaborate</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">AI is a co‑pilot throughout; disclose usage.</p></div>
-        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900"><div class="flex items-center justify-between"><h3 class="font-semibold">Level 6</h3><span class="badge badge-purple">Local extension</span></div><p class="mt-2 text-sm text-slate-700 dark:text-slate-300">A module may require AI use as part of the assessment. Use must be evidenced, reflected on and assessed according to that brief.</p></div>
+        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900">
+          <h3 class="font-semibold">Check the permitted contribution</h3>
+          <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">For example, planning or grammar feedback may be permitted while generated submission text is prohibited. An assessment may instead ask you to critique AI output. Follow the specific task, not a general category.</p>
+        </div>
+        <div class="p-5 rounded-xl border border-slate-200 bg-white dark:bg-slate-900">
+          <h3 class="font-semibold">Keep responsibility with you</h3>
+          <p class="mt-2 text-sm text-slate-700 dark:text-slate-300">Permission to use AI does not remove requirements to demonstrate your learning, protect data, verify claims or disclose the actual contribution. Disclosure does not make prohibited use permissible.</p>
+        </div>
       </div>
-      <div class="callout callout-warn mt-4">
-        <strong>Always check your assignment brief.</strong> If unsure, ask your lecturer <em>before</em> using AI.
-      </div>
+      <p class="text-slate-700 dark:text-slate-300 mt-4">Invented evidence and misrepresented sources are not made acceptable by permission to use AI. For claim and source checks, follow the <a href="limitations.html" class="text-sky-700 underline">detailed verification guidance</a>.</p>
     </section>
 
     <!-- How to disclose AI use -->
     <section id="disclose" class="mt-12">
       <h2 class="text-2xl md:text-3xl font-bold">How to acknowledge AI use</h2>
-      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">If AI helped you plan, edit or generate parts of your work, note it briefly. Keep a log while you work, then add a sentence to your introduction, methodology, or acknowledgements.</p>
-      <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">Follow the assessment's disclosure requirements for location, detail and records. Describe what AI actually contributed, what you changed and what you checked. Naming a product alone is insufficient. Adapt these examples to your actual use; do not make claims about authorship or verification that are untrue.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
           <h3 class="font-semibold">Short disclosure (generic)</h3>
-          <pre id="disc1" class="text-sm overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">I used an AI assistant (ChatGPT) to help brainstorm an outline and improve clarity. All ideas, analysis and final wording are my own. I verified facts and checked all references.</pre>
+          <pre id="disc1" class="text-sm whitespace-pre-wrap break-words overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">I used [tool and date/version, if required] to suggest possible essay structures and comment on clarity. I selected and revised the structure, developed the argument and wrote the submission. I checked the claims against [sources actually read]. [Describe any AI-generated wording retained and the checks completed, if permitted.]</pre>
           <button data-copy="#disc1" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
         </div>
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
-          <h3 class="font-semibold">Method-style disclosure (Level 4–6)</h3>
-          <pre id="disc2" class="text-sm overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">We used NotebookLM to query course readings and produce initial summaries. We cross-checked claims against the original sources and wrote our own synthesis. Draft sections were refined with Grammarly. Prompts and iterations are logged in Appendix A.</pre>
+          <h3 class="font-semibold">Disclosure for source analysis and editing</h3>
+          <pre id="disc2" class="text-sm whitespace-pre-wrap break-words overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">We used [source-grounded tool] to suggest summaries of [permitted readings] and [editing tool] to suggest wording changes. We checked the proposed summaries against the original passages, corrected [identified issues] and developed our synthesis. [State which generated material was retained, if permitted.] Records of prompts, decisions and checks are in [required location].</pre>
           <button data-copy="#disc2" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
         </div>
       </div>
       <details class="mt-4 rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
         <summary class="font-semibold cursor-pointer">AI use log template (copy into your notes)</summary>
-        <pre id="log" class="text-sm overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">Date | Tool | Purpose | Prompt/Action | What changed | Checks
+        <pre id="log" class="text-sm whitespace-pre-wrap break-words overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">Date | Tool | Purpose | Prompt/Action | What changed | Checks
 —|—|—|—|—|—
 2025‑10‑07 | ChatGPT | Brainstorm outline | “Suggest 5 angles on …” | Picked #3; added my examples | Facts checked in readings
-2025‑10‑08 | Grammarly | Edit | “Clarity + active voice” | Shorter sentences; no content changes | Reran Turnitin draft</pre>
+2025‑10‑08 | Grammarly | Edit | “Clarity + active voice” | Shorter sentences; no content changes | Compared edits with original meaning; checked claims against sources</pre>
         <button data-copy="#log" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
       </details>
     </section>
@@ -252,7 +251,7 @@
     <section class="mt-12">
       <h2 class="text-2xl md:text-3xl font-bold">Protect your data</h2>
       <p class="text-slate-600 dark:text-slate-300 max-w-3xl mt-2">Choose the smallest exposure that fits the job. A more private tool can reduce data risk, but it does not make AI output accurate or automatically permitted for an assessment.</p>
-      <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
         <div class="rounded-xl border border-slate-200 p-5 bg-white dark:bg-slate-900">
           <h3 class="font-semibold">Do not upload unless clearly allowed</h3>
           <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 text-sm space-y-1">
@@ -268,10 +267,10 @@
           <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 text-sm space-y-1">
             <li>Prefer institution-approved tools for anything beyond public, low-risk material</li>
             <li>Check whether chat history, training, retention and sharing settings are turned on</li>
-            <li>Use private or local tools for practice if privacy matters, but still verify the output</li>
-            <li>Verify facts and citations — do not paste AI references blindly</li>
+            <li>Check configured data flows and current terms even for services described as private or local; still verify the output</li>
+            <li><a href="limitations.html" class="text-sky-700 underline">Verify claims against original evidence</a> — do not paste AI references blindly</li>
             <li>Keep an AI use log; save key prompts and iterations</li>
-            <li>When unsure, ask your module leader and disclose</li>
+            <li>If permission is unclear, ask your module leader before using AI; follow the assessment's disclosure requirements</li>
           </ul>
         </div>
       </div>
@@ -279,7 +278,7 @@
 
     <section class="mt-12">
       <h2 class="text-2xl md:text-3xl font-bold">VALID-AI: before it goes near your assignment</h2>
-      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">Use this quick checklist for anything AI helped you produce, summarise or improve.</p>
+      <p class="text-slate-600 dark:text-slate-300 max-w-3xl">Use this quick reminder for AI-supported work. The <a href="limitations.html" class="text-sky-700 underline">detailed verification guide</a> explains how to check claims, sources and reasoning.</p>
       <div class="grid gap-4 md:grid-cols-5 mt-4">
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">V</div><h3 class="font-semibold mt-1">Verify sources</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Check that every citation exists and says what the output claims.</p></div>
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-emerald-700">A</div><h3 class="font-semibold mt-1">Assess authority</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Prioritise your module readings, library sources, primary material and official data.</p></div>
@@ -313,13 +312,13 @@
   </main>
 
   <footer class="bg-slate-800 text-white py-6 text-center text-sm">
-    Tony Myers © 2025
+    © 2025–2026 Tony Myers
   </footer>
 
   <script>
     // Ethics checklist items (condensed & student-facing)
     const ETHICS = [
-      {title:'Academic integrity', q:'Does this use align with the assignment level/policy?', bad:'Using AI to write your submission; unclear disclosure.', good:'Use AI to plan or edit when allowed; disclose briefly.'},
+      {title:'Academic integrity', q:'Does this use follow the assessment brief or explicit staff guidance?', bad:'Using AI outside permitted uses; replacing required reasoning; inaccurate disclosure.', good:'Follow assessment-specific permission and disclosure rules. Disclosure does not authorise prohibited use.'},
       {title:'Student data privacy', q:'What happens to the files you upload?', bad:'Uploading personal, confidential, placement or other students’ data.', good:'Remove PII; use approved tools; choose the smallest exposure that fits the task.'},
       {title:'Evidence & verification', q:'Can you prove the claim from a real source you have checked?', bad:'Using polished AI text as evidence; trusting invented or unchecked references.', good:'Use VALID-AI before submission and verify claims against original sources.'},
       {title:'Bias & fairness', q:'Could the output be biased or one‑sided?', bad:'Stereotyped content; weak with diverse names/cultures.', good:'Compare with multiple sources; use your own judgement.'}

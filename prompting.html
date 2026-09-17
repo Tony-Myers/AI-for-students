@@ -21,7 +21,7 @@
 
 <!-- Header / Navigation (Dropdowns + CTAs) -->
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+        x-data="{ openMenu:false, openDropdown:null }" @keydown.escape="openDropdown=null; openMenu=false">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand -->
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
@@ -32,7 +32,7 @@
 
       <!-- Getting Started -->
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='start'" :aria-expanded="openDropdown === 'start' ? 'true' : 'false'">
           Getting Started
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -46,7 +46,7 @@
 
       <!-- Study Support -->
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='study'" :aria-expanded="openDropdown === 'study' ? 'true' : 'false'">
           Study Support
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -61,7 +61,7 @@
 
       <!-- Integrity & Policy -->
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='integrity'" :aria-expanded="openDropdown === 'integrity' ? 'true' : 'false'">
           Integrity & Policy
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -74,13 +74,13 @@
 
       <!-- Resources & Guides -->
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='resources'" :aria-expanded="openDropdown === 'resources' ? 'true' : 'false'">
           Resources
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">Gemini Notebook Tutorial</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
@@ -95,7 +95,7 @@
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+              :aria-expanded="openMenu ? 'true' : 'false'" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"/>
@@ -139,7 +139,7 @@
     <details class="rounded">
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Gemini Notebook Tutorial</a>
         <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
@@ -155,12 +155,18 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-    <h2 class="text-3xl font-bold">Master AI Prompting for Academic Success</h2>
-    <p class="max-w-3xl mx-auto">Learn the essential techniques for getting the best results from AI tools. These evidence-based principles will help you study more effectively and complete assignments with confidence.</p>
+    <h1 class="text-3xl font-bold">Prompting for Study and Reflection</h1>
+    <p class="max-w-3xl mx-auto">Use a practical framework to describe your task, provide relevant context and make boundaries and verification needs explicit.</p>
   </div>
+  <section class="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-8">
+    <h2 class="text-xl font-bold text-amber-800 mb-3">Prompting has limits</h2>
+    <p class="text-slate-700 font-semibold mb-3">Good prompting can improve the conditions for a useful response. It does not guarantee that the response is accurate or reliable.</p>
+    <p class="text-slate-700">Prompts cannot enforce assessment permission or prevent hallucinations. Check <a href="academic-integrity.html" class="text-sky-700 underline">permission, disclosure and privacy</a> before sharing material, and follow the <a href="limitations.html" class="text-sky-700 underline">detailed verification guidance</a>. Disclosure does not make prohibited use permissible.</p>
+  </section>
+  <p class="text-slate-700 mb-6"><strong>Before using a template:</strong> Check permission to use AI and upload material; ask staff first if unclear. You remain responsible for your work: verify outputs against appropriate original or credible sources and follow assessment-specific disclosure requirements. Disclosure does not make prohibited use permissible.</p>
   <div class="bg-gradient-to-r from-sky-50 to-blue-50 rounded-xl p-6 mb-8 border border-sky-200">
     <h3 class="text-xl font-bold text-sky-700 mb-4">Student Prompt Templates</h3>
-    <p class="text-slate-600 mb-2">These templates are designed for students to copy and paste directly into AI tools. They provide structure for common academic tasks and help you maintain academic integrity.</p>
+    <p class="text-slate-600 mb-2">These templates provide a starting structure for common academic tasks. Adapt them to the help you need.</p>
     <ul class="list-disc list-inside text-slate-600 space-y-2 mb-6">
         <li>The <strong>Study Buddy</strong> template helps you understand difficult concepts through interactive dialogue.</li>
         <li>The <strong>Essay Planning</strong> template guides you through brainstorming and structuring academic essays.</li>
@@ -182,13 +188,13 @@
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <div class="text-center mb-8">
       <h3 class="text-2xl font-bold text-slate-800 mb-4">The 7-Part Student Prompt Framework</h3>
-      <p class="text-slate-600 max-w-3xl mx-auto">Good prompting is context design. This structure gives the model enough information to help, while making your boundaries and checks explicit.</p>
+      <p class="text-slate-600 max-w-3xl mx-auto">This is the principal framework for this guide. It helps you describe the task and context while making boundaries and checks explicit. First decide whether AI adds value to your learning task.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-sky-700">1. Role</h4><p class="text-sm text-slate-600 mt-1">What kind of help do you need: tutor, reviewer, planning partner, critic?</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-emerald-700">2. Task</h4><p class="text-sm text-slate-600 mt-1">Name the action: explain, quiz, compare, organise, critique or suggest checks.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-purple-700">3. Context</h4><p class="text-sm text-slate-600 mt-1">State your level, module, assignment type, marking criteria and current progress.</p></div>
-      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-amber-700">4. Source Material</h4><p class="text-sm text-slate-600 mt-1">Paste the relevant extract, notes, rubric or data. Do not ask the model to invent evidence.</p></div>
+      <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-amber-700">4. Source Material</h4><p class="text-sm text-slate-600 mt-1">Use only relevant extracts, notes, rubrics or data you are permitted to share. Do not upload confidential, personal or other students' material. Do not ask the model to invent evidence.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-rose-700">5. Boundaries</h4><p class="text-sm text-slate-600 mt-1">Say what it must not do: no invented references, no unsupported claims, and no submission-ready wording unless the brief explicitly permits it.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200"><h4 class="font-bold text-indigo-700">6. Format</h4><p class="text-sm text-slate-600 mt-1">Ask for a checklist, table, outline, questions, paragraph-level feedback or revision plan.</p></div>
       <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 lg:col-span-2"><h4 class="font-bold text-teal-700">7. Verification</h4><p class="text-sm text-slate-600 mt-1">Ask it to flag uncertainty, missing evidence, claims to check, and where your own judgement is needed.</p></div>
@@ -198,7 +204,7 @@
       <pre class="text-sm overflow-x-auto whitespace-pre-wrap p-3 rounded bg-white border border-slate-200 text-slate-700">Role: Act as a supportive academic study tutor.
 Task: Help me improve my plan, not write the assignment for me.
 Context: I am a [level] student on [module]. The task is [brief summary]. I have already done [reading/thinking so far].
-Source material: [paste assignment brief, rubric, notes or short extract].
+Source material: [provide only material you are permitted to share].
 Boundaries: Use only the material I provide. Do not invent citations, statistics or claims. Do not produce submission-ready wording unless this assessment explicitly permits AI-generated text.
 Format: Give me a table with: point | what works | missing evidence | question I should answer next.
 Verification: Flag any claim that needs checking in the original source or library database. Separate evidence from interpretation.</pre>
@@ -206,8 +212,8 @@ Verification: Flag any claim that needs checking in the original source or libra
   </div>
   <div class="bg-white rounded-xl shadow-lg p-8">
     <div class="text-center mb-8">
-      <h3 class="text-2xl font-bold text-slate-800 mb-4">The 10 Evidence-Based Principles of Effective Prompting</h3>
-      <p class="text-slate-600 max-w-3xl mx-auto">Master these core techniques to dramatically improve your AI interactions. Each principle is backed by research and practical testing.</p>
+      <h3 class="text-2xl font-bold text-slate-800 mb-4">Practical Principles for Effective Prompting</h3>
+      <p class="text-slate-600 max-w-3xl mx-auto">These suggestions complement the seven-part framework. Their usefulness depends on the task and system; none guarantees an accurate or reliable answer.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
         <div class="principle-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
@@ -227,7 +233,7 @@ Verification: Flag any claim that needs checking in the original source or libra
         </div>
         <div class="principle-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
           <h3 class="text-lg font-bold text-purple-700 mb-2">3. Ask AI to Take on a Helpful Role</h3>
-          <p class="text-slate-600 mb-2">Tell the AI to act as a tutor, study partner, or subject expert. This makes responses more focused and educational rather than just giving you answers.</p>
+          <p class="text-slate-600 mb-2">A tutor, reviewer or study-partner role may help frame the response. Calling an AI an expert does not make its output authoritative.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
             <strong>Example:</strong> "Act as a patient chemistry tutor. I'm confused about chemical bonding. Can you explain ionic vs covalent bonds using everyday examples I can relate to?"
           </div>
@@ -241,14 +247,14 @@ Verification: Flag any claim that needs checking in the original source or libra
         </div>
         <div class="principle-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
           <h3 class="text-lg font-bold text-rose-700 mb-2">5. Show Examples When Possible</h3>
-          <p class="text-slate-600 mb-2">If you have examples of what good work looks like, share them. This helps AI understand the style and level you're aiming for.</p>
+          <p class="text-slate-600 mb-2">If you are permitted to share an example, use it to discuss the criteria for good work. Do not upload another student's work or private feedback without permission.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-            <strong>Example:</strong> "Here's a sample thesis statement from class: [example]. Help me write a similar one for my essay on renewable energy, making sure it's equally specific and arguable."
+            <strong>Example:</strong> "Here's a sample thesis statement from class: [example]. Ask me questions to help me develop my own thesis about renewable energy; do not write it for me."
           </div>
         </div>
         <div class="principle-card bg-gradient-to-br from-indigo-50 to-blue-50 p-6 rounded border border-indigo-200">
           <h3 class="text-lg font-bold text-indigo-700 mb-2">6. Ask Follow-Up Questions</h3>
-          <p class="text-slate-600 mb-2">Do not stop at the first response. Ask AI to clarify, expand, or help you practice what you have learnt. This deepens your understanding.</p>
+          <p class="text-slate-600 mb-2">Ask questions, challenge assumptions and compare alternatives. Explain the ideas yourself and check whether the response addresses your question.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
             <strong>Example:</strong> "Thanks for explaining photosynthesis. Now can you quiz me with 5 questions to test if I understood it correctly?"
           </div>
@@ -263,14 +269,14 @@ Verification: Flag any claim that needs checking in the original source or libra
         </div>
         <div class="principle-card bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded border border-orange-200">
           <h3 class="text-lg font-bold text-orange-700 mb-2">8. Ask for Step-by-Step Explanations</h3>
-          <p class="text-slate-600 mb-2">For complex problems, ask AI to break down the solution into clear steps. This helps you understand the process, not just the answer.</p>
+          <p class="text-slate-600 mb-2">Where permitted, ask for feedback on your own approach or a worked practice example. Check each step yourself; a step-by-step response can still reason incorrectly.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
-            <strong>Example:</strong> "Walk me through solving this quadratic equation step-by-step, explaining why each step is necessary"
+            <strong>Example:</strong> "I have attempted this practice equation. Question my next step and give a hint; let me work through the solution myself"
           </div>
         </div>
         <div class="principle-card bg-gradient-to-br from-lime-50 to-green-50 p-6 rounded border border-lime-200">
           <h3 class="text-lg font-bold text-lime-700 mb-2">9. Focus on Learning, Not Just Answers</h3>
-          <p class="text-slate-600 mb-2">Frame your requests to encourage learning rather than just getting quick answers. This helps you develop understanding.</p>
+          <p class="text-slate-600 mb-2">Frame requests around questioning, self-explanation and formative practice. AI should support the reasoning you need to develop rather than complete it for you.</p>
           <div class="bg-white/60 p-2 rounded text-xs text-slate-600">
             <strong>Instead of:</strong> "What's the answer to this problem?"<br>
             <strong>Use:</strong> "Help me understand how to approach this type of problem so I can solve similar ones myself"
@@ -291,20 +297,17 @@ Verification: Flag any claim that needs checking in the original source or libra
 </main>
 
 <footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Tony Myers © 2025
+  © 2025–2026 Tony Myers
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
 
   const studyBuddyPrompt = `# Study Buddy Template
+
+## How to Support My Work
+Support rather than replace the reasoning I need to demonstrate. Ask questions, offer feedback and consider alternatives.
+Flag uncertainty and claims requiring verification. Distinguish source evidence from interpretation. Do not invent references, quotations, statistics or other evidence.
 
 ## Your Role
 You are a supportive and patient study tutor helping a student understand concepts through conversation rather than just giving answers.
@@ -330,11 +333,15 @@ Remember: Help me learn and understand, don't just give me answers to copy.`;
 
   const essayPlanningPrompt = `# Essay Planning Assistant
 
+## How to Support My Work
+Support rather than replace the reasoning I need to demonstrate. Ask questions, offer feedback and consider alternatives.
+Flag uncertainty and claims requiring verification. Distinguish source evidence from interpretation. Do not invent references, quotations, statistics or other evidence.
+
 ## Your Role
 You are an academic writing tutor helping me plan and structure my essay. Guide me through the thinking process rather than writing for me.
 
 ## Assignment Details
-- Essay Topic/Question: [Your exact assignment question]
+- Essay Topic/Question: [Your question or a permitted summary of it]
 - Word Count: [Required length]
 - Academic Level: [e.g., High school, undergraduate, postgraduate]
 - Subject/Course: [e.g., English Literature, History, Psychology]
@@ -356,6 +363,10 @@ Please guide me through each step and ask questions to help me think through the
 
   const assignmentFeedbackPrompt = `# Assignment Feedback Assistant
 
+## How to Support My Work
+Support rather than replace the reasoning I need to demonstrate. Ask questions, offer feedback and consider alternatives.
+Flag uncertainty and claims requiring verification. Distinguish source evidence from interpretation. Do not invent references, quotations, statistics or other evidence.
+
 ## Your Role
 Act as a constructive academic reviewer. Provide detailed feedback on my draft work to help me improve before submission.
 
@@ -367,10 +378,10 @@ Act as a constructive academic reviewer. Provide detailed feedback on my draft w
 - Submission Deadline: [When it's due]
 
 ## Assessment Criteria
-[If you have a marking rubric, include the key criteria here]
+[Include key criteria only if you are permitted to share them; otherwise use a general summary]
 
 ## My Draft Work
-[Paste your draft work here - can be full text or specific sections]
+[Share only permitted extracts from your own draft; remove personal or confidential material]
 
 ## Feedback Requested
 Please review my work and provide feedback on:
@@ -383,6 +394,10 @@ Please review my work and provide feedback on:
 Please be specific in your suggestions and help me understand how to improve.`;
 
   const socraticTutorPrompt = `# Socratic Tutor Template
+
+## How to Support My Work
+Support rather than replace the reasoning I need to demonstrate. Ask questions, offer feedback and consider alternatives.
+Flag uncertainty and claims requiring verification. Distinguish source evidence from interpretation. Do not invent references, quotations, statistics or other evidence.
 
 **Instructions for Students:** Replace the text within the square brackets [ ] with the details relevant to your specific course, assessment, and learning objectives. This template configures the AI to act as a Socratic tutor that guides you towards completing a specific academic task through questioning, rather than providing direct answers.
 

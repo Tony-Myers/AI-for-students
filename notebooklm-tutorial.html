@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI for Students: NotebookLM Complete Tutorial</title>
+  <title>Gemini Notebook: Source-Grounded Study</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
 <body class="bg-slate-50 text-slate-800">
 
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+        x-data="{ openMenu:false, openDropdown:null }" @keydown.escape="openDropdown=null; openMenu=false">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
 
@@ -30,7 +30,7 @@
       <a href="index.html" class="nav-link px-3 py-2">Home</a>
 
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='start'" :aria-expanded="openDropdown === 'start' ? 'true' : 'false'">
           Getting Started
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='study'" :aria-expanded="openDropdown === 'study' ? 'true' : 'false'">
           Study Support
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='integrity'" :aria-expanded="openDropdown === 'integrity' ? 'true' : 'false'">
           Integrity & Policy
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -69,13 +69,13 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='resources'" :aria-expanded="openDropdown === 'resources' ? 'true' : 'false'">
           Resources
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">Gemini Notebook Tutorial</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
@@ -88,7 +88,7 @@
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+              :aria-expanded="openMenu ? 'true' : 'false'" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -130,7 +130,7 @@
     <details class="rounded">
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Gemini Notebook Tutorial</a>
         <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
@@ -146,29 +146,33 @@
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
   <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-    <h2 class="text-3xl font-bold">Use NotebookLM for Source-Grounded Study</h2>
-    <p class="max-w-3xl mx-auto text-lg text-slate-300">Turn selected lectures, notes and readings into study materials while checking every important claim against the original source.</p>
+    <h1 class="text-3xl font-bold">Gemini Notebook: Source-Grounded Study</h1>
+    <p class="max-w-3xl mx-auto text-lg text-slate-300">Formerly NotebookLM. Work with selected sources as study material while checking every important claim against the original.</p>
   </div>
+
+  <p class="text-sm text-slate-600 mb-8"><strong>Product information last checked: 17 September 2026.</strong> Features, interfaces and account arrangements can change. Check <a href="https://support.google.com/gemininotebook/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">current official Google help</a> for available options and limits.</p>
 
   <div id="intro" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
     <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">🎯 What It Helps You Do</h2>
+    <p class="text-slate-700 mb-6">Before using AI, decide whether it adds value and check your assessment rules. Use <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Gemini Notebook</a> for provider access and consult current provider documentation and institutional guidance for feature, pricing and data arrangements.</p>
     <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 class="text-xl font-semibold text-sky-700 mb-3">Multimodal Power</h3>
-        <p class="text-slate-600 mb-4">NotebookLM doesn't just read text anymore. It can now listen to audio, watch videos, and help you visualise complex ideas.</p>
+        <h3 class="text-xl font-semibold text-sky-700 mb-3">Source and Format Options</h3>
+        <p class="text-slate-600 mb-4">Gemini Notebook supports sources such as documents, websites and supported public YouTube videos. Check current source support and permission to upload material rather than relying on a fixed format list.</p>
         <ul class="list-disc list-inside space-y-2 text-slate-700">
-          <li><strong>Audio Overview:</strong> Turn selected readings into a discussion-style overview.</li>
-          <li><strong>Video to Notes:</strong> Summarise YouTube lectures in seconds.</li>
-          <li><strong>Text to Visuals:</strong> Generate data for mind maps and infographics.</li>
+          <li><strong>Audio Overviews:</strong> Gemini Notebook can create audio overviews of selected readings; check their key points against the originals.</li>
+          <li><strong>YouTube Sources:</strong> A supported public YouTube URL supplies its available caption transcript as source material; do not assume the visuals were analysed.</li>
+          <li><strong>Mind Maps and Infographics:</strong> Gemini Notebook can create these from sources; check the proposed relationships and data.</li>
         </ul>
       </div>
       <div>
         <h3 class="text-xl font-semibold text-sky-700 mb-3">Grounded, But Not Magic</h3>
-        <p class="text-slate-600 mb-4">NotebookLM works from the sources you provide, but it can still miss, over-summarise or misinterpret material.</p>
+        <p class="text-slate-600 mb-4">Source-grounded means the system is asked to generate its response using sources you have selected. It does not mean that every statement is correct or that the system has interpreted those sources appropriately. Working from selected sources can make claims easier to trace and verify and can reduce some forms of unsupported generation.</p>
+        <p class="text-slate-600 text-sm mb-4">Notebook-source chat in Gemini Notebook is grounded in the notebook sources. In the wider Gemini app, notebook responses may also use web search and other Gemini tools. Check which app and sources you are using; see <a href="https://support.google.com/gemininotebook/answer/17003757?hl=en" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Google’s explanation of the differences</a>.</p>
         <ul class="list-disc list-inside space-y-2 text-slate-700">
           <li><strong>Focused Source Set:</strong> Use a small, relevant set of readings rather than dumping everything into one notebook.</li>
-          <li><strong>Citations are Key:</strong> Every claim links back to your specific slide or page—you <em>must</em> click these to verify.</li>
-          <li><strong>Privacy Depends on Account Type:</strong> Check whether you are using a personal account or an institution-approved Workspace account before uploading sensitive material.</li>
+          <li><strong>Citations are Key:</strong> Where citations are supplied, open the relevant original passage and check that it supports the claim; do not assume every claim has a valid citation.</li>
+          <li><strong>Privacy Depends on Account Type:</strong> Source grounding is about the evidence used for an answer, not data privacy or security. Check institutional permission, current provider terms and the consumer or institution/workspace account you are actually using before uploading assessed, unpublished, personal, confidential or otherwise sensitive material.</li>
         </ul>
       </div>
     </div>
@@ -186,27 +190,28 @@
         <div class="ml-3">
           <h3 class="text-sm font-bold text-amber-800">Critical Warning: Hallucinations Can Still Happen</h3>
           <div class="mt-1 text-sm text-amber-700">
-            <p>Using your own files makes NotebookLM much safer than ChatGPT, but it does <strong>not</strong> guarantee 100% accuracy. The AI might still misunderstand a sentence or combine two unrelated facts.</p>
-            <p class="mt-2 font-semibold">Always click the inline citation numbers to verify the source text before using it in your work.</p>
+            <p>A selected source set can make answers more traceable, but the AI may miss qualifications, misread a passage or combine unrelated facts. Grounding does not establish accuracy, privacy or assessment permission. Follow the <a href="limitations.html" class="underline">detailed verification guidance</a> and <a href="academic-integrity.html" class="underline">permission and privacy guidance</a>.</p>
+            <p class="mt-2 font-semibold">Open supplied citations and read the original source in context to check that it actually supports the answer.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">New Feature Guide</h2>
+    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Outputs and Account Options</h2>
+    <p class="text-slate-700 mb-6">Gemini Notebook can create the output types below. Availability, limits and options can depend on account, device, rollout or plan; check current Google documentation. Generated materials are not themselves academic evidence, and creating them does not itself produce learning.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100 relative overflow-hidden">
-        <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-bl">POPULAR</div>
+        <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-bl">STUDY OPTION</div>
         <div class="flex items-center gap-4 mb-4">
           <div class="p-3 bg-purple-100 rounded-full w-12 h-12 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-purple-700">AI Podcast</h3>
+          <h3 class="text-xl font-bold text-purple-700">Audio Overviews</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">Also known as <strong>Audio Overview</strong>. This turns selected readings into a discussion-style "Deep Dive" between two AI hosts. Use it for orientation, then check the original sources.</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>Audio Overviews</strong> from selected sources. Use a generated discussion for orientation, then check its claims against the originals and attempt questions or explain the ideas yourself.</p>
         <div class="bg-purple-50 p-3 rounded text-xs text-purple-800 font-medium">
-          ✨ Tip: Download the MP3 and listen while walking to campus.
+          ✨ Tip: If downloading is supported, use the audio for orientation before active practice.
         </div>
       </div>
 
@@ -215,9 +220,9 @@
           <div class="p-3 bg-red-100 rounded-full w-12 h-12 flex items-center justify-center">
              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-red-700">Video Reports</h3>
+          <h3 class="text-xl font-bold text-red-700">Video Overviews</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">Paste a YouTube URL (e.g., a recorded lecture or educational documentary). NotebookLM "watches" it by processing the transcript and lets you ask questions, summarise key arguments, or compare the video to your textbook.</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>Video Overviews</strong> from notebook sources. Adding a supported public YouTube URL as a source is different: the input is its available caption transcript, not necessarily the visual content. Check any summary or generated overview against the original sources.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
@@ -225,9 +230,9 @@
           <div class="p-3 bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-orange-700">Slide Deck Prep</h3>
+          <h3 class="text-xl font-bold text-orange-700">Slide Decks</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">Need to present? Ask NotebookLM to <em>"Generate a 10-slide outline for this topic."</em> It will give you the title, bullet points, and speaker notes for each slide based on your sources.</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>Slide Decks</strong> from selected sources. If permitted for your assessment, use a deck or outline as material to review and adapt. Check structure, claims and source support yourself, along with current output and export options.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
@@ -237,10 +242,10 @@
           </div>
           <h3 class="text-xl font-bold text-emerald-700">Quiz & Flashcards</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">Stop manually typing cards. NotebookLM can instantly generate:</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>Quizzes and Flashcards</strong> for formative practice. Attempt questions yourself, then check answers and explanations against original course material. Check the formats and options available on your account, such as:</p>
         <ul class="list-disc list-inside text-xs text-slate-600 space-y-1">
           <li>Multiple choice quizzes with answer keys.</li>
-          <li>Flashcard tables (Term/Definition) you can paste into Anki or Quizlet.</li>
+          <li>Flashcard tables (Term/Definition): check format compatibility before importing into Anki or Quizlet.</li>
         </ul>
       </div>
 
@@ -251,7 +256,7 @@
           </div>
           <h3 class="text-xl font-bold text-blue-700">Mind Maps & Visuals</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">Visual learner? Ask: <em>"Create a text-based mind map of these concepts"</em> or <em>"Suggest data points for an infographic on this topic."</em> It structures the information hierarchically so you can draw it easily.</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>Mind Maps and Infographics</strong> from sources. Use a visual representation when it is useful or accessible to you. Check proposed hierarchies, relationships, dates and statistics against the originals before reusing it.</p>
       </div>
 
       <div class="feature-card bg-white p-6 rounded-xl shadow-lg border border-slate-100">
@@ -259,25 +264,25 @@
           <div class="p-3 bg-sky-100 rounded-full w-12 h-12 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
           </div>
-          <h3 class="text-xl font-bold text-sky-700">Instant Study Guides</h3>
+          <h3 class="text-xl font-bold text-sky-700">Study Guides</h3>
         </div>
-        <p class="text-slate-600 text-sm mb-4">One click on the "Notebook Guide" button automatically creates a Briefing Doc, FAQ, Timeline, or Study Guide for everything you've uploaded.</p>
+        <p class="text-slate-600 text-sm mb-4">Gemini Notebook can create <strong>reports and study materials</strong>, including study guides. Check which sources they use and read and revise the result against the originals; generating a guide is not itself learning.</p>
       </div>
 
     </div>
   </div>
 
   <div id="workflows" class="bg-white p-8 rounded-xl shadow-lg mb-12 scroll-mt-20">
-    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">New Study Workflows</h2>
+    <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Study Workflows to Adapt</h2>
     <div class="grid md:grid-cols-2 gap-6">
 
       <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
         <h3 class="text-lg font-bold text-purple-700 mb-3">🎧 The Commuter's Revision</h3>
         <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
-          <li>Upload your week's lecture slides and reading PDF.</li>
-          <li>Click <strong>"Generate Audio Overview"</strong>.</li>
-          <li>Download the audio file to your phone.</li>
-          <li><strong>Outcome:</strong> Revise the core concepts while on the bus or at the gym, listening to two AI hosts debate your specific lecture material.</li>
+          <li>Check permission and privacy before adding selected lecture slides or readings.</li>
+          <li>Create an Audio Overview using the options available on your account and check its key points against the sources.</li>
+          <li>If downloading is supported, save the audio for later listening.</li>
+          <li><strong>Outcome:</strong> Use the audio for orientation, then attempt questions or explain the ideas yourself and check your account against the sources.</li>
         </ol>
       </div>
 
@@ -285,7 +290,7 @@
         <h3 class="text-lg font-bold text-red-700 mb-3">📹 The YouTube Synthesiser</h3>
         <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
           <li>Find a complex educational video on YouTube (e.g., a TED talk or tutorial).</li>
-          <li>Paste the URL into NotebookLM as a source.</li>
+          <li>Add a supported public YouTube URL as a source; Gemini Notebook works from its available caption transcript.</li>
           <li>Ask: <em>"Compare the video's definition of X with my textbook PDF."</em></li>
           <li><strong>Outcome:</strong> A first-pass comparison of video and text sources, with points to check in both originals.</li>
         </ol>
@@ -294,7 +299,7 @@
       <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
         <h3 class="text-lg font-bold text-orange-700 mb-3">📊 The Presentation Builder</h3>
         <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
-          <li>Upload your research papers and essay draft.</li>
+          <li>Add only research material and draft extracts you are permitted to share, if AI assistance is permitted.</li>
           <li>Prompt: <em>"Create a 5-slide deck outline for this research. Include a title, 3 bullets, and speaker notes for each slide."</em></li>
           <li><strong>Outcome:</strong> You get a draft structure to review, adapt and evidence before building the final slides.</li>
         </ol>
@@ -303,9 +308,9 @@
       <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
         <h3 class="text-lg font-bold text-blue-700 mb-3">🧠 The Visual Planner</h3>
         <ol class="list-decimal list-inside text-slate-700 space-y-2 text-sm">
-          <li>Upload a dense academic article.</li>
+          <li>Select an article you are permitted to upload and identify what you want to investigate.</li>
           <li>Prompt: <em>"Identify the 5 main themes and their sub-concepts for a Mind Map."</em></li>
-          <li><strong>Outcome:</strong> A structured hierarchy you can quickly draw out or input into a mind-mapping tool like Miro or Coggle.</li>
+          <li><strong>Outcome:</strong> A proposed hierarchy to compare with the original before drawing or using it in a mind-mapping tool such as Miro or Coggle.</li>
         </ol>
       </div>
 
@@ -336,12 +341,12 @@
 
   <div id="advanced-tools" class="bg-white p-8 rounded-xl shadow-lg mt-12 scroll-mt-20 border-t-4 border-sky-600">
     <h2 class="text-3xl font-bold text-slate-800 mb-4 text-center">Advanced Power Tools</h2>
-    <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Use these custom tools to turn NotebookLM outputs into structured study formats for revision sessions or class presentations. Check the source notes before reusing them.</p>
+    <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Use these custom tools to turn Gemini Notebook outputs into structured study formats for revision sessions or class presentations. Check the source notes before reusing them.</p>
 
     <div class="grid md:grid-cols-3 gap-6">
       <a href="https://tony-myers.github.io/NotebookLM-Quiz-extractor-and-enhancer/" target="_blank" class="block bg-slate-50 hover:bg-sky-50 p-6 rounded-lg border border-slate-200 transition-all hover:-translate-y-1 hover:shadow-md">
         <h3 class="text-lg font-bold text-sky-700 mb-2">Quiz Extractor</h3>
-        <p class="text-sm text-slate-600 mb-4">Transform raw NotebookLM quiz generations into structured active recall assessments. Perfect for testing your knowledge before an exam.</p>
+        <p class="text-sm text-slate-600 mb-4">Transform raw Gemini Notebook quiz generations into structured active recall assessments. Check the generated questions and answer key against your course material before using them for practice.</p>
         <span class="text-sky-600 font-bold text-sm">Launch Tool →</span>
       </a>
 
@@ -353,7 +358,7 @@
 
       <a href="https://tony-myers.github.io/NotebookLM-slide-deck-theme-builder/" target="_blank" class="block bg-slate-50 hover:bg-sky-50 p-6 rounded-lg border border-slate-200 transition-all hover:-translate-y-1 hover:shadow-md">
         <h3 class="text-lg font-bold text-sky-700 mb-2">Slide Deck Builder</h3>
-        <p class="text-sm text-slate-600 mb-4">Streamline the process of turning NotebookLM document outlines into formatted, thematic slide decks for your seminars and presentations.</p>
+        <p class="text-sm text-slate-600 mb-4">Streamline the process of turning Gemini Notebook document outlines into formatted, thematic slide decks for your seminars and presentations.</p>
         <span class="text-sky-600 font-bold text-sm">Launch Tool →</span>
       </a>
     </div>
@@ -364,7 +369,7 @@
 </main>
 
 <footer class="bg-slate-800 text-slate-300 py-6 text-center text-sm mt-16">
-  Tony Myers © 2025
+  © 2025–2026 Tony Myers
 </footer>
 
 </body>

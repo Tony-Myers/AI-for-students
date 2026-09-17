@@ -25,7 +25,7 @@
 
 <!-- Header / Navigation (Dropdowns + CTAs) -->
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+        x-data="{ openMenu:false, openDropdown:null }" @keydown.escape="openDropdown=null; openMenu=false">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand -->
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
@@ -36,7 +36,7 @@
 
       <!-- Getting Started -->
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='start'" :aria-expanded="openDropdown === 'start' ? 'true' : 'false'">
           Getting Started
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -50,7 +50,7 @@
 
       <!-- Study Support -->
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='study'" :aria-expanded="openDropdown === 'study' ? 'true' : 'false'">
           Study Support
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -65,7 +65,7 @@
 
       <!-- Integrity & Policy -->
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='integrity'" :aria-expanded="openDropdown === 'integrity' ? 'true' : 'false'">
           Integrity & Policy
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -78,13 +78,13 @@
 
       <!-- Resources & Guides -->
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='resources'" :aria-expanded="openDropdown === 'resources' ? 'true' : 'false'">
           Resources
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">Gemini Notebook Tutorial</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
@@ -99,7 +99,7 @@
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+              :aria-expanded="openMenu ? 'true' : 'false'" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"/>
@@ -143,7 +143,7 @@
     <details class="rounded">
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Gemini Notebook Tutorial</a>
         <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
@@ -159,39 +159,42 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-      <h2 class="text-3xl font-bold">Student AI Toolkit Explorer</h2>
-      <p class="max-w-3xl mx-auto">Find tools for study, research, writing support and privacy-conscious AI use. Choose by task, risk and the rules for your assessment.</p>
+      <h1 class="text-3xl font-bold">What Tool Might Help with This Task?</h1>
+      <p class="max-w-3xl mx-auto">Investigate tools for study, source discovery, writing support and reference management. Choose by learning purpose, risk and the rules for your assessment.</p>
     </div>
 
+    <p class="text-sm text-slate-600 mb-8"><strong>Product information last checked: 17 September 2026.</strong> Features and account arrangements can change; check current provider documentation for your account.</p>
+
+    <p class="text-slate-700 mb-8">Check <a href="academic-integrity.html" class="tool-link">assessment permission, disclosure and privacy</a> before use. AI can suggest what to investigate; it is not your academic evidence. Follow the <a href="limitations.html" class="tool-link">detailed verification guide</a>. General platform access links are on <a href="ai-platforms.html" class="tool-link">AI Platforms</a>.</p>
     <div class="space-y-12 mb-12">
       <h2 class="text-3xl font-bold text-center text-slate-800">Featured Student Tools</h2>
 
       <div class="bg-white rounded-xl shadow-lg p-8 tool-card">
-      <h3 class="text-2xl font-bold text-sky-700 mb-4">NotebookLM</h3>
-      <p class="text-slate-600 mb-6">NotebookLM is a source-grounded research assistant designed to work with sources you upload, such as PDFs, Docs and websites. It can provide inline citations and help you navigate a focused source set, but you still need to check that the cited passage supports the answer.</p>
+      <h3 class="text-2xl font-bold text-sky-700 mb-4">Gemini Notebook (formerly NotebookLM)</h3>
+      <p class="text-slate-600 mb-6">For permitted work with selected sources, investigate <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Gemini Notebook</a>. Source grounding can make claims easier to trace and check, but does not guarantee interpretation, accuracy, privacy or assessment permission. See the <a href="notebooklm-tutorial.html" class="tool-link">tutorial</a>.</p>
       <p class="text-sm text-slate-600 mb-6"><strong>Check current details:</strong> product features, pricing, model access and privacy settings change frequently. Treat the tools listed here as examples and check current provider documentation before relying on a feature for assessed work.</p>
         <div class="grid md:grid-cols-2 gap-8">
             <div>
-                <h4 class="text-lg font-semibold text-slate-700 mb-3">Key Student Benefits</h4>
+                <h4 class="text-lg font-semibold text-slate-700 mb-3">Possible Study Tasks</h4>
                 <ul class="list-disc list-inside text-slate-600 space-y-2">
-                    <li><strong>Grounded Responses:</strong> Cites passages from your sources, which helps with checking but does not remove the need to verify.</li>
-                    <li><strong>Study Materials:</strong> Generate study guides, timelines and FAQs from readings you have selected.</li>
-                    <li><strong>Focused Notebooks:</strong> Works best with a curated set of relevant sources, not an entire field dumped into one notebook.</li>
-                    <li><strong>Transparent Outputs:</strong> Citations make it easier to trace answers back to source material.</li>
+                    <li><strong>Grounded Responses:</strong> Where citations are provided, read the original passage and check whether it supports the claim.</li>
+                    <li><strong>Study Materials:</strong> Check available outputs for your account and review any proposed guide, timeline or FAQ against selected readings.</li>
+                    <li><strong>Focused Notebooks:</strong> Select relevant sources and consider what is missing; a limited source set cannot establish what an entire field says.</li>
+                    <li><strong>Transparent Outputs:</strong> Trace important claims to source material; do not assume every output is fully supported.</li>
                 </ul>
             </div>
             <div class="bg-slate-50 p-4 rounded-lg">
-                <h4 class="text-lg font-semibold text-slate-700 mb-3">Core Features</h4>
+                <h4 class="text-lg font-semibold text-slate-700 mb-3">Options to Check</h4>
                 <ul class="list-disc list-inside text-slate-600 space-y-2">
-                    <li>Summarise and interact with uploaded sources via chat Q&A.</li>
-                    <li>Generate study guides, timelines, FAQs, and briefing documents.</li>
-                    <li>Produce "Audio Overviews" — podcast-style summaries featuring AI hosts.</li>
+                    <li>Check supported source formats and ways to question permitted material.</li>
+                    <li>Check currently available study outputs rather than relying on a fixed feature list.</li>
+                    <li>If an audio overview is available, use it for orientation and check its important claims against the originals.</li>
                 </ul>
             </div>
         </div>
         <div class="mt-8">
-          <h4 class="text-lg font-semibold text-slate-700 mb-3">Choosing a NotebookLM Account or Tier</h4>
-          <div class="grid md:grid-cols-2 gap-4" role="list" aria-label="NotebookLM account checks">
+          <h4 class="text-lg font-semibold text-slate-700 mb-3">Choosing a Gemini Notebook Account</h4>
+          <div class="grid md:grid-cols-2 gap-4" role="list" aria-label="Gemini Notebook account checks">
             <div class="bg-slate-50 border border-slate-200 rounded-lg p-4" role="listitem">
               <h5 class="font-bold text-slate-800 mb-2">Capacity</h5>
               <p class="text-sm text-slate-600">Check the current limits for notebooks, sources, chat use and audio overviews. These limits change more often than study habits do.</p>
@@ -214,25 +217,25 @@
 
       <div class="bg-white rounded-xl shadow-lg p-8 tool-card">
         <h3 class="text-2xl font-bold text-sky-700 mb-4">Google AI Studio</h3>
-        <p class="text-slate-600 mb-6">Google AI Studio is a web-based platform for experimenting with Google's Gemini family of models. It can help students test prompts, generate code examples, and analyse multimodal material, but data settings need checking before any file upload.</p>
+        <p class="text-slate-600 mb-6">Investigate <a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Google AI Studio</a> for prompt experiments. Check current supported inputs, outputs and account terms before use; do not assume that a particular model or feature is available.</p>
         <div class="grid md:grid-cols-2 gap-8">
             <div class="bg-slate-50 p-4 rounded-lg">
-                <h4 class="text-lg font-semibold text-slate-700 mb-3">Core Functionalities</h4>
+                <h4 class="text-lg font-semibold text-slate-700 mb-3">Possible Tasks to Investigate</h4>
                 <ul class="list-disc list-inside text-slate-600 space-y-2">
-                    <li><strong>Advanced Text Analysis:</strong> Summarise notes, compare explanations and test prompt styles.</li>
-                    <li><strong>Multimodal Capabilities:</strong> Process and analyse information from images, audio and video for learning tasks.</li>
-                    <li><strong>Code Generation:</strong> Draft code examples and explanations that you then inspect, run and understand yourself.</li>
+                    <li><strong>Text Tasks:</strong> Investigate questions about permitted notes, comparisons between explanations and prompt experiments.</li>
+                    <li><strong>Multimodal Capabilities:</strong> Check which input formats and analysis options are currently supported on your account.</li>
+                    <li><strong>Code Tasks:</strong> If permitted and supported, investigate code examples and explanations that you then inspect, run and understand yourself.</li>
                 </ul>
             </div>
             <div>
-                 <h4 class="text-lg font-semibold text-slate-700 mb-3">Data Privacy: Free vs. Paid Tiers</h4>
+                 <h4 class="text-lg font-semibold text-slate-700 mb-3">Account and Data Checks</h4>
                  <div class="space-y-4">
                     <div class="p-4 rounded-lg bg-red-50 border border-red-200">
-                        <h5 class="font-bold text-red-700">Free Tier Warning</h5>
+                        <h5 class="font-bold text-red-700">Before Uploading</h5>
                         <p class="text-red-600 text-sm mt-1">Free and experimental AI services can have different data settings from institution-approved services. <strong>Do not input sensitive, confidential or personal data unless you have checked the current terms and your institution allows it.</strong></p>
                     </div>
                     <div class="p-4 rounded-lg bg-green-50 border border-green-200">
-                        <h5 class="font-bold text-green-700">Paid Tier Recommendation</h5>
+                        <h5 class="font-bold text-green-700">Check Institutional Controls</h5>
                         <p class="text-green-600 text-sm mt-1">For anything beyond public, low-risk study material, use an institution-approved account or a properly governed service and check the current retention, review and training settings.</p>
                     </div>
                  </div>
@@ -244,61 +247,61 @@
 <div class="bg-white rounded-xl shadow-lg p-8 tool-card">
   <h3 class="text-2xl font-bold text-sky-700 mb-4">Citation & Discovery Tools</h3>
   <p class="text-slate-600 mb-6">
-    Find papers faster, visualise literature, and keep references clean. Use these alongside your library databases.
+    Investigate source discovery and reference management alongside your library databases. Check current features and pricing; read original sources before using them as evidence.
   </p>
 
   <div class="grid md:grid-cols-2 gap-8">
     <div class="bg-slate-50 p-4 rounded-lg">
       <h4 class="text-lg font-semibold text-slate-700 mb-3">Research Discovery</h4>
       <ul class="list-disc list-inside text-slate-600 space-y-2">
-        <li><a class="tool-link" href="https://www.connectedpapers.com" target="_blank" rel="noopener">Connected Papers</a> — map related work & seminal papers</li>
-        <li><a class="tool-link" href="https://www.researchrabbitapp.com" target="_blank" rel="noopener">Research Rabbit</a> — explore author & topic networks</li>
-        <li><a class="tool-link" href="https://elicit.com" target="_blank" rel="noopener">Elicit</a> — AI-assisted paper finding & summarising</li>
-        <li><a class="tool-link" href="https://consensus.app" target="_blank" rel="noopener">Consensus</a> — search claims with evidence from papers</li>
+        <li><a class="tool-link" href="https://www.connectedpapers.com" target="_blank" rel="noopener">Connected Papers</a> — investigate connections between candidate papers</li>
+        <li><a class="tool-link" href="https://www.researchrabbitapp.com" target="_blank" rel="noopener">ResearchRabbit</a> — explore citation connections and evaluate original papers</li>
+        <li><a class="tool-link" href="https://elicit.com" target="_blank" rel="noopener">Elicit</a> — investigate candidate papers; check any summaries against originals</li>
+        <li><a class="tool-link" href="https://consensus.app" target="_blank" rel="noopener">Consensus</a> — investigate relevant studies; read originals to check claim support</li>
       </ul>
     </div>
 
     <div>
       <h4 class="text-lg font-semibold text-slate-700 mb-3">References & Citations</h4>
       <ul class="list-disc list-inside text-slate-600 space-y-2">
-        <li><a class="tool-link" href="https://www.zotero.org" target="_blank" rel="noopener">Zotero</a> — free reference manager + web clipper</li>
-        <li><a class="tool-link" href="https://www.mendeley.com" target="_blank" rel="noopener">Mendeley</a> — reference management & PDF annotation</li>
-        <li><a class="tool-link" href="https://paperpile.com" target="_blank" rel="noopener">Paperpile</a> — simple reference management for Google Docs</li>
+        <li><a class="tool-link" href="https://www.zotero.org" target="_blank" rel="noopener">Zotero</a> — investigate reference management; check captured metadata</li>
+        <li><a class="tool-link" href="https://www.mendeley.com" target="_blank" rel="noopener">Mendeley</a> — investigate reference management; check current features</li>
+        <li><a class="tool-link" href="https://paperpile.com" target="_blank" rel="noopener">Paperpile</a> — investigate reference management; check application requirements</li>
         <li><a class="tool-link" href="https://scholar.google.com" target="_blank" rel="noopener">Google Scholar</a> — quick look-ups; verify metadata/DOIs</li>
       </ul>
       <div class="mt-4 text-sm text-slate-600">
-        Tip: Always verify metadata (authors, year, DOI) against the PDF or publisher page before you cite.
+        Check metadata (authors, year, DOI) against the original or publisher page, and read the source to check that it supports your claim before citing it.
       </div>
     </div>
   </div>
 </div>
     <div class="bg-white rounded-xl shadow-lg p-8 tool-card mt-12">
-      <h3 class="text-2xl font-bold text-sky-700 mb-4">Privacy-Focused and Local AI Options</h3>
+      <h3 class="text-2xl font-bold text-sky-700 mb-4">Privacy and Local-Model Options to Investigate</h3>
       <p class="text-slate-600 mb-6">
-        These tools are useful when you want lower exposure than a standard public chatbot. They are not a permission slip for sensitive data, and they do not make the answers more reliable.
+        Investigate current privacy terms and configured data flows when choosing an access route. Provider descriptions, local operation or payment do not authorise sensitive uploads or establish reliable answers.
       </p>
 
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-slate-50 p-4 rounded-lg">
-          <h4 class="text-lg font-semibold text-slate-700 mb-3">Privacy-Focused Web Tools</h4>
+          <h4 class="text-lg font-semibold text-slate-700 mb-3">Web Services to Check</h4>
           <ul class="list-disc list-inside text-slate-600 space-y-2">
-            <li><a class="tool-link" href="https://duck.ai" target="_blank" rel="noopener">Duck.ai</a> — private, proxied access to several chat models</li>
-            <li><a class="tool-link" href="https://lumo.proton.me" target="_blank" rel="noopener">Lumo</a> — Proton's privacy-first AI assistant</li>
-            <li><a class="tool-link" href="https://brave.com/leo/" target="_blank" rel="noopener">Brave Leo</a> — browser-integrated AI with privacy-focused defaults</li>
-            <li><a class="tool-link" href="https://okara.ai" target="_blank" rel="noopener">Okara</a> — encrypted multi-model AI workspace</li>
+            <li><a class="tool-link" href="https://duck.ai" target="_blank" rel="noopener">Duck.ai</a> — check current provider privacy and account information</li>
+            <li><a class="tool-link" href="https://lumo.proton.me" target="_blank" rel="noopener">Lumo</a> — check Proton's current terms for this assistant</li>
+            <li><a class="tool-link" href="https://brave.com/leo/" target="_blank" rel="noopener">Brave Leo</a> — check browser settings and current provider privacy terms</li>
+            <li><a class="tool-link" href="https://okara.ai" target="_blank" rel="noopener">Okara</a> — check current storage, access and training arrangements</li>
           </ul>
         </div>
 
         <div>
           <h4 class="text-lg font-semibold text-slate-700 mb-3">Local and Self-Hosted Tools</h4>
           <ul class="list-disc list-inside text-slate-600 space-y-2">
-            <li><a class="tool-link" href="https://lmstudio.ai/" target="_blank" rel="noopener">LM Studio</a> — desktop app for running open models locally</li>
-            <li><a class="tool-link" href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a> — local model server for more technical users</li>
-            <li><a class="tool-link" href="https://jan.ai/" target="_blank" rel="noopener">Jan</a> — open-source desktop AI assistant</li>
-            <li><a class="tool-link" href="https://gpt4all.io/" target="_blank" rel="noopener">GPT4All</a> — local AI chat with downloadable models</li>
+            <li><a class="tool-link" href="https://lmstudio.ai/" target="_blank" rel="noopener">LM Studio</a> — investigate local model use and device requirements</li>
+            <li><a class="tool-link" href="https://ollama.com/" target="_blank" rel="noopener">Ollama</a> — investigate local model setup and configured connections</li>
+            <li><a class="tool-link" href="https://jan.ai/" target="_blank" rel="noopener">Jan</a> — investigate local or API-connected model use</li>
+            <li><a class="tool-link" href="https://gpt4all.io/" target="_blank" rel="noopener">GPT4All</a> — investigate local model use and configured data flows</li>
           </ul>
           <div class="mt-4 text-sm text-slate-600">
-            Local tools keep more on your device, but you still need to check model quality, licence terms and every factual claim.
+            Check whether the configured tool uses a local model, a remote API or additional online services. Check licence terms and every important claim; local operation alone does not establish accuracy or permission.
           </div>
         </div>
       </div>
@@ -306,7 +309,7 @@
     <div class="bg-white rounded-xl shadow-lg p-8">
       <div class="text-center mb-8">
           <h2 class="text-3xl font-bold text-slate-800">General AI Toolkit</h2>
-          <p class="text-slate-600 mt-2">Use the filters to explore a wider range of tools for academic work.</p>
+          <p class="text-slate-600 mt-2">Explore tools by task. Pricing has not been independently checked; follow provider links for current costs and account conditions.</p>
       </div>
       <div class="flex flex-wrap gap-4 mb-8 justify-center">
         <div class="flex items-center space-x-2">
@@ -318,12 +321,12 @@
         <div class="flex items-center space-x-2">
           <label for="filter-cost" class="font-semibold text-slate-600">Cost:</label>
           <select id="filter-cost" class="p-2 border rounded-md shadow-sm">
-            <option value="all">All Models</option>
+            <option value="all">All Costs</option>
           </select>
         </div>
       </div>
       <div id="toolkit-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-      <noscript><p class="text-center text-slate-600">Enable JavaScript to use the toolkit explorer.</p></noscript>
+      <noscript><ul class="list-disc list-inside text-slate-700 space-y-2"><li><a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Gemini Notebook</a></li><li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Google AI Studio</a></li><li><a href="https://duck.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Duck.ai</a></li><li><a href="https://lumo.proton.me" target="_blank" rel="noopener noreferrer" class="tool-link">Lumo</a></li><li><a href="https://brave.com/leo/" target="_blank" rel="noopener noreferrer" class="tool-link">Brave Leo</a></li><li><a href="https://okara.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Okara</a></li><li><a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="tool-link">LM Studio</a></li><li><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="tool-link">Ollama</a></li><li><a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" class="tool-link">Jan</a></li><li><a href="https://gpt4all.io/" target="_blank" rel="noopener noreferrer" class="tool-link">GPT4All</a></li><li><a href="https://gamma.app" target="_blank" rel="noopener noreferrer" class="tool-link">Gamma</a></li><li><a href="https://researchrabbitapp.com" target="_blank" rel="noopener noreferrer" class="tool-link">ResearchRabbit</a></li><li><a href="https://elicit.com" target="_blank" rel="noopener noreferrer" class="tool-link">Elicit</a></li><li><a href="https://connectedpapers.com" target="_blank" rel="noopener noreferrer" class="tool-link">Connected Papers</a></li><li><a href="https://www.thesify.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Thesify</a></li><li><a href="https://atlasti.com" target="_blank" rel="noopener noreferrer" class="tool-link">ATLAS.ti</a></li><li><a href="https://lumivero.com/products/nvivo/" target="_blank" rel="noopener noreferrer" class="tool-link">NVivo</a></li><li><a href="https://consensus.app" target="_blank" rel="noopener noreferrer" class="tool-link">Consensus</a></li><li><a href="https://www.semanticscholar.org" target="_blank" rel="noopener noreferrer" class="tool-link">Semantic Scholar</a></li><li><a href="https://scite.ai" target="_blank" rel="noopener noreferrer" class="tool-link">scite</a></li><li><a href="https://www.zotero.org" target="_blank" rel="noopener noreferrer" class="tool-link">Zotero</a></li><li><a href="https://www.mendeley.com" target="_blank" rel="noopener noreferrer" class="tool-link">Mendeley</a></li><li><a href="https://paperpile.com" target="_blank" rel="noopener noreferrer" class="tool-link">Paperpile</a></li><li><a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Google Scholar</a></li></ul></noscript>
     </div>
     <div class="text-center mt-8">
       <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
@@ -331,43 +334,37 @@
 </main>
 
 <footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Tony Myers © 2025
+  © 2025–2026 Tony Myers
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
 
   const toolkitData = [
-    { name: "NotebookLM", fn: "Grounded AI Research Assistant", features: "AI research assistant that works with user-provided sources (PDFs, Docs, websites). Generates summaries, study guides, and audio overviews with inline citations; students must still check the cited passages.", cost: "Freemium", link: "https://notebooklm.google.com" },
-    { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Experiment with Gemini models, generate code and analyse multimodal content. Check current data settings before uploading anything sensitive or personal.", cost: "Freemium", link: "https://aistudio.google.com" },
-    { name: "Duck.ai", fn: "Privacy-Focused AI Chat", features: "DuckDuckGo's private, proxied access to several chat models. Useful for low-risk study questions when you want less tracking than a standard public chatbot.", cost: "Freemium", link: "https://duck.ai" },
-    { name: "Lumo", fn: "Privacy-Focused AI Chat", features: "Proton's privacy-first AI assistant with zero-access encrypted chat history and no chat training. Good for privacy-conscious study support, with normal verification still required.", cost: "Freemium", link: "https://lumo.proton.me" },
-    { name: "Brave Leo", fn: "Privacy-Focused AI Chat", features: "AI assistant built into the Brave browser. Useful for page summaries, translation and Q&A over public webpages; verify answers against the page.", cost: "Freemium", link: "https://brave.com/leo/" },
-    { name: "Okara", fn: "Privacy-Focused AI Chat", features: "Encrypted multi-model AI workspace with zero-access architecture for stored conversation history. Newer option, so check current terms before sensitive use.", cost: "Freemium", link: "https://okara.ai" },
-    { name: "LM Studio", fn: "Local AI", features: "Desktop application for downloading and running open models locally. Useful for privacy-conscious experimentation where you can verify every output.", cost: "Free", link: "https://lmstudio.ai/" },
-    { name: "Ollama", fn: "Local AI", features: "Local model server for macOS, Linux and Windows. More technical setup, but useful for keeping prompts on your own device.", cost: "Free", link: "https://ollama.com/" },
-    { name: "Jan", fn: "Local AI", features: "Open-source desktop AI assistant for running local models or connecting to APIs. Useful for students experimenting with offline workflows.", cost: "Free", link: "https://jan.ai/" },
-    { name: "GPT4All", fn: "Local AI", features: "Privacy-focused desktop client for local AI chat with downloadable models. Check model quality carefully before relying on outputs.", cost: "Free", link: "https://gpt4all.io/" },
-    { name: "Gamma", fn: "AI Content Creation", features: "Rapidly generates interactive presentations, websites, and documents from prompts; automates design; supports collaboration.", cost: "Freemium", link: "https://gamma.app" },
-    { name: "Research Rabbit", fn: "Literature Discovery", features: "Visualises citation networks; helps find seminal papers and related work; collaborative collections and alerts.", cost: "Free", link: "https://researchrabbitapp.com" },
-    { name: "Elicit", fn: "Literature Review Automation", features: "Extracts key data from papers into structured tables; automates parts of systematic reviews; answers research questions.", cost: "Freemium", link: "https://elicit.com" },
-    { name: "Connected Papers", fn: "Literature Discovery", features: "Creates visual graphs to explore connections between academic papers; identifies prior and derivative works.", cost: "Freemium", link: "https://connectedpapers.com" },
-    { name: "Thesify", fn: "Academic Writing Assistant", features: "Provides feedback on argument structure; suggests relevant citations; helps find journals; does not write for the user.", cost: "Freemium", link: "https://www.thesify.ai" },
-    { name: "ATLAS.ti / NVivo", fn: "Qualitative Data Analysis", features: "AI-powered coding, thematic analysis, and transcription for unstructured data (interviews, text).", cost: "Paid", link: "https://atlasti.com" },
-    { name: "Consensus", fn: "Literature Review Automation", features: "Provides direct, evidence-based answers to questions; 'Consensus Meter' visualises agreement across studies.", cost: "Freemium", link: "https://consensus.app" },
-    { name: "Semantic Scholar", fn: "Literature Discovery", features: "Provides AI-generated one-sentence summaries (TLDRs) of papers; highlights influential citations.", cost: "Free", link: "https://www.semanticscholar.org" },
-    { name: "scite", fn: "Literature Discovery", features: "Shows how a paper is cited (supporting, contrasting, or mentioning); helps assess the impact and reception of a study.", cost: "Paid", link: "https://scite.ai" },
-    { name: "Zotero", fn: "Reference Manager", features: "Capture citations, de-duplicate, cite while you write.", cost: "Free", link: "https://www.zotero.org" },
-{ name: "Mendeley", fn: "Reference Manager", features: "PDF annotation, collaboration, citation plug-ins.", cost: "Free", link: "https://www.mendeley.com" },
-{ name: "Paperpile", fn: "Reference Manager", features: "Lightweight references for Google Docs/Drive.", cost: "Paid", link: "https://paperpile.com" },
-{ name: "Google Scholar", fn: "Academic Search", features: "Quick source look-ups; citation chaining & alerts.", cost: "Free", link: "https://scholar.google.com" }
+    { name: "Gemini Notebook", fn: "Grounded AI Research Assistant", features: "Investigate permitted source-based study material. Check supported formats and outputs on your account, and verify claims in the original sources.", cost: "Check current pricing", link: "https://notebooklm.google.com" },
+    { name: "Google AI Studio", fn: "Developer Platform for AI", features: "Investigate prompt experiments. Check current model access, supported inputs and data terms before uploading material.", cost: "Check current pricing", link: "https://aistudio.google.com" },
+    { name: "Duck.ai", fn: "AI Chat", features: "Investigate this access route for low-risk study conversations. Check current privacy and account terms.", cost: "Check current pricing", link: "https://duck.ai" },
+    { name: "Lumo", fn: "AI Chat", features: "Investigate this assistant for low-risk study conversations. Check current storage, training and sharing terms.", cost: "Check current pricing", link: "https://lumo.proton.me" },
+    { name: "Brave Leo", fn: "AI Chat", features: "Investigate help with public webpage material. Check available features and verify summaries against the originals.", cost: "Check current pricing", link: "https://brave.com/leo/" },
+    { name: "Okara", fn: "AI Chat", features: "Investigate this service's account options and current data arrangements before sharing material.", cost: "Check current pricing", link: "https://okara.ai" },
+    { name: "LM Studio", fn: "Local AI", features: "Investigate local model use. Check device requirements, settings, any remote connections and model licences.", cost: "Check current pricing", link: "https://lmstudio.ai/" },
+    { name: "Ollama", fn: "Local AI", features: "Investigate local model setup. Check where configured models and connected tools send data.", cost: "Check current pricing", link: "https://ollama.com/" },
+    { name: "Jan", fn: "Local AI", features: "Investigate local or API-connected model use. Check the selected endpoint and data arrangements.", cost: "Check current pricing", link: "https://jan.ai/" },
+    { name: "GPT4All", fn: "Local AI", features: "Investigate local model use. Check settings, available models, licences and output quality.", cost: "Check current pricing", link: "https://gpt4all.io/" },
+    { name: "Gamma", fn: "AI Content Creation", features: "Investigate permitted presentation preparation. Check current output formats and keep responsibility for structure and evidence.", cost: "Check current pricing", link: "https://gamma.app" },
+    { name: "ResearchRabbit", fn: "Literature Discovery", features: "Explore citation connections to identify candidate papers. Evaluate the originals for relevance, quality and claim support; connections do not establish a comprehensive search.", cost: "Check current pricing", link: "https://researchrabbitapp.com" },
+    { name: "Elicit", fn: "Literature Review Support", features: "Investigate candidate papers or extraction tasks. Read originals and check each proposed finding.", cost: "Check current pricing", link: "https://elicit.com" },
+    { name: "Connected Papers", fn: "Literature Discovery", features: "Investigate connections between candidate papers. A graph does not establish source quality or completeness.", cost: "Check current pricing", link: "https://connectedpapers.com" },
+    { name: "Thesify", fn: "Academic Writing Assistant", features: "Investigate feedback on your own writing. Check available features and assessment permission.", cost: "Check current pricing", link: "https://www.thesify.ai" },
+    { name: "ATLAS.ti", fn: "Qualitative Data Analysis", features: "Investigate qualitative analysis of permitted material. Check current access, features, data terms and assessment requirements.", cost: "Check current pricing", link: "https://atlasti.com" },
+    { name: "NVivo", fn: "Qualitative Data Analysis", features: "Investigate qualitative analysis of permitted material. Check current access, features, data terms and assessment requirements.", cost: "Check current pricing", link: "https://lumivero.com/products/nvivo/" },
+    { name: "Consensus", fn: "Literature Review Support", features: "Investigate studies relevant to a question. Read originals and check claim support; agreement displays are not proof.", cost: "Check current pricing", link: "https://consensus.app" },
+    { name: "Semantic Scholar", fn: "Literature Discovery", features: "Investigate candidate papers and their citation context. Check any summaries against the original papers.", cost: "Check current pricing", link: "https://www.semanticscholar.org" },
+    { name: "scite", fn: "Literature Discovery", features: "Investigate citation context. Read the citing and cited sources before deciding what they support.", cost: "Check current pricing", link: "https://scite.ai" },
+    { name: "Zotero", fn: "Reference Manager", features: "Investigate reference management and check captured metadata against the publisher or original source.", cost: "Check current pricing", link: "https://www.zotero.org" },
+{ name: "Mendeley", fn: "Reference Manager", features: "Investigate reference management and check captured metadata against the publisher or original source.", cost: "Check current pricing", link: "https://www.mendeley.com" },
+{ name: "Paperpile", fn: "Reference Manager", features: "Investigate reference management; check current account and application requirements.", cost: "Check current pricing", link: "https://paperpile.com" },
+{ name: "Google Scholar", fn: "Academic Search", features: "Locate candidate academic sources. Read the originals and verify metadata and claim support.", cost: "Check current pricing", link: "https://scholar.google.com" }
   ];
 
   function renderToolkit(data) {

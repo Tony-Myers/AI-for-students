@@ -22,7 +22,7 @@
 <body class="bg-slate-50 text-slate-800">
 
 <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50"
-        x-data="{ openMenu:false, openDropdown:null }">
+        x-data="{ openMenu:false, openDropdown:null }" @keydown.escape="openDropdown=null; openMenu=false">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <a href="index.html" class="text-xl font-bold text-sky-700 dark:text-sky-300">AI for Students</a>
 
@@ -30,7 +30,7 @@
       <a href="index.html" class="nav-link px-3 py-2">Home</a>
 
       <div class="relative" @mouseenter="openDropdown='start'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='start'" :aria-expanded="openDropdown === 'start' ? 'true' : 'false'">
           Getting Started
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -43,7 +43,7 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='study'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='study'" :aria-expanded="openDropdown === 'study' ? 'true' : 'false'">
           Study Support
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -57,7 +57,7 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='integrity'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='integrity'" :aria-expanded="openDropdown === 'integrity' ? 'true' : 'false'">
           Integrity & Policy
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
@@ -69,13 +69,13 @@
       </div>
 
       <div class="relative" @mouseenter="openDropdown='resources'" @mouseleave="openDropdown=null">
-        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" aria-expanded="false">
+        <button class="nav-link px-3 py-2 flex items-center gap-1" aria-haspopup="true" @click="openDropdown='resources'" :aria-expanded="openDropdown === 'resources' ? 'true' : 'false'">
           Resources
           <svg class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"/></svg>
         </button>
         <div x-show="openDropdown==='resources'" x-transition
              class="absolute left-0 mt-2 w-72 bg-white dark:bg-slate-900 rounded-md shadow-lg py-2 border border-slate-200 dark:border-slate-800 z-40">
-          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">NotebookLM Tutorial</a>
+          <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="notebooklm-tutorial.html">Gemini Notebook Tutorial</a>
           <a class="block px-4 py-2 hover:bg-sky-50 dark:hover:bg-slate-800" href="researchrabbit-website-version.html">ResearchRabbit Tutorial</a>
           <span class="block px-4 py-2 text-slate-400">FAQs — coming soon</span>
         </div>
@@ -88,7 +88,7 @@
     <div class="md:hidden flex items-center gap-2">
       <button @click="openMenu=!openMenu"
               class="p-2 rounded-md text-slate-600 hover:text-sky-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+              :aria-expanded="openMenu ? 'true' : 'false'" aria-controls="mobile-menu" aria-label="Open menu">
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"/>
@@ -131,7 +131,7 @@
     <details class="rounded">
       <summary class="px-3 py-2 font-semibold cursor-pointer">Resources</summary>
       <nav class="pl-4 py-1 space-y-1">
-        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">NotebookLM Tutorial</a>
+        <a href="notebooklm-tutorial.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">Gemini Notebook Tutorial</a>
         <a href="researchrabbit-website-version.html" class="block px-3 py-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">ResearchRabbit Tutorial</a>
         <span class="block px-3 py-1 text-slate-400">FAQs — coming soon</span>
       </nav>
@@ -145,59 +145,23 @@
 <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="bg-black text-white rounded-xl p-12 text-center space-y-4 mb-8">
-      <h2 class="text-3xl font-bold">Essential AI Platforms for Students</h2>
-      <p class="max-w-3xl mx-auto">Compare AI tools for studying, research and writing support. Match the platform to the task, the data risk, and your module rules.</p>
+      <h1 class="text-3xl font-bold">Where Can I Access AI?</h1>
+      <p class="max-w-3xl mx-auto">Find named platforms and official access links. Choose a service only after deciding whether AI adds value and checking your assessment rules and privacy requirements.</p>
     </div>
 
-    <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-6 mb-8 border border-amber-200">
-      <h3 class="text-xl font-bold text-amber-700 mb-4">💰 Money-Saving Tips for Students</h3>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 class="font-semibold text-slate-700 mb-2">Free Options First</h4>
-          <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
-            <li>Start with free tiers and tools your university already provides</li>
-            <li>Use free tiers of ChatGPT, Claude, and Gemini</li>
-            <li>Check if your university provides Microsoft Copilot</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold text-slate-700 mb-2">When to Consider Paid</h4>
-          <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
-            <li>Heavy usage during exam periods</li>
-            <li>Need faster responses for time-sensitive work</li>
-            <li>Working with large documents regularly</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <p class="text-sm text-slate-600 mb-8"><strong>Product information last checked: 17 September 2026.</strong> Features and account arrangements can change; follow provider links for current details.</p>
 
-    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
-      <h3 class="text-2xl font-bold text-slate-800 mb-4">Privacy and Security: Match the Tool to the Data</h3>
-      <p class="text-slate-700 mb-6">Use the lowest-risk tool that fits the task. Security-focused platforms can reduce exposure, but they do not remove your responsibility to check accuracy, follow the assignment brief, and avoid uploading material you do not have permission to share.</p>
-      <p class="text-sm text-slate-600 mb-6"><strong>Check current details:</strong> product features, pricing, model access and privacy settings change frequently. Treat the platforms below as examples and check current provider documentation, plus any institutional guidance, before uploading assessed, personal or sensitive material.</p>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-          <h4 class="font-bold text-sky-700 mb-2">Public chat tools</h4>
-          <p class="text-sm text-slate-600">Useful for low-risk brainstorming, explanations and practice. Avoid personal, confidential, unpublished or other students' material.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-          <h4 class="font-bold text-emerald-700 mb-2">University-provided tools</h4>
-          <p class="text-sm text-slate-600">ChatGPT Edu, Microsoft 365 Copilot Chat, Gemini for Workspace/Education or Claude for Work may have stronger controls. Check your institution's licence and policy.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-          <h4 class="font-bold text-purple-700 mb-2">Privacy-focused web tools</h4>
-          <p class="text-sm text-slate-600">Duck.ai, Lumo, Brave Leo and Okara are designed around reduced tracking or encrypted storage. Still avoid data you are not allowed to upload.</p>
-        </div>
-        <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
-          <h4 class="font-bold text-amber-700 mb-2">Local tools</h4>
-          <p class="text-sm text-slate-600">LM Studio, Ollama, Jan and GPT4All can run models on your own device. This helps confidentiality, but smaller models may be less capable and still need checking.</p>
-        </div>
-      </div>
-    </div>
+    <section class="bg-amber-50 rounded-xl p-6 mb-8 border border-amber-200">
+      <h2 class="text-xl font-bold text-amber-800 mb-4">Check Access and Account Arrangements</h2>
+      <p class="text-slate-700 mb-3">Start with your institution's current guidance and any approved access it provides. Consumer accounts, work or school accounts and paid plans can have different features and data arrangements. A subscription does not itself establish privacy, accuracy or assessment permission.</p>
+      <p class="text-slate-700 mb-3">Before paying or uploading material, check current provider information about pricing, availability, limits, storage, review, training and sharing, alongside institutional requirements. Do not assume an account includes integration with other applications.</p>
+      <p class="text-slate-700">Follow <a href="academic-integrity.html" class="text-sky-700 underline">assessment permission, disclosure and privacy guidance</a>. For tasks and specialist services, see the <a href="toolkit.html" class="text-sky-700 underline">Toolkit</a>; for checking outputs, see <a href="limitations.html" class="text-sky-700 underline">verification guidance</a>.</p>
+    </section>
+    <p class="text-slate-700 mb-6">Gemini Notebook was formerly called NotebookLM. Its existing access link is retained. The study tasks below are possibilities to investigate, not guarantees of capability or educational benefit.</p>
 
     <div class="bg-white rounded-xl shadow-lg p-8">
       <div id="generative-ai-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-      <noscript><p class="text-center text-slate-600">Enable JavaScript to use the AI platforms explorer.</p></noscript>
+      <noscript><ul class="list-disc list-inside text-slate-700 space-y-2"><li><a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">ChatGPT</a></li><li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Claude</a></li><li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Gemini</a></li><li><a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Copilot</a></li><li><a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Perplexity</a></li><li><a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Gemini Notebook</a></li><li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Google AI Studio</a></li><li><a href="https://duck.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Duck.ai</a></li><li><a href="https://lumo.proton.me" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Lumo</a></li><li><a href="https://brave.com/leo/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Brave Leo</a></li><li><a href="https://okara.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Okara</a></li><li><a href="https://www.meta.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Meta AI</a></li><li><a href="https://mistral.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Mistral AI</a></li><li><a href="https://chat.qwen.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Qwen</a></li><li><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">DeepSeek</a></li><li><a href="https://kimi.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Kimi</a></li><li><a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">LM Studio</a></li><li><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Ollama</a></li><li><a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Jan</a></li><li><a href="https://gpt4all.io/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">GPT4All</a></li><li><a href="https://ernie.baidu.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Ernie</a></li></ul></noscript>
     </div>
     <div class="text-center mt-8">
       <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
@@ -205,200 +169,34 @@
 </main>
 
 <footer class="bg-slate-800 text-white py-6 text-center text-sm">
-  Tony Myers © 2025
+  © 2025–2026 Tony Myers
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileMenuButton && mobileMenu) {
-    mobileMenuButton.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
 
   const studentAiPlatforms = [
-    {
-      name: "ChatGPT",
-      provider: "OpenAI",
-      strengths: "Versatile study companion for explanations and brainstorming",
-      bestFor: "Understanding concepts, essay planning, practice questions, homework help",
-      pricing: "Free + paid tiers",
-      link: "https://chatgpt.com",
-      features: "Voice conversations, file uploads, web browsing, image analysis",
-      studentTip: "Useful starting tool for breaking down complex topics into understandable explanations"
-    },
-    {
-      name: "Claude",
-      provider: "Anthropic",
-      strengths: "Useful for long documents, careful reasoning and detailed analysis",
-      bestFor: "Essay feedback, research analysis, document review, critical thinking",
-      pricing: "Free + paid tiers",
-      link: "https://claude.ai",
-      features: "Long-document support, document uploads, detailed reasoning",
-      studentTip: "Useful for detailed feedback on your drafts and for analysing complex readings"
-    },
-    {
-      name: "Gemini",
-      provider: "Google",
-      strengths: "Integrates with Google Workspace, real-time information access",
-      bestFor: "Research with current information, Google Docs integration, fact-checking",
-      pricing: "Free + paid tiers",
-      link: "https://gemini.google.com",
-      features: "Google Search integration, Workspace connectivity, real-time information",
-      studentTip: "Useful if you already use Google Docs or Drive"
-    },
-    {
-      name: "Copilot",
-      provider: "Microsoft",
-      strengths: "Microsoft 365 integration, free with education accounts",
-      bestFor: "Students using Microsoft tools, PowerPoint creation, Excel analysis",
-      pricing: "Often available through education accounts",
-      link: "https://copilot.microsoft.com",
-      features: "Office integration, education benefits, document creation",
-      studentTip: "Check if your university provides free access - often included in student Office 365"
-    },
-    {
-      name: "Perplexity",
-      provider: "Perplexity AI",
-      strengths: "Real-time web search with citations, research-focused",
-      bestFor: "Finding current information, fact-checking, research with sources",
-      pricing: "Free + paid tiers",
-      link: "https://www.perplexity.ai",
-      features: "Live web search, automatic citations, academic search mode",
-      studentTip: "Useful for finding sources to inspect, but only cite sources you have opened and checked yourself"
-    },
-    {
-      name: "NotebookLM",
-      provider: "Google",
-      strengths: "Upload your readings and chat with them, creates study materials",
-      bestFor: "Analysing course readings, creating study guides, audio summaries",
-      pricing: "Free + Plus tier",
-      link: "https://notebooklm.google.com",
-      features: "Document upload, study guide generation, podcast-style audio summaries",
-      studentTip: "Upload lecture slides and readings to create personalised study materials"
-    },
-    {
-      name: "AI Studio",
-      provider: "Google",
-      strengths: "Free access to multimodal model experiments",
-      bestFor: "Advanced prompting, image analysis, experimental features",
-      pricing: "Free",
-      link: "https://aistudio.google.com",
-      features: "Advanced prompting, image/video analysis, system instructions",
-      studentTip: "Useful for experimenting with prompts, but check current data settings before uploading files"
-    },
-    {
-      name: "Duck.ai",
-      provider: "DuckDuckGo",
-      strengths: "Privacy-focused access to several chat models without needing an account",
-      bestFor: "Low-risk brainstorming, comparing model responses, private practice prompts",
-      pricing: "Free + subscription options",
-      link: "https://duck.ai",
-      features: "Proxies requests, removes personal metadata before model-provider requests, no chat model training on conversations",
-      studentTip: "Useful when you want less tracking for ordinary study questions, but still do not upload confidential or identifiable data"
-    },
-    {
-      name: "Lumo",
-      provider: "Proton",
-      strengths: "Privacy-first AI assistant from Proton with zero-access encrypted chat history",
-      bestFor: "Private study notes, low-risk drafts and general academic planning",
-      pricing: "Free + paid tiers",
-      link: "https://lumo.proton.me",
-      features: "Runs on Proton-controlled servers, no-logs policy, no chat training, optional web search",
-      studentTip: "Good for privacy-conscious study support; check whether web search or file uploads are appropriate for your material"
-    },
-    {
-      name: "Brave Leo",
-      provider: "Brave",
-      strengths: "Browser-integrated AI assistant with privacy-focused defaults",
-      bestFor: "Summarising public web pages, translation, quick explanations from the current tab",
-      pricing: "Free + paid tiers",
-      link: "https://brave.com/leo/",
-      features: "No account required for free use, conversations not persisted for model training, optional local chat history",
-      studentTip: "Handy for page-level tasks, but verify summaries against the page and avoid relying on it as a citation source"
-    },
-    {
-      name: "Okara",
-      provider: "Okara",
-      strengths: "Privacy-focused multi-model workspace with encrypted-at-rest chat history",
-      bestFor: "Students who want a private workspace for low-risk AI conversations",
-      pricing: "Free + paid tiers",
-      link: "https://okara.ai",
-      features: "Encrypted storage, zero-access architecture for stored conversation history, access to multiple models",
-      studentTip: "Newer privacy-focused option. Check the current terms before using it with anything sensitive"
-    },
-    {
-      name: "Meta AI",
-      provider: "Meta",
-      strengths: "Image generation, creative tasks, social integration",
-      bestFor: "Creative projects, visual presentations, social media content",
-      pricing: "Free",
-      link: "https://www.meta.ai",
-      features: "Image generation, creative writing, social platform integration",
-      studentTip: "Useful for creative visual ideas when images are allowed by the assignment brief"
-    },
-    {
-      name: "Mistral AI",
-      provider: "Mistral AI",
-      strengths: "Multilingual capabilities, coding assistance, European AI alternative",
-      bestFor: "Coding projects, multilingual tasks, European language support, research",
-      pricing: "Free + Paid tiers",
-      link: "https://mistral.ai/",
-      features: "Le Chat interface, multilingual support, coding assistance, document processing",
-      studentTip: "Worth trying for coding support and European language tasks, with normal checking required"
-    },
-    {
-      name: "Qwen",
-      provider: "Alibaba Cloud",
-      strengths: "Advanced reasoning capabilities, multimodal processing, educational applications",
-      bestFor: "Complex reasoning tasks, coding, mathematical problems, research analysis",
-      pricing: "Free + Paid tiers",
-      link: "https://chat.qwen.ai/",
-      features: "Multimodal processing, long context understanding, educational tools, strong reasoning",
-      studentTip: "Useful for complex problem-solving practice, but work through the steps yourself before relying on an answer"
-    },
-    {
-      name: "DeepSeek",
-      provider: "DeepSeek AI",
-      strengths: "Reasoning and coding support, with a focus on technical tasks",
-      bestFor: "Programming assignments, mathematical problem-solving, logical reasoning, STEM coursework",
-      pricing: "Free + Paid API",
-      link: "https://chat.deepseek.com/",
-      features: "Reasoning, coding support, mathematics, technical explanations",
-      studentTip: "Useful for computer science and engineering practice, but test code and calculations yourself"
-    },
-    {
-      name: "Kimi",
-      provider: "Moonshot AI",
-      strengths: "Long-context document analysis",
-      bestFor: "Summarising long texts, analysing multiple papers, finding candidate details in large documents",
-      pricing: "Free",
-      link: "https://kimi.ai/",
-      features: "Large context window, PDF/doc/txt uploads, web search",
-      studentTip: "Use focused uploads and verify important connections against the original sources."
-    },
-    {
-      name: "LM Studio / Ollama / Jan",
-      provider: "Local AI tools",
-      strengths: "Run open models on your own computer rather than sending prompts to a cloud chat service",
-      bestFor: "Privacy-conscious experimentation, offline drafting support, learning how models behave",
-      pricing: "Free",
-      link: "https://lmstudio.ai/",
-      features: "Local model downloads, offline chat options, model switching depending on your device",
-      studentTip: "Local does not mean correct. Use for material you can check carefully, and make sure your device can handle the model"
-    },
-    {
-      name: "Ernie",
-      provider: "Baidu",
-      strengths: "Chinese-language support and multimodal features",
-      bestFor: "Chinese language studies, multimodal projects, complex reasoning practice",
-      pricing: "Free + Paid tiers",
-      link: "https://ernie.baidu.com/",
-      features: "Multimodal understanding, Chinese-language support, real-time information, image generation",
-      studentTip: "Worth considering if your studies involve Chinese language or media; check outputs carefully."
-    }
+    {"name":"ChatGPT","provider":"OpenAI","studyUse":"Discuss a concept, practise explanations or question an essay plan.","link":"https://chatgpt.com"},
+    {"name":"Claude","provider":"Anthropic","studyUse":"Investigate feedback on your own writing or questions about permitted readings.","link":"https://claude.ai"},
+    {"name":"Gemini","provider":"Google","studyUse":"Investigate general study questions and support for your own attempts.","link":"https://gemini.google.com"},
+    {"name":"Copilot","provider":"Microsoft","studyUse":"Investigate study support; distinguish personal Copilot from your institution's Microsoft 365 arrangements.","link":"https://copilot.microsoft.com"},
+    {"name":"Perplexity","provider":"Perplexity AI","studyUse":"Investigate candidate sources; locate and read the originals before relying on them.","link":"https://www.perplexity.ai"},
+    {"name":"Gemini Notebook","provider":"Google","studyUse":"Explore selected sources and possible study materials, if uploads are permitted.","link":"https://notebooklm.google.com"},
+    {"name":"Google AI Studio","provider":"Google","studyUse":"Investigate a prompt-testing environment; check account and data arrangements before use.","link":"https://aistudio.google.com"},
+    {"name":"Duck.ai","provider":"DuckDuckGo","studyUse":"Investigate an alternative access route for low-risk study conversations.","link":"https://duck.ai"},
+    {"name":"Lumo","provider":"Proton","studyUse":"Investigate an alternative assistant and read its current privacy terms.","link":"https://lumo.proton.me"},
+    {"name":"Brave Leo","provider":"Brave","studyUse":"Investigate browser-based help with public material; check current features and data arrangements.","link":"https://brave.com/leo/"},
+    {"name":"Okara","provider":"Okara","studyUse":"Investigate a multi-model service and its current account and privacy arrangements.","link":"https://okara.ai"},
+    {"name":"Meta AI","provider":"Meta","studyUse":"Investigate permitted creative practice; check the assessment rules for generated material.","link":"https://www.meta.ai"},
+    {"name":"Mistral AI","provider":"Mistral AI","studyUse":"Investigate language or coding practice, checking your own reasoning and outputs.","link":"https://mistral.ai/"},
+    {"name":"Qwen","provider":"Alibaba Cloud","studyUse":"Investigate reasoning or coding practice without delegating assessed work.","link":"https://chat.qwen.ai/"},
+    {"name":"DeepSeek","provider":"DeepSeek AI","studyUse":"Investigate technical practice; test code and check each calculation yourself.","link":"https://chat.deepseek.com/"},
+    {"name":"Kimi","provider":"Moonshot AI","studyUse":"Investigate questions about permitted documents; verify proposed connections in the originals.","link":"https://kimi.ai/"},
+    {"name":"LM Studio","provider":"Local AI tool","studyUse":"Investigate local model use; check device requirements, settings and any remote connections.","link":"https://lmstudio.ai/"},
+    {"name":"Ollama","provider":"Local AI tool","studyUse":"Investigate local model setup; check settings and where data is sent.","link":"https://ollama.com/"},
+    {"name":"Jan","provider":"AI client","studyUse":"Investigate local or connected model use; check the configured endpoint before sharing material.","link":"https://jan.ai/"},
+    {"name":"GPT4All","provider":"Local AI tool","studyUse":"Investigate local model use and check model quality, settings and licence terms.","link":"https://gpt4all.io/"},
+    {"name":"Ernie","provider":"Baidu","studyUse":"Investigate language practice, checking account availability and the output yourself.","link":"https://ernie.baidu.com/"}
   ];
 
   function renderAIPlatforms() {
@@ -409,35 +207,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const card = document.createElement('div');
       card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
 
-      const priceColor = platform.pricing.includes('Free') ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800';
-
       card.innerHTML = `
         <div class="flex justify-between items-start mb-3">
           <h3 class="text-xl font-bold text-sky-700">${platform.name}</h3>
-          <span class="text-sm font-medium px-3 py-1 rounded-full ${priceColor}">${platform.pricing}</span>
+
         </div>
         <p class="text-sm font-semibold text-slate-600 mb-2">${platform.provider}</p>
         <div class="flex-grow space-y-3">
           <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Key Strengths:</p>
-            <p class="text-sm text-slate-600">${platform.strengths}</p>
+            <p class="text-sm font-medium text-slate-700 mb-1">Possible study task:</p>
+            <p class="text-sm text-slate-600">${platform.studyUse}</p>
           </div>
-          <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Best for Students:</p>
-            <p class="text-sm text-slate-600">${platform.bestFor}</p>
-          </div>
-          <div>
-            <p class="text-sm font-medium text-slate-700 mb-1">Key Features:</p>
-            <p class="text-sm text-slate-600">${platform.features}</p>
-          </div>
-          <div class="bg-sky-50 p-3 rounded border border-sky-200">
-            <p class="text-sm font-medium text-sky-700 mb-1">💡 Student Tip:</p>
-            <p class="text-sm text-sky-600">${platform.studentTip}</p>
-          </div>
+          <p class="text-sm text-slate-600">Check current features, pricing, availability and privacy terms for your account. Do not upload material you are not permitted to share.</p>
         </div>
         <div class="mt-4 pt-4 border-t border-slate-200">
           <a href="${platform.link}" target="_blank" rel="noopener noreferrer" class="platform-link inline-flex items-center text-sm font-semibold">
-            Try ${platform.name} →
+            Open ${platform.name} →
           </a>
         </div>
       `;
