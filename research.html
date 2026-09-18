@@ -12,8 +12,11 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus, iframe:focus { outline: 3px solid #0369a1; outline-offset: 2px; border-radius: 4px; }
+    .nav-link:focus, button:focus, a:focus, iframe:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; border-radius: 4px; }
+    header a[href="research.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
     .practical-tools { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0369a1; }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -86,8 +89,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -145,8 +148,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -158,18 +161,18 @@
     <p class="max-w-3xl mx-auto">Use AI to plan, question, organise and improve your research work while keeping evidence, authorship and judgement firmly with you.</p>
   </div>
 
-  <div class="bg-red-50 border border-red-200 rounded-xl p-6 mb-8">
-    <h3 class="text-xl font-bold text-red-700 mb-4">🚨 Academic Integrity Guidelines</h3>
+  <div class="bg-amber-50 border border-amber-200 rounded-xl p-6 mb-8">
+    <h3 class="text-xl font-bold text-amber-800 mb-4">🚨 Academic Integrity Guidelines</h3>
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-white p-4 rounded border border-red-300">
-        <h4 class="font-bold text-red-600 mb-2">Always Check Your Institution's AI Policy</h4>
+      <div class="bg-white p-4 rounded border border-slate-200 border-l-4 border-l-amber-500">
+        <h4 class="font-bold text-slate-900 mb-2">Always Check Your Institution's AI Policy</h4>
         <p class="text-slate-700 text-sm">
           Universities have different rules about AI use. Some allow it for brainstorming, others require
           declaration, and some prohibit it entirely for certain assignments. When in doubt, ask your lecturer.
         </p>
       </div>
-      <div class="bg-white p-4 rounded border border-amber-300">
-        <h4 class="font-bold text-amber-600 mb-2">How to Use AI Ethically</h4>
+      <div class="bg-white p-4 rounded border border-slate-200 border-l-4 border-l-emerald-600">
+        <h4 class="font-bold text-slate-900 mb-2">How to Use AI Ethically</h4>
         <ul class="list-disc list-inside text-slate-700 text-sm space-y-1">
           <li>Use AI for learning and understanding; only use AI-generated text in assessed work where the brief explicitly permits it.</li>
           <li>Always verify facts, statistics, and sources that AI provides</li>
@@ -282,7 +285,7 @@
     </div>
   </div>
   <div class="text-center mt-8">
-    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
   </div>
 </main>
 

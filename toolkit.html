@@ -12,13 +12,16 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .nav-link:focus, button:focus, a:focus, summary:focus, select:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="toolkit.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
     .tool-link { color:#0369a1 !important; text-decoration:none; }
     .tool-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
-    .tool-card { transition:transform .3s,box-shadow .3s }
-    .tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .tool-card { border:1px solid #e2e8f0; border-top:3px solid #bae6fd; box-shadow:0 1px 3px rgba(15,23,42,.06); transition:border-color .2s,box-shadow .2s }
+    .tool-card:hover { border-top-color:#38bdf8; box-shadow:0 6px 16px -10px rgba(15,23,42,.35) }
     .comparison-table th, .comparison-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
     .comparison-table th { background-color: #f9fafb; }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.tool-card { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -91,8 +94,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -150,8 +153,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -232,11 +235,11 @@
                  <div class="space-y-4">
                     <div class="p-4 rounded-lg bg-red-50 border border-red-200">
                         <h5 class="font-bold text-red-700">Before Uploading</h5>
-                        <p class="text-red-600 text-sm mt-1">Free and experimental AI services can have different data settings from institution-approved services. <strong>Do not input sensitive, confidential or personal data unless you have checked the current terms and your institution allows it.</strong></p>
+                        <p class="text-red-700 text-sm mt-1">Free and experimental AI services can have different data settings from institution-approved services. <strong>Do not input sensitive, confidential or personal data unless you have checked the current terms and your institution allows it.</strong></p>
                     </div>
-                    <div class="p-4 rounded-lg bg-green-50 border border-green-200">
-                        <h5 class="font-bold text-green-700">Check Institutional Controls</h5>
-                        <p class="text-green-600 text-sm mt-1">For anything beyond public, low-risk study material, use an institution-approved account or a properly governed service and check the current retention, review and training settings.</p>
+                    <div class="p-4 rounded-lg bg-emerald-50 border border-emerald-200">
+                        <h5 class="font-bold text-emerald-700">Check Institutional Controls</h5>
+                        <p class="text-emerald-700 text-sm mt-1">For anything beyond public, low-risk study material, use an institution-approved account or a properly governed service and check the current retention, review and training settings.</p>
                     </div>
                  </div>
             </div>
@@ -329,7 +332,7 @@
       <noscript><ul class="list-disc list-inside text-slate-700 space-y-2"><li><a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Gemini Notebook</a></li><li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Google AI Studio</a></li><li><a href="https://duck.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Duck.ai</a></li><li><a href="https://lumo.proton.me" target="_blank" rel="noopener noreferrer" class="tool-link">Lumo</a></li><li><a href="https://brave.com/leo/" target="_blank" rel="noopener noreferrer" class="tool-link">Brave Leo</a></li><li><a href="https://okara.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Okara</a></li><li><a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="tool-link">LM Studio</a></li><li><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="tool-link">Ollama</a></li><li><a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" class="tool-link">Jan</a></li><li><a href="https://gpt4all.io/" target="_blank" rel="noopener noreferrer" class="tool-link">GPT4All</a></li><li><a href="https://gamma.app" target="_blank" rel="noopener noreferrer" class="tool-link">Gamma</a></li><li><a href="https://researchrabbitapp.com" target="_blank" rel="noopener noreferrer" class="tool-link">ResearchRabbit</a></li><li><a href="https://elicit.com" target="_blank" rel="noopener noreferrer" class="tool-link">Elicit</a></li><li><a href="https://connectedpapers.com" target="_blank" rel="noopener noreferrer" class="tool-link">Connected Papers</a></li><li><a href="https://www.thesify.ai" target="_blank" rel="noopener noreferrer" class="tool-link">Thesify</a></li><li><a href="https://atlasti.com" target="_blank" rel="noopener noreferrer" class="tool-link">ATLAS.ti</a></li><li><a href="https://lumivero.com/products/nvivo/" target="_blank" rel="noopener noreferrer" class="tool-link">NVivo</a></li><li><a href="https://consensus.app" target="_blank" rel="noopener noreferrer" class="tool-link">Consensus</a></li><li><a href="https://www.semanticscholar.org" target="_blank" rel="noopener noreferrer" class="tool-link">Semantic Scholar</a></li><li><a href="https://scite.ai" target="_blank" rel="noopener noreferrer" class="tool-link">scite</a></li><li><a href="https://www.zotero.org" target="_blank" rel="noopener noreferrer" class="tool-link">Zotero</a></li><li><a href="https://www.mendeley.com" target="_blank" rel="noopener noreferrer" class="tool-link">Mendeley</a></li><li><a href="https://paperpile.com" target="_blank" rel="noopener noreferrer" class="tool-link">Paperpile</a></li><li><a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">Google Scholar</a></li></ul></noscript>
     </div>
     <div class="text-center mt-8">
-      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+      <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
     </div>
 </main>
 
@@ -381,18 +384,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     data.forEach((tool) => {
       const card = document.createElement('div');
-      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col';
+      card.className = 'tool-card bg-white rounded-lg p-6 flex flex-col';
 
-      let costClass = 'bg-blue-100 text-blue-800';
+      let costClass = 'bg-slate-100 text-slate-700';
       if (tool.cost === 'Free') {
-        costClass = 'bg-green-100 text-green-800';
+        costClass = 'bg-emerald-100 text-emerald-800';
       } else if (tool.cost === 'Paid') {
         costClass = 'bg-red-100 text-red-800';
       }
 
       card.innerHTML = `
         <h3 class="text-xl font-bold text-sky-700 mb-2">${tool.name}</h3>
-        <p class="text-sm font-semibold text-amber-600 mb-3">${tool.fn}</p>
+        <p class="text-sm font-semibold text-slate-600 mb-3">${tool.fn}</p>
         <p class="text-slate-600 flex-grow mb-4">${tool.features}</p>
         <div class="flex justify-between items-center mt-auto pt-4 border-t border-slate-200">
           <span class="text-sm font-medium px-3 py-1 rounded-full ${costClass}">${tool.cost}</span>

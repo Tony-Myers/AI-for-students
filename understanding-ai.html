@@ -12,9 +12,14 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .concept-card { transition:transform .3s,box-shadow .3s }
-    .concept-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="understanding-ai.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
+    .concept-card { background:#fff !important; border-color:#e2e8f0 !important; border-top:3px solid #7dd3fc !important; box-shadow:0 1px 3px rgba(15,23,42,.04); transition:border-color .2s,box-shadow .2s; }
+    .concept-card:hover { border-top-color:#0284c7 !important; box-shadow:0 6px 16px -10px rgba(15,23,42,.35); }
+    .concept-card h4 { color:#0f172a !important; }
+    .concept-card > div { background:#f8fafc !important; border:1px solid #e2e8f0; }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.concept-card { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -87,8 +92,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -146,8 +151,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -159,8 +164,8 @@
     <p class="max-w-3xl mx-auto">Learn the fundamentals of large language models to use them more effectively and understand their capabilities and limitations.</p>
   </div>
 
-  <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-8 border border-purple-200">
-    <h3 class="text-xl font-bold text-purple-700 mb-4">Why Understanding AI Matters for Students</h3>
+  <div class="bg-white rounded-xl p-6 mb-8 border-l-4 border-sky-500 border-y border-r border-slate-200">
+    <h3 class="text-xl font-bold text-slate-900 mb-4">Why Understanding AI Matters for Students</h3>
     <p class="text-slate-700">Understanding how AI tools work helps you use them more effectively, recognise their limitations, and make better decisions about when and how to apply them to your studies. You do not need to be a computer scientist to benefit from this knowledge.</p>
   </div>
 
@@ -172,8 +177,8 @@
     </div>
 
     <div class="grid md:grid-cols-2 gap-6 mt-8">
-      <div class="concept-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-        <h4 class="text-lg font-bold text-sky-700 mb-3">🧠 What They Are</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">🧠 What They Are</h4>
         <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
           <li>Pattern-matching systems trained on vast amounts of text</li>
           <li>Statistical models that estimate probabilities for token sequences</li>
@@ -181,8 +186,8 @@
           <li>Systems that learn relationships between concepts and words</li>
         </ul>
       </div>
-      <div class="concept-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
-        <h4 class="text-lg font-bold text-amber-700 mb-3">❌ Limits to Remember</h4>
+      <div class="bg-amber-50 p-6 rounded border border-amber-200">
+        <h4 class="text-lg font-bold text-amber-800 mb-3">❌ Limits to Remember</h4>
         <ul class="list-disc list-inside text-slate-700 space-y-2 text-sm">
           <li>Fluent language is not proof of human understanding</li>
           <li>A model alone is not a verified database of facts</li>
@@ -196,16 +201,16 @@
   <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
     <h3 class="text-2xl font-bold text-slate-800 mb-6">How LLMs Are Trained</h3>
     <div class="space-y-6">
-      <div class="concept-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
-        <h4 class="text-lg font-bold text-emerald-700 mb-3">Stage 1: Pre-Training</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">Stage 1: Pre-Training</h4>
         <p class="text-slate-700 mb-3">During initial training, a model learns patterns from large collections of material. The sources and methods vary between models. Training can encode useful relationships as well as errors, omissions and bias.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>Key Point:</strong> The model learns from examples in its training data, not from a structured database of facts. This is why it can sometimes "know" information but present it incorrectly.
         </div>
       </div>
 
-      <div class="concept-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
-        <h4 class="text-lg font-bold text-purple-700 mb-3">Stage 2: Further Training</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">Stage 2: Further Training</h4>
         <p class="text-slate-700 mb-3">Many models undergo further training to shape their responses. Methods can include examples, preference feedback and reinforcement learning; the combination varies. These processes aim to improve behaviour, but do not guarantee accuracy or suitability for your task.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>Why This Matters:</strong> An assistant can produce helpful-sounding, detailed language while still making factual or reasoning errors. Evaluate its claims rather than its tone.
@@ -218,32 +223,32 @@
     <h3 class="text-2xl font-bold text-slate-800 mb-6">Key Concepts Every Student Should Understand</h3>
     <div class="grid md:grid-cols-2 gap-6">
       
-      <div class="concept-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-        <h4 class="text-lg font-bold text-sky-700 mb-3">📝 Tokens</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">📝 Tokens</h4>
         <p class="text-slate-700 mb-3">Language models represent text as small units called tokens. A token might be a word, part of a word, or punctuation. During generation, the model uses the context available to it to select subsequent tokens.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>Student Example:</strong> A token can represent part of a word, a whole word or punctuation. The exact split depends on the model and language; token counts are not fixed word counts.
         </div>
       </div>
 
-      <div class="concept-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
-        <h4 class="text-lg font-bold text-emerald-700 mb-3">🧵 Context Window</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">🧵 Context Window</h4>
         <p class="text-slate-700 mb-3">The context window limits what a model can consider during generation. Depending on the system, this may include instructions, conversation text and selected source passages. Uploading a document does not guarantee that all of it is included.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>Practical Impact:</strong> Long conversations or documents may be shortened, summarised or retrieved in selected passages. Check important responses against the original material rather than assuming the system considered everything.
         </div>
       </div>
 
-      <div class="concept-card bg-gradient-to-br from-purple-50 to-violet-50 p-6 rounded border border-purple-200">
-        <h4 class="text-lg font-bold text-purple-700 mb-3">🎲 Temperature</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">🎲 Temperature</h4>
         <p class="text-slate-700 mb-3">Where a system exposes it, temperature is a setting that affects variability in token selection. Available settings and their effects differ between systems.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>When to Care:</strong> Less variable output is not necessarily more accurate. Low temperature, clearer prompting and repeated agreement between models do not establish factual accuracy.
         </div>
       </div>
 
-      <div class="concept-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
-        <h4 class="text-lg font-bold text-amber-700 mb-3">🔮 Probabilistic Generation</h4>
+      <div class="concept-card bg-white p-6 rounded-lg border border-slate-200">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">🔮 Probabilistic Generation</h4>
         <p class="text-slate-700 mb-3">A model generates tokens using probability estimates informed by learned patterns and context. Selection need not always choose the most probable token, so repeated requests can produce different responses.</p>
         <div class="bg-white/60 p-3 rounded text-sm text-slate-600">
           <strong>Why This Matters:</strong> Different responses may include different errors. Agreement between responses is also not independent evidence: check important claims against appropriate original or credible sources.
@@ -295,8 +300,8 @@
     <p class="text-slate-700 mb-3">An AI system may search supplied documents, retrieve passages from a collection, use a calculator or other tool, or search the web. These can help you investigate a question and trace candidate evidence.</p>
     <p class="text-slate-700">Access to tools or sources does not guarantee a correct answer. The system may select irrelevant material, misread a source or draw an unsupported conclusion. Read and check the evidence yourself using the <a href="limitations.html" class="text-sky-700 underline">detailed verification guidance</a>.</p>
   </section>
-  <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-6 border border-rose-200">
-    <h3 class="text-xl font-bold text-rose-700 mb-4">⚠️ What This Means for Your Studies</h3>
+  <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+    <h3 class="text-xl font-bold text-amber-800 mb-4">⚠️ What This Means for Your Studies</h3>
     <ul class="space-y-3 text-slate-700">
       <li><strong>Always verify important facts:</strong> The model generates plausible-sounding text, not guaranteed truth.</li>
       <li><strong>Understand that AI "hallucinates":</strong> An answer can contain factual errors, fabricated evidence, misrepresented sources or faulty reasoning, including when retrieval or search is available.</li>
@@ -307,8 +312,8 @@
   </div>
 
   <div class="text-center mt-8 space-x-4">
-    <a href="limitations.html" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">Next: Limitations & Best Practices →</a>
-    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+    <a href="limitations.html" class="px-4 py-2 bg-sky-700 hover:bg-sky-800 text-white rounded">Next: Limitations & Best Practices →</a>
+    <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
   </div>
 </main>
 

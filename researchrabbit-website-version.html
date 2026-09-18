@@ -12,12 +12,15 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus, input:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .feature-card { transition:transform .3s,box-shadow .3s }
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,.05), 0 4px 6px -4px rgba(0,0,0,.05); }
+    .nav-link:focus, button:focus, a:focus, input:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="researchrabbit-website-version.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
+    .feature-card { border-color:#e2e8f0 !important; border-top:3px solid #bae6fd !important; box-shadow:0 1px 3px rgba(15,23,42,.06); transition:border-color .2s,box-shadow .2s }
+    .feature-card:hover { border-top-color:#38bdf8 !important; box-shadow:0 6px 16px -10px rgba(15,23,42,.35); }
     /* Style for checked checklist items */
     input[type="checkbox"]:checked + span { text-decoration: line-through; color: #64748b; }
     .step-number { width: 40px; height: 40px; flex-shrink: 0; }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.feature-card { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -90,8 +93,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -149,8 +152,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -190,7 +193,7 @@
 
       <!-- Step 1: Collections and Subcollections -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">1</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">1</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Organise Papers with Collections</h3>
           <p class="text-lg text-slate-700 mb-4">Use Collections to organise papers, with Subcollections where useful for themes or parts of a project. See the <a href="https://learn.researchrabbit.ai/en/articles/12454600-organizing-your-articles-with-collections" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">current organisation guide</a>.</p>
@@ -219,7 +222,7 @@
 
       <!-- Step 2 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">2</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">2</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Create a "Collection"</h3>
           <p class="text-lg text-slate-700">Create a Collection for your project or topic and save candidate papers there. Add Subcollections if they help you compare themes or organise parts of the work.</p>
@@ -227,7 +230,7 @@
       </div>
       <!-- Step 3 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">3</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">3</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Add "Seed Papers"</h3>
           <p class="text-lg text-slate-700">Choose starting papers you have read and judged relevant. Search for candidate papers, use the Zotero Importer, or transfer papers from Mendeley through a BibTeX file. These are different import workflows, not live synchronisation; see <a href="#tips" class="text-sky-700 underline">reference-manager transfers below</a>.</p>
@@ -235,7 +238,7 @@
       </div>
       <!-- Step 4 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">4</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">4</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Explore the Network</h3>
           <p class="text-lg text-slate-700">Use the discovery views to explore papers related through citation connections. Treat results as candidates: open the originals and check their relevance, methods, limitations and support for your question.</p>
@@ -243,7 +246,7 @@
       </div>
       <!-- Step 5 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">5</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">5</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Build Your Collection</h3>
           <p class="text-lg text-slate-700">Save useful candidate papers to a Collection and record why you selected them. Evaluate the originals; adding papers does not establish their quality or make the search comprehensive.</p>
@@ -251,20 +254,20 @@
       </div>
       <!-- Step 6 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">6</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">6</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Visualise the Graph & Timeline</h3>
           <p class="text-lg text-slate-700 mb-4">Use network views to investigate citation connections. Where a timeline view is available, compare publication dates and then read the papers to understand how arguments developed. A prominent node or connection is not evidence of quality or importance.</p>
           
-          <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <h4 class="font-semibold text-blue-700 mb-2">Coach's Tip:</h4>
-            <p class="text-blue-700">Save selected papers deliberately to a Collection and keep your own research notes. Check current documentation for what exploration history and views are retained between sessions; do not assume a discovery view replaces your research record.</p>
+          <div class="bg-white p-4 rounded-lg border border-slate-200 border-l-4 border-l-sky-500">
+            <h4 class="font-semibold text-slate-900 mb-2">Coach's Tip:</h4>
+            <p class="text-slate-700">Save selected papers deliberately to a Collection and keep your own research notes. Check current documentation for what exploration history and views are retained between sessions; do not assume a discovery view replaces your research record.</p>
           </div>
         </div>
       </div>
       <!-- Step 7 -->
       <div class="flex items-start space-x-4">
-        <div class="step-number bg-sky-600 text-white font-bold rounded-full flex items-center justify-center text-xl">7</div>
+        <div class="step-number bg-sky-700 text-white font-bold rounded-full flex items-center justify-center text-xl">7</div>
         <div>
           <h3 class="text-2xl font-semibold text-slate-800 mb-2">Set Up Alerts</h3>
           <p class="text-lg text-slate-700">Check current documentation for monitoring or notification options and the account arrangements they require. Where alerts are available, evaluate suggested papers yourself rather than treating an alert as a quality judgement.</p>
@@ -407,7 +410,7 @@
 
   <!-- Back link -->
   <div class="text-center mt-12">
-    <a href="index.html" class="px-5 py-3 bg-slate-200 text-slate-700 font-medium rounded-lg hover:bg-slate-300 transition-colors">← Back to Home</a>
+    <a href="index.html" class="inline-flex px-5 py-3 bg-white text-sky-700 border border-slate-300 font-medium rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800 transition-colors">← Back to Home</a>
   </div>
 </main>
 

@@ -11,6 +11,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    body { background:#f8fafc; color:#1e293b; }
+    .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius:4px; }
+    .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color:rgba(3,105,161,.1); }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline:3px solid #0369a1; outline-offset:2px; }
+    header a[href="academic-integrity.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
     .badge { display:inline-block; padding:.25rem .5rem; border-radius:9999px; font-size:.75rem; font-weight:600; }
     .badge-red{ background:#fee2e2; color:#991b1b; }
     .badge-amber{ background:#fef3c7; color:#92400e; }
@@ -18,6 +23,9 @@
     .badge-blue{ background:#dbeafe; color:#1e40af; }
     .badge-purple{ background:#efe1ff; color:#5b21b6; }
     .kbd { display:inline-block; padding:0.125rem 0.375rem; font-size:11px; border-radius:.375rem; border:1px solid #cbd5e1; background:#ffffffb3; color:#475569; }
+    .callout-tip { background:#ecfdf5; color:#14532d; border:1px solid #a7f3d0; border-left:4px solid #047857; border-radius:.5rem; padding:1rem; }
+    main .rounded-xl.bg-white { box-shadow:0 1px 3px rgba(15,23,42,.06); }
+    @media (prefers-reduced-motion:reduce) { .nav-link { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -90,8 +98,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -149,8 +157,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -161,9 +169,9 @@
       <h1 class="text-3xl md:text-4xl font-extrabold">Use AI responsibly</h1>
       <p class="mt-3 max-w-3xl text-slate-200">Use this page for assessment permission, disclosure and privacy. The assessment brief or explicit staff guidance takes precedence over this general guidance. You remain responsible for what you submit.</p>
       <div class="mt-6 grid gap-3 sm:grid-cols-3">
-        <a href="#traffic" class="rounded-lg bg-sky-600 hover:bg-sky-500 font-semibold px-4 py-2 text-center">What’s allowed</a>
+        <a href="#traffic" class="rounded-lg bg-sky-700 hover:bg-sky-800 font-semibold px-4 py-2 text-center">What’s allowed</a>
         <a href="#disclose" class="rounded-lg bg-slate-700 hover:bg-slate-600 font-semibold px-4 py-2 text-center">How to disclose AI use</a>
-        <a href="#ethics" class="rounded-lg bg-emerald-700 hover:bg-emerald-600 font-semibold px-4 py-2 text-center">Ethics checklist</a>
+        <a href="#ethics" class="rounded-lg bg-emerald-700 hover:bg-emerald-800 font-semibold px-4 py-2 text-center">Ethics checklist</a>
       </div>
       <div class="callout callout-tip mt-6">
         <strong>Tip:</strong> Keep a short <em>AI use log</em> while you work (date, tool, what you did, what changed). It helps you describe the actual contribution of AI and the checks you completed.
@@ -229,12 +237,12 @@
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
           <h3 class="font-semibold">Short disclosure (generic)</h3>
           <pre id="disc1" class="text-sm whitespace-pre-wrap break-words overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">I used [tool and date/version, if required] to suggest possible essay structures and comment on clarity. I selected and revised the structure, developed the argument and wrote the submission. I checked the claims against [sources actually read]. [Describe any AI-generated wording retained and the checks completed, if permitted.]</pre>
-          <button data-copy="#disc1" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
+          <button data-copy="#disc1" class="mt-2 rounded bg-sky-700 hover:bg-sky-800 text-white px-3 py-1 text-sm">Copy</button>
         </div>
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
           <h3 class="font-semibold">Disclosure for source analysis and editing</h3>
           <pre id="disc2" class="text-sm whitespace-pre-wrap break-words overflow-x-auto p-3 rounded bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-700">We used [source-grounded tool] to suggest summaries of [permitted readings] and [editing tool] to suggest wording changes. We checked the proposed summaries against the original passages, corrected [identified issues] and developed our synthesis. [State which generated material was retained, if permitted.] Records of prompts, decisions and checks are in [required location].</pre>
-          <button data-copy="#disc2" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
+          <button data-copy="#disc2" class="mt-2 rounded bg-sky-700 hover:bg-sky-800 text-white px-3 py-1 text-sm">Copy</button>
         </div>
       </div>
       <details class="mt-4 rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900">
@@ -243,7 +251,7 @@
 —|—|—|—|—|—
 2025‑10‑07 | ChatGPT | Brainstorm outline | “Suggest 5 angles on …” | Picked #3; added my examples | Facts checked in readings
 2025‑10‑08 | Grammarly | Edit | “Clarity + active voice” | Shorter sentences; no content changes | Compared edits with original meaning; checked claims against sources</pre>
-        <button data-copy="#log" class="mt-2 rounded bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 text-sm">Copy</button>
+        <button data-copy="#log" class="mt-2 rounded bg-sky-700 hover:bg-sky-800 text-white px-3 py-1 text-sm">Copy</button>
       </details>
     </section>
 
@@ -281,10 +289,10 @@
       <p class="text-slate-600 dark:text-slate-300 max-w-3xl">Use this quick reminder for AI-supported work. The <a href="limitations.html" class="text-sky-700 underline">detailed verification guide</a> explains how to check claims, sources and reasoning.</p>
       <div class="grid gap-4 md:grid-cols-5 mt-4">
         <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">V</div><h3 class="font-semibold mt-1">Verify sources</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Check that every citation exists and says what the output claims.</p></div>
-        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-emerald-700">A</div><h3 class="font-semibold mt-1">Assess authority</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Prioritise your module readings, library sources, primary material and official data.</p></div>
-        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-amber-700">L</div><h3 class="font-semibold mt-1">Look for bias</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Ask what voices, methods, places or perspectives are missing.</p></div>
-        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-rose-700">I</div><h3 class="font-semibold mt-1">Identify limits</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Separate evidence, interpretation and speculation before you use anything.</p></div>
-        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-purple-700">D</div><h3 class="font-semibold mt-1">Document use</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Record the tool, date, prompt, sources provided, changes made and checks completed.</p></div>
+        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">A</div><h3 class="font-semibold mt-1">Assess authority</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Prioritise your module readings, library sources, primary material and official data.</p></div>
+        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">L</div><h3 class="font-semibold mt-1">Look for bias</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Ask what voices, methods, places or perspectives are missing.</p></div>
+        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">I</div><h3 class="font-semibold mt-1">Identify limits</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Separate evidence, interpretation and speculation before you use anything.</p></div>
+        <div class="rounded-xl border border-slate-200 p-4 bg-white dark:bg-slate-900"><div class="text-2xl font-extrabold text-sky-700">D</div><h3 class="font-semibold mt-1">Document use</h3><p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Record the tool, date, prompt, sources provided, changes made and checks completed.</p></div>
       </div>
     </section>
 
@@ -299,15 +307,15 @@
     <section class="mt-12">
       <h2 class="text-2xl md:text-3xl font-bold">Think wider than the assignment</h2>
       <div class="grid gap-4 md:grid-cols-3 mt-4">
-        <div class="p-5 rounded-xl border border-red-200 bg-red-50"><h3 class="font-semibold text-red-700">Bias & discrimination</h3><p class="text-slate-700 text-sm mt-1">Models can mirror historical bias. Cross‑check and bring multiple perspectives.</p></div>
-        <div class="p-5 rounded-xl border border-amber-200 bg-amber-50"><h3 class="font-semibold text-amber-700">Privacy & surveillance</h3><p class="text-slate-700 text-sm mt-1">Know what data is collected and where it goes.</p></div>
-        <div class="p-5 rounded-xl border border-sky-200 bg-sky-50"><h3 class="font-semibold text-sky-700">Truth & plagiarism</h3><p class="text-slate-700 text-sm mt-1">Avoid passing off AI work as your own; cite tools where appropriate.</p></div>
+        <div class="p-5 rounded-xl border border-slate-200 border-t-4 border-t-red-500 bg-white"><h3 class="font-semibold text-slate-900">Bias & discrimination</h3><p class="text-slate-700 text-sm mt-1">Models can mirror historical bias. Cross‑check and bring multiple perspectives.</p></div>
+        <div class="p-5 rounded-xl border border-slate-200 border-t-4 border-t-amber-500 bg-white"><h3 class="font-semibold text-slate-900">Privacy & surveillance</h3><p class="text-slate-700 text-sm mt-1">Know what data is collected and where it goes.</p></div>
+        <div class="p-5 rounded-xl border border-slate-200 border-t-4 border-t-red-500 bg-white"><h3 class="font-semibold text-slate-900">Truth & plagiarism</h3><p class="text-slate-700 text-sm mt-1">Avoid passing off AI work as your own; cite tools where appropriate.</p></div>
       </div>
     </section>
 
     <!-- Back link -->
     <div class="text-center mt-12">
-      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+      <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
     </div>
   </main>
 

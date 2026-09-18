@@ -12,12 +12,15 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="getting-started.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
     .card { transition:transform .2s, box-shadow .2s }
     .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -12px rgba(2,6,23,.15) }
     .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:#ffffffb3;color:#475569}
     .tip{background:#10b981;color:#000;border:1px solid #10b981;border-radius:.75rem}
     .copy-btn { white-space: nowrap }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.card { transition:none; } .card:hover { transform:none; } }
     @media (prefers-color-scheme: dark) {
       body { background:#0b1220; color:#e2e8f0 }
       .bg-white { background:#0b1220 !important }
@@ -101,8 +104,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -160,8 +163,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -173,7 +176,7 @@
     <p class="max-w-3xl mx-auto text-slate-200">Decide what you need to learn, whether AI adds value and what your assessment permits before choosing a tool.</p>
   </section>
 
-  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+  <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
     <h2 class="text-2xl font-bold mb-4">Before your first interaction</h2>
     <ol class="space-y-4 text-slate-700">
       <li><strong>Learning purpose:</strong> Identify what you need to understand or practise, what you have already tried and the reasoning you need to develop.</li>
@@ -185,7 +188,7 @@
     </ol>
   </section>
 
-  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+  <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
     <h2 class="text-2xl font-bold mb-4">A careful first prompt</h2>
     <div class="border border-slate-200 rounded-lg p-3 bg-slate-50 text-sm">
       <p>I want to practise [learning goal]. I have already tried [my attempt]. Act as a study collaborator: ask questions, give hints and help me compare approaches. Do not complete reasoning I need to demonstrate myself. Use only material I am permitted to share. Flag uncertainty and claims that need checking; do not invent evidence.</p>
@@ -195,7 +198,7 @@
   </section>
 
   <section class="grid md:grid-cols-2 gap-6 mb-8">
-    <div class="bg-white rounded-xl shadow-lg p-6">
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-bold mb-3">Practice that keeps you thinking</h2>
       <ul class="list-disc list-inside text-slate-700 space-y-2">
         <li>Attempt practice questions before viewing answers; check the answer key against course material.</li>
@@ -205,7 +208,7 @@
       </ul>
       <p class="text-slate-600 mt-3">See <a href="study-strategies.html" class="text-sky-700 underline">study strategies</a> for examples.</p>
     </div>
-    <div class="bg-white rounded-xl shadow-lg p-6">
+    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
       <h2 class="text-xl font-bold mb-3">Working with selected sources</h2>
       <p class="text-slate-700 mb-3">If uploads are permitted, a source-grounded tool can help you locate passages and generate questions. It can still miss material or misinterpret it. Asking for citations or clearer prompts does not prevent hallucinations.</p>
       <p class="text-slate-700 mb-3">Read the original source and check that it supports the claim before citing it. You remain responsible for submitted work.</p>
@@ -213,17 +216,17 @@
     </div>
   </section>
 
-  <section class="bg-white rounded-xl shadow-lg p-6 mb-8">
+  <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
     <h2 class="text-2xl font-bold mb-4">If the interaction is not useful</h2>
     <p class="text-slate-700">Restate the task, provide relevant permitted context or ask a narrower question. Check the response rather than assuming a more polished answer is more accurate. Stop using AI if it distracts from the learning task or if you cannot verify the help it gives.</p>
   </section>
 
   <section class="text-center">
     <div class="inline-flex flex-wrap gap-3 justify-center">
-      <a href="prompting.html" class="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold">Plan an interaction</a>
+      <a href="prompting.html" class="px-4 py-2 rounded-lg bg-sky-700 hover:bg-sky-800 text-white font-semibold">Plan an interaction</a>
       <a href="research.html" class="px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-semibold">Research and essays</a>
-      <a href="study-strategies.html" class="px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-semibold">Build a revision plan</a>
-      <a href="notebooklm-tutorial.html" class="px-4 py-2 rounded-lg bg-purple-700 hover:bg-purple-600 text-white font-semibold">Gemini Notebook tutorial</a>
+      <a href="study-strategies.html" class="px-4 py-2 rounded-lg bg-white border border-slate-300 hover:border-sky-300 hover:bg-sky-50 text-sky-700 font-semibold">Build a revision plan</a>
+      <a href="notebooklm-tutorial.html" class="px-4 py-2 rounded-lg bg-white border border-slate-300 hover:border-sky-300 hover:bg-sky-50 text-sky-700 font-semibold">Gemini Notebook tutorial</a>
     </div>
   </section>
 

@@ -12,11 +12,14 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
-    .limitation-card { transition:transform .3s,box-shadow .3s }
-    .limitation-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="limitations.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
+    .limitation-card { transition:border-color .2s,box-shadow .2s }
+    .limitation-card:hover { box-shadow:0 6px 16px -10px rgba(15,23,42,.35) }
     .accordion-content { max-height:0 !important; overflow:hidden; transition:max-height .5s ease-in-out }
     .accordion-content.open { max-height:2000px !important; transition:max-height 1s ease-in-out }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.limitation-card,.accordion-content { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -89,8 +92,8 @@
       </div>
 
       <!-- CTA Buttons -->
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <!-- Mobile menu button -->
@@ -148,8 +151,8 @@
     </details>
 
     <!-- Mobile CTAs -->
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -171,20 +174,20 @@
     <h2 class="text-2xl font-bold text-slate-800 mb-6">Four Kinds of Error to Check</h2>
     <p class="text-slate-700 mb-6">A response can contain more than one kind of error. Checking only whether a reference exists will miss important failures.</p>
     <div class="grid md:grid-cols-2 gap-6">
-      <article class="limitation-card bg-red-50 p-6 rounded border border-red-200">
-        <h3 class="text-lg font-bold text-red-700 mb-3">Factual error</h3>
+      <article class="limitation-card bg-white p-6 rounded border border-slate-200 border-l-4 border-l-red-500">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">Factual error</h3>
         <p class="text-slate-700 text-sm">A factual claim is incorrect, such as a wrong date, definition or calculation. Check the claim using appropriate original or credible sources, or work through the calculation yourself.</p>
       </article>
-      <article class="limitation-card bg-amber-50 p-6 rounded border border-amber-200">
-        <h3 class="text-lg font-bold text-amber-700 mb-3">Fabricated evidence</h3>
+      <article class="limitation-card bg-white p-6 rounded border border-slate-200 border-l-4 border-l-red-500">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">Fabricated evidence</h3>
         <p class="text-slate-700 text-sm">A reference, quotation, statistic or other evidence is invented. Locate the original publication or dataset and confirm the quoted or reported material exists.</p>
       </article>
-      <article class="limitation-card bg-sky-50 p-6 rounded border border-sky-200">
-        <h3 class="text-lg font-bold text-sky-700 mb-3">Misrepresentation</h3>
+      <article class="limitation-card bg-white p-6 rounded border border-slate-200 border-l-4 border-l-amber-500">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">Misrepresentation</h3>
         <p class="text-slate-700 text-sm">A real source exists but does not support the claim made about it. Read the relevant passage, table or dataset in context and check the scope, qualifications and limitations.</p>
       </article>
-      <article class="limitation-card bg-purple-50 p-6 rounded border border-purple-200">
-        <h3 class="text-lg font-bold text-purple-700 mb-3">Reasoning error</h3>
+      <article class="limitation-card bg-white p-6 rounded border border-slate-200 border-l-4 border-l-slate-500">
+        <h3 class="text-lg font-bold text-slate-900 mb-3">Reasoning error</h3>
         <p class="text-slate-700 text-sm">Facts or sources may be genuine, but the conclusion does not follow adequately from them. Examine assumptions, missing steps, alternative explanations and whether the evidence is sufficient.</p>
       </article>
     </div>
@@ -197,18 +200,18 @@
       <p>Use AI to generate possible explanations, questions and checks. Use original sources, data, worked calculations, official guidance and your own judgement to decide what is supported.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="limitation-card bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded border border-emerald-200">
+      <div class="limitation-card bg-emerald-50 p-6 rounded border border-emerald-200 border-t-4 border-t-emerald-600">
         <h4 class="text-lg font-bold text-emerald-700 mb-3">Conservative</h4>
         <p class="text-sm text-slate-700">Directly supported by the source or data you have checked. Lowest risk for academic writing.</p>
         <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What evidence supports this?</p>
       </div>
-      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+      <div class="limitation-card bg-amber-50 p-6 rounded border border-amber-200 border-t-4 border-t-amber-500">
         <h4 class="text-lg font-bold text-amber-700 mb-3">Interpretive</h4>
         <p class="text-sm text-slate-700">A reasonable reading of the evidence, but it depends on assumptions you should name.</p>
         <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What additional evidence is needed?</p>
       </div>
-      <div class="limitation-card bg-gradient-to-br from-rose-50 to-pink-50 p-6 rounded border border-rose-200">
-        <h4 class="text-lg font-bold text-rose-700 mb-3">Speculative</h4>
+      <div class="limitation-card bg-red-50 p-6 rounded border border-red-200 border-t-4 border-t-red-500">
+        <h4 class="text-lg font-bold text-red-700 mb-3">Speculative</h4>
         <p class="text-sm text-slate-700">Useful for brainstorming, but not suitable as a claim unless you can verify it independently.</p>
         <p class="text-sm text-slate-600 mt-3"><strong>Ask:</strong> What would count against this?</p>
       </div>
@@ -324,7 +327,7 @@
               <li>Verify any "current" information with news sources or official websites</li>
               <li>Be cautious with evolving fields (technology, medicine, current events)</li>
             </ul>
-            <div class="bg-purple-50 p-3 rounded border border-purple-200">
+            <div class="bg-slate-50 p-3 rounded border border-slate-200">
               <p class="text-sm"><strong>Note:</strong> Knowledge cut-off dates and web access change regularly. Check the current help page for the tool you are using, especially for recent events, policy, law, medicine, prices or technical specifications.</p>
             </div>
           </div>
@@ -346,15 +349,15 @@
       <p>However, source-grounded does not mean automatically correct. The tool may miss a relevant passage, over-weight a weak match, misread a quotation, or sound confident from only part of the evidence.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-6">
-      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-        <h4 class="text-lg font-bold text-sky-700 mb-3">Use It For</h4>
+      <div class="limitation-card bg-white p-6 rounded border border-slate-200 border-l-4 border-l-emerald-600">
+        <h4 class="text-lg font-bold text-emerald-700 mb-3">Use It For</h4>
         <ul class="list-disc list-inside text-sm text-slate-700 space-y-2">
           <li>Finding candidate passages in readings you have chosen</li>
           <li>Generating questions for closer reading</li>
           <li>Comparing what a small set of sources appears to say</li>
         </ul>
       </div>
-      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+      <div class="limitation-card bg-amber-50 p-6 rounded border border-amber-200 border-l-4 border-l-amber-500">
         <h4 class="text-lg font-bold text-amber-700 mb-3">Still Check</h4>
         <ul class="text-sm text-slate-700 space-y-2">
           <li>Does the cited passage actually support the answer?</li>
@@ -372,8 +375,8 @@
     </div>
 
     <div class="grid md:grid-cols-2 gap-6 mb-6">
-      <div class="limitation-card bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded border border-sky-200">
-        <h4 class="text-lg font-bold text-sky-700 mb-3">What Counts Towards the Limit</h4>
+      <div class="limitation-card bg-white p-6 rounded border border-slate-200 border-t-4 border-t-sky-300">
+        <h4 class="text-lg font-bold text-slate-900 mb-3">What Counts Towards the Limit</h4>
         <ul class="text-sm text-slate-700 space-y-2">
           <li>Conversation messages included by the system</li>
           <li>Prior AI responses included in the current context</li>
@@ -383,7 +386,7 @@
         </ul>
       </div>
 
-      <div class="limitation-card bg-gradient-to-br from-amber-50 to-orange-50 p-6 rounded border border-amber-200">
+      <div class="limitation-card bg-amber-50 p-6 rounded border border-amber-200 border-l-4 border-l-amber-500">
         <h4 class="text-lg font-bold text-amber-700 mb-3">What Happens at the Limit</h4>
         <ul class="text-sm text-slate-700 space-y-2">
           <li>Oldest messages may be "forgotten"</li>
@@ -395,8 +398,8 @@
       </div>
     </div>
 
-    <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded border border-purple-200">
-      <h4 class="text-lg font-bold text-purple-700 mb-4">What to Check Before Uploading a Large File</h4>
+    <div class="bg-slate-50 p-6 rounded border border-slate-200 border-l-4 border-l-amber-500">
+      <h4 class="text-lg font-bold text-slate-900 mb-4">What to Check Before Uploading a Large File</h4>
       <div class="grid md:grid-cols-2 gap-4 text-sm">
         <div class="bg-white p-3 rounded">
           <p class="font-semibold">Capacity</p>
@@ -450,15 +453,15 @@
     </div>
   </div>
 
-  <div class="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl p-6 border border-rose-200">
-    <h3 class="text-xl font-bold text-rose-700 mb-4">🎯 The Golden Rule of AI Verification</h3>
+  <div class="bg-red-50 rounded-xl p-6 border border-red-200 border-l-4 border-l-red-500">
+    <h3 class="text-xl font-bold text-red-700 mb-4">🎯 The Golden Rule of AI Verification</h3>
     <p class="text-slate-700 text-lg mb-4">If you cannot verify it, do not cite it. If you cannot explain it, you do not understand it.</p>
     <p class="text-slate-700">You remain responsible for explaining and supporting the claims you submit. AI should support rather than replace required reasoning. Follow <a href="academic-integrity.html" class="text-sky-700 underline">assessment-specific permission, disclosure and privacy guidance</a>.</p>
   </div>
 
   <div class="text-center mt-8 space-x-4">
-    <a href="understanding-ai.html" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">← Previous: Understanding AI</a>
-    <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">Back to Home</a>
+    <a href="understanding-ai.html" class="px-4 py-2 bg-sky-700 hover:bg-sky-800 text-white rounded">← Previous: Understanding AI</a>
+    <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">Back to Home</a>
   </div>
 </main>
 

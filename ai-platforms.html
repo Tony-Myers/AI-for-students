@@ -12,11 +12,14 @@
     body { font-family:'Inter',sans-serif; background:#f8fafc; color:#1e293b }
     .nav-link { transition:color .3s,border-color .3s,background-color .3s; border-bottom:2px solid transparent; cursor:pointer; border-radius: 4px; }
     .nav-link.active,.nav-link:hover { color:#0369a1; border-bottom-color:#0369a1; background-color: rgba(3, 105, 161, 0.1); }
-    .nav-link:focus, button:focus, a:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    .nav-link:focus, button:focus, a:focus, summary:focus { outline: 3px solid #0369a1; outline-offset: 2px; }
+    header a[href="ai-platforms.html"]:not(.font-semibold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
     .platform-link { color:#0369a1 !important; text-decoration:none; }
     .platform-link:hover { color:#075985 !important; text-decoration:underline; text-decoration-thickness: 2px; }
-    .tool-card { transition:transform .3s,box-shadow .3s }
-    .tool-card:hover { transform:translateY(-5px); box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1) }
+    .tool-card { transition:border-color .2s,box-shadow .2s }
+    .tool-card:hover { border-color:#7dd3fc; box-shadow:0 6px 16px -10px rgba(15,23,42,.35) }
+    main .shadow-lg { box-shadow:0 1px 3px rgba(15,23,42,.08); }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.tool-card { transition:none; } }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -81,8 +84,8 @@
         </div>
       </div>
 
-      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+      <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
     </div>
 
     <div class="md:hidden flex items-center gap-2">
@@ -137,8 +140,8 @@
       </nav>
     </details>
 
-    <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
-    <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+    <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+    <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
   </div>
 </header>
 
@@ -164,7 +167,7 @@
       <noscript><ul class="list-disc list-inside text-slate-700 space-y-2"><li><a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">ChatGPT</a></li><li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Claude</a></li><li><a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Gemini</a></li><li><a href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Copilot</a></li><li><a href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Perplexity</a></li><li><a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Gemini Notebook</a></li><li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Google AI Studio</a></li><li><a href="https://duck.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Duck.ai</a></li><li><a href="https://lumo.proton.me" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Lumo</a></li><li><a href="https://brave.com/leo/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Brave Leo</a></li><li><a href="https://okara.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Okara</a></li><li><a href="https://www.meta.ai" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Meta AI</a></li><li><a href="https://mistral.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Mistral AI</a></li><li><a href="https://chat.qwen.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Qwen</a></li><li><a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">DeepSeek</a></li><li><a href="https://kimi.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Kimi</a></li><li><a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">LM Studio</a></li><li><a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Ollama</a></li><li><a href="https://jan.ai/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Jan</a></li><li><a href="https://gpt4all.io/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">GPT4All</a></li><li><a href="https://ernie.baidu.com/" target="_blank" rel="noopener noreferrer" class="text-sky-700 underline">Ernie</a></li></ul></noscript>
     </div>
     <div class="text-center mt-8">
-      <a href="index.html" class="px-4 py-2 bg-slate-200 rounded hover:bg-slate-300">← Back to Home</a>
+      <a href="index.html" class="inline-flex px-4 py-2 bg-white text-sky-700 border border-slate-300 rounded-lg hover:bg-sky-50 hover:border-sky-300 hover:text-sky-800">← Back to Home</a>
     </div>
 </main>
 
@@ -205,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     grid.innerHTML = '';
     studentAiPlatforms.forEach((platform) => {
       const card = document.createElement('div');
-      card.className = 'tool-card bg-white rounded-lg shadow-md p-6 flex flex-col border-l-4 border-sky-500';
+      card.className = 'tool-card bg-white rounded-lg shadow-sm p-6 flex flex-col border border-slate-200 border-t-4 border-t-sky-300';
 
       card.innerHTML = `
         <div class="flex justify-between items-start mb-3">

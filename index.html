@@ -23,12 +23,14 @@
     /* Navigation link styles */
 
     .nav-link { transition: color .2s, background-color .2s, border-color .2s; border-bottom: 2px solid transparent; border-radius: .375rem; color:#111827; }
-    .nav-link:hover, .nav-link.active { color:#000; background-color: rgba(0,0,0,.06); border-bottom-color:#000; }
+    .nav-link:hover, .nav-link.active { color:#0369a1; background-color:#f0f9ff; border-bottom-color:#0369a1; }
     .dark .nav-link { color:#111827; } /* header stays light for contrast */
+    .nav-link:focus, button:focus, a:focus, input:focus, summary:focus { outline:3px solid #0369a1; outline-offset:2px; }
+    header a[href="index.html"]:not(.font-bold) { color:#0369a1; background:#f0f9ff; font-weight:600; }
 
     /* Cards */
-    .card { transition: transform .2s, box-shadow .2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -10px rgba(2,6,23,.4); }
+    .card { transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .card:hover { transform: translateY(-2px); border-color:#7dd3fc; box-shadow:0 6px 16px -10px rgba(15,23,42,.35); }
 
     /* Accessibility: skip link */
     .sr-skip:focus { position:absolute; left:0; top:0; background:#0ea5e9; color:white; padding:.5rem .75rem; border-radius:.375rem; z-index:50; }
@@ -37,8 +39,8 @@
 
     .kbd{display:inline-block;padding:0.125rem 0.375rem;font-size:11px;border-radius:.375rem;border:1px solid #cbd5e1;background:rgba(255,255,255,.7);color:#475569}
     .callout{border-radius:.5rem;border:1px solid #e2e8f0;padding:1rem}
-    .callout-tip{background:#10b981 !important; border-color:#10b981 !important; color:#000 !important;}
-    .callout-tip *{color:#000 !important;}
+    .callout-tip{background:#ecfdf5 !important; border-color:#a7f3d0 !important; border-left:4px solid #047857 !important; color:#14532d !important;}
+    .callout-tip *{color:inherit !important;}
     .dark .text-slate-400, .dark .text-slate-500, .dark .text-slate-600 { color:#e2e8f0 !important; }
     .dark ::placeholder { color:#cbd5e1; }
     .dark #quiz legend, .dark #quiz label { color:#e5e7eb; }
@@ -49,6 +51,7 @@
     .dark header { background-color:#ffffff !important; border-color:#e5e7eb !important; }
     .dark #mobile-menu { background-color:#ffffff !important; border-color:#e5e7eb !important; }
     .dark #mobile-menu .nav-link { color:#111827 !important; }
+    @media (prefers-reduced-motion:reduce) { .nav-link,.card { transition:none; } .card:hover { transform:none; } }
   </style>
 
   <!-- Persist dark-mode preference -->
@@ -163,9 +166,9 @@
 
         <!-- CTA Buttons -->
 
-        <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-3 py-2 font-semibold text-white">Start Here</a>
+        <a href="getting-started.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-3 py-2 font-semibold text-white">Start Here</a>
 
-        <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
+        <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-3 py-2 font-semibold text-white">Use AI Responsibly</a>
 
       </div>
 
@@ -280,9 +283,9 @@
 
       <!-- Mobile CTAs -->
 
-      <a href="getting-started.html" class="block text-center bg-sky-600 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
+      <a href="getting-started.html" class="block text-center bg-sky-700 hover:bg-sky-800 text-white px-4 py-2 rounded-lg font-semibold">Start Here</a>
 
-      <a href="academic-integrity.html" class="block text-center bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
+      <a href="academic-integrity.html" class="block text-center bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg font-semibold">Use AI Responsibly</a>
 
     </div>
 
@@ -323,11 +326,11 @@
 
     <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
 
-      <a href="#pathways" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-600 hover:bg-sky-500 px-4 py-2.5 font-semibold">Start here →</a>
+      <a href="#pathways" class="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-700 hover:bg-sky-800 px-4 py-2.5 font-semibold">Start here →</a>
 
       <a href="prompting.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-700 hover:bg-slate-600 px-4 py-2.5 font-semibold">Prompting Guide</a>
 
-      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
+      <a href="academic-integrity.html" class="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 px-4 py-2.5 font-semibold">Use AI Responsibly</a>
 
     </div>
 
@@ -433,7 +436,7 @@
 
           <div class="flex items-center gap-3">
 
-            <div class="h-10 w-10 rounded-lg bg-purple-100 text-purple-700 grid place-items-center text-xl">📚</div>
+            <div class="h-10 w-10 rounded-lg bg-slate-100 text-slate-700 grid place-items-center text-xl">📚</div>
 
             <div>
 
